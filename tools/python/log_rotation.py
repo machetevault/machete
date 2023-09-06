@@ -1,5 +1,11 @@
 #!/bin/python3
 
+#########################
+#   author: b0ydC       #
+#   year: 2023          #
+# source: @machetevault #
+#########################
+
 import shutil
 from datetime import datetime
 
