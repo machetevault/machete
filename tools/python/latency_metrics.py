@@ -50,30 +50,6 @@ def curl_except(compose_url):
 
     request.close()
     file.close() 
-
-def curl_request(compose_url):
-  
-    request = pycurl.Curl()
-    request.setopt(request.URL, compose_url)
-    request.setopt(request.FOLLOWLOCATION, False)
-    request.perform()
-        
-    effective_url = request.getinfo(request.EFFECTIVE_URL)
-    name_lookup = request.getinfo(request.NAMELOOKUP_TIME)
-    connect_time = request.getinfo(request.CONNECT_TIME)
-    pretransfer_time = request.getinfo(request.PRETRANSFER_TIME)
-    redirect_time = request.getinfo(request.REDIRECT_TIME)
-    starttransfer_time = request.getinfo(request.STARTTRANSFER_TIME)
-    total_time = request.getinfo(request.TOTAL_TIME)
-
-    data = [effective_url,name_lookup, connect_time, pretransfer_time, redirect_time, starttransfer_time,total_time]
-
-    file = open('filename.csv','a+')
-    action = csv.writer(file)
-    action.writerow(data)
-
-    request.close()
-    file.close()
     
 def read_exec():
     
