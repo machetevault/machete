@@ -109,7 +109,7 @@
 <summary>DATABASE TYPE/VERSION/NUMBER TECHNIQUES</summary>
 <p><b>DESCRIPTION:</b> Techniques used to retrieve the database version.
 
--- or # | It is used in SQL query language to comment out ignoring the rest of the query.
+<b>--</b> or <b>#</b> | It is used in SQL query language to comment out ignoring the rest of the query.
 
 <b>PRE-REQS:</b>
 1. get column number
@@ -186,17 +186,13 @@ from other tables.
 STEP1: get query columns number
 
 <mark>' UNION SELECT NULL--</mark>
-*add null values until the error disappears, most of time "500 Internal Server"
+*add null values until the error disappears
 
 STEP2: get column field type
 
 <mark>' UNION SELECT NULL,'a'--</mark> | non-oracle
 <mark>' UNION SELECT 'a','a' FROM DUAL--</mark> | oracle
 *assuming two columns
-
-
-
-
 
 
 
