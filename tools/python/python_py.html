@@ -25,7 +25,7 @@
     }
     a:hover,
     a:active {
-      color: #e12c1f;
+      color: #abb2b9;
       text-decoration: underline;
     }
 		
@@ -36,7 +36,7 @@
     }
 	
      div {
-	width:40%;
+	width:60%;
 	padding:8px;
 	margin:auto;
 	}
@@ -52,6 +52,17 @@
 	font-size: 20px;
 	
 	}
+
+    details[open] summary {
+      background: black;
+      color: gray;
+    }
+
+    details[open] {
+      background: gray;
+      color: black;
+      padding: .5em .5em 0;
+    }
 
 </style>
 </head>
@@ -83,9 +94,9 @@
 <details>
 <summary>LATENCY REQUEST</summary>
 <a href="https://github.com/machetevault/machete/blob/main/tools/python/latency_metrics.py">VIEW CODE</a> | <a href="/machete/tools/python/latency_metrics.py">DOWNLOAD</a><br>
-<p>MD5: b39d9ccd73a470dd5b5fa990bc38bdac<br>
-SHA256: b7d0ff39edc5377e26da450b1e85a6d6b13be95ff96b7a078dd75229e022a080<br>
-DESCRIPTION: Latency script, it is a script that is reading URL's from a .csv file and it is composing it 
+<p><b>MD5:</b> b39d9ccd73a470dd5b5fa990bc38bdac<br>
+<b>SHA256:</b> b7d0ff39edc5377e26da450b1e85a6d6b13be95ff96b7a078dd75229e022a080<br>
+<b>DESCRIPTION:</b> Latency script, it is a script that is reading URL's from a .csv file and it is composing it 
 to the correct URL format to make HTTP request to each URL using pycurl. It is collecting 
 [effective_url,namelookup_time,connect_time,pretransfer_time,redirect_time,starttransfer_time,total_time] 
 as measures to calculate latency. </p>
@@ -93,9 +104,9 @@ as measures to calculate latency. </p>
 <details>
 <summary>LOG ROTATION</summary>
 <a href="https://github.com/machetevault/machete/blob/main/tools/python/log_rotation.py">VIEW CODE</a> | <a href="/machete/tools/python/log_rotation.py">DOWNLOAD</a><br>
-<p>MD5: 48e83bea9a53ac4a87d1f8b293de64fd<br>
-SHA256: c4516c9c698bb61e3b462d0dfdaeaeceb1b0651425eb8051610b50d3de65f710<br>
-DESCRIPTION: Log rotation script, it gets the datetime at the time of the execution to add that information to the filename to then moving it.</p>
+<p><b>MD5:</b> 48e83bea9a53ac4a87d1f8b293de64fd<br>
+<b>SHA256:</b> c4516c9c698bb61e3b462d0dfdaeaeceb1b0651425eb8051610b50d3de65f710<br>
+<b>DESCRIPTION:</b> Log rotation script, it gets the datetime at the time of the execution to add that information to the filename to then moving it.</p>
 </details>
 </div>
 </pre>
