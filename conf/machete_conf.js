@@ -6,7 +6,7 @@
 #
 
 # copy commands to clipboard
-function copyToClipboard(element) {
+function copy_To_Clipboard(element) {
   var $temp = $("<input>");
   $("body").append($temp);
   $temp.val($(element).text()).select();
