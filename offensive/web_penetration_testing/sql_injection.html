@@ -15,26 +15,12 @@
   		$temp.remove();
 	}	
 	</script>
-<style>
-	.float-parent-element { 
-    width: 50%; 
-} 
-.float-child-element { 
-    float: left; 
-    width: 50%; 
-} 
-.red { 
-    background-color: red; 
-    margin-left: 50%; 
-    height: 100px; 
-} 
-.yellow { 
-    margin-left: 50%; 
-    height: 100px; 
-    background-color: yellow; 
-}
-</style>
-	
+	<style>
+		
+	.inline-block-child {
+	  display: inline-block;
+	}
+	</style>
   <title> M A C H E T E </title>
   <!--------------------->
   <!-- b0ydC Founder -->
@@ -79,13 +65,9 @@ If the vulnerability is present the goal is to "cut" the query and retrieve all,
 <p id="HDT02"><mark>' and 'a'='a--</mark></p>
 <p id="HDT03"><mark>' and 1=2;--</mark></p>
 
-<div class="float-parent-element">
-  <div class="float-child-element">
-    <div class="red"><p id="HDT01"><mark>' OR 1=1--</mark></p></div>
-  </div>
-  <div class="float-child-element">
-    <div class="yellow"><button onclick="ctrl_C('#HDT01')">C01</button></div>
-  </div>
+<div class='parent'>
+  <div class='child inline-block-child'><p id="HDT01"><mark>' OR 1=1--</mark></p></div>
+  <div class='child inline-block-child'><button onclick="ctrl_C('#HDT01')">C01</button></div>
 </div>
 
 	
