@@ -56,3 +56,7 @@ details[open] {
       	color: black;
       	padding: .5em .5em 0;
 }
+
+.inline-block-child {
+	display: inline-block;
+}
