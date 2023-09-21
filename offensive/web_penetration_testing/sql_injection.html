@@ -4,6 +4,7 @@
 <head>
 	<link rel="icon" type="image/x-icon" href="https://gitlab.com/uploads/-/system/project/avatar/40927563/edb-spider-orange.png">
 	<link rel="stylesheet" type="text/css" href="/machete/conf/machete_style_offensive_sections.css">
+	<script type="text/javascript" src="/machete/conf/machete_conf.js"></script>
 
   <title> M A C H E T E </title>
   <!--------------------->
@@ -43,12 +44,13 @@
 <summary>HIDDEN DATA TECHNIQUES</summary>
 <p><b>DESCRIPTION:</b> It will use some boolean conditions in order to retrieve content from the database.
 
-If the vulnerability is present the goal is to "cut" the query and retrieve all, for that boolean conditions are used.
+If the vulnerability is present the goal is to "cut" the query and retrieve all, for that boolean conditions are used.</p>
 
-<p id="HDT01"><mark>' OR 1=1--</mark></p> <button onclick="copyToClipboard('#HDT01')">ctrl+c</button> TRUE 
-<mark>' and 'a'='a--</mark>
-
-<mark>' and 1=2;--</mark></p>
+<p id="HDT01"><mark>' OR 1=1--</mark></p> TRUE 
+<p id="HDT02"><mark>' and 'a'='a--</mark></p>
+<p id="HDT03"><mark>' and 1=2;--</mark></p>
+	
+<button onclick="copyToClipboard('#HDT01')">C01</button> | <button onclick="copyToClipboard('#HDT02')">C02</button> | <button onclick="copyToClipboard('#HDT03')">C03</button>
 </details>
 <details>
 <summary>LOGIN BYPASS TECHNIQUES</summary>
