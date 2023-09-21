@@ -1,20 +1,20 @@
 body {
-      font-size: 12px;
-      font-family: courier,monospace;;
-      background-color: gray;
-      color: black;
+	font-size: 12px;
+      	font-family: courier,monospace;;
+      	background-color: gray;
+      	color: black;
 }
 
 a {
-      color: black;
-      font-weight: bold;
-      text-decoration: none;
+	color: black;
+      	font-weight: bold;
+      	text-decoration: none;
 }
 
 a:hover,
 a:active {
-   color: DarkRed;
-   text-decoration: underline;
+   	color: DarkRed;
+   	text-decoration: underline;
 }
 		
 .centrado {
@@ -47,12 +47,12 @@ mark {
 }
 
 details[open] summary {
-      background: black;
-      color: gray;
+      	background: black;
+      	color: gray;
 }
 
 details[open] {
-      background: gray;
-      color: black;
-      padding: .5em .5em 0;
+      	background: gray;
+      	color: black;
+      	padding: .5em .5em 0;
 }
