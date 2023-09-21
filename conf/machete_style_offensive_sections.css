@@ -60,3 +60,17 @@ details[open] {
 .inline-block-child {
 	display: inline-block;
 }
+
+.button_conf {
+  background-color: DarkRed; 
+  border: none;
+  color: gray;
+  padding: 6px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 9px;
+  margin: 1px 1px;
+  cursor: copy;
+  border-radius: 50%;
+}
