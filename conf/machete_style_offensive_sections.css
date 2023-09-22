@@ -68,13 +68,13 @@ details[open] {
   display: inline-block;
   font-size: 9px;
   margin: 1px 1px;
-  cursor: copy;
+  cursor: url;
   border-radius: 50%;
   transition-duration: 0.4s;
 }
 
 .button_set {
-  background-color: white; 
+  background-color: #DCDCDC; 
   color: black; 
   border: 2px solid #4CAF50;
 }
