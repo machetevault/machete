@@ -59,6 +59,11 @@ details[open] {
 	display: inline-block;
 }
 
+.url {
+	cursor: url(myBall.cur),
+		auto;
+}
+
 .button_conf {
   padding: 6px;
   text-align: center;
