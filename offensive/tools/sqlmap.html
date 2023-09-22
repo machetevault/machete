@@ -51,7 +51,7 @@
 
 <b>PRE-REQS: </b>
 1. vulnerable field
-2. is auth required ?
+2. auth required ?
 
 <b>0x1: GET BANNER </b><p id="sqlmap01"><mark>sqlmap -u INSERT_VULN_URL --cookie=" " -b</mark></p>
 <b>SAMPLE:</b> sqlmap -u "http://ip_addr/bWAPP/sqli_1.php?title=" --cookie="security_level=0; PHPSESSID=1e80" -b <br>
@@ -100,6 +100,7 @@
 <b>NOTES:</b> 
 1. vulnerable field can be specified with <b>-D</b> flag.
 2. most of time file results are stored in <b>"/home/USER/.local/share/sqlmap/output/</b>..."
+3. use burpsuite to intercept the traffic to know more about the authentication/session used
 
 </div>
 </pre>
