@@ -1,0 +1,41 @@
+body {
+      font-size: 12px;
+      font-family: ubuntu mono;
+      background-color: gray;
+      color: black;
+      margin: 0;
+  }
+
+a {
+      color: black;
+      font-weight: bold;
+      text-decoration: none;
+  }
+
+a:hover,
+a:active {
+      color:  #ebedef;
+      text-decoration: underline;
+  }
+
+.centrado {
+	text-align:center;
+	padding:8px;
+}
+	
+div {
+	width:50%;
+	padding:8px;
+	margin:auto;
+}
+	
+center {
+	margin:16px 0;
+}
+
+.titulos {
+	text-align:center;
+	padding:3px;
+	font-weight: bold;
+	font-size: 20px;
+}
