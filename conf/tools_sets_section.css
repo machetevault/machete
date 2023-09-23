@@ -12,6 +12,12 @@ a {
       text-decoration: none;
 }
 
+div {
+	width:85%;
+	padding:8px;
+	margin:auto;
+}
+
 a:hover,
 a:active {
       color:  #abb2b9;
