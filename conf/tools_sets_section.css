@@ -1,0 +1,44 @@
+body {
+      font-size: 12px;
+      font-family: ubuntu mono;
+      background-color: gray;
+      color: black;
+      margin: 0;
+}
+
+a {
+      color: black;
+      font-weight: bold;
+      text-decoration: none;
+}
+
+a:hover,
+a:active {
+      color:  #abb2b9;
+      text-decoration: underline;
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+mark {
+    background-color: black;
+    color: gray;
+}
+
+.titulos {
+	text-align:center;
+	padding:3px;
+	font-weight: bold;
+	font-size: 20px;
+}
+
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
