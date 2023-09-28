@@ -5,13 +5,13 @@
 <link rel="stylesheet" type="text/css" href="/machete/conf/machete_style_offensive_sections.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script>
-function ctrl_C(element) {
-var $temp = $("<input>");
-$("body").append($temp);
-$temp.val($(element).text()).select();
-document.execCommand("copy");
-$temp.remove();
-alert("copied to clipboard.");
+	function ctrl_C(element) {
+	var $temp = $("<input>");
+	$("body").append($temp);
+	$temp.val($(element).text()).select();
+	document.execCommand("copy");
+	$temp.remove();
+	alert("copied to clipboard.");
 }	
 </script>
   <title> M A C H E T E </title>
@@ -52,10 +52,9 @@ Getting errors can represent the presence of the vulnerability. [HTTP/2 500 Inte
 <b>C5: </b><p id="HDT005"><mark>""</mark></p>
 <b>C6: </b><p id="HDT006"><mark>'#</mark></p>
 
-<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#HDT001')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#HDT002')">.C2.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#HDT003')">.C3.</button>
-<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#HDT004')">.C4.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#HDT005')">.C5.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#HDT006')">.C6.</button></p>
+<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#HDT001')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#HDT002')">.C2.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#HDT003')">.C3.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#HDT004')">.C4.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#HDT005')">.C5.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#HDT006')">.C6.</button></p>
 
-<b>NOTE:</b> It is needed to check the behavior of the application GUI and headers [burpsuite].
+<b>NOTE:</b> It is needed to check the behavior of the application GUI and headers [<b>burpsuite</b>].
 	
 </details>
 <details>
