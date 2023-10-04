@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<link rel="icon" type="image/x-icon" href="/machete/conf/LOGO01.png">
+<link rel="stylesheet" type="text/css" href="/machete/conf/machete_style_offensive_sections.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script>
+		function ctrl_C(element) {
+  		var $temp = $("<input>");
+  		$("body").append($temp);
+  		$temp.val($(element).text()).select();
+  		document.execCommand("copy");
+  		$temp.remove();
+		alert("copied to clipboard.");
+	}	
+	</script>
+  <title> M A C H E T E </title>
+  <!--------------------->
+  <!-- b0ydC Founder -->
+  <!-- --------------- -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+
+</head>
+<body>
+<br>
+<a href="/machete/index.html"><img src="/machete/conf/letter_logo.jpg" alt="LOGO" style="width:20%;"></a>
+<br>
+<center>
+<div style="font-size:24px; text-align:center; font-family:courier,monospace;">
+    <a href="/machete/offensive.html">OFFENSIVE</a> |
+    <a href="/machete/defensive.html">DEFENSIVE</a> |
+    <a href="/machete/tools.html">TOOLS</a> |
+    <a href="/machete/about.html">ABOUT</a> 
+</div> 
+
+<p class="titulos"><mark>[WEB FINGERPRINTING]</mark></p>
+<div>
+<pre>
+<div class="column" style="display: inline-block; text-align: left; background-color:gray;">
+<button onclick="document.location='/machete/offensive.html'" style="float: left;">&lt;&lt;</button><br><br>
+<details>
+<summary>CURL</summary>
+<p>DESCRIPTION: </p> Tool used to make HTTP requests, commonly used to fingerprint a website. 
+
+<b>C1: </b><p id="CURL01"><mark>curl -I TYPE_URL</mark></p>
+<b>SAMPLE: </b><mark>curl -I https://machetevault.github.io</mark>
+
+-I = headers
+-L = follow redirect
+
+<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#CURL01')">.C1.</button> 
+
+</details>
+<details>
+<summary>WEB TOOLS</summary>
+<p>DESCRIPTION: </p> List of similar tools to perform passive fingerprinting.
+
+<a href="securityheaders.com">securityheaders.com</a> | <a href="builtwith.com">builtwith.com</a>
+
+</details>
+<details>
+<summary>NMAP</summary>
+<p>DESCRIPTION: </p> Tool used to make scan or fingerprint devices.  
+
+<b>C1: </b><p id="NMAP01"><mark>nmap -p[port] -A URL</mark></p>
+<b>SAMPLE: </b><mark>nmap -p 443,80 -A machetevault.github.io</mark>
+
+-A = print all
+-p = port
+
+<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#NMAP01')">.C1.</button> 
+
+</details>
+</div>
+</pre>
+<button onclick="document.location='/machete/offensive.html'">GO BACK</button>
+</div>
+<p class="titulos">©® - 2023.</p>
+</center>
+</body>
+</html>
