@@ -43,6 +43,51 @@
 <summary>AMASS</summary>
 <p>DESCRIPTION: </p> 
 
+<b>C1: </b><p id="SF01"><mark>amass enum -d URL</mark></p>
+<b>SAMPLE: </b><mark>amass enum -d machetevault.com</mark>
+<b>SAMPLE: </b><mark>amass enum -d machetevault.com > /path/to/file.txt</mark>
+	
+-d = domain
+> = output content
+
+<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#SF01')">.C1.</button> 
+
+</details>
+<details>
+<summary>WEB TOOLS</summary>
+<p>DESCRIPTION: </p> 
+
+<a href="https://crt.sh/" target="_blank">crt.sh</a> 
+
+<b>NOTE: </b> Wildcard search on crt.sh, %.URL
+<b>SAMPLE: </b><mark>%.machetevault.com</mark>
+	
+</details>
+<details>
+<summary>SUBFINDER</summary>
+<p>DESCRIPTION: </p> 
+
+<b>C1: </b><p id="SF01"><mark>subfinder -d URL</mark></p>
+<b>SAMPLE: </b><mark>subfinder -d machetevault.com</mark>
+<b>SAMPLE: </b><mark>subfinder -d machetevault.com -o /path/to/file.txt</mark>
+	
+-d = domain
+-o = output content
+
+<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#SF01')">.C1.</button> 
+
+</details>
+<details>
+<summary>GOWITNESS</summary>
+<p>DESCRIPTION: </p> 
+
+<b>C1: </b><p id="GW01"><mark>gowitness file -f demo.txt -P folder/to/store --no-http</mark></p>
+<b>SAMPLE: </b><mark>gowitness file -f demo.txt -P /usr/store/ --no-http</mark>
+	
+--no-http = ignore HTTP requests
+-P = folder to store images
+
+<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#GW01')">.C1.</button> 
 
 </details>
 
