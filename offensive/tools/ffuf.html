@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<link rel="icon" type="image/x-icon" href="/machete/conf/LOGO01.png">
+<link rel="stylesheet" type="text/css" href="/machete/conf/machete_style_offensive_sections.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script>
+		  function ctrl_C(element) {
+  		var $temp = $("<input>");
+  		$("body").append($temp);
+  		$temp.val($(element).text()).select();
+  		document.execCommand("copy");
+  		$temp.remove();
+		  alert("copied to clipboard.");
+}	
+</script>
+  <title> M A C H E T E </title>
+  <!--------------------->
+  <!-- b0ydC Founder -->
+  <!-- --------------- -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+
+</head>
+<body>
+<br>
+<a href="/machete/index.html"><img src="/machete/conf/letter_logo.jpg" alt="LOGO" style="width:20%;"></a>
+<br>
+<center>
+<div style="font-size:24px; text-align:center; font-family:courier,monospace;">
+    <a href="/machete/offensive.html">OFFENSIVE</a> |
+    <a href="/machete/defensive.html">DEFENSIVE</a> |
+    <a href="/machete/tools.html">TOOLS</a> |
+    <a href="/machete/about.html">ABOUT</a> 
+</div> 
+
+<p class="titulos"><mark>[FFUF]</mark></p>
+<div>
+<pre>
+<div class="column" style="display: inline-block; text-align: left; background-color:gray;">
+<button onclick="document.location='/machete/offensive/web_penetration_testing/tools_usage.html'" style="float: left;">&lt;&lt;</button><br><br>
+
+<u><b>--> MAKE REQUEST USING FILE REQUEST (burpsuite)</b></u>
+
+1. save request as a file in burpsuite [repeater > request > right click > save as file]
+2. change the parameter to FUZZ in the request file
+3. use ffuf.
+
+<b>C1: </b><p id="ffuf01"><mark>ffuf -request [filename] -request-proto http -w /path/to/wordlist</mark></p>
+<b>SAMPLE: </b><mark>ffuf -request req.txt -request-proto http -w /usr/share/wordlist/common.txt</mark>
+  
+<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#ffuf01')">.C1.</button>
+  
+</div>
+</pre>
+<button onclick="document.location='/machete/offensive/web_penetration_testing/tools_usage.html'">GO BACK</button>
+</div>
+<p class="titulos">©® - 2023.</p>
+</center>
+</body>
+</html>
