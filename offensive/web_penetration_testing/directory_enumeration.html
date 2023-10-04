@@ -43,13 +43,33 @@
 <summary>FFUF</summary>
 <p>DESCRIPTION: </p> Tool used perform directory enumeration on a web application.
 
-<b>C1: </b><p id="ffuf01"><mark>curl -I TYPE_URL</mark></p>
-<b>SAMPLE: </b><mark>curl -I https://machetevault.github.io</mark>
+<b>C1: </b><p id="ffuf01"><mark>ffuf -w /path/to/wordlist:FUZZ -u URL/FUZZ</mark></p>
+<b>SAMPLE: </b><mark>ffuf -w /usr/share/directory-list-2.3-medium.txt:FUZZ -u http://10.10.20.3/FUZZ</mark>
 
--I = headers
--L = follow redirect
-
+FUZZ = section to fuzz
+-w = wordlist
+-u = URL
+-fc = filter HTTP status codes
+	
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#ffuf01')">.C1.</button> 
+
+<b>NOTE: </b> The word "FUZZ" is used at the section of the URL you want to fuzz. Sample, http://10.10.20.3/FUZZ | http://10.10.20.3/wdm/FUZZ etc.
+It is not recursive.
+	
+</details>
+<details>
+<summary>DIRB</summary>
+<p>DESCRIPTION: </p> Tool used perform directory enumeration on a web application.
+
+<b>C1: </b><p id="dirb01"><mark>dirb URL</mark></p>
+<b>SAMPLE: </b><mark>dirb http://10.10.20.3</mark>
+<b>SAMPLE: </b><mark>dirb http://10.10.20.3 -X .php</mark>
+
+-X = test file extention [.asp / .html / .asmx etc.]
+
+<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#dirb01')">.C1.</button> 
+
+<b>NOTE: </b> It is recursive.
 
 </details>
 
