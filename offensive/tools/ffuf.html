@@ -5,13 +5,13 @@
 <link rel="stylesheet" type="text/css" href="/machete/conf/machete_style_offensive_sections.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script>
-		  function ctrl_C(element) {
-  		var $temp = $("<input>");
-  		$("body").append($temp);
-  		$temp.val($(element).text()).select();
-  		document.execCommand("copy");
-  		$temp.remove();
-		  alert("copied to clipboard.");
+	function ctrl_C(element) {
+  	var $temp = $("<input>");
+  	$("body").append($temp);
+  	$temp.val($(element).text()).select();
+  	document.execCommand("copy");
+  	$temp.remove();
+	alert("copied to clipboard.");
 }	
 </script>
   <title> M A C H E T E </title>
@@ -48,10 +48,12 @@
 
 <b>C1: </b><p id="ffuf01"><mark>ffuf -request [filename] -request-proto http -w /path/to/wordlist</mark></p>
 <b>SAMPLE: </b><mark>ffuf -request req.txt -request-proto http -w /usr/share/wordlist/common.txt</mark>
+<b>SAMPLE: </b><mark>ffuf -request req.txt -request-proto http -w /usr/share/wordlist/common.txt -fs 2346</mark>
 
 -request = specify the file
 -request-proto = specify protocol
 -w = wordlist
+-fs = filter request size to minimize the output
   
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#ffuf01')">.C1.</button>
   
