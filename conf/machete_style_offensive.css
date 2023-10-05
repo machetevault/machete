@@ -36,6 +36,15 @@ p.box {
     margin: 2px;
 }
 
+#SCRIPTING BOX
+p.boxy {
+    border: 1px solid DarkSeaGreen;
+    width: 150px;
+    height: 10px;
+    padding: 25px;
+    margin: 2px;
+}
+
 p.box1 {
     border: 2px #e12c1f;
     width: 175px;
