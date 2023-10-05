@@ -50,7 +50,8 @@
 <b>SAMPLE: </b><mark>ffuf -request req.txt -request-proto http -w /usr/share/wordlist/common.txt</mark>
 <b>SAMPLE: </b><mark>ffuf -request req.txt -request-proto http -w /usr/share/wordlist/common.txt -fs 2346</mark>
 
-<b>SAMPLE: </b><mark>ffuf -request req.txt -request-proto http -mode clusterbomb -w /usr/share/wordlist/common.txt:FUZZUSER -w /usr/share/wordlist/common-medium.txt:FUZZPASS</mark>
+<b>SAMPLE: </b><mark>ffuf -request req.txt -request-proto http -mode clusterbomb -w /usr/share/wordlist/common.txt:FUZZUSER 
+	-w /usr/share/wordlist/common-medium.txt:FUZZPASS</mark>
 
 -request = specify the file
 -request-proto = specify protocol
