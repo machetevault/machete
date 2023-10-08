@@ -21,11 +21,11 @@ img {
   margin-left: auto;
   margin-right: auto;
 }
-.flip-card {
-  background-color: transparent;
-  width: 150px;
-  height: 150px;
-}
+#.flip-card {
+#  background-color: transparent;
+#  width: 150px;
+#  height: 150px;
+#}
 .flip-card-inner {
   position: relative;
   width: 100%;
