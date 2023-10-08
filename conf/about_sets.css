@@ -32,8 +32,8 @@ img {
   height: 100%;
   text-align: center;
   transition: transform 0.6s;
-  #transform-style: preserve-3d;
-  box-shadow: 0 3px 7px 0 rgba(0,0,0,0.2);
+  transform-style: preserve-3d;
+  #box-shadow: 0 3px 7px 0 rgba(0,0,0,0.2);
 }
 
 .flip-card:hover .flip-card-inner {
