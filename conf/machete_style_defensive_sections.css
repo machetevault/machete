@@ -1,0 +1,89 @@
+body {
+	font-size: 12px;
+      	font-family: courier,monospace;;
+      	background-color: gray;
+      	color: black;
+}
+
+a {
+	color: black;
+      	font-weight: bold;
+      	text-decoration: none;
+}
+
+a:hover,
+a:active {
+   	color: MediumBlue;
+   	text-decoration: underline;
+}
+		
+.centrado {
+	text-align:center;
+	padding:8px;
+}
+	
+div {
+	width:85%;
+	padding:8px;
+	margin:auto;
+}
+	
+center {
+	margin:16px 0;
+}
+	
+.titulos {
+	text-align:center;
+	padding:8px;
+	font-weight: bold;
+	font-size: 20px;	
+}
+
+mark { 
+  	background-color: MediumBlue;
+  	color: gray;
+}
+
+details[open] summary {
+      	background: black;
+      	color: gray;
+}
+
+details[open] {
+      	background: gray;
+      	color: black;
+      	padding: .5em .5em 0;
+}
+
+.inline-block-child {
+	display: inline-block;
+}
+
+.button_conf {
+  padding: 6px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 9px;
+  margin: 1px 1px;
+  cursor: url;
+  border-radius: 50%;
+  transition-duration: 0.4s;
+}
+
+.button_set {
+  background-color: MediumBlue; 
+  color: white; 
+  border: 2px solid #4CAF50;
+}
+
+.button_set:hover {
+  background-color: #4CAF50;
+  color: white;
+}
+
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
