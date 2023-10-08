@@ -49,59 +49,59 @@
 >> avoid detections like ATA (using sharphound collector to create the .zip file with the relationships
 associated)
 
-<b>C1:  PS></b><mark id="CRTP01"> Invoke-BloodHound -CollectionMethod All -ExcludeDC</mark><br>
+<b>C1: PS> </b><mark id="CRTP01">Invoke-BloodHound -CollectionMethod All -ExcludeDC</mark><br>
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#CRTP01')">.C1.</button> 
 	
 <b>POWERVIEW</b> | <a href="https://github.com/ZeroDayLab/PowerSploit/blob/master/Recon/PowerView.ps1">PowerView</a>
 
 <b>SHARPVIEW</b> | <a href="https://github.com/tevora-threat/SharpView/">SharpView</a>
 
-<b>:::GET CURRENT DOMAIN</b>
+<b><u>:::GET CURRENT DOMAIN</u></b>
 
-<b>C1: PS></b><p id="CRTP02"><mark>Get-Domain</mark></p> | (powerview)
-<b>C2: PS></b><p id="CRTP03"><mark>Get-ADDomain</mark></p> | (active directory module)
+<b>C1: PS> </b><mark id="CRTP02">Get-Domain</mark> | (powerview)
+<b>C2: PS> </b><mark id="CRTP03">Get-ADDomain</mark> | (active directory module)<br>
 
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#CRTP02')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#CRTP03')">.C2.</button> 
 
-<b>:::GET OBJECT OF ANOTHER DOMAIN</b>
+<b><u>:::GET OBJECT OF ANOTHER DOMAIN</u></b>
 
-<b>C1: PS></b><p id="CRTP04"><mark>Get-Domain -Domain <domain></mark></p>
-<b>C2: PS></b><p id="CRTP05"><mark>Get-ADDomain -Identity <domain></mark></p>
+<b>C1: PS> </b><mark id="CRTP04">Get-Domain -Domain <domain></mark>
+<b>C2: PS> </b><mark id="CRTP05">Get-ADDomain -Identity <domain></mark><br>
 
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#CRTP04')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#CRTP05')">.C2.</button> 
 
-<b>:::GET DOMAIN SID FOR THE CURRENT DOMAIN</b>
+<b><u>:::GET DOMAIN SID FOR THE CURRENT DOMAIN</u></b>
 
-<b>C1: PS></b><p id="CRTP06"><mark>Get-DomainSID</mark></p>
-<b>C2: PS></b><p id="CRTP07"><mark>(Get-ADDomain).DomainSID</mark></p>
+<b>C1: PS> </b><mark id="CRTP06">Get-DomainSID</mark>
+<b>C2: PS> </b><mark id="CRTP07">(Get-ADDomain).DomainSID</mark><br>
 
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#CRTP06')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#CRTP07')">.C2.</button> 
 
-<b>:::GET DOMAIN POLICY FOR CURRENT DOMAIN</b>
+<b>:::<u>GET DOMAIN POLICY FOR CURRENT DOMAIN</u></b>
 
-<b>C1: PS></b><p id="CRTP08"><mark>Get-DomainPolicyData</mark></p>
-<b>C2: PS></b><p id="CRTP09"><mark>Get-DomainPolicy</mark></p>
-<b>C3: PS></b><p id="CRTP10"><mark>(Get-DomainPolicyData).systemaccess</mark></p>
+<b>C1: PS> </b><mark id="CRTP08">Get-DomainPolicyData</mark>
+<b>C2: PS> </b><mark id="CRTP09">Get-DomainPolicy</mark>
+<b>C3: PS> </b><mark id="CRTP10">(Get-DomainPolicyData).systemaccess</mark><br>
 
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#CRTP08')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#CRTP09')">.C2.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#CRTP10')">.C3.</button> 
 
-<b>:::GET DOMAIN POLICY FOR ANOTHER DOMAIN</b>
+<b><u>:::GET DOMAIN POLICY FOR ANOTHER DOMAIN</u></b>
 
-<b>C1: PS></b><p id="CRTP11"><mark>(Get-DomainPolicyData –domain [domain]).systemaccess</mark></p>
+<b>C1: PS> </b><mark id="CRTP11">(Get-DomainPolicyData –domain [domain]).systemaccess</mark><br>
 
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#CRTP11')">.C1.</button>
 
-<b>:::GET DOMAIN CONTROLLER FOR THE CURRENT DOMAIN</b>
+<b><u>:::GET DOMAIN CONTROLLER FOR THE CURRENT DOMAIN</u></b>
 
-<b>C1: PS></b><p id="CRTP12"><mark>Get-DomainController</mark></p>
-<b>C2: PS></b><p id="CRTP13"><mark>Get-ADDomainController</mark></p>
+<b>C1: PS> </b><mark id="CRTP12">Get-DomainController</mark>
+<b>C2: PS> </b><mark id="CRTP13">Get-ADDomainController</mark><br>
 
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#CRTP12')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#CRTP13')">.C2.</button> 
 
-<b>:::GET DOMAIN CONTROLLER FOR ANOTHER DOMAIN</b>
+<b><u>:::GET DOMAIN CONTROLLER FOR ANOTHER DOMAIN</u></b>
 
-<b>C1: PS></b><p id="CRTP14"><mark>Get-DomainController -Domain [domainName]</mark></p>
-<b>C2: PS></b><p id="CRTP15"><mark>Get-ADDomainController -DomainName [domainName] -Discover</mark></p>
+<b>C1: PS> </b><mark id="CRTP14">Get-DomainController -Domain [domainName]</mark>
+<b>C2: PS> </b><mark id="CRTP15">Get-ADDomainController -DomainName [domainName] -Discover</mark><br>
 
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#CRTP14')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#CRTP15')">.C2.</button> 	
 
