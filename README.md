@@ -7,6 +7,6 @@ The content will be related to each certification, research or courses completed
 
 <p align="center" width="100%"><img width="33%" src="https://github.com/machetevault/machete/assets/142649592/f94f9590-f31b-479a-b6c9-e17b03c98073"></p>
 
-<p align="center" width="100%"> _Come back regularly, you will find new content for each topic_</p>
+<p align="center" width="100%"> Come back regularly, you will find new content for each topic</p>
 
 <p align="center" width="100%">Since 2023 | @b0ydC_</p>
