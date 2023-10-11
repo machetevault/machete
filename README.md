@@ -1,6 +1,6 @@
 <p align="center" width="100%"> M A C H E T E</p>
 
-<p align="center" width="100%">| D E F E N S I V E  &  O F F E N S I V E | </p>
+<p align="center" width="100%">| D E F E N S I V E   &   O F F E N S I V E | </p>
 
 <p align="center" width="100%">Knowledge base created as part of the journey studying both sides of the cyber world !
 The content will be related to each certification, research or courses completed, it will be organized by topics for each side.
