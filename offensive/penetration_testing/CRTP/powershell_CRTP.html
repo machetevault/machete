@@ -39,6 +39,8 @@
 <pre>
 <div class="column" style="display: inline-block; text-align: left; background-color:gray;">
 <button onclick="document.location='/machete/offensive/penetration_testing/AD_attacks.html'" class="round" style="float: left;">&lt;&lt;</button><br><br>
+
+<h4>POWERSHELL ENUMERATION</h4><br>
 <details>
 <summary>DOMAIN ENUMERATION</summary>
 
@@ -376,6 +378,9 @@ PS> (Get-DomainPolicy).KerberosPolicy
 
 PS> Get-DomainGroup *admin* -domain <forest/root> | select samaccountname
 </details>
+
+<h4>POWERSHELL LATERAL MOVEMENT</h4><br>
+	
 <details>
 <summary>DOMAIN LATERAL MOVEMENT</summary>
 <p>DESCRIPTION: </p>
