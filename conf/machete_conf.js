@@ -3,8 +3,8 @@ function ctrl_C(element) {
   $("body").append($temp);
   $temp.val($(element).text()).select();
   document.execCommand("copy");
-  window.alert(temp + "command copied!!\n@machetevault");
   $temp.remove();
+  window.alert(temp + "command copied!!\n@machetevault");
 }
 
 
