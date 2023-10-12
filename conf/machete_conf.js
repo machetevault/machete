@@ -4,7 +4,7 @@ function ctrl_C(element) {
   $temp.val($(element).text()).select();
   document.execCommand("copy");
   $temp.remove();
-  window.alert("copied");
+  window.alert(element + "command copied!!\n@machetevault");
 }
 
 
