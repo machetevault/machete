@@ -46,7 +46,7 @@
 <details>
 <summary>REFLECTED TECHNIQUES</summary>
 <p><b>DESCRIPTION:</b> It is when data is retrieved in the webpage without any restriction. So it can be used to exfiltrate
-information, stole information, etc. </p>
+information, stole information, etc.
 <p><b>COMMON TESTS:</b>
 
 <b>C1: </b><mark id="RTA01">&lt;h1&gt;TEST&lt;/h1&gt;</mark>	
@@ -71,12 +71,10 @@ information, stole information, etc. </p>
 
 <b><u>CREATE A LOG FUNCTION TO STORE/RETRIEVE DATA USING XSS</u></b>
 
-<b><u>step1></u></b>
-$ <mark id="TDT04">function logKey(event){console.log(event.key)}</mark><br>
+<b><u>step1></u></b>$ <mark id="TDT04">function logKey(event){console.log(event.key)}</mark><br>
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#TDT04')">.C1.</button>
 
-<b><u>step2></u></b>
-$ <mark id="TDT05">document.addEventListener('keydown', logKey)</mark><br>
+<b><u>step2></u></b>$ <mark id="TDT05">document.addEventListener('keydown', logKey)</mark><br>
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#TDT05')">.C1.</button>
 	
 </details>
@@ -84,7 +82,11 @@ $ <mark id="TDT05">document.addEventListener('keydown', logKey)</mark><br>
 <details>
 <summary>STORED TECHNIQUES</summary>
 <p>DESCRIPTION: It is when data (exploit) is stored in the webpage without any restriction. So it can be used 
-to exploit any user that loads the vulnerable page. </p>
+to exploit any user that loads the vulnerable page.
+
+<b>NOTE:</b> 
+1. First thing, check if the site allows guest user post or any input post to be stored. 
+	
 </details>
 <details>
 <summary>DOM TECHNIQUES</summary>
