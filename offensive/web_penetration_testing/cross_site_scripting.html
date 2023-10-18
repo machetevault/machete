@@ -47,7 +47,7 @@
 <summary>REFLECTED TECHNIQUES</summary>
 <p><b>DESCRIPTION:</b> It is when data is retrieved in the webpage without any restriction. So it can be used to exfiltrate information, 
 stole information, etc.
-<p><b>GENERAL TECHNIQUES:</b>
+<p><b>GENERAL TECHNIQUES</b>
 
 <b>COMMON TESTS: </b>	
 	
@@ -67,7 +67,7 @@ stole information, etc.
 <b>C1: </b><mark id="GT02">"onmouseover="alert(1)</mark>
 
 <b>NOTE: </b>As soon as you move the mouse over the vulnerable tag, it will pop-up the alert function. General inspection
-it needed, manual review of behavior of input fields. If it is showing input data, how it behaves, what can he imported, etc.
+it's needed, manual review of behavior of input fields. If it is showing input data, how it behaves, what can he imported, etc.
 
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#GT02')">.C1.</button>
 	
@@ -92,7 +92,7 @@ it needed, manual review of behavior of input fields. If it is showing input dat
 </details>
 <details>
 <summary>STORED TECHNIQUES</summary>
-<p>DESCRIPTION: It is when data (exploit) is stored in the webpage without any restriction. So it can be used 
+<p><b>DESCRIPTION: </b>It is when data (exploit) is stored in the webpage without any restriction. So it can be used 
 to exploit any user that loads the vulnerable page.
 
 <b>NOTE:</b>
@@ -101,12 +101,12 @@ to exploit any user that loads the vulnerable page.
 
 <b>::: INTO AN HREF ATTRIBUTE</b>
 
-1. check how the application behaves when you are providing some input data.
+1. Check how the application behaves when you are providing some input data.
 2. href attribute can invoke javascript code
 
 <b>SAMPLE: </b><mark id="IHT01">javascript:alert(1)</mark> 
-<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#IHT01')">.C1.</button>
 	
+<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#IHT01')">.C1.</button>	
 </details>
 <details>
 <summary>DOM TECHNIQUES</summary>
@@ -121,7 +121,6 @@ to exploit any user that loads the vulnerable page.
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#TDT06')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#TDT07')">.C2.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#TDT08')">.C3.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#TDT09')">.C4.</button>
 	
 </details>	
-
 <b>NOTE: </b><br>
 Inspection of the code is needed 100%, <u>right click > inspect</u>. Look for javascript code that behaves with input information. 
 HTML sinks will retrieve HTML content that with manual inspection you can discover that, however, JS sinks will behave differently, 
