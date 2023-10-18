@@ -41,14 +41,16 @@
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#GT01')">.C1.</button>
 
 <b>NOTE: </b> Do not remove the /? symbols, they allow to use the "document.cookie" as parameter. 
-
+	
 </details>	
 <details>
 <summary>REFLECTED TECHNIQUES</summary>
 <p><b>DESCRIPTION:</b> It is when data is retrieved in the webpage without any restriction. So it can be used to exfiltrate information, 
 stole information, etc.
-<p><b>COMMON TESTS:</b>
+<p><b>GENERAL TECHNIQUES:</b>
 
+<b>COMMON TESTS: </b>	
+	
 <b>C1: </b><mark id="RTA01">&lt;h1&gt;TEST&lt;/h1&gt;</mark>	
 <b>C2: </b><mark id="RTA02">&lt;script&gt;alert('XSS');&lt;/script&gt;</mark> || C1 & C2, NORMAL TEST TO KNOW IF VULNERABILITY EXIST	
 
@@ -59,6 +61,15 @@ stole information, etc.
 *for this to work, it is needed a python server or any listener to retrieve the content.<br>
 
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#RTA01')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#RTA02')">.C2.</button>  | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#RTA03')">.C3.</button>  | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#RTA04')">.C4.</button> 
+
+<b>::: INTO AN ATTRIBUTE</b>
+
+<b>C1: </b><mark id="GT02">"onmouseover="alert(1)</mark>
+
+<b>NOTE: </b>As soon as you move the mouse over the vulnerable tag, it will pop-up the alert function. General inspection
+it needed, manual review of behavior of input fields. If it is showing input data, how it behaves, what can he imported, etc.
+
+<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#GT02')">.C1.</button>
 	
 </p>
 <details>
@@ -84,8 +95,17 @@ stole information, etc.
 <p>DESCRIPTION: It is when data (exploit) is stored in the webpage without any restriction. So it can be used 
 to exploit any user that loads the vulnerable page.
 
-<b>NOTE:</b><br>
+<b>NOTE:</b>
+	
 1. First thing, check if the site allows guest user post or any input post to be stored. 
+
+<b>::: INTO AN HREF ATTRIBUTE</b>
+
+1. check how the application behaves when you are providing some input data.
+2. href attribute can invoke javascript code
+
+<b>SAMPLE: </b><mark id="IHT01">javascript:alert(1)</mark> 
+<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#IHT01')">.C1.</button>
 	
 </details>
 <details>
@@ -107,7 +127,7 @@ Inspection of the code is needed 100%, <u>right click > inspect</u>. Look for ja
 HTML sinks will retrieve HTML content that with manual inspection you can discover that, however, JS sinks will behave differently, 
 JS debugger is needed. 
 	
-<b><u>HOW TO KNOW IF DOM-BASED VULNERABILITY EXIST ?</u></b>
+<b><u>::: HOW TO KNOW IF DOM-BASED VULNERABILITY EXIST ?</u></b>
 
 One way, is to use the application as expected and open dev tools and inspect the network tab, if there's requests coming and 
 going it means it is reflected or stored, if not, it means it is <b>DOM-BASED.</b> Take a look if exists javascript code 
@@ -123,6 +143,17 @@ IndexedDB (mozIndexedDB, webkitIndexedDB, msIndexedDB) / Database / location</b>
 	
 <b>SINK =</b> Potentially dangerous JavaScript function | [innerHTML / eval()]
 
+<b><u>::: DOM jQUERY SINKS</u></b>
+
+1. Inspect the webpage, first identify if exist JS, JQuery code and how it behaves.
+2. Try to attempt different tests
+
+<b>SAMPLE: </b><mark id="JQ01">javascript:alert(document.cookie)</mark>
+
+<b>value?vulnvalue=alert(document.cookie)</b>
+
+<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#JQ01')">.C1.</button>
+	
 </details>		
 </div>
 </pre>
