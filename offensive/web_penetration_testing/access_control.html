@@ -37,13 +37,16 @@
 </details>
 <details>
 <summary>IDOR | INSECURE DIRECT OBJECT REFERENCES</summary>
-<p>DESCRIPTION: Arises when an application uses user-supplied input to access objects directly. 
+<p><b>DESCRIPTION: </b>Arises when an application uses user-supplied input to access objects directly. 
 
 FFUF or Burpsuite can be used. (community edition can be hard)
 
 <b>SAMPLE: </b><mark>https://machetevault/machete?_number=1234</mark>
-<b>NOTE: </b> "1234" can be changed manually and possible it will be different results. <u>SNIPER or CLUSTERBOMB ATTACKS!</u>
+	
+<b>NOTE: </b> "1234" can be changed manually and possible it will be different results. <b><u>SNIPER or CLUSTERBOMB ATTACKS!</u></b>
 Using FFUF, you just need to change the _number value as the parameter to FUZZ. 
+
+<b>SAMPLE: </b><mark>https://machetevault/machete?_number=FUZZ</mark>
 	
 </p>
 </details>		
