@@ -92,18 +92,33 @@ to exploit any user that loads the vulnerable page.
 <summary>DOM TECHNIQUES</summary>
 <p>DESCRIPTION: </p>
 
+<b>NOTE: </b>Inspection of the code is needed 100%, right click > inspect. Look for javascript code that behaves with
+input information. HTML sinks will retrieve HTML content that with manual inspection you can discover that, however, JS sinks
+will behave differently, JS debugger is needed. 
+	
 <b><u>HOW TO KNOW IF DOM-BASED VULNERABILITY EXIST ?</u></b>
 
 One way, is to use the application as expected and open dev tools and inspect the network tab, if there's requests coming and 
-going it means it is reflected or stored, if not, it means it is <b>DOM-BASED.</b> 
+going it means it is reflected or stored, if not, it means it is <b>DOM-BASED.</b> Also, take a look if exists javascript code 
+that takes data from possible vulnerable sources. [innerHTML / eval()] = sink
 
+<b>SOURCE =</b> Javascript properties that allows you to control input
+<b>Types:</b>
+	
+<b>document.URL / document.documentURI / document.URLUnencoded / document.baseURI / window.location / document.cookie / 
+document.referrer / window.name / history.pushState / history.replaceState / localStorage / sessionStorage
+IndexedDB (mozIndexedDB, webkitIndexedDB, msIndexedDB) / Database</b>
+	
+<b>SINK =</b> Potentially dangerous JavaScript function | [innerHTML / eval()]
+	
 <details>
 <summary>NORMAL TESTS</summary>
 
 1. <mark id="TDT06">&lt;img src=x onerror="prompt(1)"&gt;</mark>
 2. <mark id="TDT07">&lt;img src=x onerror="window.location.href="https://machetevault.github.io/machete""&gt;</mark>
+3. <mark id="TDT08">&lt;svg onload=alert(1)&gt;</mark>
 
-<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#TDT06')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#TDT07')">.C2.</button>
+<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#TDT06')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#TDT07')">.C2.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#TDT08')">.C3.</button>
 	
 </details>	
 </details>		
