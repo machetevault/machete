@@ -32,8 +32,14 @@
 <div class="column" style="display: inline-block; text-align: left; background-color:gray;">
 <button onclick="document.location='/machete/offensive/web_penetration_testing/client_side_attacks.html'" class="round" style="float: left;">&lt;&lt;</button><br><br>
 <details>
-<summary>COMMON VULNERABILITIES</summary>
-<p>DESCRIPTION: </p>
+<summary>GENERAL INFO</summary>
+
+1. First thing, activity needs to be from authenticated actions. 
+2. Check if the <u>CSRF token is present.</u> [inspect the headers / burpsuite]
+3. If no token is present, a CSRF PoC can be used. [burpsuite PRO / manual way]
+<b>Burpsuite:</b> On RAW request > right click > engagement tools > generate CSRF PoC
+4. Manual way: <a href="https://github.com/machetevault/machete/blob/main/tools/CSRF_PoC_sample.html" target="_blank">CHECK SAMPLE</a>
+	
 </details>
 <details>
 <summary>TOKEN TECHNIQUES</summary>
