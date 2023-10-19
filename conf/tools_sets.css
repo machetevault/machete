@@ -66,7 +66,6 @@ mark {
 	padding:3px;
 	font-weight: bold;
 	font-size: 20px;
-
 }
 
 img {
@@ -78,7 +77,7 @@ img {
 #SCRIPTING BOX
 p.boxy {
     border: 1px solid DarkSeaGreen;
-    width: 120px;
+    width: 130px;
     height: 10px;
     padding: 25px;
     margin: 2px;
