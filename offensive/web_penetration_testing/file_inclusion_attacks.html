@@ -31,10 +31,23 @@
 <pre>
 <div class="column" style="display: inline-block; text-align: left; background-color:gray;">
 <button onclick="document.location='/machete/offensive/web_penetration_testing/server_side_attacks.html'" class="round" style="float: left;">&lt;&lt;</button><br><br>
+
+<b>QUESTION TO ANSWER</b> Is this happening client or server-side...?	
+
+<b>TO CHECK: </b>
+
+1. It is happening locally or not, open dev tools and check network tab for interactions.
+2. Burpsuite is your best friend here, inspect all requests.
+3. Be aware of <b>file extention > content type > magic bytes</b>
+4. Try different file extension.
+
+<b>PHP:</b> .php | .php1 | .php3 | .phtml
+<b>IMG:</b> .img | .png | .jpeg
+<b>PLAINTEXT:</b> .txt
+	
 <details>
 <summary>LOCAL FILE INCLUSION</summary>
 <p><b>DESCRIPTION: </b> Collection of tools/commands to use when testing for local file inclusion vulnerabilities. LFI
-
 
 
 </p>
@@ -42,8 +55,6 @@
 <details>
 <summary>REMOTE FILE INCLUSION</summary>
 <p><b>DESCRIPTION: </b> Collection of tools/commands to use when testing for remote file inclusion vulnerabilities. RFI
-
-
 
 </p>
 </details>
