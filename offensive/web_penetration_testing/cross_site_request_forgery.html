@@ -43,7 +43,19 @@
 </details>
 <details>
 <summary>TOKEN TECHNIQUES</summary>
-<p>DESCRIPTION: </p>
+<b>DESCRIPTION: </b>Collection of techniques used to test the different tokens we can find, CSRF tokens and more.
+
+1. Inspect the source code of the page and look for any kind of token associated to the action.
+For example, maybe a form with a csrf token. 
+
+<b>SAMPLE: </b> 	
+
+&lt;input type="text" name="csrf" id="csrf" value="rt6A7TkfcGHMUc" hidden&gt;
+
+2. It is important to test if the specific token provided is validated or if it is only validating that the field exists. 
+In other words, is this validating the key value or format? 
+3. Are you able to attempt XSS ?
+	
 </details>
 <details>
 <summary>BYPASS TECHNIQUES</summary>
