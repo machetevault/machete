@@ -70,12 +70,21 @@ stole information, etc.
 it's needed, manual review of behavior of input fields. If it is showing input data, how it behaves, what can he imported, etc.
 
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#GT02')">.C1.</button>
+
+<b>::: INTO AN JAVASCRIPT STRING</b>
+
+<b>NOTE:</b> Headers inspection is needed, [burpsuite > repeater]. Analyze the code and what it is doing, if it is receiving
+via parameters some payloads can be used to escape. 
+	
+<b>C1: </b><mark id="FGT01">'-alert(1)-'</mark>
+
+<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#FGT01')">.C1.</button>
 	
 </p>
 <details>
 <summary>TEST VIA DEV TOOLS</summary>
 
-1. Open dev-tools in your browser
+1. Open dev-tools in your browser > go to console.
 2. Type: <mark id="TDT01">alert(1)</mark> | <mark id="TDT02">print()</mark> | <mark id="TDT03">prompt("hello")</mark>
 
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#TDT01')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#TDT02')">.C2.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#TDT03')">.C3.</button>
@@ -92,8 +101,8 @@ it's needed, manual review of behavior of input fields. If it is showing input d
 </details>
 <details>
 <summary>STORED TECHNIQUES</summary>
-<p><b>DESCRIPTION: </b>It is when data (exploit) is stored in the webpage without any restriction. So it can be used 
-to exploit any user that loads the vulnerable page.
+<p><b>DESCRIPTION: </b>It is when data (exploit) is stored in the webpage without any restriction. So it can be used to exploit any 
+user that loads the vulnerable page.
 
 <b>NOTE:</b>
 	
@@ -101,8 +110,8 @@ to exploit any user that loads the vulnerable page.
 
 <b>::: INTO AN HREF ATTRIBUTE</b>
 
-1. Check how the application behaves when you are providing some input data.
-2. href attribute can invoke javascript code
+1. Check how the application behaves when you are providing some input data. [always inspect headers]
+2. href attribute can invoke javascript code.
 
 <b>SAMPLE: </b><mark id="IHT01">javascript:alert(1)</mark> 
 	
@@ -129,10 +138,10 @@ JS debugger is needed.
 <b><u>::: HOW TO KNOW IF DOM-BASED VULNERABILITY EXIST ?</u></b>
 
 One way, is to use the application as expected and open dev tools and inspect the network tab, if there's requests coming and 
-going it means it is reflected or stored, if not, it could be the chance that it is <b>DOM-BASED.</b> Take a look if exists javascript code 
-that takes data from possible vulnerable sources. [innerHTML / eval()] = sink
+going it means it can be reflected or stored, if not, it could be the chance that it is <b>DOM-BASED.</b> check it! Take a look if exists 
+javascript code that takes data from possible vulnerable sources. <b>[innerHTML / eval()] = sink</b>
 
-<b>SOURCE =</b> Javascript properties that allows you to control input
+<b>SOURCE =</b> Javascript properties that allows you to control input.
 
 <b>Types:</b>
 	
@@ -145,14 +154,55 @@ IndexedDB (mozIndexedDB, webkitIndexedDB, msIndexedDB) / Database / location</b>
 <b><u>::: DOM jQUERY SINKS</u></b>
 
 1. Inspect the webpage, first identify if exist JS, JQuery code and how it behaves.
-2. Try to attempt different tests
+2. Try to attempt different tests.
 
 <b>SAMPLE: </b><mark id="JQ01">javascript:alert(document.cookie)</mark>
 
 <b>value?vulnvalue=alert(document.cookie)</b>
 
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#JQ01')">.C1.</button>
+
+<b><u>::: DOM INSIDE "SELECT" STATEMENT </u></b>
+
+<b>NOTE: </b>It is needed to use the application as normal to later analyze the headers as it is really important to understand
+how it works. May exist some parameters that are hidden, etc. Test and looks how it behave. Inspect HTML code.
+
+<b>sink:document.write / source:location.search</b>
+
+<b>C1: </b><mark id="JQ02">"&gt;&lt;/select&gt;&lt;img%20src=1%20onerror=alert(1)&gt;</mark>
 	
+<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#JQ02')">.C1.</button>
+
+<b><u>::: DOM IN ANGULAR JS </u></b>
+
+To be added...
+	
+<b><u>::: REFLECTED DOM </u></b>
+
+<b>NOTES:</b> 
+	
+1. It is required to use the application as normal user and analyze headers, behavior, etc. 
+2. It is required to analyze the JS code related to the application. 
+3. Look for any sink with interesting behavior. 
+4. Try to input different values when possible, with symbols, numbers, etc and check behavior/responses.
+
+<b>SAMPLE:</b> Escaping "\"
+
+<b>C1: </b><mark id="JQ03">\"-alert(1)}//</mark>
+	
+<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#JQ03')">.C1.</button>
+
+<b><u>::: STORED DOM </u></b>
+
+<b>NOTES:</b> 
+
+1. It is required to use the application as normal user and analyze headers, behavior, etc.
+2. It is a comments section ? Accept guest input values ?
+	
+<b>C1: </b><mark id="JQ04">&lt;&gt;&lt;img src=1 onerror=alert(1)&gt;</mark>
+	
+<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#JQ04')">.C1.</button>
+
 </details>		
 </div>
 </pre>
