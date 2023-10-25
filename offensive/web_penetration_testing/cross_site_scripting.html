@@ -151,7 +151,8 @@ IndexedDB (mozIndexedDB, webkitIndexedDB, msIndexedDB) / Database / location</b>
 	
 <b>SINK =</b> Potentially dangerous JavaScript function | [innerHTML / eval()]
 
-<b><u>::: DOM jQUERY SINKS</u></b>
+<details>
+<summary>DOM jQUERY SINKS</summary>	
 
 1. Inspect the webpage, first identify if exist JS, JQuery code and how it behaves.
 2. Try to attempt different tests.
@@ -162,7 +163,9 @@ IndexedDB (mozIndexedDB, webkitIndexedDB, msIndexedDB) / Database / location</b>
 
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#JQ01')">.C1.</button>
 
-<b><u>::: DOM INSIDE "SELECT" STATEMENT </u></b>
+</details>	
+<details>
+<summary>DOM INSIDE "SELECT" STATEMENT</summary>	
 
 <b>NOTE: </b>It is needed to use the application as normal to later analyze the headers as it is really important to understand
 how it works. May exist some parameters that are hidden, etc. Test and looks how it behave. Inspect HTML code.
@@ -173,11 +176,14 @@ how it works. May exist some parameters that are hidden, etc. Test and looks how
 	
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#JQ02')">.C1.</button>
 
-<b><u>::: DOM IN ANGULAR JS </u></b>
+</details>	
+<details>
+<summary>DOM IN ANGULAR JS</summary>	
 
 To be added...
-	
-<b><u>::: REFLECTED DOM </u></b>
+</details>
+<details>
+<summary>REFLECTED DOM</summary>	
 
 <b>NOTES:</b> 
 	
@@ -192,7 +198,9 @@ To be added...
 	
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#JQ03')">.C1.</button>
 
-<b><u>::: STORED DOM </u></b>
+</details>	
+<details>
+<summary>STORED DOM</summary>	
 
 <b>NOTES:</b> 
 
@@ -202,7 +210,7 @@ To be added...
 <b>C1: </b><mark id="JQ04">&lt;&gt;&lt;img src=1 onerror=alert(1)&gt;</mark>
 	
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#JQ04')">.C1.</button>
-
+</details>
 </details>		
 </div>
 </pre>
