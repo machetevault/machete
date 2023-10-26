@@ -33,9 +33,9 @@
 <button onclick="document.location='/machete/offensive/web_penetration_testing/enumeration.html'" class="round" style="float: left;">&lt;&lt;</button><br><br>
 <details>
 <summary>FFUF</summary>
-<p>DESCRIPTION: </p> Tool used perform directory enumeration on a web application.
+DESCRIPTION: Tool used perform directory enumeration on a web application.
 
-<b>C1: </b><p id="ffuf01"><mark>ffuf -w /path/to/wordlist:FUZZ -u URL/FUZZ</mark></p>
+<b>C1: </b><mark id="ffuf01">ffuf -w /path/to/wordlist:FUZZ -u URL/FUZZ</mark>
 <b>SAMPLE: </b><mark>ffuf -w /usr/share/directory-list-2.3-medium.txt:FUZZ -u http://10.10.20.3/FUZZ</mark>
 
 FUZZ = section to fuzz
@@ -46,14 +46,15 @@ FUZZ = section to fuzz
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#ffuf01')">.C1.</button> 
 
 <b>NOTE: </b> The word "FUZZ" is used at the section of the URL you want to fuzz. 
-Sample, http://10.10.20.3/FUZZ | http://10.10.20.3/wdm/FUZZ etc. It is not recursive.
+	
+<b>SAMPLE:</b> http://10.10.20.3/FUZZ | http://10.10.20.3/wdm/FUZZ etc. It is not recursive.
 	
 </details>
 <details>
 <summary>DIRB</summary>
-<p>DESCRIPTION: </p> Tool used perform directory enumeration on a web application.
+DESCRIPTION: Tool used perform directory enumeration on a web application.
 
-<b>C1: </b><p id="dirb01"><mark>dirb URL</mark></p>
+<b>C1: </b><mark id="dirb01">dirb URL</mark>
 <b>SAMPLE: </b><mark>dirb http://10.10.20.3</mark>
 <b>SAMPLE: </b><mark>dirb http://10.10.20.3 -X .php</mark>
 
@@ -64,7 +65,6 @@ Sample, http://10.10.20.3/FUZZ | http://10.10.20.3/wdm/FUZZ etc. It is not recur
 <b>NOTE: </b> It is recursive.
 
 </details>
-
 </div>
 </pre>
 <button onclick="document.location='/machete/offensive/web_penetration_testing/enumeration.html'">GO BACK</button>
