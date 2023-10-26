@@ -33,9 +33,9 @@
 <button onclick="document.location='/machete/offensive/web_penetration_testing/enumeration.html'" class="round" style="float: left;">&lt;&lt;</button><br><br>
 <details>
 <summary>CURL</summary>
-<p>DESCRIPTION: </p> Tool used to make HTTP requests, commonly used to fingerprint a website. 
+DESCRIPTION: Tool used to make HTTP requests, commonly used to fingerprint a website. 
 
-<b>C1: </b><p id="CURL01"><mark>curl -I TYPE_URL</mark></p>
+<b>C1: </b><mark id="CURL01">curl -I TYPE_URL</mark>
 <b>SAMPLE: </b><mark>curl -I https://machetevault.github.io</mark>
 
 -I = headers
@@ -46,15 +46,15 @@
 </details>
 <details>
 <summary>WEB TOOLS</summary>
-<p>DESCRIPTION: </p> List of similar tools to perform passive fingerprinting.
+DESCRIPTION: List of similar tools to perform passive fingerprinting.
 	
 <a href="https://securityheaders.com" target="_blank">securityheaders.com</a> | <a href="https://builtwith.com" target="_blank">builtwith.com</a> 
 </details>
 <details>
 <summary>NMAP</summary>
-<p>DESCRIPTION: </p> Tool used to make scan or fingerprint devices.  
+DESCRIPTION: Tool used to make scan or fingerprint devices.  
 
-<b>C1: </b><p id="NMAP01"><mark>nmap -p[port] -A URL</mark></p>
+<b>C1: </b><mark id="NMAP01">nmap -p[port] -A URL</mark>
 <b>SAMPLE: </b><mark>nmap -p 443,80 -A machetevault.github.io</mark>
 
 -A = print all
