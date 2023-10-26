@@ -33,12 +33,12 @@
 <details>
 <summary>GENERAL INFO</summary>
 <b>PRE-REQS:</b>
-	1. Authenticated session [if possible]
+1. Authenticated session [if possible]
 	
 <b>NOTE:</b> When a request's credentials mode (request.credentials) is <b>include</b>, browsers will only expose the response to the 
 frontend javascript code if the <b>Access-Control-Allow-Credentials</b> header value is TRUE.
 
-<b>::: ARBITRARY ORIGIN REFLECTION</b>
+<mark><b>::: ARBITRARY ORIGIN REFLECTION</b></mark>
 	
 <u><b>SAMPLE:</b></u>
 
@@ -60,7 +60,7 @@ can be accomplished.
 	
 <b><u>CHECK JS PAYLOAD:</u></b> | <a href="https://github.com/machetevault/machete/blob/main/tools/javascript/CORSexploit-origin-reflection.js" target="_blank">CORSexploit-origin-reflection.js</a>
 
-<b>::: NULL ORIGIN REFLECTION [trusted]</b>
+<mark><b>::: NULL ORIGIN REFLECTION [trusted]</b></mark>
 
 <u><b>NOTES:</b></u>
 	
@@ -72,10 +72,30 @@ added to the response after adding any domain. <b>SAMPLE:</b> Access-Control-All
 
 <b>CHECK JS PAYLOAD:</b> null origin | <a href="https://github.com/machetevault/machete/blob/main/tools/javascript/CORSexploit_null-origin.js" target="_blank">CORSexploit_null-origin.js</a>
 
-<b>::: TRUSTED INSECURE PROTOCOLS</b>
+<mark><b>::: ARBITRARY SUBDOMAIN ORIGIN REFLECTION [insecure-protocols]</b></mark>
 
-
+<b>NOTES:</b> 
 	
+1. Same steps used for "ARBITRARY ORIGIN REFLECTION" can be applied, however, at the moment to test the origin header it is 
+necessary first to try the same origin and after that, try it with the subdomain.
+2. It is necessary to inspect the request to see if exist any request to other domain, subdomain, etc. that can be used as 
+part of the attack.
+
+<b>NOTE:</b> Sometimes this vulnerability is important when you have some kind of XSS as well that you can use to increase impact.
+
+>>> Specific tests fror SUBDOMAIN reflection (besides previous ones)
+
+<b>SAMPLE_DOMAIN:</b> http://domain.com
+
+1. Change origin header to one that begins with current origin of the site.
+
+<b>REFLECTED SAMPLE:</b> http://domain.com.malicious.site 	
+	
+2. Change origin header to one that ends with current origin of the site.
+
+<b>REFLECTED SAMPLE:</b> http://malicious.site.domain.com	
+
+<b>CHECK JS PAYLOAD:</b> | <a href="https://github.com/machetevault/machete/blob/main/tools/javascript/CORSexploit_origin-subdomainXSS.js" target="_blank">CORSexploit_origin-subdomainXSS.js</a>	
 </details>
 
 <b>ATTACKER LOCAL SERVER:</b> | <a href="https://github.com/machetevault/machete/blob/main/tools/bash/pyats.sh" target="_blank">pyats.sh</a>
