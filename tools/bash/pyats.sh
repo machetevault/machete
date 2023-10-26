@@ -2,6 +2,7 @@
 
 #
 #  pyats.sh: used to exfiltrate data = attack server
+#  usage: ./pyats.sh PORT
 #  
 #  author: b0ydC / 2023
 #
