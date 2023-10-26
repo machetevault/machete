@@ -33,9 +33,9 @@
 <button onclick="document.location='/machete/offensive/web_penetration_testing/enumeration.html'" class="round" style="float: left;">&lt;&lt;</button><br><br>
 <details>
 <summary>AMASS</summary>
-<p>DESCRIPTION: </p> 
+DESCRIPTION:
 
-<b>C1: </b><p id="SF01"><mark>amass enum -d URL</mark></p>
+<b>C1: </b><mark id="SF01">amass enum -d URL</mark>
 <b>SAMPLE: </b><mark>amass enum -d machetevault.com</mark>
 <b>SAMPLE: </b><mark>amass enum -d machetevault.com > /path/to/file.txt</mark>
 	
@@ -47,7 +47,7 @@
 </details>
 <details>
 <summary>WEB TOOLS</summary>
-<p>DESCRIPTION: </p> 
+DESCRIPTION:
 
 <a href="https://crt.sh/" target="_blank">crt.sh</a> 
 
@@ -57,23 +57,23 @@
 </details>
 <details>
 <summary>SUBFINDER</summary>
-<p>DESCRIPTION: </p> 
+DESCRIPTION:
 
-<b>C1: </b><p id="SF01"><mark>subfinder -d URL</mark></p>
+<b>C1: </b><mark id="SF02">subfinder -d URL</mark>
 <b>SAMPLE: </b><mark>subfinder -d machetevault.com</mark>
 <b>SAMPLE: </b><mark>subfinder -d machetevault.com -o /path/to/file.txt</mark>
 	
 -d = domain
 -o = output content
 
-<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#SF01')">.C1.</button> 
+<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#SF02')">.C1.</button> 
 
 </details>
 <details>
 <summary>GOWITNESS</summary>
-<p>DESCRIPTION: </p> 
+DESCRIPTION:
 
-<b>C1: </b><p id="GW01"><mark>gowitness file -f demo.txt -P folder/to/store --no-http</mark></p>
+<b>C1: </b><mark id="GW01">gowitness file -f demo.txt -P folder/to/store --no-http</mark>
 <b>SAMPLE: </b><mark>gowitness file -f demo.txt -P /usr/store/ --no-http</mark>
 	
 <b>--no-http</b> = ignore HTTP requests
