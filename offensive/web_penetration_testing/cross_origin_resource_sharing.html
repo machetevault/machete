@@ -32,16 +32,15 @@
 <button onclick="document.location='/machete/offensive/web_penetration_testing/client_side_attacks.html'" class="round" style="float: left;">&lt;&lt;</button><br><br>
 <details>
 <summary>GENERAL INFO</summary>
-
 <b>PRE-REQS:</b>
 	1. Authenticated session [if possible]
 	
-<b>NOTE:</b> When a request's credentials mode (request.credentials) is <b>include</b>, browsers will only expose the response to the frontend 
-javascript code if the <b>Access-Control-Allow-Credentials</b> header value is TRUE.
+<b>NOTE:</b> When a request's credentials mode (request.credentials) is <b>include</b>, browsers will only expose the response to the 
+frontend javascript code if the <b>Access-Control-Allow-Credentials</b> header value is TRUE.
 
 <b>::: ARBITRARY ORIGIN REFLECTION</b>
 	
-<b>SAMPLE:</b>
+<u><b>SAMPLE:</b></u>
 
 &lt;script&gt;
 fetch('/endpoint_to_exploit', {credentials:'include'}
@@ -55,23 +54,23 @@ fetch('/endpoint_to_exploit', {credentials:'include'}
 "HTTP/2 200 OK
 Access-Control-Allow-Origin: https://machetevault.malicious.com"	
 	
-5. If headers <b>Access-Control-Allow-Credentials</b> and <b>Access-Control-Allow-Origin</b> are present, arbitrary <u>CORS</u>
+5. If headers <u>Access-Control-Allow-Credentials</u> and <u>Access-Control-Allow-Origin</u> are present, arbitrary <u>CORS</u>
 can be accomplished.
 6. User interaction is needed, so any way to send the payload to the user via social engineering is required.
 	
-<b>CHECK JS PAYLOAD:</b> | <a href="https://github.com/machetevault/machete/blob/main/tools/javascript/CORSexploit-origin-reflection.js">CORSexploit-origin-reflection.js</a>
+<b><u>CHECK JS PAYLOAD:</u></b> | <a href="https://github.com/machetevault/machete/blob/main/tools/javascript/CORSexploit-origin-reflection.js" target="_blank">CORSexploit-origin-reflection.js</a>
 
 <b>::: NULL ORIGIN REFLECTION [trusted]</b>
 
-<b>NOTES:</b>
+<u><b>NOTES:</b></u>
 	
-1. One way to distinguish between NULL and ARBITRARY CORS is to check if the header "Access-Control-Allow-Origin" is added to the
-response after adding any domain. <b>SAMPLE:</b> Access-Control-Allow-Origin: https://machetevault.malicious.com
+1. One way to distinguish between NULL and ARBITRARY CORS is to check if the header "Access-Control-Allow-Origin" is 
+added to the response after adding any domain. <b>SAMPLE:</b> Access-Control-Allow-Origin: https://machete.malicious.com
 2. If no header added, try null. <u>Origin: null</u> [burpsuite]
 3. <b>Access-Control-Allow-Origin: null</b> will be added if successfull. 
 4. It is needed to generate a null request, HTML <u>iframe sandbox</u> can be used. 
 
-<b>CHECK JS PAYLOAD:</b> null origin | <a href="https://github.com/machetevault/machete/blob/main/tools/javascript/CORSexploit_null-origin.js">CORSexploit_null-origin.js</a>
+<b>CHECK JS PAYLOAD:</b> null origin | <a href="https://github.com/machetevault/machete/blob/main/tools/javascript/CORSexploit_null-origin.js" target="_blank">CORSexploit_null-origin.js</a>
 
 <b>::: TRUSTED INSECURE PROTOCOLS</b>
 
@@ -79,7 +78,7 @@ response after adding any domain. <b>SAMPLE:</b> Access-Control-Allow-Origin: ht
 	
 </details>
 
-<b>ATTACKER LOCAL SERVER:</b> | <a href="https://github.com/machetevault/machete/blob/main/tools/bash/pyats.sh">pyats.sh</a>
+<b>ATTACKER LOCAL SERVER:</b> | <a href="https://github.com/machetevault/machete/blob/main/tools/bash/pyats.sh" target="_blank">pyats.sh</a>
 
 </div>
 </pre>
