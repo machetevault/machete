@@ -41,7 +41,7 @@
 3. Check for robots.txt to check what other options/sites you are allowed to access.
 4. Check if exist posts, messages by users, etc. Those users can be used to enumerate or attempt for different behavior.
 
-<b>NOTEs:</b>
+<b>NOTES:</b>
 	
 1. Use dev-tools to modify parameters like cookies, URL's, etc. in order to check results via WEB. 
 Same results as burpsuite, it can change behavior. 
@@ -51,7 +51,7 @@ the requests/responses to analyze the data. <b>IMPORTANT!</b>
 </details>
 <details>
 <summary>IDOR | INSECURE DIRECT OBJECT REFERENCES</summary>
-<p><b>DESCRIPTION: </b>Arises when an application uses user-supplied input to access objects directly. 
+<b>DESCRIPTION: </b>Arises when an application uses user-supplied input to access objects directly. 
 
 FFUF or Burpsuite can be used. (community edition can be hard)
 
@@ -60,9 +60,8 @@ FFUF or Burpsuite can be used. (community edition can be hard)
 <b>NOTE: </b> "1234" can be changed manually and possible it will be different results. <b><u>SNIPER or CLUSTERBOMB ATTACKS!</u></b>
 Using FFUF, you just need to change the _number value as the parameter to FUZZ. 
 
-<b>SAMPLE: </b><mark>https://machetevault/machete?_number=FUZZ</mark>
-	
-</p>
+<b>SAMPLE: </b><mark>https://machetevault/machete?_number=FUZZ</mark>	
+
 </details>
 <details>
 <summary>PARAMETERS PROVIDING ACCESS</summary>
