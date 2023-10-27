@@ -34,12 +34,20 @@
 <details>
 <summary>GENERAL INFO</summary>
 
-<b>::: BYPASS ADMIN FUNCTION</b>
+<b>::: BYPASS HIGH PERMISSIONS FUNCTIONS</b>
 
 1. Inspect the source code of the application. [manual review] devs normally forget to add access controls.
-2. Perform directory enumeration.
-3. Check for robots.txt to check what other options you have.
+2. Perform directory enumeration. Try administrator/admin endpoints. 
+3. Check for robots.txt to check what other options/sites you are allowed to access.
+4. Check if exist posts, messages by users, etc. Those users can be used to enumerate or attempt for different behavior.
+
+<b>NOTEs:</b>
 	
+1. Use dev-tools to modify parameters like cookies, URL's, etc. in order to check results via WEB. 
+Same results as burpsuite, it can change behavior. 
+2. Analyze responses, really important to use the application with and without authentication to log
+the requests/responses to analyze the data. <b>IMPORTANT!</b>
+
 </details>
 <details>
 <summary>IDOR | INSECURE DIRECT OBJECT REFERENCES</summary>
@@ -47,7 +55,7 @@
 
 FFUF or Burpsuite can be used. (community edition can be hard)
 
-<b>SAMPLE: </b><mark>https://machetevault/machete?_number=1234</mark>
+<b>SAMPLE: </b><mark>https://machetevault/machete?_number=<b>1234</b></mark>
 	
 <b>NOTE: </b> "1234" can be changed manually and possible it will be different results. <b><u>SNIPER or CLUSTERBOMB ATTACKS!</u></b>
 Using FFUF, you just need to change the _number value as the parameter to FUZZ. 
@@ -55,7 +63,29 @@ Using FFUF, you just need to change the _number value as the parameter to FUZZ.
 <b>SAMPLE: </b><mark>https://machetevault/machete?_number=FUZZ</mark>
 	
 </p>
-</details>		
+</details>
+<details>
+<summary>PARAMETERS PROVIDING ACCESS</summary>
+<p><b>DESCRIPTION: </b> Some tokens, parameters could change the behavior of the application regarding what can be accessed. 
+
+0. Manual inspection is needed. [burpsuite / dev-tools]	
+1. Check if exist any cookie, token, etc. that is providing autorization/access ? TRUE / FALSE
+
+<b>SAMPLE:</b> Cookie: session=4Jpqa8iPxAB5ckq5lP2A4zP4oswZFuZM ; Admin=True
+
+2. Test session tokens, cookies, etc. is the control in place by roles ? Edit manually. [burpsuite / dev-tools]	
+3. Change users, numbers, symbols... check if exist some <u>horizontal privilege escalation</u> that can be accomplished. 
+4. If comments section available, enumerate users, post a comment and check how it behaves. 
+
+<b>SAMPLE:</b> GET /my-account?id=carlos 
+
+
+
+
+
+	
+</p>
+</details>
 </div>
 </pre>
 <button onclick="document.location='/machete/offensive/web_penetration_testing/server_side_attacks.html'">GO BACK</button>
