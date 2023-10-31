@@ -9,4 +9,12 @@ The content will be related to each research, certification, conferences attende
 
 <p align="center" width="100%"> Come back regularly, you will find new content for each topic</p>
 
+<p align="center" width="100%">
+DISCLAIMER!
+
+Tactics, techniques, tools collected here are part of a security knowledge-base for educational purposes. 
+The author does not have any responsibility for any misbehave from any person who can access the content. 
+
+Happy research !</p>
+
 <p align="center" width="100%">Since 2023 | @b0ydC_</p>
