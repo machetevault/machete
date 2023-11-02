@@ -34,11 +34,11 @@
 <details>
 <summary>GENERAL INFORMATION</summary>
 
-1. User enumeration
-2. 
+1. User enumeration.
+2. Sometimes to move faster it is better to enumerate/attack each field separately.
+3. Check responses, look for differences in status code, length, response time, etc.
+4. When length is consecutively changing, check for HTML messages, grep/extract something to match and compare.
 
-	
-	
 </details>	
 <details>
 <summary>BRUTE FORCE</summary>
@@ -46,10 +46,52 @@
 <b>NOTE:</b> Different tools can be used for that, [burpsuite/ffuf, etc]. Create wordlist associated to the content, use the
 predefined, etc. 
 
-- intruder attack / cluster or sniper
+- Intruder attack / cluster or sniper
+- In burpsuite it is better to use intruder>snipper attacks to move faster instead of intruder>cluster bomb. 
 - ffuf attack
-- wordlist can be created or rockyou can be used, or normal wordlists.
+- Wordlist can be created or rockyou can be used, or normal wordlists.
+
+<a href="https://github.com/danielmiessler/SecLists" target="_blank">SecLists</a>
+
+</details>
+<details>
+<summary>2FA BY-PASS</summary>
+
+- First way to by-pass, use the same code. [valid user token]
+- Second way, check headers and URL>path from a valid session and replicate with vulnerable user.
+
+<b>SAMPLE:</b> try going directly to > /my-account?id=USER ----> this will be the URL redirection from a valid session.
+
+</details>
+<details>
+<summary>BROKEN LOGIC</summary>
+
+::::: [RESET FUNCTION]
 	
+1. Inspect all request/response using burpsuite.
+2. If possible use and log information about the application with an authenticated session and without.
+compare and check for differences.
+3. Attempt same attack with enumerated users.
+
+<b>SAMPLE:</b>
+
+temp-forgot-password-token=TOKEN.8vwfct4qj0i89g&username=USER&new-password-1=PASS1&new-password-2=PASS2
+
+::::: [IP-BASED PROTECTION]
+
+Some applications have some restrictions about IP-based / Geolocation and more, one way to by-pass or attempt to 
+by-pass the IP-based restriction is to use the header, "X-Forwarded-For".
+
+</details>
+<details>
+<summary>TIME DELAY</summary>
+
+For this testing it is important to use different users, if possible authenticated/valid session and non valid 
+session. Comparing responses will be needed. 
+
+Check if response of invalid user takes more time than a valid user and viceversa, that can help to discover or
+associate valid authentication credentials.
+
 </details>
 	
 </div>
