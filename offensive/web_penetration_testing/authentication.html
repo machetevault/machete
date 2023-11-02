@@ -69,8 +69,8 @@ predefined, etc.
 ::::: [RESET FUNCTION]
 	
 1. Inspect all request/response using burpsuite.
-2. If possible use and log information about the application with an authenticated session and without.
-compare and check for differences.
+2. If possible use and log information about the application with an authenticated session and without. Compare and check 
+for differences.
 3. Attempt same attack with enumerated users.
 
 <b>SAMPLE:</b>
@@ -79,18 +79,18 @@ temp-forgot-password-token=TOKEN.8vwfct4qj0i89g&username=USER&new-password-1=PAS
 
 ::::: [IP-BASED PROTECTION]
 
-Some applications have some restrictions about IP-based / Geolocation and more, one way to by-pass or attempt to 
-by-pass the IP-based restriction is to use the header, "X-Forwarded-For".
+Some applications have some restrictions about IP-based / Geolocation and more, one way to by-pass or attempt to by-pass the IP-based 
+restriction is to use the header, "X-Forwarded-For".
 
 </details>
 <details>
 <summary>TIME DELAY</summary>
 
-For this testing it is important to use different users, if possible authenticated/valid session and non valid 
-session. Comparing responses will be needed. 
+For this testing it is important to use different users, if possible authenticated/valid session and non valid session. 
+Comparing responses will be needed. 
 
-Check if response of invalid user takes more time than a valid user and viceversa, that can help to discover or
-associate valid authentication credentials.
+Check if response of invalid user takes more time than a valid user and viceversa, that can help to discover or associate valid 
+authentication credentials.
 
 </details>
 	
