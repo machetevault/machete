@@ -55,7 +55,7 @@
 &lt;productId&gt;1&lt;/productId&gt;
 &lt;/Check&gt;
 
-<b>COMMON PAYLOAD:</b><mark id="XXE01"> <!DOCTYPE attempt [ <!ENTITY CUMBIA SYSTEM "file:///etc/hosts"> ]> </mark>
+<b>COMMON PAYLOAD:</b><mark id="XXE01"> &lt;!DOCTYPE attempt [ &lt;!ENTITY CUMBIA SYSTEM "file:///etc/hosts"&gt; ]&gt; </mark>
 
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#XXE01')">.C1.</button>
 	
