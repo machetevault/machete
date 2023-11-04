@@ -117,6 +117,18 @@ it works.
 
 <b>:::: ACCOUNT LOCK</b>
 
+<u>--> null payloads technique</u>
+
+<b>pre-reqs:</b>	
+	
+-blank payload position to the end of the last field.
+
+SAMPLE: user=§user§&pass=test§§
+
+So, you have two positions one for the user and the null generated at the end of the second position, "pass".
+The null technique will repeat the first position. Using the sample as reference, it will repeat the user.
+
+
 	
 
 
