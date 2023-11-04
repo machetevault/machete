@@ -79,23 +79,32 @@ temp-forgot-password-token=TOKEN.8vwfct4qj0i89g&username=USER&new-password-1=PAS
 
 ::::: [IP-BASED PROTECTION]
 
-- Some applications have some restrictions about IP-based / Geolocation and more, one way to by-pass or attempt to by-pass the IP-based 
-restriction is to use the header, "X-Forwarded-For".
+- Some applications have some restrictions about IP-based / geolocation and more, one way to by-pass or attempt to by-pass the 
+IP-based restriction is to use the header, "X-Forwarded-For". For the test, any number can be used or at least it is one attempt.
+
+<b>SAMPLE:</b> X-Forwarded-For:	1
+
+<b>NOTE:</b> <u>X-Forwarded-For</u> header can be used consecutively if needed to avoid restrictions. <b>PITCHFORK ATTACK!</b>
+	
 - If exist some time-based protection associated to a block IP, check if exist some way to reset the counter, if yes, it
 will let you brute force different users avoiding to be blocked. 
-
 
 </details>
 <details>
 <summary>TIME DELAY</summary>
 
 For this testing it is important to use different users, if possible authenticated/valid session and non valid session. 
-Comparing responses will be needed. 
+Comparing responses will be needed. Check RESPONSE TIME is essential.
 
 Check if response of invalid user takes more time than a valid user and viceversa, that can help to discover or associate valid 
 authentication credentials. 
-- sometimes the process of checking the password can take time, thats can represent the user is valid.
-- 
+	
+- Sometimes the process of checking the password can take time, that can represent the user is valid.
+- Check if exist some kind of block or protection based on IP, Geolocation, attempts, time-based,etc. analyze the form and how
+it works. 
+- The usage of X-Forwarded-For can be applied. <b>PITCHFORK ATTACK!</b>
+- Analyze "response received / response completed" burp-columns. 
+
 
 </details>
 	
