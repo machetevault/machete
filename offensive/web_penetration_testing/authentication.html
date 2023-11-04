@@ -43,8 +43,7 @@
 <details>
 <summary>BRUTE FORCE</summary>
 
-<b>NOTE:</b> Different tools can be used for that, [burpsuite/ffuf, etc]. Create wordlist associated to the content, use the
-predefined, etc. 
+<b>NOTE:</b> Different tools can be used, [burpsuite/ffuf, etc]. Create wordlist associated to the content, use predefined, etc. 
 
 - Intruder attack / cluster or sniper
 - In burpsuite it is better to use intruder>snipper attacks to move faster instead of intruder>cluster bomb. 
@@ -55,8 +54,8 @@ predefined, etc.
 
 <b>:::: WHEN BROKEN</b>
 
-If exists some kind of block, time-based, ip-based, more. <b>PITCHFORK ATTACK!</b> remember to set the resource pool to 1
-concurrent requests to avoid to be blocked, also, sometimes it is better for the pitchfork attack. 
+If exists some kind of block, time-based, ip-based, more. <b>PITCHFORK ATTACK!</b> remember to set the resource pool to 1 concurrent 
+requests to avoid to be blocked, also, sometimes it is better for the pitchfork attack. 
 
 </details>
 <details>
@@ -71,7 +70,7 @@ concurrent requests to avoid to be blocked, also, sometimes it is better for the
 <details>
 <summary>BROKEN LOGIC</summary>
 
-::::: [RESET FUNCTION]
+<b>::::: [RESET FUNCTION]</b>
 	
 1. Inspect all request/response using burpsuite.
 2. If possible use and log information about the application with an authenticated session and without. Compare and check 
@@ -82,7 +81,7 @@ for differences.
 
 temp-forgot-password-token=TOKEN.8vwfct4qj0i89g&username=USER&new-password-1=PASS1&new-password-2=PASS2
 
-::::: [IP-BASED PROTECTION]
+<b>::::: [IP-BASED PROTECTION]</b>
 
 - Some applications have some restrictions about IP-based / geolocation and more, one way to by-pass or attempt to by-pass the 
 IP-based restriction is to use the header, "X-Forwarded-For". For the test, any number can be used or at least it is one attempt.
@@ -123,7 +122,7 @@ it works.
 	
 -blank payload position to the end of the last field.
 
-SAMPLE: user=§user§&pass=test§§
+<b>SAMPLE:</b> user=§user§&pass=test§§
 
 So, you have two positions one for the user and the null generated at the end of the second position, "pass".
 The null technique will repeat the first position. Using the sample as reference, it will repeat the user.
