@@ -57,8 +57,8 @@
 <details>
 <summary>URL-DECODING</summary>
 
-<b>NOTE:</b> It is important to encode one, two, three times, it will be slow but it is important to test if exist any encoding that can be used to bypass
-the control. [burpsuite > crtl + u (encode) | ctrl + shift + u (decode)]
+<b>NOTE:</b> It is important to encode one, two, three times, it will be slow but it is important to test if exist any encoding that can be 
+used to bypass the control. [burpsuite > crtl + u (encode) | ctrl + shift + u (decode)]
 
 <b>SAMPLES:</b>
 
@@ -70,11 +70,9 @@ the control. [burpsuite > crtl + u (encode) | ctrl + shift + u (decode)]
 
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#URL01')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#URL02')">.C2.</button>
 
-	
 </details>
 <details>
 <summary>VALIDATIONS</summary>
-
 <b> > SPECIFIC PATHS</b>
 
 <b>SAMPLE:</b> 
@@ -101,8 +99,8 @@ validating that, so, attempts can be executed. [absolute, encoded, non-recursive
 
 <b>NULL VALIDATION</b>
 
-You can use the value <b><mark id="NU01">%00</mark></b> to test for null validation. Sometimes you can find that vulnerability when the application is retrieving images,
-files and more. 
+You can use the value <b><mark id="NU01">%00</mark></b> to test for null validation. Sometimes you can find that vulnerability when the application is retrieving 
+images, files and more. 
 
 <b>SAMPLE:</b> GET /image?filename=../../../etc/hosts%00.png HTTP/2
 
@@ -116,7 +114,7 @@ SNIPER ATTACK! (or similar). Also, invert the symbol, use backslash and try it. 
 
 2. It is good to enable all columns in burpsuite to see the entire picture. [MIME Type Filters]
 
-CHECK THE FOLLOWING LINK, >>> <a href="https://securityheaders.com" target="_blank">FILE SYSTEM</a> It can be used to check valuable files per OS.
+CHECK THE FOLLOWING LINK, >>> <a href="https://machetevault.github.io/machete/offensive/penetration_testing/file_system.html" target="_blank">FILE SYSTEM</a> >>> It can be used to check valuable files per OS.
 </div>
 </pre>
 <button onclick="document.location='/machete/offensive/web_penetration_testing/server_side_attacks.html'">GO BACK</button>
