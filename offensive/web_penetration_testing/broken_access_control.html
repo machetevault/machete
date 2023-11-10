@@ -92,10 +92,13 @@ Using FFUF, you just need to change the _number value as the parameter to FUZZ.
 <mark><b>SAMPLE REQUEST:</b></mark>
 
 <b>REQUEST</b>	
+	
 GET /vuln_endpoint HTTP/2
 Host: machetevault.com
 Cookie: session=I9glIXHonYMJpBHmvZFelIaiS
+
 <b>RESPONSE</b>
+	
 HTTP/2 403 Forbidden
 Content-Type: application/json; charset=utf-8
 X-Frame-Options: SAMEORIGIN
@@ -112,6 +115,7 @@ Previous sample can help to understand how to test it, two steps:
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#BAC01')">.C1.</button> 
 	
 <b>RESPONSE</b>
+	
 HTTP/2 404 Not Found
 Content-Type: application/json; charset=utf-8
 X-Frame-Options: SAMEORIGIN
@@ -130,12 +134,34 @@ Enumerate possible endpoints and try it.
 <details>
 <summary>PROTOCOL HTTP BROKEN ACCESS [circumvented] </summary>
 
+It is when the HTTP method can be altered to get expected results as it is the parameter acting for access control, for example, you 
+change the HTTP method from POST to POSTX or GET, etc. 
+
+<b>NOTE:</b> Important to check,
+
+1. Exist any parameter to test for broken access control ?
+2. Exist some cookies to test ? <b>SESSIONID</b> ?
+3. Exist any authorized function that you can access ?
+4. What is the HTTP method used ? <b>POST/GET/POSTX</b> ?
+
+<b>EXPLOITATION STEPS:</b>
+
+Most using [burpsuite > repeater]
+	
+1. Need to find an authenticated valid function.
+2. Need to test if the parameters are vulnerable.
+3. Need to change the cookie between authenticated and non-authenticated to check differences.
+4. Need to change between HTTP methods. [GET/POST/POSTX/PUT]
+
+</details>
+<details>
+<summary> MULTI-STEP BROKEN ACCESS </summary>
+
 
 
 	
 
 </details>
-	
 
 
 
