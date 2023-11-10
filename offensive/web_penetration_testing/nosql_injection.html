@@ -33,9 +33,8 @@
 <button onclick="document.location='/machete/offensive/web_penetration_testing/server_side_attacks.html'" class="round" style="float: left;">&lt;&lt;</button><br><br>
 <details>
 <summary>GENERAL INFORMATION</summary>
-
-NoSQL databases are different than the normal SQL databases. The structure is different so the way to query the DB will
-differ. The structure of NoSQL DB is <b>[key:pair]</b> structure.
+NoSQL databases are different than the normal SQL databases. The structure is different so the way to query the DB will differ. 
+The structure of NoSQL DB is <b>[key:pair]</b> structure.
 
 <b>FUZZING</b> is the most common attack for this !!
 
@@ -50,8 +49,7 @@ differ. The structure of NoSQL DB is <b>[key:pair]</b> structure.
 
 </details>	
 <details>
-<summary>COMMON TESTS</summary>
-
+<summary>GENERAL INFORMATION</summary>
 <b>NOTES:</b> 
 
 1. Inspection of requests is needed. [burpsuite]
@@ -59,20 +57,18 @@ differ. The structure of NoSQL DB is <b>[key:pair]</b> structure.
 3. Use URL/JSON encoding when needed.
 	
 <b>C1: </b><mark id="CTNOSQL01">'</mark>
-<b>C2: </b><mark id="CTNOSQL01">'+'</mark>
+<b>C2: </b><mark id="CTNOSQL02">'+'</mark>
 
-<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#CTNOSQL01')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#CTNOSQL01')">.C1.</button>
+<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#CTNOSQL01')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#CTNOSQL02')">.C2.</button>
 
 Simple quote <b>(')</b> is used to determine which characters are interpreted as syntax, it is important to check requests/response
 before and after and compare it. In order to escape queries the slash can be used. <b>(\)</b>
+
 <b>SAMPLE:</b> this.car == '\''
 
 <b>:::: MONGO DB</b>
 
-<b>C1: </b><mark id="NOSQL01">
-'"`{
-;$Foo}
-$Foo \xYZ</mark>
+<b>C1: </b><mark id="NOSQL01">'"`{;$Foo}$Foo \xYZ</mark>
 
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#NOSQL01')">.C1.</button> 
 
@@ -98,17 +94,7 @@ $Foo \xYZ</mark>
 <summary>NoSQL OPERATORS</summary>
 
 
-	
-
-
-</details>
-
-
-
-
-
-
-	
+</details>	
 </div>
 </pre>
 <button onclick="document.location='/machete/offensive/web_penetration_testing/server_side_attacks.html'">GO BACK</button>
