@@ -33,7 +33,6 @@
 <button onclick="document.location='/machete/offensive/web_penetration_testing/server_side_attacks.html'" class="round" style="float: left;">&lt;&lt;</button><br><br>
 <details>
 <summary>GENERAL INFORMATION</summary>
-
 1. User enumeration.
 2. Sometimes to move faster it is better to enumerate/attack each field separately.
 3. Check responses, look for differences in status code, length, response time, etc.
@@ -60,7 +59,6 @@ requests to avoid to be blocked, also, sometimes it is better for the pitchfork 
 </details>
 <details>
 <summary>2FA BY-PASS</summary>
-
 - First way to by-pass, use the same code. [valid user token]
 - Second way, check headers and URL>path from a valid session and replicate with vulnerable user.
 
@@ -69,7 +67,6 @@ requests to avoid to be blocked, also, sometimes it is better for the pitchfork 
 </details>
 <details>
 <summary>BROKEN LOGIC</summary>
-
 <b>::::: [RESET FUNCTION]</b>
 	
 1. Inspect all request/response using burpsuite.
@@ -96,7 +93,6 @@ will let you brute force different users avoiding to be blocked.
 </details>
 <details>
 <summary>TIME DELAY</summary>
-
 For this testing it is important to use different users, if possible authenticated/valid session and non valid session. 
 Comparing responses will be needed. Check RESPONSE TIME is essential.
 
@@ -109,11 +105,9 @@ it works.
 - The usage of X-Forwarded-For can be applied. <b>PITCHFORK ATTACK!</b>
 - Analyze "response received / response completed" burp-columns. 
 
-
 </details>
 <details>
 <summary>ENUMERATION TECHNIQUES</summary>
-
 <b>:::: ACCOUNT LOCK</b>
 
 <u>--> null payloads technique</u>
@@ -127,16 +121,7 @@ it works.
 So, you have two positions one for the user and the null generated at the end of the second position, "pass".
 The null technique will repeat the first position. Using the sample as reference, it will repeat the user.
 
-
-	
-
-
-
-	
-
 </details>
-
-
 	
 </div>
 </pre>
