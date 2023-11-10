@@ -56,7 +56,6 @@
 </details>
 <details>
 <summary>URL-DECODING</summary>
-
 <b>NOTE:</b> It is important to encode one, two, three times, it will be slow but it is important to test if exist any encoding that can be 
 used to bypass the control. [burpsuite > crtl + u (encode) | ctrl + shift + u (decode)]
 
@@ -81,8 +80,8 @@ used to bypass the control. [burpsuite > crtl + u (encode) | ctrl + shift + u (d
 Host: machetevault.github.io
 Cookie: session=j5QWoOCqRn5B2jGgronDtpWr6Vz055yb</b>
 
-<b>NOTE:</b> Sometimes exist some kind of validations as countermeasure to avoid path traversal. Maybe it is expecting same path and is only
-validating that, so, attempts can be executed. [absolute, encoded, non-recursive, etc.]
+<b>NOTE:</b> Sometimes exist some kind of validations as countermeasure to avoid path traversal. Maybe it is expecting same path and is 
+only validating that, so, attempts can be executed. [absolute, encoded, non-recursive, etc.]
 
 <b>SAMPLE:</b> GET /image?filename=/var/www/images/../../../etc/passwd 
 	
@@ -109,8 +108,8 @@ images, files and more.
 	
 <b>NOTE: </b> 
 	
-1. All can be tested with 1, 2, or any segments [../] as needed all applications will behave different. If needed, 
-SNIPER ATTACK! (or similar). Also, invert the symbol, use backslash and try it. ["..\"]
+1. All can be tested with 1, 2, or any segments [../] as needed all applications will behave different. If needed, SNIPER 
+ATTACK! (or similar). Also, invert the symbol, use backslash and try it. ["..\"]
 
 2. It is good to enable all columns in burpsuite to see the entire picture. [MIME Type Filters]
 
