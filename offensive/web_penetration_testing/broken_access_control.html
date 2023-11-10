@@ -79,9 +79,7 @@ Using FFUF, you just need to change the _number value as the parameter to FUZZ.
 	
 </details>
 <details>
-<summary>URL-BASED [X-Original-Url] Header</summary>
-<b>DESCRIPTION:</b> 
-
+<summary>URL-BASED [X-Original-Url] HEADER</summary>
 <b>NOTES:</b>
 
 1. Inspect requests using burpsuite.
@@ -132,7 +130,7 @@ Enumerate possible endpoints and try it.
 	
 </details>
 <details>
-<summary>PROTOCOL HTTP BROKEN ACCESS [circumvented] </summary>
+<summary>PROTOCOL HTTP BROKEN ACCESS [circumvented]</summary>
 It is when the HTTP method can be altered to get expected results as it is the parameter acting for access control, for example, you 
 change the HTTP method from POST to POSTX or GET, etc. 
 
@@ -154,18 +152,26 @@ Most using [burpsuite > repeater]
 
 </details>
 <details>
-<summary>MULTI-STEP BROKEN ACCESS </summary>
+<summary>MULTI-STEP BROKEN ACCESS</summary>
+<b>SAMPLE:</b> action=create&confirmed=true&username=USER
 
+Sometimes the authentication forms has some kind of multi-step validation, but, is that doing something ?
 
+1. Test if the validation is doing something when changing value, <b>TRUE/FALSE.</b>
+2. Test if the validation is actually validating or if it can by by-passed changing other values.
 
-	
+<b>NOTE:</b> Same techniques can be used, the big difference is to test if the validation mechanism present actually
+works.
 
 </details>
+<details>
+<summary>REFERER BROKEN ACCESS CONTROL</summary>
+All previous techniques can be attempted, it is basically missing the referer header. 
 
-
-
-
+1. Header can be added.
+2. Change referer parameters options. 
 	
+</details>	
 </div>
 </pre>
 <button onclick="document.location='/machete/offensive/web_penetration_testing/server_side_attacks.html'">GO BACK</button>
