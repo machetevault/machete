@@ -42,10 +42,10 @@
 
 <b>NOTES:</b>
 	
-1. Use dev-tools to modify parameters like cookies, URL's, etc. in order to check results via WEB. 
-Same results as burpsuite, it can change behavior. 
-2. Analyze responses, really important to use the application with and without authentication to log
-the requests/responses to analyze the data. <b>IMPORTANT!</b>
+1. Use dev-tools to modify parameters like cookies, URL's, etc. in order to check results via WEB. Same results as burpsuite, 
+it can change behavior. 
+2. Analyze responses, really important to use the application with and without authentication to log the requests/responses to 
+analyze the data. <b>IMPORTANT!</b>
 
 </details>
 <details>
@@ -121,10 +121,9 @@ Content-Length: 11
 
 "Not Found"
 
-First response, we got "<b>Access denied</b>" meaning the <u>vuln_endpoint</u> was not allowed. However, after adding 
-the header "X-Original-Url" you can manually set the endpoint/URL to try, it will overwrite the URL to use. Second response, 
-we got "Not Found". So, it means that possible the backend is processing the URL using this header as it is changing 
-behavior/response.
+First response, we got "<b>Access denied</b>" meaning the <u>vuln_endpoint</u> was not allowed. However, after adding the header "X-Original-Url" 
+you can manually set the endpoint/URL to try, it will overwrite the URL to use. Second response, we got "Not Found". So, it means that possible the 
+backend is processing the URL using this header as it is changing behavior/response.
 
 Enumerate possible endpoints and try it.
 	
@@ -132,7 +131,7 @@ Enumerate possible endpoints and try it.
 <details>
 <summary>PROTOCOL HTTP BROKEN ACCESS [circumvented]</summary>
 It is when the HTTP method can be altered to get expected results as it is the parameter acting for access control, for example, you 
-change the HTTP method from POST to POSTX or GET, etc. 
+change the HTTP method from <b>POST</b> to <b>POSTX</b> or <b>GET</b>, etc. 
 
 <b>NOTE:</b> Important to check,
 
@@ -148,7 +147,7 @@ Most using [burpsuite > repeater]
 1. Need to find an authenticated valid function.
 2. Need to test if the parameters are vulnerable.
 3. Need to change the cookie between authenticated and non-authenticated to check differences.
-4. Need to change between HTTP methods. [GET/POST/POSTX/PUT]
+4. Need to change between HTTP methods. <b>[GET/POST/POSTX/PUT]</b>
 
 </details>
 <details>
@@ -160,8 +159,7 @@ Sometimes the authentication forms has some kind of multi-step validation, but, 
 1. Test if the validation is doing something when changing value, <b>TRUE/FALSE.</b>
 2. Test if the validation is actually validating or if it can by by-passed changing other values.
 
-<b>NOTE:</b> Same techniques can be used, the big difference is to test if the validation mechanism present actually
-works.
+<b>NOTE:</b> Same techniques can be used, the big difference is to test if the validation mechanism present actually works.
 
 </details>
 <details>
