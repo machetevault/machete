@@ -525,6 +525,7 @@ PS> (Get-DomainPolicy).KerberosPolicy
 <b>::: GET DOMAIN ADMIN_GROUPS OF FOREST</b>
 
 PS> Get-DomainGroup *admin* -domain <forest/root> | select samaccountname
+
 </details>
 <h4>POWERSHELL LATERAL MOVEMENT</h4>
 <details>
@@ -656,9 +657,7 @@ TIP: We can use winrs in place of PSRemoting to evade the logging and still reap
  
 PS> winrs -remote:server1 -u:server1\administrator -p:Pass@1234 hostname  
 </details>
-
-<h4>POWERSHELL PRIVESC</h4>
-	
+<h4>POWERSHELL PRIVESC</h4>	
 <details>
 <summary>DOMAIN LOCAL PRIVESC</summary>
 <b>DESCRIPTION:</b>
@@ -981,7 +980,6 @@ PS> (Get-DomainOU -Identity [OUName]).distinguishedname | %{Get-DomainComputer -
 % = means each result (object)  
 </details>
 <h4>POWERSHELL PERSISTENCE</h4>	
-	
 <details>
 <summary>DOMAIN PERSISTENCE ACL ADMINSDHOLDER</summary>
 <b>DESCRIPTION:</b>
