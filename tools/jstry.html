@@ -13,7 +13,7 @@
   <meta charset="utf-8" />
 <script>
   var htmlContent = document.body.textContent;
-  var count = (htmlContent.match(/failed/g) ||[]).length;
+  var count = (htmlContent.match(/failed/g) || []).length;
 
   if (count > 0) {
     alert("count: " + count + "times.");
