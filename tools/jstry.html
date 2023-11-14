@@ -12,12 +12,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta charset="utf-8" />
 <script>
-  var htmlContent = document.body.textContent;
-  var count = (htmlContent.match(/failed/g) || []).length;
+var htmlContent = document.documentElement.innerHTML;
+if (pageContent.indexOf("failed") !== -1) {
 
-  if (count > 0) {
-    alert("count: " + count + "times.");
-  }
+  alert("founded!)
+  
+}
 </script>
 </head>
 <body>
