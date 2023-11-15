@@ -33,7 +33,40 @@
 <details>
 <summary>GENERAL INFORMATION</summary>
 
-</details>		
+<b>NOTE:</b> Basically it is something when you found something that does not need to be external exposed.
+
+1. Inspect the code.
+2. Proxy the traffic to check the requests
+2. Enumerate directories, endpoints, etc. [robots.txt]
+
+</details>
+<details>
+<summary>VIA ERROR MESSAGES</summary>
+
+<b>NOTE:</b> It will be needed to find a way to make the application generate an error. Input, ID validations, comments, etc.
+
+<b>SAMPLE:</b> GET /product?productId=1
+
+For example, in here you can see the value of <b>productId</b> is looking for number 1. Try to change the value from integer to 
+string and try it, that is one option to proceed. 
+	
+</details>
+<details>
+<summary>BYPASS</summary>
+
+<b>NOTE:</b> Mostly this is related when exist some kind of <b>HEADER</b> or field that will leak any information that can lead to something
+else. 
+
+1. It is important to verify which HTTP verbs are supported by the application. [<b>GET/POST/TRACE</b>, etc.]
+2. Sometimes different headers can do some tricks to by-pass mechanism due to the restrictions. 
+
+<b>SAMPLE:</b> "Admin interface only available to local users"
+
+<b>X-Custom-IP-Authorization</b> | <b>X-Forwarded-For</b>
+
+3. <b>X-Custom-IP-Authorization</b> >> can be used to determine whether or not the request came from the localhost IP.
+	
+</details>
 </div>
 </pre>
 <button onclick="document.location='/machete/offensive/web_penetration_testing/server_side_attacks.html'">GO BACK</button>
