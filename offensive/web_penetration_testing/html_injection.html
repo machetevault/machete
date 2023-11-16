@@ -44,7 +44,27 @@ modifications in the website’s design, information displayed to the victim.
 1. Sometimes the applications are filtering the HTML tags as security mitigation, however, attempt to double URL encode the 
 HTML tags. 
 2. Either can be tested using GET or POST. [differences will be reflected in URL when sending]
-  
+
+<b>::: URL REFLECTED</b>
+
+1. Sometimes, it can be changed using the IP address. That is a finding or anything, it will look for header not for content.
+2. Sometimes, <b>document.write(document.URL)</b> can be used to modify the URL. Just need to invoke it from browser or using
+burpsuite. It will be the same, the reflection will be on browser.
+
+<b>SAMPLE: </b><mark id="CT02">&lt;script&gt;document.write(document.URL)&lt;/script&gt;</mark>
+
+<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#CT02')">.C1.</button>
+
+<b>::: STORED HTML</b>
+
+<b>>> RETRIEVE ROBOTS.TXT FILE ON AN IFRAME.</b>
+	
+<b>C1: </b><mark id="CT03">&lt;iframe src="robots.txt" height="200" width="300"&gt;&lt;/iframe&gt;</mark>
+
+<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#CT03')">.C1.</button>
+
+<b>NOTE:</b> Iframe can be used to invoke other sites, files and more. The parameter "src" help to retrieve external content. 
+	
 </details>		
 </div>
 </pre>
