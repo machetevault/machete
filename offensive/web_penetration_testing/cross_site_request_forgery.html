@@ -33,6 +33,14 @@
 <button onclick="document.location='/machete/offensive/web_penetration_testing/client_side_attacks.html'" class="round" style="float: left;">&lt;&lt;</button><br><br>
 <details>
 <summary>GENERAL INFORMATION</summary>
+<b><u>3 METHOD QUESTION:</u></b>
+
+1. A relevant action?
+2. Cookie based session handling?
+3. No unpredictable request parameters = CSRF Token?
+
+*******
+	
 1. First thing, activity needs to be from authenticated actions. 
 2. Check if the <u>CSRF token is present.</u> [inspect the headers / burpsuite]
 3. If no token is present, a CSRF PoC can be used. [burpsuite PRO / manual way]
@@ -56,15 +64,25 @@ For example, maybe a form with a csrf token.
 2. It is important to test if the specific token provided is validated or if it is only validating that the field exists. 
 In other words, is this validating the key value or format? 
 3. Are you able to attempt XSS ?
+
+::: METHOD TOKEN VALIDATION 
+
+
 	
 </details>
 <details>
 <summary>BYPASS TECHNIQUES</summary>
 <b>DESCRIPTION:</b>
 	
-
 	
-</details>		
+</details>
+<details>
+<summary>PAYLOADS/EXPLOITS</summary>
+
+<a href="https://github.com/machetevault/machete/blob/main/tools/csrf_exploits/CSRF_PoC_POST_sample.html" target="_blank">CSRF_PoC_POST_sample.html</a><br>
+<a href="https://github.com/machetevault/machete/blob/main/tools/csrf_exploits/CSRF_PoC_onload_sample.html" target="_blank">CSRF_PoC_onload_sample.html</a>
+	
+</details>
 </div>
 </pre>
 <button onclick="document.location='/machete/offensive/web_penetration_testing/client_side_attacks.html'">GO BACK</button>
