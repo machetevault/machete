@@ -70,6 +70,24 @@ requests to avoid to be blocked, also, sometimes it is better for the pitchfork 
 	
 </details>
 <details>
+<summary>SESSION MANAGEMENT</summary>
+<b>NOTES:</b>
+
+1. It is important to inspect the source code, also, inspect the requests.
+2. Some developers makes some mitakes leaking data in URL.
+3. 
+
+<b>::: COMMON MISTAKES</b>
+
+- <b>IDORS</b> that provide administrative access. 
+- It will possible to "improve" security adding the same values into the cookies. 
+
+<b>SAMPLES:</b> <u>http://IP_ADDR/bWAPP/smgmt_admin_portal.php?admin=0</u> | <u>Cookie: PHPSESSID=VALUE; security_level=1; admin=0</u>
+
+	
+	
+</details>
+<details>
 <summary>BROKEN LOGIC</summary>
 <b>::::: [RESET FUNCTION]</b>
 	
