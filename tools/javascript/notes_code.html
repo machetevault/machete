@@ -128,8 +128,41 @@ keyword >>> <b>THIS</b>
 -onkeydown()
 -onload()
 </details>
+<details>
+<summary>NUMBERS AND STRINGS</summary>
+<b>NOTES:</b>
 
- <b>CODE</b> 
+-The backslash (\) escape character turns special characters into string characters.
+-Exists some different built-in properties that can help on JS with some actions. 
+
+<b>::: GET LENGTH</b>
+
+let text = "MACHETE";
+let length = text.length;
+
+RESULT: 7
+
+<b>::: METHODS</b>
+
+slice() extracts a part of a string and returns the extracted part in a new string. | let part = text.slice(7, 13);
+let part = text.slice(7); will show the rest of the string after position 7. 
+let part = text.slice(-12); will do the inverse.  
+
+substring(), is similar to slice() // let part = str.substring(7, 13);
+replace(), method replaces a specified value with another value in a string.
+<b>SAMPLE:</b> let newText = text.replace("Microsoft", "W3Schools");
+-replaces only the first match. replaceAll() will replace all matches. 
+-returns a new string.
+-does not change the string it is called on.
+-replace case insensitive, use a regular expression with an /i flag.
+<b>SAMPLE:</b> let newText = text.replace(/MICROSOFT/i, "W3Schools");
+
+indexOf() method returns the index (position) the first occurrence of a string in a string
+<b>SAMPLE:</b> let index = text.indexOf("locate");
+  
+</details>
+
+<b>CODE</b> 
   
 <details>
 <summary>ADD NEW.js</summary>
