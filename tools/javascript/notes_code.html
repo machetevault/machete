@@ -30,8 +30,48 @@
 
 <b>NOTES:</b>  
 
-
+<u> :::> Changing HTML content</u>
   
+First need to get the HTML element TAG to change, for that use: <b>getElementById()</b>
+<b>SAMPLE:</b> document.getElementById("machete").innerHTML = "Hello JavaScript";
+You can use <b>"</b> r <b>'</b>, both accepted.
+
+<u> :::> Changing HTML style CSS</u>
+<b>SAMPLE:</b> document.getElementById("machete").style.fontSize = "35px";
+To HIDE SAMPLE: document.getElementById("machete").style.display = "none";
+To SHOW SAMPLE: document.getElementById("machete").style.display = "block";
+
+<b>:::> WHERE TO ALLOW THE SCRIPT TAGS</b>
+
+Can be placed in the either the &lt;body&gt;, or in the &lt;head&gt; section of an HTML page.
+
+<b>.......SAMPLE FUNCTION AND INVOKE</b>
+
+<b>&lt;script&gt;
+function myFunction() {
+  document.getElementById("machete").innerHTML = "change completed.";
+}
+&lt;/script&gt;
+&lt;button type="button" onclick="myFunction()"&gt;Try it&lt;/button&gt;</b>
+
+<b>:::> EXTERNAL SCRIPT INVOKE</b>
+
+<b>FULL URL:</b>&lt;script src="https://machetevault.github.io/conf/machete.js"&gt;&lt;/script&gt;
+<b>FILE PATH:</b>&lt;script src="/conf/machete.js"&gt;&lt;/script&gt;
+<b>FILENAME:</b>&lt;script src="machete.js"&gt;&lt;/script&gt;
+
+<b>:::> OUTPUT</b>
+
+<b>-into HTML:</b> innerHTML | document.write()
+
+<b>SAMPLE:</b>&lt;script&gt;document.write(5 + 6);&lt;/script&gt; | &lt;button type="button" onclick="document.write(5 + 6)"&gt;Try it&lt;/button&gt;
+  
+<b>-alert box:</b> windows.alert()
+<b>-console log:</b> console.log()
+  
+
+
+
   
   
 <details>
