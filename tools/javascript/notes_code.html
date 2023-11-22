@@ -36,22 +36,21 @@
 -JavaScript treats underscore as a letter, identifiers containing _ are valid variable names.
 -<b>let</b> variables cannot be re-declared, var variables can be, however can impose problems.
 -the characters "+=" can be used to concatenate strings.
-
-
-
-<u>:::> Changing HTML content</u>
   
+<details>
+<summary>CHANGING HTML CONTENT</summary>  
 First need to get the HTML element TAG to change, for that use: <b>getElementById()</b>
 <b>SAMPLE:</b> document.getElementById("machete").innerHTML = "Hello JavaScript";
 You can use <b>"</b> or <b>'</b>, both accepted.
-
-<u>:::> Changing HTML style CSS</u>
+</details>
+<details>
+<summary>CHANGING HTML STYLE CSS</summary>
 <b>SAMPLE:</b> document.getElementById("machete").style.fontSize = "35px";
 To HIDE SAMPLE: document.getElementById("machete").style.display = "none";
 To SHOW SAMPLE: document.getElementById("machete").style.display = "block";
-
-<b>:::> WHERE TO ALLOW THE SCRIPT TAGS</b>
-
+</details>
+<details>
+<summary>WHERE TO ALLOW THE SCRIPT TAGS</summary>  
 Can be placed in the either the &lt;body&gt;, or in the &lt;head&gt; section of an HTML page.
 
 <b>.......SAMPLE FUNCTION AND INVOKE</b>
@@ -62,15 +61,15 @@ function myFunction() {
 }
 &lt;/script&gt;
 &lt;button type="button" onclick="myFunction()"&gt;Try it&lt;/button&gt;</b>
-
-<b>:::> EXTERNAL SCRIPT INVOKE</b>
-
+</details>
+<details>
+<summary>EXTERNAL SCRIPT INVOKE</summary>
 <b>FULL URL:</b>&lt;script src="https://machetevault.github.io/conf/machete.js"&gt;&lt;/script&gt;
 <b>FILE PATH:</b>&lt;script src="/conf/machete.js"&gt;&lt;/script&gt;
 <b>FILENAME:</b>&lt;script src="machete.js"&gt;&lt;/script&gt;
-
-<b>:::> OUTPUT</b>
-
+</details>
+<details>
+<summary>OUTPUT</summary>  
 <b>-into HTML:</b> innerHTML | document.write()
 
 <b>SAMPLE:</b>&lt;script&gt;document.write(5 + 6);&lt;/script&gt; | &lt;button type="button" onclick="document.write(5 + 6)"&gt;Try it&lt;/button&gt;
@@ -82,9 +81,9 @@ function myFunction() {
 <b>-console log:</b> console.log()
   
 <b>SAMPLE:</b>&lt;script&gt;console.log(5 + 6);&lt;/script&gt;
-
-<b>:::> JAVASCRIPT KEYWORDS</b>
-
+</details>
+<details>
+<summary>JAVASCRIPT KEYWORDS</summary>
 <b>var ></b> declare a variable.
 <b>let ></b> declare a block variable.
 <b>const ></b> declare a block constant. [cannot be changed]
@@ -96,9 +95,9 @@ function myFunction() {
 <b>try ></b> implement error handling to a block of statements.
 
 <b>NOTE:</b> <b>var</b> keyword should only be used in code written for older browsers. "let" most common.
-
-<b>:::> OBJECTS & OPERATORS</b>
-
+</details>
+<details>
+<summary>OBJECTS & OPERATORS</summary>  
 <b>NOTE:</b> 
 
 const person = {firstName:"John", lastName:"Doe", age:50, eyeColor:"blue"};
@@ -119,16 +118,19 @@ keyword >>> <b>THIS</b>
 <b>objectName.methodName() | name = person.fullName();</b>
 
 <b>typeof</b> "John Doe" >> find the type of a JavaScript variable.
-
-<b>:::>COMMON HTML DOM EVENTS</b>
-
+</details>
+<details>
+<summary>COMMON HTML DOM EVENTS</summary>
 -onchange()
 -onclick()
 -onmouseover()
 -onmouseout()
 -onkeydown()
 -onload()
+</details>
 
+ <b>CODE</b> 
+  
 <details>
 <summary>ADD NEW.js</summary>
 <a href="">VIEW CODE</a> | <a href="">DOWNLOAD</a>
