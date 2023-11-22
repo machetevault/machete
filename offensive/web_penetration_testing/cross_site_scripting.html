@@ -42,7 +42,7 @@
 
 <b>CASE_1:</b> Sometimes some characters are not allowed and encode techniques are needed, JS accepts decimal unicode characters. If it is 
 still failing [HTTP 403 "maybe"] a quick change is to add zeros to the encoded value, JS will interpret the value as it is. 
-<b>SAMPLE:</b> Let's say, the character <b>(</b> is not allowed, the decimal unicode value is <b>&#40</b>, so adding extra zeros will look 
+<b>SAMPLE:</b> Let's say, the character <b>(</b> is not allowed, the decimal unicode value is <b>&amp;&num;40</b>, so adding extra zeros will look 
 like the following:<b>&amp;&num;0000000040</b> 
 	
 </details>	
