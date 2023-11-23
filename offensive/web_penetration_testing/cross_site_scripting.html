@@ -119,18 +119,12 @@ query, check if exist some way to close the query to append the XSS command. Che
 
 &lt;td align="center"&gt; &lt;a href=xss_href-3.php?movie=1&name=TEST&action=vote&gt;Vote&lt;/a&gt;&lt;/td&gt;
 	
-<b>ATTACK:</b> http://192.168.37.129/bWAPP/xss_href-2.php?name=TEST><script>alert('XSS')</script>&action=vote 
+<b>ATTACK:</b> http://192.168.37.129/bWAPP/xss_href-2.php?name=TEST>&lt;script&gt;alert('XSS')&lt;/script&gt;&action=vote 
 
 If you check, the HREF is part of a column in a table as it is using the td HTML tag, you can confirm checking where is located 
 the word TEST. So, here you can close the <b>a href</b> tag and append the <b>script tag</b>. This will do a XSS attempt, as the 
 script HTML tag is added.  
 
-
-	
-
-
-
-	
 <details>
 <summary>TEST VIA DEV TOOLS</summary>
 1. Open dev-tools in your browser > go to console.
