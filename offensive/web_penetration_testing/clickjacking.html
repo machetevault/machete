@@ -33,14 +33,50 @@
 <button onclick="document.location='/machete/offensive/web_penetration_testing/client_side_attacks.html'" class="round" style="float: left;">&lt;&lt;</button><br><br>
 <details>
 <summary>GENERAL INFORMATION</summary>
+<b>NOTES:</b>
 
+- The goal is to trick the user to make them to click on things that are not 100% real, i mean, it is some kind
+of decoy to make the user to do what you want.
+- Normally it is used with the iframe tag.
+- Check the code, URL attempts can be completed.
+- Validate the CSRF token.
+
+<b>SAMPLE IFRAMES</b>
+
+<b>::: GENERAL IFRAME TEST</b>	
+
+<iframe src="URL_TO_CLICKJACK"></iframe>
+
+You can add any URL that you can attack as source reference. 
+	
+<b>::: URL PARAMETERS</b>
+	
+<iframe src="URL_TO_CLICKJACK/my-account?email=email@machete.com"></iframe>
+
+In here the parameter that we are using to attack is email, so, the parameter is defined. Inspection of the 
+requests are needed. 
+	
+<b>TEMPLATE STYLE</b>
+
+&lt;style&gt;
+    iframe {
+        position:relative;
+        width:_value;
+        height: _value;
+        opacity: _opacity;
+        z-index: 2;
+    }
+    div {
+        position:absolute;
+        top:_value;
+        left:_value;
+        z-index: 1;
+    }
+&lt;/style&gt;
+	
 </details>
 <details>
 <summary>BYPASS PROTECTION</summary>
-
-:::: CSRF
-
-
 
 	
 </details>
