@@ -45,15 +45,19 @@ user to do what you want.
 
 <b>::: GENERAL IFRAME TEST</b>	
 
-<i>&lt;iframe src="URL_TO_CLICKJACK"&gt;&lt;/iframe&gt;</i>
+<mark id="GI01"><i>&lt;iframe src="URL_TO_CLICKJACK"&gt;&lt;/iframe&gt;</i></mark>
 
 You can add any URL that you can attack as source reference. 
+
+<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#GI01')">.C1.</button>
 	
 <b>::: URL PARAMETERS</b>
 	
-<i>&lt;iframe src="URL_TO_CLICKJACK/my-account?email=email@machete.com"&gt;&lt;/iframe&gt;</i>
+<mark id="GI02"><i>&lt;iframe src="URL_TO_CLICKJACK/my-account?email=email@machete.com"&gt;&lt;/iframe&gt;</i></mark>
 
 In here the parameter that we are using to attack is email, so, the parameter is defined. Inspection of the requests are needed. 
+
+<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#GI02')">.C2.</button>	
 	
 <b>TEMPLATE STYLE</b>
 
@@ -76,7 +80,16 @@ In here the parameter that we are using to attack is email, so, the parameter is
 </details>
 <details>
 <summary>BYPASS PROTECTION</summary>
+<b>:::>  FRAME BUSTER</b>
 
+Normally, the attribute <b>sandbox="allow-forms"</b> neutralize the frame buster. So a simple iframe tag can help to confirm if
+it is allowed or not. If the URL is reflected, it means it is not blocked. 
+
+<b>SAMPLE:</b>
+
+<mark id="GI03"><i>&lt;iframe sandbox="allow-forms" src="URL_TO_CLICKJACK/my-account?email=email@machete.com"&gt;&lt;/iframe&gt;</i></mark>
+	
+<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#GI03')">.C3.</button>	
 	
 </details>
 </div>
