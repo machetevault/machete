@@ -60,8 +60,8 @@ The structure of NoSQL DB is <b>[key:pair]</b> structure.
 
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#CTNOSQL01')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#CTNOSQL02')">.C2.</button>
 
-Simple quote <b>(')</b> is used to determine which characters are interpreted as syntax, it is important to check requests/response
-before and after and compare it. In order to escape queries the slash can be used. <b>(\)</b>
+Simple quote <b>(')</b> is used to determine which characters are interpreted as syntax, it is important to check requests/response before 
+and after and compare it. In order to escape queries the slash can be used. <b>(\)</b>
 
 <b>SAMPLE:</b> this.car == '\''
 
@@ -100,8 +100,8 @@ before and after and compare it. In order to escape queries the slash can be use
 
 <b>:::> MONGO DB</b>
 
-There's a technique to use two operators that can help to discover if operators are allowed and also those can lead to 
-authentication bypass.
+There's a technique to use two operators that can help to discover if operators are allowed and also those can lead to authentication 
+bypass.
 
 <u>Request login sample:</u>
 
@@ -112,15 +112,15 @@ authentication bypass.
 
 <b>OPERATORS:</b>
 
-<mark id="OP01"><b>{"$ne":""}</b></mark> | selects the documents where the value of the specified field is not equal to the specified value. 
-This includes documents that do not contain the specified field.
+<mark id="OP01"><b>{"$ne":""}</b></mark> | selects the documents where the value of the specified field is not equal to the specified value. This includes 
+documents that do not contain the specified field.
 
 <mark id="OP01"><b>{"$regex":""}</b></mark> | provides regular expression capabilities for pattern matching strings in queries.
 
 <b>TECHNIQUE:</b> Case scenario with a valid user to attempt!!
 
-As it is to bypass authentication methods, normally it is attempted on input fields and also, probably exist some users
-as reference to use it.
+As it is to bypass authentication methods, normally it is attempted on input fields and also, probably exist some users as reference 
+to use it.
 
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#OP01')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#OP02')">.C2.</button>
 
