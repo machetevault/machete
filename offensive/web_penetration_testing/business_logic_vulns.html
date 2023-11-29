@@ -34,7 +34,35 @@
 <details>
 <summary>GENERAL INFORMATION</summary>
 
+<b>GOAL:</b> Test if the functionality is doing what is supposed to do, it is validating actions ?
+	
+<b>NOTES:</b>
+
+- Important to analyze the requests using burpsuite.
+- Check for actions, shopping cart, prices, etc.
+- Check input user validation.
+- You can try with positive/negative values and check if the behavior is changing. 
+<b>SAMPLE:</b> productId=1&redir=PRODUCT&quantity=1&price=3700
+	
+- Sometimes the logic is broken and you can affect the behavior or the values.
+<b>SAMPLE:</b> productId=2&redir=PRODUCT&quantity=-1
+
+- Check if exist some coupons or any other functionality on the site, but is correctly validating ?
+	
 </details>			
+<details>
+<summary>NO CONTROLS</summary>
+<b>NOTES:</b>
+
+- Requests inspection is needed.
+- Test if you can access functionality that should be available only for administrator or known users.
+- It is important to read if exist any behavior for specific users. 
+
+<b>SAMPLE:</b>
+
+<b>URI_PATH:</b> http://URL/admin
+	
+</details>
 </div>
 </pre>
 <button onclick="document.location='/machete/offensive/web_penetration_testing/server_side_attacks.html'">GO BACK</button>
