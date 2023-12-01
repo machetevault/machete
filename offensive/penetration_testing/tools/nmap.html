@@ -33,7 +33,24 @@
 <button onclick="document.location='/machete/offensive/penetration_testing/tools_usage.html'" class="round" style="float: left;">&lt;&lt;</button><br><br>
 
 <b>NOTE:</b> 
-  
+
+normal command:
+
+$ nmap -sC -sV -p- -T4 -oN filename.txt IP_ADDR
+
+flags:
+
+-sC: run with scripts NSE
+-sV: 
+-p-: run against all ports / 65535
+-T4: make it faster
+-oN: write output to file
+
+network discover command:
+
+$ nmap -sn NETWORK_IP/MASK
+$ nmap -sn 172.17.9.0/24
+
 </div>
 </pre>
 <button onclick="document.location='/machete/offensive/penetration_testing/tools_usage.html'">GO BACK</button>
