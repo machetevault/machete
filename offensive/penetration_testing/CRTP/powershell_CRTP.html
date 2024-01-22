@@ -962,11 +962,10 @@ PS> (Get-DomainOU -Identity [OUName]).distinguishedname | %{Get-DomainComputer -
 
 % = means each result (object)  
 </details>
-<h4>POWERSHELL PERSISTENCE</h4>	
+<h4>POWERSHELL PERSISTENCE ACL</h4>	
 <details>
 <summary>DOMAIN PERSISTENCE ACL ADMINSDHOLDER</summary>
 <b>DESCRIPTION:</b>
-<h3> PERSISTENCE - ACLs: AdminSDHolder </h3>
 
 Resides in the System container of a domain and used to control the permissions 
 -using an ACL - for certain built-in privileged groups (called Protected Groups). 
@@ -1147,6 +1146,7 @@ PS> Get-RemoteCachedCredential -ComputerName dcorp-dc -Verbose
 
 </details>
 <details>
+<h4>POWERSHELL PERSISTENCE</h4>	
 <summary>DOMAIN PERSISTENCE CUSTOMSSP</summary>
 <b>DESCRIPTION:</b>
 
@@ -1278,6 +1278,7 @@ Now, it is possible to access any machine with a valid username and password as 
 PS> Enter-PSSession –Computername dcorp-dc –credential dcorp\Administrator  
 
 </details>
+<h4>POWERSHELL CONNECTION</h4>	
 <details>
 <summary>REMOTE CONNECTION</summary>
 <b>DESCRIPTION:</b>
