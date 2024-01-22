@@ -35,12 +35,24 @@
 
 - The attacker might cause the server to make a connection to internal services within the organization's infrastructure.
 - This can be in the vulnerable application, or on other back-end systems that the application can communicate with.
+
+<u>WHY happens ?</u>
+
+- access control bad configurations allowing to bypass 
+- recovery purposes configuring the admin access as backdoor
+- connectivity from server and not from external users
 	
 </details>
 <details>
 <summary>COMMON ATTEMPTS</summary>
 
+Inspection of the requests are crucial, sometimes the request are sending or using variables to call more URL's. 
+So any URL can be called to check results. For example, a delete user URL action was founded checking code, it can
+be attempted to remove the user. 
 
+<b>SAMPLE:</b>
+
+URL=http://localhost/admin/delete?user=machetevault
 
 </details>	
 </div>
