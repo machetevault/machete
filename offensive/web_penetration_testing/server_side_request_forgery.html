@@ -61,7 +61,7 @@ URL=http://192.168.80.7/admin/delete?user=machetevault
 <details>
 <summary>CIRCUMVENT SSRF DEFENSES</summary>
 
->> blacklisted input filters
+<b>:: blacklisted input filters</b>
 
 some common controls can use list of common words, uri paths and more to block requests. however, exist some ways to by-pass those 
 controls.
@@ -69,11 +69,36 @@ controls.
 for example, 
 
 1. if is it an IP address, you can attempt to obfuscate the ip address using other encode method. 127.0.0.1 >> obfuscated will be
-2130706433 | 017700000001
-2. you can add a new DNS entry to resolve to something else
-3. obfuscate using URL encoding or other encoding method
+2130706433 | 017700000001 | http://127.1/
+2. you can add a new DNS entry to resolve to something else. 
+3. obfuscate using URL encoding or other encoding method [burpsuite encoder/decoder] even changing a letter can do a big difference.
 4. change HTTP method [HTTP / HTTPS]
 
+<b>:: whitelisted input filters</b> 
+
+[goal]: to by-pass this exploiting inconsistencies in URL parsing is key.
+
+1. some apps only allow specific strings, values, etc. to match a whitelist.
+2. it normally look to match at the beginning or in within in it.
+
+<u>ways to by-pass it:</u>
+
+<b>ONE:</b> embed credentials in URL before hostname using @ value
+<u>SAMPLE:</u> https://known-host:fakepass@badactor-host
+
+<b>TWO:</b> usage of # to fragment URL's
+<u>SAMPLE:</u> https://badactor-host#wellknown-host
+
+<b>THREE:</b> leverage of DNS hierarchy to place required input to something you own
+<u>SAMPLE:</u> https://expected-host.evil-host
+
+<b>FOUR:</b> URL encode characters to confuse URL parsing, useful if the code that implements the filter handles URL-encoded 
+characters differently than the code that performs the back-end HTTP request.
+
+<b>FIVE:</b> Double URL encoding. [use burpsuite decoder tab]
+
+<b>NOTE:</b> Combination of techniques can be used!
+	
 </details>	
 </div>
 </pre>
