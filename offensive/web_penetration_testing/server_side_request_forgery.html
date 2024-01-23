@@ -47,12 +47,30 @@
 <summary>COMMON ATTEMPTS</summary>
 
 Inspection of the requests are crucial, sometimes the request are sending or using variables to call more URL's. 
-So any URL can be called to check results. For example, a delete user URL action was founded checking code, it can
-be attempted to remove the user. 
+It can be IPaddresses, hostnames, etc. So any URL can be called to check results. For example, a delete user URL action was founded 
+checking code, it can be attempted to remove the user. 
+
+** enumeration is key.
 
 <b>SAMPLE:</b>
 
 URL=http://localhost/admin/delete?user=machetevault
+URL=http://192.168.80.7/admin/delete?user=machetevault
+
+</details>	
+<details>
+<summary>CIRCUMVENT SSRF DEFENSES</summary>
+
+>> blacklisted input filters
+
+some common controls can use list of common words, uri paths and more to block requests. however, exist some ways to by-pass those controls.
+
+for example, 
+
+1. if is it an IP address, you can attempt to obfuscate the ip address using other encode method. 127.0.0.1 >> obfuscated, 2130706433 | 017700000001
+2. you can add a new DNS entry to resolve to something else
+3. obfuscate using URL encoding or other encoding method
+4. change HTTP method [HTTP / HTTPS]
 
 </details>	
 </div>
