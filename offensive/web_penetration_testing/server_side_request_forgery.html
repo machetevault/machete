@@ -112,11 +112,18 @@ characters differently than the code that performs the back-end HTTP request.
 to acomplish this one it is needed to first find a open redirection vulnerability. 
 
 manual inspection of the URL is needed, it wil be each time the app is validating the source but not the entire URL. so, 
-the URL open redirection can be vulnerated. 
+the URL open redirection can be vulnerated. not necessarily you will see the entire URL, it can e
 
 <b>SAMPLE:</b> /product/nextProduct?currentProductId=6&path=http://machetevaultshop.com
 
 So, one way to test is to check if there are controls in place to prevent changing URL's to call.
+	
+</details>	
+<details>
+<summary>BLIND SSRF</summary>
+
+occur if you can cause an application to issue a back-end HTTP request to a supplied URL, but the response from the back-end request is not 
+returned in the application's front-end response. 
 	
 </details>	
 </div>
