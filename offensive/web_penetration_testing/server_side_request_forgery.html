@@ -80,11 +80,16 @@ for example,
 
 1. some apps only allow specific strings, values, etc. to match a whitelist.
 2. it normally look to match at the beginning or in within in it.
+3. Important to check for differences in @ / #, also, the goal is to make a internal call, so localhost can be used to trigger it.
+
+<b>SAMPLE:</b> URLcall=http://127.0.0.1:80%2523@app.shop.net/admin/delete?username=carly
 
 <u>ways to by-pass it:</u>
 
 <b>ONE:</b> embed credentials in URL before hostname using @ value
-<u>SAMPLE:</u> https://known-host:fakepass@badactor-host
+<u>SAMPLE:</u> 
+https://known-host:fakepass@badactor-host
+http://username@stock.weliketoshop.net
 
 <b>TWO:</b> usage of # to fragment URL's
 <u>SAMPLE:</u> https://badactor-host#wellknown-host
@@ -97,7 +102,21 @@ characters differently than the code that performs the back-end HTTP request.
 
 <b>FIVE:</b> Double URL encoding. [use burpsuite decoder tab]
 
-<b>NOTE:</b> Combination of techniques can be used!
+<b>NOTES:</b> 
+1. combination of techniques can be used!
+2. test each way and compare results, for example between @ and #
+3. use burpsuite decoder but also cyberchef
+
+<b>:: bypassing filters via open redirection</b> 
+
+to acomplish this one it is needed to first find a open redirection vulnerability. 
+
+manual inspection of the URL is needed, it wil be each time the app is validating the source but not the entire URL. so, 
+the URL open redirection can be vulnerated. 
+
+<b>SAMPLE:</b> /product/nextProduct?currentProductId=6&path=http://machetevaultshop.com
+
+So, one way to test is to check if there are controls in place to prevent changing URL's to call.
 	
 </details>	
 </div>
