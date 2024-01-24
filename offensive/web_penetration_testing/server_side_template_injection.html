@@ -33,7 +33,30 @@
 <details>
 <summary>GENERAL INFORMATION</summary>
 
-</details>			
+first clue is XSS, normally after finding XSS no deep testing is performed and sometimes missed during black box engagements.
+one good way to differentiate if SSTI is possible is to attempt normal/common operations, like sum, multiplication, etc.
+
+not only XSS can lead to SSTI, also XXE.
+
+typically arises through developers intentionally letting users submit or edit templates - some template engines offer a secure 
+mode for this express purpose.
+
+it may occur as a Local File Include (LFI) variant, exploitable through classic LFI techniques such as code embedded in log files, 
+session files, or /proc/self/env
+	
+</details>	
+<details>
+<summary>IDENTIFICATION</summary>
+
+1. detecting template injection
+2. detect template engine in use [it differs, depending the engine
+3. 
+
+	
+
+</details>
+
+	
 </div>
 </pre>
 <button onclick="document.location='/machete/offensive/web_penetration_testing/server_side_attacks.html'">GO BACK</button>
