@@ -49,7 +49,28 @@ session files, or /proc/self/env
 <summary>IDENTIFICATION</summary>
 
 1. detecting template injection
+
+initial approach is to try fuzzing the template by injecting a sequence of special characters commonly used in template expressions, 
+such as <b>${{<%[%'"}}%\</b>. If an exception is raised, this indicates that the injected template syntax is potentially being 
+interpreted by the server in some way.	
+
+Even if fuzzing did suggest a template injection vulnerability, you still need to identify its context in order to exploit it.
+
+<b><u>for plaintext:</u></b>
+Normal XSS attempts cannot provide evidence to SSTI, it will be needed some kind of operations, like {7*7}. If the result is 
+49, it means the mathematical operation is evaluated on server side, confirming a potential SSTI vulnerability.
+
+<b><u>for codecontext:</u></b>
+it will render using variable/parameter, so one way to test if the template used is vulnerable is to attempt injecting HTML code
+to a non-XSS vulnerable parameter, if it is reflected, it's could means the parameters are vulnerable to SSTI.
+
+<b>SAMPLE:</b> http://vulnerable-website.com/?greeting=data.username&lt;tag&gt; | http://vulnerable-website.com/?greeting=data.username}}&lt;tag&gt;
+	
 2. detect template engine in use [it differs]
+
+A common way of doing this is to inject arbitrary mathematical operations using syntax from different template engines.
+check this site, https://portswigger.net/web-security/server-side-template-injection
+
 3. read the documentation
 
 </details>	
