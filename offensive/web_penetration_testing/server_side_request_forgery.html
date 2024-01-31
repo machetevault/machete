@@ -123,10 +123,14 @@ So, one way to test is to check if there are controls in place to prevent changi
 <summary>BLIND SSRF</summary>
 
 occur if you can cause an application to issue a back-end HTTP request to a supplied URL, but the response from the back-end request is not 
-returned in the application's front-end response. 
+returned in the application's front-end response. It is needed to use some kind of tool to check for responses. 
 
-It is needed to use some tool to check for responses. (burp collaborator)
-	
+techniques to use:
+
+- trigger an HTTP request to an external system that you control (burp collaborator)
+- it can be DNS request as well.
+- if defenses are in place, techniques to obfuscate will be needed.
+
 </details>	
 </div>
 </pre>
