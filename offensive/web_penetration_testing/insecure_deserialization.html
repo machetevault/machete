@@ -34,7 +34,38 @@
 <details>
 <summary>GENERAL INFORMATION</summary>
 
-</details>		
+- it is the process of converting complex data structures (objects, fields) into a "flatter" format that can be sent and 
+received as a sequential stream of bytes.
+- most common languages to learn, PHP / Ruby / Java for deserialization
+- used for,
+	- write complex data to inter-process memory, a file or a database
+	- send complex data, sample, over a network, API call and more.
+
+- exist native support for serialization depending the language. common is binary format
+- one way to prevent a field to be serialized is to declare it as "transient"
+- serialization on Ruby is called: marshalling / and in python it is called: pickilng
+
+so what's <b>INSECURE DESERIALIZATION</b> ?
+
+it is when user controlabe data is deserialized by a website. this enables a bad actor to manipulate serialized
+objects in order to pass harmful data into the app. 
+
+<u>why this attack is effective ?</u> 
+- because it can be detected after the object was deserialized which is too late as the data could start/trigger an 
+attack, etc.
+- exist a weird assuptiom that deserialized objects are trustworthy. 
+- dependencies, massive pool of classes and methods that is difficult to manage securely.
+
+	
+</details>
+<details>
+<summary>GENERAL INFORMATION</summary>
+
+</details>
+<details>
+<summary>GENERAL INFORMATION</summary>
+
+</details>
 </div>
 </pre>
 <button onclick="document.location='/offensive/web_penetration_testing/server_side_attacks.html'">GO BACK</button>
