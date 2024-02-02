@@ -79,9 +79,29 @@ php serialization, etc.
 </details>
 <details>
 <summary>MODIFYING SERIALIZED OBJECTS</summary>
+- it can be pretty common to find php serialization codes. sometimes they are also encoded in different formats, so manual inspection
+is needed.
+- depending the vulnerability, a quick method to make changes is to change method type. Between, GET/POST.
+- burpsuite inspector is pretty common to help on this cases. 
+- it is important to understand what the serialized code is doing and what actions can be accomplish. 
 
-
+<u>SAMPLE:</u> O:4:"User":2:{s:4:"name":s:6:"carlos"; s:10:"isLoggedIn":b:1;}
 	
+</details>
+<details>
+<summary>MODIFYING SERIALIZED DATA TYPES</summary>
+PHP-based logic is particularly vulnerable to this kind of manipulation due to the behavior of its loose comparison operator (==) 
+when comparing different data types. 
+
+- each time the comparison is between integer > string, the integer will be prevalent. 
+SAMPLE: 3 == "hola" it will be interpreted as 3 == 3 = TRUE
+SAMPLE: 0 == "password" will be TRUE. "zero" is a different case as boolean option.
+
+validations against zero can enable different ways of authentication bypass.
+
+this is possible because deserialization preserves the data type. if not it will process different and probably provide a 
+different condition.
+
 </details>
 </div>
 </pre>
