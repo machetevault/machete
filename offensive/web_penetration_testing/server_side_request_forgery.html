@@ -113,12 +113,21 @@ characters differently than the code that performs the back-end HTTP request.
 
 <b>:: bypassing filters via open redirection</b> 
 
-to acomplish this one it is needed to first find a open redirection vulnerability. 
+to acomplish this one it is needed to first find a open redirection vulnerability. it can be something similar to the following
+code,
 
-manual inspection of the URL is needed, it wil be each time the app is validating the source but not the entire URL. so, 
-the URL open redirection can be vulnerated. not necessarily you will see the entire URL, it can e
+GET /product/nextProduct?currentProductId=7&path=/product?productId=8 
 
-<b>SAMPLE:</b> /product/nextProduct?currentProductId=6&path=http://machetevaultshop.com
+the path section is providing or calling another URL, so that can help to test if exist an open redirect vulnerability. simple
+way to test it is to type or call a simple url: 
+
+GET /product/nextProduct?currentProductId=7&path=https://www.google.com
+
+if the site is loaded, it means theres an open redirection vulnerability to exploit. so use the request vulnerable to SSRF and 
+combine both to exploit.
+
+- manual inspection of the URL is needed, it wil be each time the app is validating the source but not the entire URL. so, 
+the URL open redirection can be vulnerated. not necessarily you will see the entire URL, it can the URI path.
 
 So, one way to test is to check if there are controls in place to prevent changing URL's to call.
 	
