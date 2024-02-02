@@ -33,9 +33,8 @@
 <button onclick="document.location='/offensive/web_penetration_testing/server_side_attacks.html'" class="round" style="float: left;">&lt;&lt;</button><br><br>
 <details>
 <summary>GENERAL INFORMATION</summary>
-
-- it is the process of converting complex data structures (objects, fields) into a "flatter" format that can be sent and 
-received as a sequential stream of bytes.
+- it is the process of converting complex data structures (objects, fields) into a "flatter" format that can be sent and received 
+as a sequential stream of bytes.
 - most common languages to learn, PHP / Ruby / Java for deserialization
 - used for,
 	- write complex data to inter-process memory, a file or a database
@@ -47,24 +46,42 @@ received as a sequential stream of bytes.
 
 so what's <b>INSECURE DESERIALIZATION</b> ?
 
-it is when user controlabe data is deserialized by a website. this enables a bad actor to manipulate serialized
-objects in order to pass harmful data into the app. 
+it is when user controlabe data is deserialized by a website. this enables a bad actor to manipulate serialized objects in order 
+to pass harmful data into the app. 
 
 <u>why this attack is effective ?</u> 
-- because it can be detected after the object was deserialized which is too late as the data could start/trigger an 
-attack, etc.
+- because it can be detected after the object was deserialized which is too late as the data could start/trigger an attack, etc.
 - exist a weird assuptiom that deserialized objects are trustworthy. 
 - dependencies, massive pool of classes and methods that is difficult to manage securely.
 
+</details>
+<details>
+<summary>IDENTIFICATION</summary>
+
+- first thing, check and double check all data being passed into the website to try to find possible serialized data.
+- to know or identify serialized data it is needed to know the format of the language. for example, python serialization, 
+php serialization, etc. 
+
+<b>PHP</b>
+
+<u>format:</u> O:4:"User":2:{s:4:"name":s:6:"carlos"; s:10:"isLoggedIn":b:1;}
+
+<b>check:</b> https://portswigger.net/web-security/deserialization/exploiting to see how it can be interpreted.	
+
+<b>JAVA</b>
+
+- it use binary serialization. difficult to read but still identify serialized data.
+
+<u>Key points:</u>
+	- serialized objects always begin with same bytes, <b>ac ed</b> in <u>hexadecimal</u> and <b>rO0</b> in <u>base64.</u>
+	- any class that implements "java.io.Serializable" is vulnerable. with help of "readObject()" method used to deserialize
+	data from "InputStream".
+</details>
+<details>
+<summary>MODIFYING SERIALIZED OBJECTS</summary>
+
+
 	
-</details>
-<details>
-<summary>GENERAL INFORMATION</summary>
-
-</details>
-<details>
-<summary>GENERAL INFORMATION</summary>
-
 </details>
 </div>
 </pre>
