@@ -160,6 +160,23 @@ O:14:"Template":1:{s:14:"lock_file_path";s:23:"/home/carlos/morale.txt";}
 the important thing is to understand the serialized object and what is possible to do with the code you found.
 	
 </details>	
+<details>
+<summary>GADGET CHAIN</summary>
+"is a snippet of code that exists in the application that can help an attacker to achieve a particular goal."
+
+- the attacker's goal might simply be to invoke a method that will pass their input into another gadget
+- a gadget chain is not a payload of chained methods constructed by the attacker. All of the code already exists 
+on the website. The only thing the attacker controls is the data that is passed into the gadget chain. 	
+- This is typically done using a magic method that is invoked during deserialization, sometimes known as a "kick-off gadget".
+
+common tool: ysoserial
+https://github.com/frohoff/ysoserial
+
+** Java versions 16 and above, you need to set a series of command-line arguments for Java to run ysoserial
+
+>>> EXPLOITING JAVA DESEARILIZATION WITH APACHE COMMONS 
+	
+</details>
 </div>
 </pre>
 <button onclick="document.location='/offensive/web_penetration_testing/server_side_attacks.html'">GO BACK</button>
