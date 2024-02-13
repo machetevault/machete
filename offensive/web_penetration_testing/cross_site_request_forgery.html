@@ -105,15 +105,21 @@ pretty important to validate,
 <details>
 <summary>BROKEN REFERER VALIDATION</summary>
 
-
-	
 </details>
 <details>
-<summary>TIED TO COOKIE SESSION</summary>
+<summary>NOT TIED TO USER SESSION</summary>
 - several tests
 	* csrf token is valid ?
 	* csrf token is needed ?
 	* csrf token is tied to session ? can you use one from other user session ?
+	
+</details>
+<details>
+<summary>TOKEN TIED TO NON-SESSION COOKIE</summary>
+* important tests
+	- repeat same tests 
+	- important, is the csrf valid ?
+	- exist the possibility to add input data to the cookie ?
 	
 </details>
 </div>
