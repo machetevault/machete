@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<link rel="icon" type="image/x-icon" href="/conf/LOGO01.png">
+<link rel="stylesheet" type="text/css" href="/conf/machete_style_offensive_sections.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="/conf/machete_conf.js"></script>
+	
+  <title> M A C H E T E </title>
+  <!--------------------->
+  <!-- b0ydC Founder -->
+  <!-- --------------- -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+
+</head>
+<body>
+<br>
+<a href="/index.html"><img src="/conf/letter_logo.jpg" alt="LOGO" style="width:20%;"></a>
+<br>
+<center>
+<div style="font-size:24px; text-align:center; font-family:courier,monospace;">
+    <a href="/offensive.html">OFFENSIVE</a> |
+    <a href="/defensive.html">DEFENSIVE</a> |
+    <a href="/tools.html">WIKI</a> |
+    <a href="/wiki/services.html">ACADEMY</a> |
+    <a href="/about.html">ABOUT</a> 
+</div> 
+
+<p class="titulos"><mark>[HYDRA]</mark></p>
+<div>
+<pre>
+<div class="column" style="display: inline-block; text-align: left; background-color:gray;">
+<button onclick="document.location='/offensive/penetration_testing/tools_usage.html'" class="round" style="float: left;">&lt;&lt;</button><br><br>
+
+_common usage for web forms:
+first you need to know the payload or form fields used. for that you can do the following,
+
+1. load the site
+2. open dev tools
+3. go to network tab
+4. select the request to inspect
+5. go to payload tab
+6. click "view source"
+7. collec the payload
+
+you will see something like this, will be needed
+
+username=^USER^&password=^PASS^
+  
+<u>SAMPLE:</u>
+hydra -L rockyou.txt -p idk -t 20 35.227.24.107 http-post-form "/login:user=^USER^&password=^PASS^:Invalid username"
+
+<b>flags:</b>
+
+-L = wordlist to use
+-p = password to use
+-t = threads to use 
+http-post-form = method to use
+
+</div>
+</pre>
+<button onclick="document.location='/offensive/penetration_testing/tools_usage.html'">GO BACK</button>
+</div>
+<p class="titulos">©® - 2023/2024.</p>
+</center>
+</body>
+</html>
