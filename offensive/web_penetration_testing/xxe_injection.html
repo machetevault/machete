@@ -40,7 +40,10 @@
 3. DTD means, data definition type.
 4. Think on DTD as a "declared variable" that you can personalize and invoke. 
 5. One way to bypass chunk issues is to encode the payloads in base64. prettry used on blind attacks
+	
 <b>SAMPLE:</b> &lt;!ENTITY % VAR_NAME SYSTEM "php://filter/convert.base64-encode/resource=/etc/passwd"&gt;
+
+6. if some test are not providing results, attempt with an external dtd, so you can exfiltrate data a confirm a blind XXE.
 
 </details>
 <details>
