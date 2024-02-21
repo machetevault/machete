@@ -53,7 +53,43 @@
 <b>-mode =</b> specify the attack type
   
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#ffuf01')">.C1.</button>
-  
+
+<details>
+<summary>ADVANCE FUZZING TECHNIQUES</summary>
+#WAF BYPASS
+$ ffuf -w [WORDLIST] -u [URL] -X GET -H "User-Agent: FUZZ"
+$ ffuf -w /home/payloads_list.txt -u http://machetevault.com/FUZZ -X GET -H "User-Agent: FUZZ"
+
+#CONTENT TYPE
+$ ffuf -w [WORDLIST] -u [URL] -X POST -H "Content-Type: FUZZ" -d '{"data": "example"}'
+$ ffuf -w /home/common_list.txt -u http://machetevault.com/FUZZ -X POST -H "Content-Type: FUZZ" -d '{"data": "example"}'
+
+#PARAMETERS DISCOVER
+$ ffuf -w [WORDLIST] -u [URL] 
+$ ffuf -w /home/wordlist.txt -u http://machetevault.com?FUZZ=value
+
+#LINK DISCOVERY FOLLOWING LINKS
+$ ffuf -w [WORDLIST] -u [URL] -recursion -recursion-depth 1
+$ ffuf -w /home/wordlist.txt -u http://machetevault.com/FUZZ -recursion -recursion-depth 1
+
+#JWT TOKEN & HEADER BRUTE FORCE 
+$ ffuf -w [WORDLIST] -u [URL] -H "Authorization: Bearer FUZZ"
+$ ffuf -w /home/jwt_token_list.txt -u http://machetevault.com -H "Authorization: Bearer FUZZ"
+$ ffuf -w /home/common.txt -u http://machetevault.com/FUZZ -H "X-Custom-Header: FUZZ"
+
+#RATE LIMIT BY-PASS
+$ ffuf -w [WORDLIST] -u [URL] -p 0.1s
+$ ffuf -w /home/common.txt -u http://machetevault.com/FUZZ -p 0.1s
+
+#ENUMERATE FILE EXTENSION
+$ ffuf -w [WORDLIST] -u [URL] -e .php,.html,.phtml,.css
+$ ffuf -w /home/common.txt -u http://machetevault.com/FUZZ -e .php,.html,.phtml,.css
+
+#HTTP REQUEST SMUGGLING
+$ ffuf -w [WORDLIST] -u [URL] -X FUZZ
+$ ffuf -w /home/payloads_list.txt -u http://machetevault.com -X FUZZ
+	
+</details>	
 </div>
 </pre>
 <button onclick="document.location='/offensive/web_penetration_testing/tools_usage.html'">GO BACK</button>
