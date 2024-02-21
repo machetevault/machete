@@ -123,7 +123,8 @@ pretty important to validate,
 	- important, is the csrf valid ?
 	- exist the possibility to add input data to the cookie ?
 	- if csrf cookie results in the CSRF token being rejected. This suggests that the csrfKey cookie may not be strictly 
-	tied to the session
+	tied to the session.
+	- it is important to get 2 users.
 
 <b>NOTE:</b> important to read about possible ways to inject data in cookie headers. 
 
@@ -135,6 +136,11 @@ the other can be IMAGES.
 &lt;img src="https://machetevault.com/?search=hack%0d%0aSet-Cookie:%20csrfToken=YOUR-TOKEN%3b%20SameSite=None" onerror="document.forms[0].submit()"&gt;
 	
 </details>
+<details>
+<summary>TOKEN DUPLICATED IN COOKIE</summary>
+
+</details>
+
 </div>
 </pre>
 <button onclick="document.location='/offensive/web_penetration_testing/client_side_attacks.html'">GO BACK</button>
