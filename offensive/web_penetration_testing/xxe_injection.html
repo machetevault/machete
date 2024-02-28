@@ -185,8 +185,8 @@ it is added same format as RFI or LFI attacks.
 </details>
 <details>
 <summary>XXE TO RETRIEVE DATA / REPURPOSING A LOCAL DTD</summary>
-- in order to exploit this one, you will need to reuse an existing DTD that is stored on the server, you will use it as benefit
-for the attack.
+- in order to exploit this one, you will need to reuse an existing DTD that is stored on the server, you will use it as benefit for
+the attack.
 - so first you need to know what environment you are working on to search for existing well know DTD to reference.
 
 format of the DTD to use:
@@ -208,6 +208,9 @@ sample payload:
 '&gt;
 %local_dtd;
 ]&gt;
+
+<b>NOTE:</b> docbookx.dtd is a common DTD found on GNOME desktop.
+It is pretty important to understand how the local DTD works in order to use it, as it will be invoked. 
 	
 </details>
 </div>
