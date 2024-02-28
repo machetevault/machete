@@ -191,12 +191,12 @@ the attack.
 
 format of the DTD to use:
 1. you need to declare the local DTD
-2. you need to declare the entity
+2. you need to declare the entity and inside retrieve the file/eval/error entities (check sample structure)
 3. you need to declare the content to retrieve with a SYSTEM entity
 4. you need to declare the EVAL entity with an ERROR entity to a non-existent file to generate the error
 5. invoke all 3 entities
 
-sample payload:
+<i>sample payload:</i>
 
 &lt;!DOCTYPE message [
 &lt;!ENTITY % local_dtd SYSTEM "file:///usr/share/yelp/dtd/docbookx.dtd"&gt;
