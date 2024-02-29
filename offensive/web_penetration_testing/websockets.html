@@ -75,12 +75,16 @@ for example, maybe the character "<" is converted to HTML, so it will not work. 
 
 </details>
 <details>
-<summary>XSS via WEBSOCKETS</summary>
-
+<summary>MANIPULATING WEBSOCKETS TO EXPLOIT VULNS</summary>
+XSS
 <b>C1:</b><mark id="XSW01">&lt;img src=1 onerror='alert(1)'&gt;</mark>
 
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#XSW01')">.C1.</button>
 
+- also, sometimes restrictions can be in place, either IP restrictions, or XSS, SQLi, or more filters in place for defense.
+X-forwarded-for header can be used to bypass restrictions.
+
+Same XSS techniques can be used to test. important one. encoding and mixing. capital letters, and more.
 	
 </details>
 </div>
