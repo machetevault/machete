@@ -60,15 +60,19 @@ sample websocket message: ws.send("Peter Wiener");
 any data format can be sent using websockets, however, it is pretty common to use JSON format. 
 
 sometimes it is needed to manipulate the websocket handshake also. 
-
-	
 	
 </details>
 <details>
 <summary>MANIPULATING WEBSOCKETS</summary>
+needed to analyze the requests using burpsuite and look for references, common headers can help to identify.
+also, the "Websockets history" tab is tracking all activity when websockets are present.
 
+similar tehcniques can be applied. requests can be send to repeater and modifications can be in place. as we known, websockets
+normally use JSON format. it is vulnerable to XSS, XML injection, etc. 
 
-	
+NOTE: sometimes part of the defense techniques is to convert some parameters to change it so they can lose some functionality.
+for example, maybe the character "<" is converted to HTML, so it will not work. Or viceversa.
+
 </details>
 <details>
 <summary>XSS via WEBSOCKETS</summary>
