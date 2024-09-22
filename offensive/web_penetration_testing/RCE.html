@@ -33,9 +33,20 @@
 <button onclick="document.location='/offensive/web_penetration_testing/server_side_attacks.html'" class="round" style="float: left;">&lt;&lt;</button><br><br>
 <details>
 <summary>GENERAL INFORMATION</summary>
-<b>NOTE:</b> 
+<b>NOTE: </b> 
 
+In a CTF style, it is pretty common to see a web page with some functionality, maybe connectivity tests or log
+information. 
 
+Things to check:
+	1. inpunt fields without proper validation ?
+	2. any known functionality ? PING, DNS, etc
+	3. is the action providing some results ?
+
+How to test:
+	1. use the ";" to add more commands to see if the output reflects what you are doing.
+	SAMPLE PING SCENARIO SHOWING DIR CONTENT: action=ping&ip_address=10.12.180.20;ls&submit=Action
+	2. start enumeration and read files to move.
 
 </details>
 </div>
