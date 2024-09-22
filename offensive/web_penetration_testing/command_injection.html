@@ -27,7 +27,7 @@
     <a href="/about.html">ABOUT</a> 
 </div> 
 
-<p class="titulos"><mark>[COMMAND INJECTION]</mark></p>
+<p class="titulos"><mark>[COMMAND INJECTION / RCE]</mark></p>
 <div>
 <pre>
 <div class="column" style="display: inline-block; text-align: left; background-color:gray;">
@@ -48,6 +48,18 @@ add more commands to retrieve content. <b>[ ; or & or && and | or || ]</b>
 
 <b>NOTE: </b>If possible, try any command to get some kind of reverse shell! For that check what technologies are present, change the 
 technology to validate. [C2]
+
+In a CTF style, it is pretty common to see a web page with some functionality, maybe connectivity tests or log information. 
+
+Things to check:
+	1. inpunt fields without proper validation ?
+	2. any known functionality ? PING, DNS, etc
+	3. is the action providing some results ?
+
+How to test:
+	1. use the ";" to add more commands to see if the output reflects what you are doing.
+	SAMPLE PING SCENARIO SHOWING DIR CONTENT: action=ping&ip_address=10.12.180.20;ls&submit=Action
+	2. start enumeration and read files to move.
 
 <b>::: GENERATE A SHELL</b>
 
