@@ -37,8 +37,8 @@
 	
 1. Authenticated session [if possible]
 	
-<b>NOTE:</b> When a request's credentials mode (request.credentials) is <b>include</b>, browsers will only expose the response to the frontend 
-javascript code if the <b>Access-Control-Allow-Credentials</b> header value is TRUE.
+<b>NOTE:</b> When a request's credentials mode (request.credentials) is <b>include</b>, browsers will only expose the response to the frontend javascript 
+code if the <b>Access-Control-Allow-Credentials</b> header value is TRUE.
 
 <mark><b>::: ARBITRARY ORIGIN REFLECTION</b></mark>
 	
@@ -65,8 +65,8 @@ Access-Control-Allow-Origin: https://machetevault.malicious.com"
 
 <u><b>NOTES:</b></u>
 	
-1. One way to distinguish between NULL and ARBITRARY CORS is to check if the header "Access-Control-Allow-Origin" is added to the 
-response after adding any domain. <b>SAMPLE:</b> Access-Control-Allow-Origin: https://machete.malicious.com
+1. One way to distinguish between NULL and ARBITRARY CORS is to check if the header "Access-Control-Allow-Origin" is added to the response 
+after adding any domain. <b>SAMPLE:</b> Access-Control-Allow-Origin: https://machete.malicious.com
 2. If no header added, try null. <u>Origin: null</u> [burpsuite]
 3. <b>Access-Control-Allow-Origin: null</b> will be added if successfull. 
 4. It is needed to generate a null request, HTML <u>iframe sandbox</u> can be used. 
@@ -77,10 +77,10 @@ response after adding any domain. <b>SAMPLE:</b> Access-Control-Allow-Origin: ht
 
 <b>NOTES:</b> 
 	
-1. Same steps used for "ARBITRARY ORIGIN REFLECTION" can be applied, however, at the moment to test the origin header it is 
-necessary first to try the same origin and after that, try it with the subdomain.
-2. It is necessary to inspect the request to see if exist any request to other domain, subdomain, etc. that can be used as part 
-of the attack.
+1. Same steps used for "ARBITRARY ORIGIN REFLECTION" can be applied, however, at the moment to test the origin header it is necessary 
+first to try the same origin and after that, try it with the subdomain.
+2. It is necessary to inspect the request to see if exist any request to other domain, subdomain, etc. that can be used as part of the 
+attack.
 
 <b>NOTE:</b> Sometimes this vulnerability is important when you have some kind of XSS as well that you can use to increase impact.
 
