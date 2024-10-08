@@ -5,7 +5,8 @@
 <link rel="stylesheet" type="text/css" href="/conf/machete_style_offensive_sections.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="/conf/machete_conf.js"></script>
-	
+<script src="/conf/headers_inspection.js"></script>
+
   <title> M A C H E T E </title>
   <!--------------------->
   <!-- b0ydC Founder -->
@@ -37,7 +38,7 @@
 
 <br>
 <div class="dropdown">
-<label for="options">CLASSIFICATION >>> </label>
+<label for="options">CLASSIFICATION >>> </label><br>
 <select id="options">
         <option value="">--select an option--</option>
         <option value="option1">Host:</option>
@@ -55,20 +56,28 @@
 	<option value="option13">Date:</option>
 	<option value="option14">Content-Type:</option>
 	<option value="option15">Connection:</option>
-	<option value="option16">Misc</option>
-	<option value="option17">PasswordGuessing</option>
-        <option value="option18">PasswordSpraying</option>
-        <option value="option19">PluginEnumeration</option>
-	<option value="option20">ProgrammaticAccess</option>
-	<option value="option21">RFI</option>
-	<option value="option22">Scanner</option>
-	<option value="option23">SessionHijacking</option>
-	<option value="option24">SoftwareDetection</option>
-	<option value="option25">SqlInjection</option>
-        <option value="option26">Toolkit</option>
-        <option value="option27">UsernameEnumeration</option>
-	<option value="option28">WebAttack</option>
-	<option value="option29">XSS</option>
+	<option value="option16">CF-Ray:</option>
+	<option value="option17">CF-Cache-Status:</option>
+        <option value="option18">Access-Control-Allow-Origin:</option>
+        <option value="option19">ETag:</option>
+	<option value="option20">cf-apo-via:</option>
+	<option value="option21">content-security-policy:</option>
+	<option value="option22">cross-origin-opener-policy:</option>
+	<option value="option23">cross-origin-resource-policy:</option>
+	<option value="option24">origin-agent-cluster:</option>
+	<option value="option25">x-dns-prefetch-control:</option>
+        <option value="option26">x-download-options:</option>
+        <option value="option27">x-permitted-cross-domain-policies:</option>
+	<option value="option28">Report-To:</option>
+	<option value="option29">Content-Security-Policy-Report-Only:</option>
+	<option value="option30">Vary:</option>
+	<option value="option31">Referrer-Policy:</option>
+        <option value="option32">Strict-Transport-Security:</option>
+        <option value="option33">X-Content-Type-Options:</option>
+	<option value="option34">X-Frame-Options:</option>
+	<option value="option35">X-XSS-Protection:</option>
+	<option value="option36">Server:</option>
+	<option value="option37">Content-Length:</option>
         </select>
     </div>
     <div id="result"></div>
