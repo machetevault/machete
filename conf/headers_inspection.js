@@ -4,13 +4,25 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
 const largeTexts = {
     option1: `
-sample: Host: gasstation.polygon.technology
+sample: 
+	Host: machetevault.com
 
+Usage: Specifies the domain name of the server and the TCP port number. Required for HTTP/1.1 requests.
+Attack Vectors: Host header injection could lead to cache poisoning or request smuggling.
 `,
     option2: `
-sample: User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/115.0
+sample: 
+	Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8
+
+Usage: Indicates the media types the client can process. Used for content negotiation.
+Attack Vectors: Improper handling may lead to content type sniffing vulnerabilities.
 `,
 		option3: `
+sample: 
+	Accept-Encoding: gzip, deflate, br
+
+Usage: Lists the content-codings that are acceptable by the client.
+Attack Vectors: Can be exploited in certain compression attacks like BREACH.
 
 `,
 		option4: `
