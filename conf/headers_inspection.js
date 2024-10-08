@@ -130,14 +130,20 @@ sample:
 	If-None-Match: W/"1b1-GFzCGQqk9c7puNvL7NxWzMVJAR8"
 `,
     option23: `
+sample:
+	Origin: https://hackerone.com
 `,
 		option24: `
-
+sample:
+	origin-agent-cluster: ?1
 `,
 		option25: `
-
+sample:
+	Referer: https://hackerone.com/
 `,
     option26: `
+sample:
+	Referrer-Policy: strict-origin-when-cross-origin
 
 `,
 		option27: `
