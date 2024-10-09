@@ -420,7 +420,8 @@ sample:
 
 Usage: The HTTP X-XSS-Protection response header was a feature of Internet Explorer, Chrome and Safari that stopped pages 
 from loading when they detected reflected cross-site scripting (XSS) attacks. These protections are largely unnecessary in 
-modern browsers when sites implement a strong Content-Security-Policy that disables the use of inline JavaScript ('unsafe-inline').
+modern browsers when sites implement a strong Content-Security-Policy that disables the use of inline 
+JavaScript ('unsafe-inline').
 
 Attack Vectors: Modern browsers may ignore this header; insufficient on its own to prevent XSS.
  
