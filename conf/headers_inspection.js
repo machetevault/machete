@@ -8,9 +8,9 @@ sample:
 	Host: machetevault.com
 
 Usage: The Host request header specifies the host and port number of the server to which the request is being sent.
-If no port is included, the default port for the service requested is implied (e.g., 443 for an HTTPS URL, and 80 for an HTTP URL).
-A Host header field must be sent in all HTTP/1.1 request messages. A 400 (Bad Request) status code may be sent to any HTTP/1.1 request 
-message that lacks or contains more than one Host header field.
+If no port is included, the default port for the service requested is implied (e.g., 443 for an HTTPS URL, and 80 for an 
+HTTP URL). A Host header field must be sent in all HTTP/1.1 request messages. A 400 (Bad Request) status code may be sent 
+to any HTTP/1.1 request message that lacks or contains more than one Host header field.
 
 Attack Vectors: Host header injection could lead to cache poisoning or request smuggling.
 `,
@@ -18,10 +18,10 @@ Attack Vectors: Host header injection could lead to cache poisoning or request s
 sample: 
 	Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8
 
-Usage: The Accept request HTTP header indicates which content types, expressed as MIME types, the client is able to understand. 
-The server uses content negotiation to select one of the proposals and informs the client of the choice with the Content-Type response 
-header. Browsers set required values for this header based on the context of the request. For example, a browser uses different values 
-in a request when fetching a CSS stylesheet, image, video, or a script.
+Usage: The Accept request HTTP header indicates which content types, expressed as MIME types, the client is able to 
+understand. The server uses content negotiation to select one of the proposals and informs the client of the choice 
+with the Content-Type response header. Browsers set required values for this header based on the context of the request. 
+For example, a browser uses different values in a request when fetching a CSS stylesheet, image, video, or a script.
 
 Attack Vectors: Improper handling may lead to content type sniffing vulnerabilities.
 `,
@@ -29,8 +29,9 @@ Attack Vectors: Improper handling may lead to content type sniffing vulnerabilit
 sample: 
 	Accept-Encoding: gzip, deflate, br
 
-Usage: The Accept-Encoding request HTTP header indicates the content encoding (usually a compression algorithm) that the client can understand. 
-The server uses content negotiation to select one of the proposals and informs the client of that choice with the Content-Encoding response header.
+Usage: The Accept-Encoding request HTTP header indicates the content encoding (usually a compression algorithm) that the 
+client can understand. The server uses content negotiation to select one of the proposals and informs the client of that 
+choice with the Content-Encoding response header.
 
 Attack Vectors: Can be exploited in certain compression attacks like BREACH.
 `,
@@ -39,10 +40,9 @@ sample:
 	Accept-Language: en-US,en;q=0.5
 
 Usage: The Accept-Language request HTTP header indicates the natural language and locale that the client prefers. 
-The server uses content negotiation to select one of the proposals and informs the client of the choice with the Content-Language 
-response header. Browsers set required values for this header according to their active user interface language. Users can also configure 
-additional preferred languages through browser settings.
-
+The server uses content negotiation to select one of the proposals and informs the client of the choice with the 
+Content-Language response header. Browsers set required values for this header according to their active user interface 
+language. Users can also configure additional preferred languages through browser settings.
 The Accept-Language header generally lists the same locales as the navigator.languages property, with decreasing q values 
 (quality values). 
 
