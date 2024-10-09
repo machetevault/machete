@@ -427,15 +427,6 @@ Attack Vectors: Modern browsers may ignore this header; insufficient on its own 
   `,
     option46: `
   `,
-		option47: `
-  
-  `,
-		option48: `
-  
-  `,
-        option49: `
-        
-    `
 
 	
     };
