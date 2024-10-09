@@ -144,63 +144,110 @@ sample:
     option26: `
 sample:
 	Referrer-Policy: strict-origin-when-cross-origin
-
 `,
 		option27: `
-
+sample:
+	Report-To: {"endpoints":[{"url":"https:\/\/csp-reporting.cloudflare.com\/cdn-cgi\/script_monitor\/report?m=j5xV2lxtvipZVAgy5s.xYjPLn3FMt2Bw8cJ1RDrBuPI-1728354323-1.0.1.1-gBE1R.ecQ2K3TirADxzDbsXOU9MQ9iVRaiFropuXzmqmHViFhyzCi9BynybHXR_311UsOR7AjtMO5e.WNEVFbgZqZHOmjLWYLmbuCf5zv.ZywNyXdSrgxvJ1hU8Ay6q6DjtvkD4uUvngwje.Omzg.vKXG_Qb7W8cgLE0hF5EO0g"}],"group":"cf-csp-endpoint","max_age":86400}
 `,
 		option28: `
-
+sample:
+	Sec-Fetch-Dest: document
 `,
     option29: `
-
+sample:
+	Sec-Fetch-Mode: navigate
 `,
 		option30: `
-  
+sample:
+	Sec-Fetch-Site: none
   `,
 		option31: `
-  
+sample:
+	Sec-Fetch-User: ?1
   `,
     option32: `
+sample:
+	Server: cloudflare
     
   `,
 		option33: `
+sample:
+	
+
   
   `,
 		option34: `
+sample:
+	Strict-Transport-Security: max-age=63072000; includeSubDomains
   
   `,
     option35: `
+sample:
+	Upgrade-Insecure-Requests: 1
     
   `,
     option36: `
+sample:
+	User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/115.0
     
   `,
 		option37: `
+sample:
+	Vary: Accept-Encoding
   
   `,
 		option38: `
+sample:
+	X-Content-Type-Options: nosniff
   
   `,
     option39: `
+sample:
+	
     
   `,
 		option40: `
+sample:
+	x-dns-prefetch-control: off
   
   `,
 		option41: `
+sample:
+	x-download-options: noopen
   `,
     option42: `
+sample:
+	X-Frame-Options: SAMEORIGIN
   `,
 		option43: `
+sample:
+	x-permitted-cross-domain-policies: none
   
   `,
 		option44: `
   
   `,
         option45: `
+sample:
+	X-XSS-Protection: 0
+        
+    `,
+
+		option46: `
+  `,
+    option47: `
+  `,
+		option48: `
+  
+  `,
+		option49: `
+  
+  `,
+        option50: `
         
     `
+
+	
     };
 
 dropdown.addEventListener('change', (event) => {
