@@ -52,7 +52,7 @@ Attack Vectors: Minimal direct risk, but may be used for fingerprinting users.
 sample:
 	Access-Control-Allow-Origin: *
 
-Usage: The Access-Control-Allow-Origin response header indicates whether the response can be shared with requesting z
+Usage:The Access-Control-Allow-Origin response header indicates whether the response can be shared with requesting 
 code from the given origin.
 
 Attack Vectors: Misconfiguration can lead to CORS vulnerabilities.
@@ -60,14 +60,27 @@ Attack Vectors: Misconfiguration can lead to CORS vulnerabilities.
 		option6: `
 sample:
 	Cache-Control: no-cache
+
+Usage: The Cache-Control HTTP header field holds directives (instructions) — in both requests and responses — that control 
+caching in browsers and shared caches (e.g. Proxies, CDNs).
+
+Attack Vectors: Incorrect settings may lead to sensitive data leaks.
 `,
 		option7: `
 sample:
 	cf-apo-via: origin,host
+
+Usage: Cloudflare-specific header indicating APO (Automatic Platform Optimization) usage.
+
+Attack Vectors: Generally low risk; specific to Cloudflare configurations.
 `,
     option8: `
 sample:
 	CF-Cache-Status: DYNAMIC
+
+Usage: Cloudflare header indicating cache status of a response.
+
+Attack Vectors: Primarily informational; potential misconfigurations could affect caching behavior.
 `,
 		option9: `
 sample:
@@ -228,12 +241,13 @@ sample:
   
   `,
         option45: `
-sample:
-	X-XSS-Protection: 0
+
         
     `,
 
 		option46: `
+sample:
+	X-XSS-Protection: 0
   `,
     option47: `
   `,
