@@ -428,6 +428,30 @@ Attack Vectors: Modern browsers may ignore this header; insufficient on its own 
   `,
     option46: `
   `,
+	  
+    option111: `
+
+_ga_W7DW3R7679: This is a Google Analytics cookie used for tracking purposes. It helps in distinguishing users and sessions.
+_ga: Another Google Analytics cookie, GA1.1 indicates the version and the unique identifier follows. It’s used for tracking 
+a user’s session and behavior on the site.
+_hjSessionUser_3886274: This cookie is related to Hotjar, a tool for analyzing user behavior on websites. It stores user 
+information in JSON format, including a unique user ID and timestamps.
+__hstc: This is a HubSpot cookie, which tracks visitors. It contains a domain hash, the initial timestamp, the last timestamp, 
+the current timestamp, and the session number.
+hubspotutk: Another HubSpot cookie, which tracks a visitor’s identity. It’s passed to HubSpot on form submission and used for 
+deduplicating contacts.
+_ga_TJ6598HK6W: Similar to the first one, this is another Google Analytics cookie used for tracking.
+__hssrc: This cookie is set by HubSpot and is used to determine if the visitor has restarted their browser. If this cookie 
+does not exist when HubSpot manages cookies, it is considered a new session.
+cf_clearance: This is a Cloudflare cookie used to manage incoming traffic and apply security settings to protect the site 
+from malicious activities.
+_ga_3FKCJSPL3F: Another instance of a Google Analytics cookie for tracking purposes.
+_gid: This is a Google Analytics cookie used to distinguish users and has a shorter lifespan than _ga cookies 
+(typically 24 hours).
+_ga_K8WN0Y7BTR: Yet another Google Analytics tracking cookie
+__hssc: Another HubSpot cookie that keeps track of sessions and page views.
+
+  `,
 
 	
     };
