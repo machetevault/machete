@@ -464,20 +464,20 @@ Attack Vectors: Modern browsers may ignore this header; insufficient on its own 
   `,
     option51: `
 
-    sample:
+sample:
 	x-server-version:
   `,
 
 	option52: `
 
- sample:
+sample:
 	x-server-by:
   `,
 
 	option53: `
 
- sample:
-	x-robots-tag:
+<b>sample:
+	x-robots-tag:</b>
   `,
 
 	option54: `
