@@ -120,7 +120,7 @@ Attack Vectors: Can be exploited in HTTP request smuggling attacks.
 `,
 		option13: `
 sample:
-  	content-security-policy: default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;
+   content-security-policy: default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;
    frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';
    style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests
 
@@ -131,7 +131,7 @@ Attack Vectors: Misconfiguration can reduce security effectiveness.
 `,
     option14: `
 sample:
-	Content-Security-Policy-Report-Only: script-src 'none'; connect-src 'none'; report-uri 
+ Content-Security-Policy-Report-Only: script-src 'none'; connect-src 'none'; report-uri 
  https://csp-reporting.cloudflare.com/cdn-cgi/script_monitor/report?m=j5xV2lxtvipZVAgy5s.xYjPLn3FMt2Bw8cJ1RDrBuPI-1728354323
  -1.0.1.1-gBE1R.ecQ2K3TirADxzDbsXOU9MQ9iVRaiFropuXzmqmHViFhyzCi9BynybHXR_311UsOR7AjtMO5e.WNEVFbgZqZHOmjLWYLmbuCf5zv.ZywNyXdSr
  gxvJ1hU8Ay6q6DjtvkD4uUvngwje.Omzg.vKXG_Qb7W8cgLE0hF5EO0g; report-to cf-csp-endpoint
@@ -177,7 +177,14 @@ Usage: Prevents other origins from accessing resources.
 Attack Vectors: Misconfiguration can expose resources to unauthorized access.
  
 `,
-		option19: `
+option19: `
+sample:
+	client-name: 
+ 
+`,
+
+	
+		option20: `
 sample:
 	Date: Tue, 08 Oct 2024 02:25:23 GMT
 
@@ -186,7 +193,7 @@ Usage: Represents the date and time at which the message was sent.
 Attack Vectors: Generally low risk, used for caching and logging.
  
 `,
-    option20: `
+    option21: `
 sample: 
 	ETag: W/"fe-HXRZFMMFoUSWc30W70zcP6Qm7LE"
 
@@ -195,7 +202,7 @@ Usage: Provides a mechanism for cache validation.
 Attack Vectors: Can be used for tracking users across sessions.
  
 `,
-		option21: `
+		option22: `
 sample:
 	expect-ct: max-age=0
 
@@ -204,7 +211,13 @@ Usage: Instructs browsers to enforce Certificate Transparency.
 Attack Vectors: Helps detect misissued certificates but not directly exploitable
  
 `,
-		option22: `
+
+		option23: `
+sample:
+	expires: 
+ 
+`,
+		option24: `
 sample:
 	If-None-Match: W/"1b1-GFzCGQqk9c7puNvL7NxWzMVJAR8"
 
@@ -213,7 +226,7 @@ Usage: Makes a request conditional based on ETag values.
 Attack Vectors: Potentially used for cache poisoning if not handled correctly
  
 `,
-    option23: `
+    option25: `
 sample:
 	Origin: https://hackerone.com
 
@@ -222,7 +235,7 @@ Usage: Indicates the origin of the request, used in CORS.
 Attack Vectors: Can be spoofed in CORS attacks.
  
 `,
-		option24: `
+		option26: `
 sample:
 	origin-agent-cluster: ?1
 
@@ -231,7 +244,14 @@ Usage: Controls whether an origin should have its own agent cluster.
 Attack Vectors: Misconfiguration can affect resource isolation.
  
 `,
-		option25: `
+
+	option27: `
+sample:
+	pragma: 
+ 
+`,
+	
+		option28: `
 sample:
 	Referer: https://hackerone.com/
 
@@ -240,7 +260,7 @@ Usage: Indicates the URL of the resource from which the request was initiated.
 Attack Vectors: Can leak sensitive information if URLs contain sensitive data.
  
 `,
-    option26: `
+    option29: `
 sample:
 	Referrer-Policy: strict-origin-when-cross-origin
 
@@ -249,9 +269,9 @@ Usage: Governs what referrer information should be included with requests.
 Attack Vectors: Incorrect settings can lead to information leakage
  
 `,
-		option27: `
+		option30: `
 sample:
-	Report-To: {"endpoints":[{"url":"https:\/\/csp-reporting.cloudflare.com\/cdn-cgi\/script_monitor\/report?m=
+ Report-To: {"endpoints":[{"url":"https:\/\/csp-reporting.cloudflare.com\/cdn-cgi\/script_monitor\/report?m=
  j5xV2lxtvipZVAgy5s.xYjPLn3FMt2Bw8cJ1RDrBuPI-1728354323-1.0.1.1-gBE1R.ecQ2K3TirADxzDbsXOU9MQ9iVRaiFropuXzmqmHViFhyzCi9
  BynybHXR_311UsOR7AjtMO5e.WNEVFbgZqZHOmjLWYLmbuCf5zv.ZywNyXdSrgxvJ1hU8Ay6q6DjtvkD4uUvngwje.Omzg.vKXG_Qb7W8cgLE0hF5EO0g"}],
  "group":"cf-csp-endpoint","max_age":86400}
@@ -261,7 +281,7 @@ Usage: Specifies reporting endpoints for various browser policies.
 Attack Vectors: Misuse could lead to excessive or misdirected reporting.
 
 `,
-		option28: `
+		option31: `
 sample:
 	Sec-Fetch-Dest: document
 
@@ -270,7 +290,7 @@ Usage: Describes the destination of the request (e.g., document, script).
 Attack Vectors: Provides context for request origins; low direct risk
  
 `,
-    option29: `
+    option32: `
 sample:
 	Sec-Fetch-Mode: navigate
 
@@ -279,7 +299,7 @@ Usage: Describes the mode of the request (e.g., cors, no-cors).
 Attack Vectors: Helps enforce security policies; low direct risk
  
 `,
-		option30: `
+		option33: `
 sample:
 	Sec-Fetch-Site: none
 
@@ -288,7 +308,7 @@ Usage: Indicates the relationship between the origin of the request and the targ
 Attack Vectors: Used in security checks; generally low risk
  
   `,
-		option31: `
+		option34: `
 sample:
 	Sec-Fetch-User: ?1
 
@@ -297,7 +317,7 @@ Usage: Indicates user activation for a navigation request.
 Attack Vectors: Provides context for user interactions; low direct risk
  
   `,
-    option32: `
+    option35: `
 sample:
 	Server: cloudflare
 
@@ -306,7 +326,7 @@ Usage: Discloses information about the software used by the origin server.
 Attack Vectors: Can provide attackers with information useful for targeting.
     
   `,
-		option33: `
+		option36: `
 sample:
 	Set-Cookie:
  
@@ -315,7 +335,7 @@ Usage: Sends cookies from server to client, used for session management.
 Attack Vectors: Vulnerable to session hijacking if not properly secured.
   
   `,
-		option34: `
+		option37: `
 sample:
 	Strict-Transport-Security: max-age=63072000; includeSubDomains
 
@@ -324,7 +344,14 @@ Usage: Enforces HTTPS, protecting against man-in-the-middle attacks.
 Attack Vectors: Lack of HSTS can lead to downgrade attacks
   
   `,
-    option35: `
+option38: `
+sample:
+	surrogate-control:  
+
+ 
+  `,
+	
+    option39: `
 sample:
 	Upgrade-Insecure-Requests: 1
 
@@ -333,7 +360,7 @@ Usage: Informs the server that the client prefers an encrypted and authenticated
 Attack Vectors: Generally low risk, but ignored by non-compliant servers
     
   `,
-    option36: `
+    option40: `
 sample:
 	User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/115.0
 
@@ -342,7 +369,7 @@ Usage: Identifies the client software initiating the request.
 Attack Vectors: Can be spoofed for bypassing client-specific restrictions
     
   `,
-		option37: `
+		option41: `
 sample:
 	Vary: Accept-Encoding
 
@@ -351,7 +378,7 @@ Usage: Informs caches which headers to consider when serving cached content.
 Attack Vectors: Misuse can lead to cache poisoning.
   
   `,
-		option38: `
+		option42: `
 sample:
 	X-Content-Type-Options: nosniff
 
@@ -360,7 +387,7 @@ Usage: Prevents MIME type sniffing, protecting against some XSS attacks.
 Attack Vectors: Lack of this header can lead to content-type sniffing vulnerabilities.
   
   `,
-    option39: `
+    option43: `
 sample:
 	X-CSRF-Token:
  
@@ -369,7 +396,7 @@ Usage: Used to prevent Cross-Site Request Forgery (CSRF) attacks.
 Attack Vectors: If not implemented correctly, CSRF attacks remain possible.
     
   `,
-		option40: `
+		option44: `
 sample:
 	x-dns-prefetch-control: off
 
@@ -378,7 +405,7 @@ Usage: Controls DNS prefetching, which can improve performance.
 Attack Vectors: Generally low risk, but can be used for tracking.
   
   `,
-		option41: `
+		option45: `
 sample:
 	x-download-options: noopen
 
@@ -387,7 +414,7 @@ Usage: Used to prevent file downloads from being rendered in the browser.
 Attack Vectors: Lack of this header can lead to drive-by download attacks.
  
   `,
-    option42: `
+    option46: `
 sample:
 	x-frame-options: SAMEORIGIN
 
@@ -396,7 +423,7 @@ Usage: Protects against clickjacking by controlling whether a page can be framed
 Attack Vectors: Lack of this header can lead to clickjacking vulnerabilities.
 
   `,
-		option43: `
+		option47: `
 sample:
 	x-permitted-cross-domain-policies: none
 
@@ -405,7 +432,7 @@ Usage: Controls loading of cross-domain policies, preventing data theft via Flas
 Attack Vectors: Improper settings can lead to unauthorized data access.
   
   `,
-		option44: `
+		option48: `
 sample:
 	X-Request-ID:
  
@@ -414,7 +441,16 @@ Usage: Used for tracking and debugging requests.
 Attack Vectors: Generally low risk; mainly for logging.
   
   `,
-		option45: `
+
+option49: `
+sample:
+	x-requested-with:
+ 
+
+  
+  `,
+	
+		option50: `
 sample:
 	x-xss-protection: 0
 
@@ -426,7 +462,25 @@ JavaScript ('unsafe-inline').
 Attack Vectors: Modern browsers may ignore this header; insufficient on its own to prevent XSS.
  
   `,
-    option46: `
+    option51: `
+
+    sample:
+	x-server-version:
+  `,
+
+	option52: `
+
+ sample:
+	x-server-by:
+  `,
+
+	option53: `
+
+ sample:
+	x-robots-tag:
+  `,
+
+	option54: `
   `,
 	  
     option111: `
