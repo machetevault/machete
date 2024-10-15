@@ -179,7 +179,7 @@ Attack Vectors: Misconfiguration can expose resources to unauthorized access.
 `,
 option19: `
 sample:
-	client-name: 
+	client-name: borrowerWebReact
  
 `,
 
@@ -214,7 +214,7 @@ Attack Vectors: Helps detect misissued certificates but not directly exploitable
 
 		option23: `
 sample:
-	expires: 
+	expires: -1
  
 `,
 		option24: `
@@ -247,7 +247,7 @@ Attack Vectors: Misconfiguration can affect resource isolation.
 
 	option27: `
 sample:
-	pragma: 
+	pragma: no-cache
  
 `,
 	
@@ -346,7 +346,7 @@ Attack Vectors: Lack of HSTS can lead to downgrade attacks
   `,
 option38: `
 sample:
-	surrogate-control:  
+	surrogate-control: no-store
 
  
   `,
@@ -444,7 +444,7 @@ Attack Vectors: Generally low risk; mainly for logging.
 
 option49: `
 sample:
-	x-requested-with:
+	x-requested-with: XMLHttpRequest
  
 
   
@@ -465,19 +465,19 @@ Attack Vectors: Modern browsers may ignore this header; insufficient on its own 
     option51: `
 
 sample:
-	x-server-version:
+	x-server-version: 1.20241003.1
   `,
 
 	option52: `
 
 sample:
-	x-server-by:
+	x-server-by: edge-proxy
   `,
 
 	option53: `
 
-<b>sample:
-	x-robots-tag:</b>
+sample:
+	x-robots-tag: noindex
   `,
 
 	option54: `
