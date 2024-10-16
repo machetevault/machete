@@ -1,15 +1,12 @@
 document.getElementById('loginForm').addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevent the form from submitting
+    event.preventDefault(); 
 
-    // Demo user credentials
     const demoUsername = 'admin';
     const demoPassword = 'admin';
 
-    // Get the input values
     const user = document.getElementById('user').value;
     const pass = document.getElementById('pass').value;
 
-    // Check if the input values match the demo user credentials
     if (user === demoUsername && pass === demoPassword) {
         alert('Login successful!');
         window.location.href = 'panel.html';
@@ -26,5 +23,4 @@ function updateDateTime() {
   dateTimeElement.textContent = `Date: ${formattedDate} Time: ${formattedTime}`;
 }
 
-// Update date and time every second
 setInterval(updateDateTime, 1000);
