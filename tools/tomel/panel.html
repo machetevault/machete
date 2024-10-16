@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tomel' tool</title>
+     <link rel="stylesheet" href="stylesv1.css">
+</head>
+<body>
+    <div class="menu">
+		<button onclick="showContent('content0')">MENU</button>
+        <button onclick="showContent('content1')">tomel'json</button>
+        <button onclick="showContent('content2')">tomel'jscode</button>
+        <button onclick="showContent('content3')">tomel'base64</button>
+        <button onclick="showContent('content4')">tomel'match & replace</button>
+    </div>
+    <div class="content">
+		<div id="content0" class="active">
+        <h1>WELCOME</h1>
+        </div>
+        <div id="content1">
+        <h1>tomel'json</h1>
+        <textarea id="inputText" placeholder="enter raw .json data here..."></textarea><br><br>
+        <button id="formatButton">.json format</button><br><br>
+        <textarea id="outputText" placeholder="JSON format output..." readonly></textarea>
+        </div>
+        <div id="content2">
+        <h1>tomel'jscode</h1>
+        <textarea id="inputCode" placeholder="paste your raw .JS code here..."></textarea><br><br>
+        <button id="formatCode" onclick="formatCode()">.js format</button><br><br>
+        <textarea id="outputCode" placeholder="formatted .JS code will appear here..."></textarea>
+		</br>
+        </div>
+        <div id="content3">
+        <h1>tomel'base64</h1>
+        <textarea id="inputT" placeholder="enter base64 code here..."></textarea><br><br>
+		<button id="encodeButton">base64 encode</button>
+        <button id="decodeButton">base64 decode</button><br><br>
+        <textarea id="outputT" placeholder="output base64 here..." readonly></textarea>
+        </div>
+        <div id="content4">
+        <h1>tomel'match&replace</h1>
+        <textarea id="inputT_FR" placeholder="enter code here..."></textarea><br><br>
+		
+        <input type="text" id="findWord" placeholder="match..."><input type="text" id="replaceWord" placeholder="replace..."><br><br>
+      
+		<button id="ReplaceButton" value="Replace" onclick="replaceText()">replace</button>	<br><br>
+        <textarea id="modifiedText" placeholder="results will appear here..." readonly></textarea>
+        </div>
+		<div id="content8">
+            
+        </div>
+		<div id="content9">
+            
+        </div>
+		<div id="content10">
+            
+        </div>
+    </div>
+	<script src="script.js"></script>
+    <script src="scriptv1.js"></script>
+	<script src="tx_script.js"></script>
+</body>
+</html>
