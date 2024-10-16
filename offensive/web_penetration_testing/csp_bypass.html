@@ -74,14 +74,21 @@ Domain=\%22})))}catch(e) {alert(/XSS/)}//'&gt;&lt;param name='AllowScriptAccess'
 <b>Notes:</b>	
 
 	1. this content security policy only allows scripts from the same domain itself.
-	2. it is only restricting scripts, but how about flash files ? ajax.googleapis.com is not explicitely allowed, however, via flash files
-	it can be call it.
+	2. it is only restricting scripts, but how about flash files ? ajax.googleapis.com is not explicitely allowed, however, via flash 
+	files it can be call it.
 	3. each time you want to try flash csp by pass you need to use the HTML tag 'object'
 	4. 'charts.swf' is a vulnerable flash file to XSS, if not working, you can set your own or find other to trigger XSS.
 	
 </details>	
 <details>
 <summary>bypass via polyglot file</summary>
+
+<b>sample:</b> 
+	content-security-policy: default-src 'self'
+
+
+
+
 	
 </details>
 <details>
