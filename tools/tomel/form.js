@@ -2,8 +2,8 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
     event.preventDefault(); // Prevent the form from submitting
 
     // Demo user credentials
-    const demoUsername = 'b0ydC';
-    const demoPassword = 'Enter00';
+    const demoUsername = 'admin';
+    const demoPassword = 'admin';
 
     // Get the input values
     const user = document.getElementById('user').value;
