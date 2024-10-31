@@ -11,3 +11,7 @@ only difference you are likely to encounter when attacking web applications is t
 
 gem#3
 
+For the purpose of attacking web applications, you should URLencode any of the following characters when you insert them as data into an
+HTTP request:
+space % ? & = ; + #
+(Of course, you will often need to use these characters with their special meaning when modifying a request — for example, to add a request parameter to the query string. In this case, they should be used in their literal form.)
