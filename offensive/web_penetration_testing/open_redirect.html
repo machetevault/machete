@@ -45,8 +45,8 @@ example:
 
 	https://machetevault.com/login/?nextPage=https://deadbomb.com/?https://google.com [allowed]
 
-It is needed to test as some applications use a whitelist method to filter where it can be redirected or not. maybe the 
-format allowed in the example it is not, however, you can change the order to try it.
+It is needed to test as some applications use a whitelist method to filter where it can be redirected or not. maybe the format allowed in the 
+example it is not, however, you can change the order to try it.
 
 you can find similar applications with this code,
 
@@ -59,18 +59,17 @@ you can test to add something else after the .com to confirm if exist some restr
 
 what about if exist a SSO login ? /x// WAY
 
-following the flow is a way to understand the filters, maybe the auth url is required at begining, at the end, etc.
-checking the following example, the SSO use a subdomain used at the begining of the url. "auth", however, the bypass
-need to be attempted using the redirect parameter.
+following the flow is a way to understand the filters, maybe the auth url is required at begining, at the end, etc. checking the following 
+example, the SSO use a subdomain used at the begining of the url. "auth", however, the bypass need to be attempted using the redirect 
+parameter.
 
 example:
 
 https://auth.vault.machete.com/auth?client_id=1&redirect_url=https://vault.machete.com/&response_type=token
 
 
-another way is to bypass using the REGEX pattern and not specific using the redirect feature, it is similar to the 
-previous examples, however, it modifies the query to add /x//URL and basically it is forcing the regex to look for
-// and call what is after that.
+another way is to bypass using the REGEX pattern and not specific using the redirect feature, it is similar to the previous examples, however, 
+it modifies the query to add /x//URL and basically it is forcing the regex to look for // and call what is after that.
 
 example: 
 	
@@ -86,16 +85,16 @@ https://auth.vault.machete.com/auth?client_id=1&redirect_url=https://vault.mache
 
 how to pivot from open redirect to XSS ?
 
-1. first you need to confirm if the open redirect exist or not, you can see url similar to the previous or it can be a little
-different to make it harder.
+1. first you need to confirm if the open redirect exist or not, you can see url similar to the previous or it can be a little different to make 
+it harder.
 
 example: this url is encoded
 
-https://auth.vault.com/leaving?next=https%3A%2F%2Fpartnersite.ctf%2Foauth%2Flogin%2F%3Fclient_id%3D1%26redirect_url%3Dhttps%3A%2F%2Fauth.vault.com
+https://auth.b2.com/move?next=https%3A%2F%2Fsite.ctf%2Foauth%2Flogin%2F%3Fclient_id%3D1%26redirect_url%3Dhttps%3A%2F%2Fauth.b2.com
 
 this other part is now decoded,
 
-https://auth.vault.com/leaving?next=https://partnersite.ctf/oauth/login/?client_id=1&redirect_url=https://o9t0x08s.eu1.ctfio.com
+https://auth.b2.com/move?next=https://site.ctf/oauth/login/?client_id=1&redirect_url=https://auth.b2.com
 
 ** always you can inspect the code to confirm the redirect code
 
