@@ -35,7 +35,19 @@
 <summary>GENERAL INFORMATION</summary>
 <b>NOTE:</b> 
 
+it is a bypass that can make calls or redirect to a malicious site depending the validation it is doing.
 
+sample:
+
+	https://machetevault.com/login/?nextPage=https://google.com [allowed]
+
+	https://machetevault.com/login/?nextPage=https://deadbomb.com [not allowed]
+
+	https://machetevault.com/login/?nextPage=https://deadbomb.com/?https://google.com [allowed]
+
+it is needed to test as some applications use a whitelist method to filter where it can be redirected or not.
+
+	
 
 </details>
 </div>
