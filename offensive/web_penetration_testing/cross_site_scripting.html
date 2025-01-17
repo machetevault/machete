@@ -267,13 +267,18 @@ To be added...
 <button class="button_conf button_set" title="Ctrl+C" onclick="ctrl_C('#JQ04')">.C1.</button>
 </details>
 </details>
-
 <details>
 <summary>MARKDOWN XSS</summary>
 
-the most common test it to use hyperlinks. 
+hacktricks cheatsheet can help with the discovery of the vulnerability. the most common test or way to exploit it is to use hyperlinks
+as with hyperlinks you can add more functionality like onmouseover, onclick, etc. however there are more to use it.
 
-hacktricks cheatsheet can help with the discovery of the vulnerability.
+-hyperlinks
+-images
+
+tip: best way to work trying to find the XSS vulnerability is to use the browser.
+
+
 
 
 </details>		
@@ -299,7 +304,6 @@ hacktricks cheatsheet can help with the discovery of the vulnerability.
 &lt;h1 onauxclick=confirm(document.domain)&gt;RIGHT CLICK HERE || https://hackerone.com/reports/1779447
 
 
-	
 </details>	
 </div>
 </pre>
