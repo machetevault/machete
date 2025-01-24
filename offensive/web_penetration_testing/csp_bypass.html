@@ -88,9 +88,6 @@ Domain=\%22})))}catch(e) {alert(/XSS/)}//'&gt;&lt;param name='AllowScriptAccess'
 <b>sample:</b> 
 	content-security-policy: default-src 'self'
 
-
-
-
 	
 </details>
 <details>
@@ -100,12 +97,23 @@ Domain=\%22})))}catch(e) {alert(/XSS/)}//'&gt;&lt;param name='AllowScriptAccess'
 <details>
 <summary>bypass via JSONP</summary>
 
-JSONP means json with padding is just a method to retrieve json data from a differnet domain, normally is accomplished by dynamic script tag
+JSONP means json with padding is just a method to retrieve json data from a differnet domain, normally is accomplished by dynamic script tag and
+also is subject to the same origin policy. when you use this method you use a callback function method in the query parameters for the url and the
+callback function will retrieve the data. so using this method you will not be blocked by the csp policy restriction.
 
+this is normally achieved when the csp policy is allowing third party urls or domains to get data from.
 
+</details>
+<details>
+<summary>bypass via fileupload</summary>
 
+-nahamsec's way-
+
+first thing is that only work if the file upload is allowed on the csp policy.
+	
 	
 </details>
+
 </div>
 </pre>
 <button onclick="document.location='/offensive/web_penetration_testing/client_side_attacks.html'">GO BACK</button>
