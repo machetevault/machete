@@ -36,6 +36,9 @@ CSP: content security policy | It's a way to restrict what is allowed in the app
 	1. 'self' means it allows from same domain.
 	2. CSP policy is defined in the response header, this is how browser knows the CSP policy is in place
 	3. use the dev tools when testing and inspect using the console tab to see if any 'alert' notification pop-up. 
+	4. you can check also inspecting the HTML code and check for the meta tag
+	5. it is pretty important to analyze what tags are allowed, so they are abused
+	6. 
 
 <details>
 <summary>bypass via ajax.googleapis.com</summary>
@@ -93,7 +96,16 @@ Domain=\%22})))}catch(e) {alert(/XSS/)}//'&gt;&lt;param name='AllowScriptAccess'
 <details>
 <summary>bypass via angularJS</summary>
 	
-</details>		
+</details>
+<details>
+<summary>bypass via JSONP</summary>
+
+JSONP means json with padding is just a method to retrieve json data from a differnet domain, normally is accomplished by dynamic script tag
+
+
+
+	
+</details>
 </div>
 </pre>
 <button onclick="document.location='/offensive/web_penetration_testing/client_side_attacks.html'">GO BACK</button>
