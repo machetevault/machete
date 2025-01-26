@@ -127,10 +127,21 @@ https://youtube.com/oembed?url=https://www.youtube.com/watch?v=bQki6llaaTs&callb
 -nahamsec's way-
 
 first thing is that only work if the file upload is allowed on the csp policy.
-	
+
+it is needed to recognize the csp policy, if it is script-src 'self' this technique will work.
+
+it will be needed to inspect the traffic with dev tools to see if the files are loaded or not. if the csp policy is script-src 'self'
+you can use the same domain on the on the vuln field to trigger the script tag. 
+
+two good tips are to check on dev tools:
+-network tab
+-console tab
+
+if you discover that you can upload files, you can intercept the request and chage the extention, the content type or the magic bytes
+in order to test if another file can be uploaded.
+
 	
 </details>
-
 </div>
 </pre>
 <button onclick="document.location='/offensive/web_penetration_testing/client_side_attacks.html'">GO BACK</button>
