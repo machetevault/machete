@@ -144,9 +144,12 @@ the other can be IMAGES.
 	
 </details>
 <details>
-<summary>IN GET REQUESTS</summary>
+<summary>ESCALATE SELF-XSS WITH CSRF </summary>
 
-
+First you need to validate the request type, GET/POST and also if the CSRF protection is in place. If not on place, take note.
+This sample SELF-XSS WITH CSRF can be chained to create more impact, so, once the CSRF vulnerability was tested, you can continue testing the
+dfferent parameters, if some parameter is also vulnerable to XSS, you can create a CSRF PoC to trigger the vuln.
+This can be used when the self-xss is not accepted on bug bounty programs. 
 	
 </details>
 </div>
