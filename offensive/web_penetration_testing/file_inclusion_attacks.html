@@ -35,10 +35,20 @@
 <summary>GENERAL INFORMATION</summary>
 <b>QUESTION TO ANSWER</b> Is this happening client or server-side...?	
 
+<b>notes:</b>
+
+--> if this file type is non-executable, such as an image or a static HTML page, the server may just send the file's contents to the client in the
+HTTP response.
+--> if the file type is executable, such as PHP file, and the server is configured to execute files of this type, it will assign variables based on
+the headers and parameters in the HTTP request before running the script. the resulting output may then be sent to the client in an HTTP response. 
+--> if the file type is executable, but the server is not configured to execute files of this type it will generally respond with an error. however
+in some cases the contents of the file may still be served to the client as plain text. such configurations can occasionally be exploited to leak source
+code and other sensitive information.
+	
 <b>TO CHECK: </b>
 
 1. It is happening locally or not, open dev tools and check network tab for interactions.
-2. Burpsuite is your best friend here, inspect all requests.
+2. Caido or burp is your best friend here, inspect all requests.
 3. Be aware of <b>file extention > content type > magic bytes</b>
 4. Test all previous options.
 
