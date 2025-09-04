@@ -3,7 +3,7 @@
 <p align="center" width="100%">| D E F E N S I V E   &   O F F E N S I V E | </p>
 
 <p align="center" width="100%">Security Research Knowledge Base [SRKB] created as part of the journey studying both sides of the cyber world !
-The content will be related to each research, certification, conferences attended, and more... it will be organized by topics for each side.
+The content will be related to each research, certification, conferences attended and more... it will be organized by topics for each side.
 
 <p align="center" width="100%"><img width="35%" src="https://github.com/machetevault/machete/assets/142649592/f94f9590-f31b-479a-b6c9-e17b03c98073"></p>
 
