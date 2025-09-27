@@ -411,7 +411,7 @@ const topics = [
 
 <div id="content01">
 
-<iframe src="file:///Users/b0ydc/Documents/CYBER/SITE/blogpages/information_disclosure.html" width="100%" height="1000"></iframe>
+<iframe src="/blogpages/information_disclosure.html" width="100%" height="1000"></iframe>
 
 </div>
 
@@ -423,7 +423,7 @@ const topics = [
 
 <div id="content01">
 
-<iframe src="file:///Users/b0ydc/Documents/CYBER/SITE/blogpages/broken_access_control.html" width="100%" height="1000"></iframe>
+<iframe src="/blogpages/broken_access_control.html" width="100%" height="1000"></iframe>
 
 </div>
 
@@ -435,7 +435,7 @@ const topics = [
 
 <div id="content01">
 
-<iframe src="file:///Users/b0ydc/Documents/CYBER/SITE/blogpages/authentication.html" width="100%" height="1000"></iframe>
+<iframe src="/blogpages/authentication.html" width="100%" height="1000"></iframe>
 
 </div>
 
@@ -447,7 +447,7 @@ const topics = [
 
 <div id="content01">
 
-<iframe src="file:///Users/b0ydc/Documents/CYBER/SITE/blogpages/directory_path_traversal.html" width="100%" height="1000"></iframe>
+<iframe src="/blogpages/directory_path_traversal.html" width="100%" height="1000"></iframe>
 
 </div>
 
@@ -459,7 +459,7 @@ const topics = [
 
 <div id="content01">
 
-<iframe src="file:///Users/b0ydc/Documents/CYBER/SITE/blogpages/command_injection_rce.html" width="100%" height="1000"></iframe>
+<iframe src="/blogpages/command_injection_rce.html" width="100%" height="1000"></iframe>
 
 </div>
 
@@ -472,7 +472,7 @@ const topics = [
 
 <div id="content01">
 
-<iframe src="file:///Users/b0ydc/Documents/CYBER/SITE/blogpages/business_logic.html" width="100%" height="1000"></iframe>
+<iframe src="/blogpages/business_logic.html" width="100%" height="1000"></iframe>
 
 </div>
 
@@ -483,7 +483,7 @@ const topics = [
 
 <div id="content01">
 
-<iframe src="file:///Users/b0ydc/Documents/CYBER/SITE/blogpages/insecure_deserialization.html" width="100%" height="1000"></iframe>
+<iframe src="/blogpages/insecure_deserialization.html" width="100%" height="1000"></iframe>
 
 </div>
 
@@ -494,7 +494,7 @@ const topics = [
 
 <div id="content01">
 
-<iframe src="file:///Users/b0ydc/Documents/CYBER/SITE/blogpages/file_inclusion_attacks.html" width="100%" height="1000"></iframe>
+<iframe src="/blogpages/file_inclusion_attacks.html" width="100%" height="1000"></iframe>
 
 </div>
 
@@ -506,7 +506,7 @@ const topics = [
 
 <pre style="text-align:center;">
 
-<a href="" target=""><img src="LOGO01.png" alt="LOGO" width="550" height="500"></a>
+<a href="" target=""><img src="/img/LOGO01.png" alt="LOGO" width="550" height="500"></a>
 
 <h1>CONTENT IN PROGRESS...[FILE NOT FOUND - 404]</h1>
 
@@ -525,7 +525,7 @@ const topics = [
 
 <div id="content01">
 
-<iframe src="file:///Users/b0ydc/Documents/CYBER/SITE/blogpages/server_side_template_injection.html" width="100%" height="1000"></iframe>
+<iframe src="/blogpages/server_side_template_injection.html" width="100%" height="1000"></iframe>
 
 </div>
 
@@ -536,7 +536,7 @@ const topics = [
 
 <div id="content01">
 
-<iframe src="file:///Users/b0ydc/Documents/CYBER/SITE/blogpages/xxe_injection.html" width="100%" height="1000"></iframe>
+<iframe src="/blogpages/xxe_injection.html" width="100%" height="1000"></iframe>
 
 </div>
 
@@ -549,7 +549,7 @@ const topics = [
 
 <pre style="text-align:center;">
 
-<a href="" target=""><img src="LOGO01.png" alt="LOGO" width="550" height="500"></a>
+<a href="" target=""><img src="/img/LOGO01.png" alt="LOGO" width="550" height="500"></a>
 
 <h1>CONTENT IN PROGRESS...[FILE NOT FOUND - 404]</h1>
 
@@ -568,7 +568,7 @@ const topics = [
 
 <div id="content01">
 
-<iframe src="file:///Users/b0ydc/Documents/CYBER/SITE/blogpages/server_side_request_forgery.html" width="100%" height="1000"></iframe>
+<iframe src="/blogpages/server_side_request_forgery.html" width="100%" height="1000"></iframe>
 
 </div>
 
@@ -581,7 +581,7 @@ const topics = [
 
 <pre style="text-align:center;">
 
-<a href="" target=""><img src="LOGO01.png" alt="LOGO" width="550" height="500"></a>
+<a href="" target=""><img src="/img/LOGO01.png" alt="LOGO" width="550" height="500"></a>
 
 <h1>CONTENT IN PROGRESS...[FILE NOT FOUND - 404]</h1>
 
@@ -602,7 +602,7 @@ const topics = [
 
 <pre style="text-align:center;">
 
-<a href="" target=""><img src="LOGO01.png" alt="LOGO" width="550" height="500"></a>
+<a href="" target=""><img src="/img/LOGO01.png" alt="LOGO" width="550" height="500"></a>
 
 <h1>CONTENT IN PROGRESS...[FILE NOT FOUND - 404]</h1>
 
@@ -621,7 +621,7 @@ const topics = [
 
 <div id="content01">
 
-<iframe src="file:///Users/b0ydc/Documents/CYBER/SITE/blogpages/xpath_injection.html" width="100%" height="1000"></iframe>
+<iframe src="/blogpages/xpath_injection.html" width="100%" height="1000"></iframe>
 
 </div>
 
@@ -632,7 +632,7 @@ const topics = [
 
 <div id="content01">
 
-<iframe src="file:///Users/b0ydc/Documents/CYBER/SITE/blogpages/nosql_injection.html" width="100%" height="1000"></iframe>
+<iframe src="/blogpages/nosql_injection.html" width="100%" height="1000"></iframe>
 
 </div>
 
@@ -645,7 +645,7 @@ const topics = [
 
 <pre style="text-align:center;">
 
-<a href="" target=""><img src="LOGO01.png" alt="LOGO" width="550" height="500"></a>
+<a href="" target=""><img src="/img/LOGO01.png" alt="LOGO" width="550" height="500"></a>
 
 <h1>CONTENT IN PROGRESS...[FILE NOT FOUND - 404]</h1>
 
@@ -666,7 +666,7 @@ const topics = [
 
 <pre style="text-align:center;">
 
-<a href="" target=""><img src="LOGO01.png" alt="LOGO" width="550" height="500"></a>
+<a href="" target=""><img src="/img/LOGO01.png" alt="LOGO" width="550" height="500"></a>
 
 <h1>CONTENT IN PROGRESS...[FILE NOT FOUND - 404]</h1>
 
@@ -688,7 +688,7 @@ const topics = [
 
 <pre style="text-align:center;">
 
-<a href="" target=""><img src="LOGO01.png" alt="LOGO" width="450" height="400"></a>
+<a href="" target=""><img src="/img/LOGO01.png" alt="LOGO" width="450" height="400"></a>
 <br>  
 
 <p class="titulos">©® - Since 2023</p>
@@ -703,7 +703,7 @@ const topics = [
 
 <div id="content01">
 
-<iframe src="file:///Users/b0ydc/Documents/CYBER/SITE/blogpages/xss.html" width="100%" height="1000"></iframe>
+<iframe src="/blogpages/xss.html" width="100%" height="1000"></iframe>
 
 </div>
 
@@ -714,7 +714,7 @@ const topics = [
 
 <div id="content01">
 
-<iframe src="file:///Users/b0ydc/Documents/CYBER/SITE/blogpages/csrf.html" width="100%" height="1000"></iframe>
+<iframe src="/blogpages/csrf.html" width="100%" height="1000"></iframe>
 
 </div>
 
@@ -725,7 +725,7 @@ const topics = [
 
 <div id="content01">
 
-<iframe src="file:///Users/b0ydc/Documents/CYBER/SITE/blogpages/cors.html" width="100%" height="1000"></iframe>
+<iframe src="/blogpages/cors.html" width="100%" height="1000"></iframe>
 
 </div>
 
@@ -736,7 +736,7 @@ const topics = [
 
 <div id="content01">
 
-<iframe src="file:///Users/b0ydc/Documents/CYBER/SITE/blogpages/clickjacking.html" width="100%" height="1000"></iframe>
+<iframe src="/blogpages/clickjacking.html" width="100%" height="1000"></iframe>
 
 </div>
 
@@ -749,7 +749,7 @@ const topics = [
 
 <pre style="text-align:center;">
 
-<a href="" target=""><img src="LOGO01.png" alt="LOGO" width="550" height="500"></a>
+<a href="" target=""><img src="/img/LOGO01.png" alt="LOGO" width="550" height="500"></a>
 
 <h1>CONTENT IN PROGRESS...[FILE NOT FOUND - 404]</h1>
 
@@ -765,7 +765,7 @@ const topics = [
 
 <div id="content01">
 
-<iframe src="file:///Users/b0ydc/Documents/CYBER/SITE/blogpages/websockets.html" width="100%" height="1000"></iframe>
+<iframe src="/blogpages/websockets.html" width="100%" height="1000"></iframe>
 
 </div>
 
@@ -778,7 +778,7 @@ const topics = [
 
 <pre style="text-align:center;">
 
-<a href="" target=""><img src="LOGO01.png" alt="LOGO" width="550" height="500"></a>
+<a href="" target=""><img src="/img/LOGO01.png" alt="LOGO" width="550" height="500"></a>
 
 <h1>CONTENT IN PROGRESS...[FILE NOT FOUND - 404]</h1>
 
@@ -796,7 +796,7 @@ const topics = [
 
 <pre style="text-align:center;">
 
-<a href="" target=""><img src="LOGO01.png" alt="LOGO" width="550" height="500"></a>
+<a href="" target=""><img src="/img/LOGO01.png" alt="LOGO" width="550" height="500"></a>
 
 <h1>CONTENT IN PROGRESS...[FILE NOT FOUND - 404]</h1>
 
@@ -817,7 +817,7 @@ const topics = [
 
 <pre style="text-align:center;">
 
-<a href="" target=""><img src="LOGO01.png" alt="LOGO" width="550" height="500"></a>
+<a href="" target=""><img src="/img/LOGO01.png" alt="LOGO" width="550" height="500"></a>
 
 <h1>CONTENT IN PROGRESS...[FILE NOT FOUND - 404]</h1>
 
@@ -833,7 +833,7 @@ const topics = [
 
 <div id="content01">
 
-<iframe src="file:///Users/b0ydc/Documents/CYBER/SITE/blogpages/html_injection.html" width="100%" height="1000"></iframe>
+<iframe src="/blogpages/html_injection.html" width="100%" height="1000"></iframe>
 
 </div>
 
@@ -847,7 +847,7 @@ const topics = [
 
 <div id="content01">
 
-<iframe src="file:///Users/b0ydc/Documents/CYBER/SITE/blogpages/csp_header_attacks.html" width="100%" height="1000"></iframe>
+<iframe src="/blogpages/csp_header_attacks.html" width="100%" height="1000"></iframe>
 
 </div>
 
@@ -858,7 +858,7 @@ const topics = [
 
 <div id="content01">
 
-<iframe src="file:///Users/b0ydc/Documents/CYBER/SITE/blogpages/open_redirect.html" width="100%" height="1000"></iframe>
+<iframe src="/blogpages/open_redirect.html" width="100%" height="1000"></iframe>
 
 </div>
 
@@ -875,7 +875,7 @@ const topics = [
 
 <div id="content01">
 
-<iframe src="file:///Users/b0ydc/Documents/CYBER/SITE/blogpages/sqlmap.html" width="100%" height="1000"></iframe>
+<iframe src="/blogpages/sqlmap.html" width="100%" height="1000"></iframe>
 
 </div>
 
@@ -886,7 +886,7 @@ const topics = [
 
 <div id="content01">
 
-<iframe src="file:///Users/b0ydc/Documents/CYBER/SITE/blogpages/webshells.html" width="100%" height="1000"></iframe>
+<iframe src="/blogpages/webshells.html" width="100%" height="1000"></iframe>
 
 </div>
 
@@ -897,7 +897,7 @@ const topics = [
 
 <div id="content01">
 
-<iframe src="file:///Users/b0ydc/Documents/CYBER/SITE/blogpages/ffuf.html" width="100%" height="1000"></iframe>
+<iframe src="/blogpages/ffuf.html" width="100%" height="1000"></iframe>
 
 </div>
 
@@ -913,7 +913,7 @@ const topics = [
 
 <pre style="text-align:center;">
 
-<a href="" target=""><img src="LOGO01.png" alt="LOGO" width="550" height="500"></a>
+<a href="" target=""><img src="/img/LOGO01.png" alt="LOGO" width="550" height="500"></a>
 
 <h1>CONTENT IN PROGRESS...[FILE NOT FOUND - 404]</h1>
 
@@ -932,7 +932,7 @@ const topics = [
 
 <div id="content01">
 
-<iframe src="file:///Users/b0ydc/Documents/CYBER/SITE/blogpages/browser_extension_attacks.html" width="100%" height="1000"></iframe>
+<iframe src="/blogpages/browser_extension_attacks.html" width="100%" height="1000"></iframe>
 
 </div>
 
@@ -947,7 +947,7 @@ const topics = [
 
 <pre style="text-align:center;">
 
-<a href="" target=""><img src="LOGO01.png" alt="LOGO" width="550" height="500"></a>
+<a href="" target=""><img src="/img/LOGO01.png" alt="LOGO" width="550" height="500"></a>
 
 <h1>CONTENT IN PROGRESS...[FILE NOT FOUND - 404]</h1>
 
@@ -973,7 +973,7 @@ const topics = [
 
 <pre style="text-align:center;">
 
-<a href="" target=""><img src="LOGO01.png" alt="LOGO" width="550" height="500"></a>
+<a href="" target=""><img src="/img/LOGO01.png" alt="LOGO" width="550" height="500"></a>
 
 <h1>CONTENT IN PROGRESS...[FILE NOT FOUND - 404]</h1>
 
@@ -994,7 +994,7 @@ const topics = [
 
 <pre style="text-align:center;">
 
-<a href="" target=""><img src="LOGO01.png" alt="LOGO" width="550" height="500"></a>
+<a href="" target=""><img src="/img/LOGO01.png" alt="LOGO" width="550" height="500"></a>
 
 <h1>CONTENT IN PROGRESS...[FILE NOT FOUND - 404]</h1>
 
@@ -1015,7 +1015,7 @@ const topics = [
 
 <pre style="text-align:center;">
 
-<a href="" target=""><img src="LOGO01.png" alt="LOGO" width="550" height="500"></a>
+<a href="" target=""><img src="/img/LOGO01.png" alt="LOGO" width="550" height="500"></a>
 
 <h1>CONTENT IN PROGRESS...[FILE NOT FOUND - 404]</h1>
 
@@ -1034,7 +1034,7 @@ const topics = [
 
 <div id="content01">
 
-<iframe src="file:///Users/b0ydc/Documents/CYBER/SITE/blogpages/jwt_tokens.html" width="100%" height="1000"></iframe>
+<iframe src="/blogpages/jwt_tokens.html" width="100%" height="1000"></iframe>
 
 </div>
 
@@ -1050,7 +1050,7 @@ const topics = [
 
 <pre style="text-align:center;">
 
-<a href="" target=""><img src="LOGO01.png" alt="LOGO" width="550" height="500"></a>
+<a href="" target=""><img src="/img/LOGO01.png" alt="LOGO" width="550" height="500"></a>
 
 <h1>CONTENT IN PROGRESS...[FILE NOT FOUND - 404]</h1>
 
@@ -1071,7 +1071,7 @@ const topics = [
 
 <pre style="text-align:center;">
 
-<a href="" target=""><img src="LOGO01.png" alt="LOGO" width="550" height="500"></a>
+<a href="" target=""><img src="/img/LOGO01.png" alt="LOGO" width="550" height="500"></a>
 
 <h1>CONTENT IN PROGRESS...[FILE NOT FOUND - 404]</h1>
 
@@ -1102,7 +1102,7 @@ const topics = [
 
 <pre style="text-align:center;">
 
-<a href="" target=""><img src="LOGO01.png" alt="LOGO" width="550" height="500"></a>
+<a href="" target=""><img src="/img/LOGO01.png" alt="LOGO" width="550" height="500"></a>
 
 <h1>CONTENT IN PROGRESS...[FILE NOT FOUND - 404]</h1>
 
@@ -1123,7 +1123,7 @@ const topics = [
 
 <pre style="text-align:center;">
 
-<a href="" target=""><img src="LOGO01.png" alt="LOGO" width="550" height="500"></a>
+<a href="" target=""><img src="/img/LOGO01.png" alt="LOGO" width="550" height="500"></a>
 
 <h1>CONTENT IN PROGRESS...[FILE NOT FOUND - 404]</h1>
 
@@ -1144,7 +1144,7 @@ const topics = [
 
 <pre style="text-align:center;">
 
-<a href="" target=""><img src="LOGO01.png" alt="LOGO" width="550" height="500"></a>
+<a href="" target=""><img src="/img/LOGO01.png" alt="LOGO" width="550" height="500"></a>
 
 <h1>CONTENT IN PROGRESS...[FILE NOT FOUND - 404]</h1>
 
@@ -1175,7 +1175,7 @@ const topics = [
 
 <pre style="text-align:center;">
 
-<a href="" target=""><img src="LOGO01.png" alt="LOGO" width="550" height="500"></a>
+<a href="" target=""><img src="/img/LOGO01.png" alt="LOGO" width="550" height="500"></a>
 
 <h1>CONTENT IN PROGRESS...[FILE NOT FOUND - 404]</h1>
 
@@ -1196,7 +1196,7 @@ const topics = [
 
 <pre style="text-align:center;">
 
-<a href="" target=""><img src="LOGO01.png" alt="LOGO" width="550" height="500"></a>
+<a href="" target=""><img src="/img/LOGO01.png" alt="LOGO" width="550" height="500"></a>
 
 <h1>CONTENT IN PROGRESS...[FILE NOT FOUND - 404]</h1>
 
@@ -1217,7 +1217,7 @@ const topics = [
 
 <pre style="text-align:center;">
 
-<a href="" target=""><img src="LOGO01.png" alt="LOGO" width="550" height="500"></a>
+<a href="" target=""><img src="/img/LOGO01.png" alt="LOGO" width="550" height="500"></a>
 
 <h1>CONTENT IN PROGRESS...[FILE NOT FOUND - 404]</h1>
 
@@ -1243,7 +1243,7 @@ const topics = [
 
 <pre style="text-align:center;">
 
-<a href="" target=""><img src="LOGO01.png" alt="LOGO" width="550" height="500"></a>
+<a href="" target=""><img src="/img/LOGO01.png" alt="LOGO" width="550" height="500"></a>
 
 <h1>CONTENT IN PROGRESS...[FILE NOT FOUND - 404]</h1>
 
@@ -1264,7 +1264,7 @@ const topics = [
 
 <pre style="text-align:center;">
 
-<a href="" target=""><img src="LOGO01.png" alt="LOGO" width="550" height="500"></a>
+<a href="" target=""><img src="/img/LOGO01.png" alt="LOGO" width="550" height="500"></a>
 
 <h1>CONTENT IN PROGRESS...[FILE NOT FOUND - 404]</h1>
 
@@ -1285,7 +1285,7 @@ const topics = [
 
 <pre style="text-align:center;">
 
-<a href="" target=""><img src="LOGO01.png" alt="LOGO" width="550" height="500"></a>
+<a href="" target=""><img src="/img/LOGO01.png" alt="LOGO" width="550" height="500"></a>
 
 <h1>CONTENT IN PROGRESS...[FILE NOT FOUND - 404]</h1>
 
@@ -1306,7 +1306,7 @@ const topics = [
 
 <pre style="text-align:center;">
 
-<a href="" target=""><img src="LOGO01.png" alt="LOGO" width="550" height="500"></a>
+<a href="" target=""><img src="/img/LOGO01.png" alt="LOGO" width="550" height="500"></a>
 
 <h1>CONTENT IN PROGRESS...[FILE NOT FOUND - 404]</h1>
 
@@ -1327,7 +1327,7 @@ const topics = [
 
 <pre style="text-align:center;">
 
-<a href="" target=""><img src="LOGO01.png" alt="LOGO" width="550" height="500"></a>
+<a href="" target=""><img src="/img/LOGO01.png" alt="LOGO" width="550" height="500"></a>
 
 <h1>CONTENT IN PROGRESS...[FILE NOT FOUND - 404]</h1>
 
@@ -1348,7 +1348,7 @@ const topics = [
 
 <pre style="text-align:center;">
 
-<a href="" target=""><img src="LOGO01.png" alt="LOGO" width="550" height="500"></a>
+<a href="" target=""><img src="/img/LOGO01.png" alt="LOGO" width="550" height="500"></a>
 
 <h1>CONTENT IN PROGRESS...[FILE NOT FOUND - 404]</h1>
 
@@ -1375,7 +1375,7 @@ const topics = [
 
 <pre style="text-align:center;">
 
-<a href="" target=""><img src="LOGO01.png" alt="LOGO" width="550" height="500"></a>
+<a href="" target=""><img src="/img/LOGO01.png" alt="LOGO" width="550" height="500"></a>
 
 <h1>CONTENT IN PROGRESS...[FILE NOT FOUND - 404]</h1>
 
@@ -1401,7 +1401,7 @@ const topics = [
 
 <pre style="text-align:center;">
 
-<a href="" target=""><img src="LOGO01.png" alt="LOGO" width="550" height="500"></a>
+<a href="" target=""><img src="/img/LOGO01.png" alt="LOGO" width="550" height="500"></a>
 
 <h1>CONTENT IN PROGRESS...[FILE NOT FOUND - 404]</h1>
 
@@ -1680,7 +1680,7 @@ function loadPage(page) {
 
   <div class="container">
     <div class="news-article">
-      <img src="machete_logo.jpeg" alt="VirusTotal" />
+      <img src="/img/machete_logo.jpeg" alt="MacheteVault" />
       <h2>New skin for Machete Vault</h2>
       <div class="news-meta">Posted on July 3, 2025 by b0ydC</div>
       <p>After some time, we decided to add some functionality to the site, also we are changing the GUI so it looks more like KB. Enjoy.</p>
@@ -1712,7 +1712,7 @@ function loadPage(page) {
       articleContent.innerHTML = `
 <div id="content01">
 
-<iframe src="file:///Users/b0ydc/Documents/CYBER/SITE/wiki.html" width="100%" height="1000"></iframe>
+<iframe src="wiki.html" width="100%" height="1000"></iframe>
 
 </div>
       `;
