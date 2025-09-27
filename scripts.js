@@ -13,7 +13,7 @@ const topics = [
 
 <div id="content01">
 
-<iframe src="file:///Users/b0ydc/Documents/CYBER/SITE/blogpages/blogpage.html" width="100%" height="1000"></iframe>
+<iframe src="/blogpages/blogpage.html" width="100%" height="1000"></iframe>
 
 </div>
 <!--tag: ##-->
@@ -30,7 +30,7 @@ const topics = [
 
 <div id="content02">
 
-<iframe src="file:///Users/b0ydc/Documents/CYBER/SITE/blogpages/blogpage.html" width="100%" height="1000"></iframe>
+<iframe src="/blogpages/blogpage.html" width="100%" height="1000"></iframe>
 
 </div>
 
@@ -324,7 +324,7 @@ const topics = [
 
 <div id="content01">
 
-<iframe src="file:///Users/b0ydc/Documents/CYBER/SITE/blogpages/search_engine_dorks.html" width="100%" height="1000"></iframe>
+<iframe src="/blogpages/blogpage.html" width="100%" height="1000"></iframe>
 
 </div>
 
@@ -356,7 +356,7 @@ const topics = [
 
 <div id="content01">
 
-<iframe src="file:///Users/b0ydc/Documents/CYBER/SITE/blogpages/directory_enumeration.html" width="100%" height="1000"></iframe>
+<iframe src="/blogpages/blogpage.html" width="100%" height="1000"></iframe>
 
 </div>
 
@@ -368,7 +368,7 @@ const topics = [
 
 <div id="content01">
 
-<iframe src="file:///Users/b0ydc/Documents/CYBER/SITE/blogpages/subdomain_enumeration.html" width="100%" height="1000"></iframe>
+<iframe src="/blogpages/blogpage.html" width="100%" height="1000"></iframe>
 
 </div>
 
@@ -398,7 +398,7 @@ const topics = [
 
 <div id="content01">
 
-<iframe src="file:///Users/b0ydc/Documents/CYBER/SITE/blogpages/sqli.html" width="100%" height="1000"></iframe>
+<iframe src="/blogpages/blogpage.html" width="100%" height="1000"></iframe>
 
 </div>
 
