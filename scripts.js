@@ -13,7 +13,7 @@ const topics = [
 
 <div id="content01">
 
-<iframe src="/blogpages/blogpage.html" width="100%" height="1000"></iframe>
+<iframe src="/blogpages/enumeration.html" width="100%" height="1000"></iframe>
 
 </div>
 <!--tag: ##-->
@@ -30,7 +30,7 @@ const topics = [
 
 <div id="content02">
 
-<iframe src="/blogpages/blogpage.html" width="100%" height="1000"></iframe>
+<iframe src="/blogpages/execution.html" width="100%" height="1000"></iframe>
 
 </div>
 
@@ -43,7 +43,7 @@ const topics = [
 
 <pre style="text-align:center;">
 
-<a href="" target=""><img src="LOGO01.png" alt="LOGO" width="550" height="500"></a>
+<a href="" target=""><img src="/img/LOGO01.png" alt="LOGO" width="550" height="500"></a>
 
 <h1>CONTENT IN PROGRESS...[FILE NOT FOUND - 404]</h1>
 
@@ -62,7 +62,7 @@ const topics = [
 
 <pre style="text-align:center;">
 
-<a href="" target=""><img src="LOGO01.png" alt="LOGO" width="550" height="500"></a>
+<a href="" target=""><img src="/img/LOGO01.png" alt="LOGO" width="550" height="500"></a>
 
 <h1>CONTENT IN PROGRESS...[FILE NOT FOUND - 404]</h1>
 
@@ -83,7 +83,7 @@ const topics = [
 
 <pre style="text-align:center;">
 
-<a href="" target=""><img src="LOGO01.png" alt="LOGO" width="550" height="500"></a>
+<a href="" target=""><img src="/img/LOGO01.png" alt="LOGO" width="550" height="500"></a>
 
 <h1>CONTENT IN PROGRESS...[FILE NOT FOUND - 404]</h1>
 
@@ -102,7 +102,7 @@ const topics = [
 
 <pre style="text-align:center;">
 
-<a href="" target=""><img src="LOGO01.png" alt="LOGO" width="550" height="500"></a>
+<a href="" target=""><img src="/img/LOGO01.png" alt="LOGO" width="550" height="500"></a>
 
 <h1>CONTENT IN PROGRESS...[FILE NOT FOUND - 404]</h1>
 
@@ -124,7 +124,7 @@ const topics = [
 
 <pre style="text-align:center;">
 
-<a href="" target=""><img src="LOGO01.png" alt="LOGO" width="550" height="500"></a>
+<a href="" target=""><img src="/img/LOGO01.png" alt="LOGO" width="550" height="500"></a>
 
 <h1>CONTENT IN PROGRESS...[FILE NOT FOUND - 404]</h1>
 
@@ -143,7 +143,7 @@ const topics = [
 
 <pre style="text-align:center;">
 
-<a href="" target=""><img src="LOGO01.png" alt="LOGO" width="550" height="500"></a>
+<a href="" target=""><img src="/img/LOGO01.png" alt="LOGO" width="550" height="500"></a>
 
 <h1>CONTENT IN PROGRESS...[FILE NOT FOUND - 404]</h1>
 
@@ -161,7 +161,7 @@ const topics = [
 
 <pre style="text-align:center;">
 
-<a href="" target=""><img src="LOGO01.png" alt="LOGO" width="550" height="500"></a>
+<a href="" target=""><img src="/img/LOGO01.png" alt="LOGO" width="550" height="500"></a>
 
 <h1>CONTENT IN PROGRESS...[FILE NOT FOUND - 404]</h1>
 
@@ -179,7 +179,7 @@ const topics = [
 
 <pre style="text-align:center;">
 
-<a href="" target=""><img src="LOGO01.png" alt="LOGO" width="550" height="500"></a>
+<a href="" target=""><img src="/img/LOGO01.png" alt="LOGO" width="550" height="500"></a>
 
 <h1>CONTENT IN PROGRESS...[FILE NOT FOUND - 404]</h1>
 
@@ -197,7 +197,7 @@ const topics = [
 
 <pre style="text-align:center;">
 
-<a href="" target=""><img src="LOGO01.png" alt="LOGO" width="550" height="500"></a>
+<a href="" target=""><img src="/img/LOGO01.png" alt="LOGO" width="550" height="500"></a>
 
 <h1>CONTENT IN PROGRESS...[FILE NOT FOUND - 404]</h1>
 
@@ -218,7 +218,7 @@ const topics = [
 
 <pre style="text-align:center;">
 
-<a href="" target=""><img src="LOGO01.png" alt="LOGO" width="550" height="500"></a>
+<a href="" target=""><img src="/img/LOGO01.png" alt="LOGO" width="550" height="500"></a>
 
 <h1>CONTENT IN PROGRESS...[FILE NOT FOUND - 404]</h1>
 
@@ -239,7 +239,7 @@ const topics = [
 
 <pre style="text-align:center;">
 
-<a href="" target=""><img src="LOGO01.png" alt="LOGO" width="550" height="500"></a>
+<a href="" target=""><img src="/img/LOGO01.png" alt="LOGO" width="550" height="500"></a>
 
 <h1>CONTENT IN PROGRESS...[FILE NOT FOUND - 404]</h1>
 
@@ -260,7 +260,7 @@ const topics = [
 
 <pre style="text-align:center;">
 
-<a href="" target=""><img src="LOGO01.png" alt="LOGO" width="550" height="500"></a>
+<a href="" target=""><img src="/img/LOGO01.png" alt="LOGO" width="550" height="500"></a>
 
 <h1>CONTENT IN PROGRESS...[FILE NOT FOUND - 404]</h1>
 
@@ -281,7 +281,7 @@ const topics = [
 
 <pre style="text-align:center;">
 
-<a href="" target=""><img src="LOGO01.png" alt="LOGO" width="550" height="500"></a>
+<a href="" target=""><img src="/img/LOGO01.png" alt="LOGO" width="550" height="500"></a>
 
 <h1>CONTENT IN PROGRESS...[FILE NOT FOUND - 404]</h1>
 
@@ -307,7 +307,7 @@ const topics = [
 
 <pre style="text-align:center;">
 
-<a href="" target=""><img src="LOGO01.png" alt="LOGO" width="550" height="500"></a>
+<a href="" target=""><img src="/img/LOGO01.png" alt="LOGO" width="550" height="500"></a>
 
 <h1>CONTENT IN PROGRESS...[FILE NOT FOUND - 404]</h1>
 
@@ -324,7 +324,7 @@ const topics = [
 
 <div id="content01">
 
-<iframe src="/blogpages/blogpage.html" width="100%" height="1000"></iframe>
+<iframe src="/blogpages/search_engine_dorks.html" width="100%" height="1000"></iframe>
 
 </div>
 
@@ -340,7 +340,7 @@ const topics = [
 
 <pre style="text-align:center;">
 
-<a href="" target=""><img src="LOGO01.png" alt="LOGO" width="550" height="500"></a>
+<a href="" target=""><img src="/img/LOGO01.png" alt="LOGO" width="550" height="500"></a>
 
 <h1>CONTENT IN PROGRESS...[FILE NOT FOUND - 404]</h1>
 
@@ -356,7 +356,7 @@ const topics = [
 
 <div id="content01">
 
-<iframe src="/blogpages/blogpage.html" width="100%" height="1000"></iframe>
+<iframe src="/blogpages/directory_enumeration.html" width="100%" height="1000"></iframe>
 
 </div>
 
@@ -368,7 +368,7 @@ const topics = [
 
 <div id="content01">
 
-<iframe src="/blogpages/blogpage.html" width="100%" height="1000"></iframe>
+<iframe src="/blogpages/subdomain_enumeration.html" width="100%" height="1000"></iframe>
 
 </div>
 
@@ -383,7 +383,7 @@ const topics = [
 
 <pre style="text-align:center;">
 
-<a href="" target=""><img src="LOGO01.png" alt="LOGO" width="450" height="400"></a>
+<a href="" target=""><img src="/img/LOGO01.png" alt="LOGO" width="450" height="400"></a>
 <br>  
 
 <p class="titulos">©® - Since 2023</p>
@@ -398,7 +398,7 @@ const topics = [
 
 <div id="content01">
 
-<iframe src="/blogpages/blogpage.html" width="100%" height="1000"></iframe>
+<iframe src="/blogpages/sqli.html" width="100%" height="1000"></iframe>
 
 </div>
 
