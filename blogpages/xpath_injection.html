@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mi Blog</title>
+  <link rel="stylesheet" href="file:///Users/b0ydc/Documents/CYBER/SITE/css/styles.css">
+</head>
+<body>
+  <header>
+    <h4 align="right">@b0ydC</h4>
+  </header>
+
+  <main>
+    <article>
+     
+<h2>1. GENERAL INFORMATION</h2>  
+
+<code>
+
+NOTES:<br> <br>
+- Techniques similar to SQLi can be applied.<br>
+- Main difference is the way the data is structured and the query languaje used. [XPath]<br>
+- Used more to store configuration files.<br>
+- If structure is used for authentication, with this attack there's a chance to be able to elevate their privileges on the web site.<br><br>
+
+SAMPLE:<br><br>
+
+&lt;&quest;xml version&equals;&rdquo;1&period;0&quot; encoding&equals;&quot;utf-8&quot;&quest;&gt;<br>
+&lt;Employees&gt;<br>
+ &lt;Employee ID&equals;&quot;01&quot;&gt;<br>
+ &lt;Name&gt;Thomas &lt;&sol;Name&gt;<br>
+ &lt;UserName&gt;Liberty &lt;&sol;UserName&gt;<br>
+ &lt;Password&gt;Reserve &lt;&sol;Password&gt;<br>
+ &lt;&sol;Employee&gt;<br>
+ &lt;Employee ID&equals;&quot;02&quot;&gt;<br>
+ &lt;Name&gt;Juan &lt;&sol;Name&gt;<br>
+ &lt;UserName&gt;Beltran&lt;&sol;UserName&gt;<br>
+ &lt;Password&gt;pass&lt;&sol;Password&gt;<br>
+ &lt;&sol;Employee&gt;<br>
+&lt;&sol;Employees&gt;
+
+XPATH QUERY:<br><br>
+
+"//Employee[UserName/text()='" & Request("UserName") & "' And Password/text()='" & Request("Password") & "']"<br><br>
+
+<code>
+    </article>
+  </main>
+</body>
+</html>

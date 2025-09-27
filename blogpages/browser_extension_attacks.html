@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mi Blog</title>
+  <link rel="stylesheet" href="file:///Users/b0ydc/Documents/CYBER/SITE/css/styles.css">
+</head>
+<body>
+  <header>
+    <h4 align="right">@b0ydC</h4>
+  </header>
+
+  <main>
+    <article>
+
+<h3>CHROME</h3>
+     
+<b>how to enable developer mode ?</b><br><br>
+
+1. open browser <br>
+2. go to chrome://extensions/<br>
+3. go to the right and switch the "Developer mode" toggle.<br><br>
+
+<b>check image below</b><br><br>
+
+<img src="../img/web_app_pentest/developer_mode.png" alt="8318 Logo" width="100%" height="40"><br><br>
+
+<b>important settings for analysis:</b><br><br>
+
+chrome://extensions/<br>
+chrome://inspect/<br><br>
+
+<b>how to download the .crx file from chrome extensions ? method 1</b><br><br>
+
+this is a quick simnple method using CLI, we are using the google service to downnload it. there's two pre-requisites,<br><br>
+
+-extension ID<br>
+-chrome version <br><br>
+
+URL="https://clients2.google.com/service/update2/crx?response=redirect&prodversion=${PRODVER}&x=id%3D${EXT_ID}%26installsource%3Dondemand%26uc"<br><br>
+
+i created a quick script on bash to download the extension you want, you need to type the extension ID and version of chrome to work with.
+
+
+
+
+    </article>
+
+
+  </main>
+
+</body>
+</html>

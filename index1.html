@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/x-icon" href="LOGO01.png">
+  <title>M A C H E T E</title>
+  <link rel="stylesheet" href="styles.css" />
+  <!-- External Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/dompurify/dist/purify.min.js"></script>
+</head>
+  <!--------------------->
+  <!-- b0ydC Founder -->
+  <!-- --------------- -->
+<body>
+  <header class="navbar">
+    <div class="navbar-logo" id="homeButton">
+      <img src="machete_logo.jpeg" alt="Logo" class="logo" />
+      <span>MACHETE VAULT</span>
+    </div>
+    <nav class="nav-links">
+      <span class="nav-link" data-page="home">Home</span>
+      <span class="nav-link" data-page="wiki">Wiki</span>
+      <span class="nav-link" data-page="about">About</span>
+      <label class="dark-toggle" title="Toggle Dark Mode">
+      🌙 <input type="checkbox" id="darkModeToggle" />
+      </label>
+      <button id="logoutButton" class="logout-button">Logout</button>
+    </nav>
+  </header>
+
+  <div class="container">
+  <aside class="sidebar">
+
+    <div class="search-wrapper">
+    <input type="text" id="searchInput" placeholder="Search topics..." /><span id="clearSearch" class="clear-button">&times;</span>
+    </div>
+  <!--<input type="text" id="searchInput" placeholder="Search topics..." /><span id="clearSearch" class="clear-button">&times;</span>-->
+  <ul id="topicList"></ul><br><br>
+  <div><script src="https://www.hackthebox.eu/badge/2469897"></script></div><br>
+  <a href="https://www.abuseipdb.com/user/166717" title="AbuseIPDB">
+  <img src="https://www.abuseipdb.com/contributor/166717.svg" alt="AbuseIPDB Contributor Badge" style="width: 201px;">
+  </a><br>
+    </aside>
+    <main class="content">
+      <h1 id="articleTitle">Welcome to my world!</h1>
+      <div id="articleContent">
+        <strong>MACHETE VAULT</strong> is a collection of commands, notes, tools, part of my own development on the <u>Security Research</u> field. Special interest on Web and Mobile applications. <br><br>
+        Come back regularly, I'm sure you will find something to help you grow.</div>     
+    </main>
+  </div>
+<footer class="footer">
+  <div class="footer-content">
+    <p>&copy; 2025 MACHETE VAULT | Created by (a.k.a b0ydC)</p>
+    <p>For educational purposes only | <a href="mailto:b0ydc@wearehackerone.com">Contact</a></p>
+  </div>
+</footer>
+<script src="scripts.js"></script>
+</body>
+</html>

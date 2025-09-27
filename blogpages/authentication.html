@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mi Blog</title>
+  <link rel="stylesheet" href="file:///Users/b0ydc/Documents/CYBER/SITE/css/styles.css">
+</head>
+<body>
+  <header>
+    <h4 align="right">@b0ydC</h4>
+  </header>
+  <main>
+    <article>
+     
+<h2>1. GENERAL INFORMATION</h2>
+
+
+0. Inspect the code.<br>
+1. User enumeration.<br>
+2. Sometimes to move faster it is better to enumerate/attack each field separately.<br>
+3. Check responses, look for differences in status code, length, response time, etc.<br>
+4. When length is consecutively changing, check for HTML messages, grep/extract something to match and compare.
+
+
+<h2>2. BRUTE FORCE</h2> 
+
+<b>NOTE:</b><br><br> 
+- Different tools can be used, [burpsuite/ffuf, etc]. Create wordlist associated to the content, use predefined, etc.<br> 
+- Intruder attack / cluster or sniper<br>
+- In burpsuite it is better to use intruder > snipper attacks to move faster instead of intruder > cluster bomb.<br> 
+- ffuf attack<br>
+- Wordlist can be created or rockyou can be used, or normal wordlists.<br><br>
+
+<a href="https://github.com/danielmiessler/SecLists" target="_blank">SecLists</a><br><br>
+
+<u>WHEN BROKEN</u><br><br>
+
+If exists some kind of block, time-based, ip-based, more. <b>PITCHFORK ATTACK!</b> remember to set the resource pool to 1 concurrent 
+requests to avoid to be blocked, also, sometimes it is better for the pitchfork attack. 
+
+<h2>3. 2FA BYPASS</h2>
+
+- First way to by-pass, use the same code. [valid user token]<br>
+- Second way, check headers and URL>path from a valid session and replicate with vulnerable user.<br><br>
+
+<b>SAMPLE:</b> try going directly to > /my-account?id=USER ----> this will be the URL redirection from a valid session.
+
+<h2>4. SESSION MANAGEMENT</h2> 
+
+<b>NOTES:</b><br><br>
+1. It is important to inspect the source code, also, inspect the requests.<br>
+2. Some developers makes some mitakes leaking data in URL.
+
+<br><br><u>COMMON MISTAKES</u><br><br>
+
+- IDORS that provide administrative access.<br>
+- It will possible to "improve" security adding the same values into the cookies.<br><br>
+
+<b>SAMPLE:</b> http://IP_ADDR/bWAPP/smgmt_admin_portal.php?admin=0 | Cookie: PHPSESSID=VALUE; security_level=1; admin=0
+
+<h2>5. BROKEN LOGIC</h2> 
+
+<u>RESET FUNCTION</u><br><br>
+  
+1. Inspect all request/response using burpsuite.<br>
+2. If possible use and log information about the application with an authenticated session and without. Compare and check for differences.<br>
+3. Attempt same attack with enumerated users.<br><br>
+
+<b>SAMPLE:</b> temp-forgot-password-token=TOKEN.8vwfct4qj0i89g&username=USER&new-password-1=PASS1&new-password-2=PASS2<br><br>
+
+<u>IP-BASED PROTECTION</u>
+
+- Some applications have some restrictions about IP-based / geolocation and more, one way to by-pass or attempt to by-pass the 
+IP-based restriction is to use the header, "X-Forwarded-For". For the test, any number can be used or at least it is one attempt.<br><br>
+
+<b>SAMPLE:</b> X-Forwarded-For:1<br><br>
+
+<b>NOTE:</b> X-Forwarded-For header can be used consecutively if needed to avoid restrictions. <b>PITCHFORK ATTACK!</b>
+  
+- If exist some time-based protection associated to a block IP, check if exist some way to reset the counter, if yes, it will let 
+you brute force different users avoiding to be blocked. 
+
+<h2>6. TIME DELAY</h2>
+
+For this testing it is important to use different users, if possible authenticated/valid session and non valid session. 
+Comparing responses will be needed. Check RESPONSE TIME is essential.<br><br>
+
+- Check if response of invalid user takes more time than a valid user and viceversa, that can help to discover or associate valid authentication credentials. <br> 
+- Sometimes the process of checking the password can take time, that can represent the user is valid.<br>
+- Check if exist some kind of block or protection based on IP, Geolocation, attempts, time-based,etc. analyze the form and how it works. <br>
+- The usage of X-Forwarded-For can be applied. PITCHFORK ATTACK! <br>
+- Analyze "response received / response completed" burp-columns. <br>         
+
+<h2>7. ENUMERATION TECHNIQUES</h2> 
+
+<u>ACCOUNT LOCK</u>
+
+--> null payloads technique<br><br>
+
+<b>::: PRE-REQS:</b><br><br>
+  
+- blank payload position to the end of the last field.<br><br>
+
+<b>SAMPLE:</b> user=§user§&pass=test§§<br><br>
+
+So, you have two positions one for the user and the null generated at the end of the second position, "pass". The null technique will repeat the first position. Using the sample as reference, it will repeat the user.
+
+    </article>
+  </main>
+</body>
+</html>

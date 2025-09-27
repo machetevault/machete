@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mi Blog</title>
+  <link rel="stylesheet" href="file:///Users/b0ydc/Documents/CYBER/SITE/css/styles.css">
+</head>
+<body>
+  <header>
+  <h4 align="right">@b0ydC</h4>
+  </header>
+  <main>
+  <article>     
+<h2>1. AMASS</h2>
+
+<u>DESCRIPTION:</u><br><br>
+
+C1: <code>amass enum -d URL</code><br><br>
+
+<code>SAMPLE: amass enum -d machetevault.com</code><br><br>
+<code>SAMPLE: amass enum -d machetevault.com > /path/to/file.txt</code><br><br>
+  
+<code>-d = domain<br>
+-o = output content</code>
+
+<h2>2. WEB TOOLS</h2>
+
+<u>DESCRIPTION:</u><br><br>
+
+[crt.sh](https://crt.sh/) <br><br>
+
+<code>SAMPLE: %.machetevault.com</code><br><br>
+
+NOTE:<br>  <br>
+- Wildcard search on crt.sh, %.URL<br>
+
+<h2>3. SUBFINDER</h2>
+
+<u>DESCRIPTION:</u><br><br>
+
+C1: <code>subfinder -d URL</code><br><br>
+
+<code>SAMPLE: subfinder -d machetevault.com</code><br><br>
+<code>SAMPLE: subfinder -d machetevault.com -o /path/to/file.txt</code><br><br>
+  
+<code>-d = domain<br>
+-o = output content</code>
+
+<h2>4. GOWITNESS</h2>
+
+<u>DESCRIPTION:</u><br><br>
+
+C1: <code>gowitness file -f demo.txt -P folder/to/store --no-http</code><br><br>
+
+<code>SAMPLE: gowitness file -f demo.txt -P /usr/store/ --no-http</code><br><br>
+  
+<code>--no-http = ignore HTTP requests<br>
+-P = folder to store images</code>
+
+<h2>5. SUBLIST3R</h2>
+
+<u>DESCRIPTION:</u><br><br>
+
+$ <code>sublist3r -d URL</code><br><br>
+
+<code>SAMPLE: sublist3r -d machetevault.com</code><br><br>
+
+<code>-d: domain</code>
+
+<h2>6. SHODAN</h2>
+
+<u>DESCRIPTION:</u><br><br>
+
+filters to enumerate more subdomains for a company. <br>
+- intigriti tweet / https://x.com/intigriti/status/1859902400682672337<br><br>
+
+<code>ssl.cert.subject.CN:"machetevault.com" <br>
+http.html:"©" </code><br><br>
+
+<code>http.favicon.hash:-1533858881</code> | for this one you need to find the hash favicon first.<br>
+- intigriti tweet / https://x.com/intigriti/status/1844667511599497453
+
+
+</article>
+</main>
+</body>
+</html>

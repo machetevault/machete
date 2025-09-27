@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mi Blog</title>
+  <link rel="stylesheet" href="file:///Users/b0ydc/Documents/CYBER/SITE/css/styles.css">
+</head>
+<body>
+  <header>
+    <h4 align="right">@b0ydC</h4>
+  </header>
+
+  <main>
+    <article>
+
+CSP: content security policy | It's a way to restrict what is allowed in the application<br><br>
+  
+NOTES:<br><br>
+  1. 'self' means it allows from same domain.<br>
+  2. CSP policy is defined in the response header, this is how browser knows the CSP policy is in place<br>
+  3. use the dev tools when testing and inspect using the console tab to see if any 'alert' notification pop-up. <br>
+  4. you can check also inspecting the HTML code and check for the meta tag<br>
+  5. it is pretty important to analyze what tags are allowed, so they are abused      
+
+<h2>1. bypass via ajax.googleapis.com</h2> 
+
+sample:<br><br>
+  content-security-policy: script-src 'self' ajax.googleapis.com<br><br>
+
+payload: <br><br>
+
+&lt;div ng-app ng-csp id=p ng-click=$event.view.alert("XSS")>&lt;script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js">&lt;/script><br><br>
+&lt;script async src=//ajax.googleapis.com/jsapi?callback=p.click>&lt;/script><br><br>
+
+
+ng-app: enables angular js usage<br>
+ng-csp: enables angular js CSP mode<br>
+ng-click: enables angular js click method <br><br>
+
+<u>explanation:</u> Basically the div is enabling some features (ng-app / ng-csp / ng-click) so it can be used by angular js as 'ajax.googleapis.com' 
+is allowed. As the div is calling angular it is needed to import the library to use the functions to call more actions. async ;source is 
+allowing the automatic interaction needed to pop-up the click event. 
+
+<h2>2. bypass via flash file</h2> 
+
+sample:<br><br> 
+  content-security-policy: script-src 'self'<br><br>
+
+payload:<br><br>  
+
+&lt;object type='application/x-shockwave-flash' data='https://ajax.googleapis.com/ajax/libs/yui/2.8.0r4/build/charts/assets/charts.swf?allowed
+Domain=&bsol;&percnt;22})))}catch(e) {alert(/XSS/)}//'>&lt;param name='AllowScriptAccess' value='always'>&lt;/object>
+
+NOTES:<br> <br> 
+  1. This content security policy only allows scripts from the same domain itself.<br>
+  2. It is only restricting scripts, but how about flash files ? ajax.googleapis.com is not explicitely allowed, however, via flash 
+  files it can be call it.<br>
+  3. Each time you want to try flash csp by pass you need to use the HTML tag 'object'<br>
+  4. 'charts.swf' is a vulnerable flash file to XSS, if not working, you can set your own or find other to trigger XSS.   
+
+<h2>3. bypass via polyglot file</h2> 
+
+sample: <br><br>
+  content-security-policy: default-src 'self'<br><br>      
+
+<h2>4. bypass via angularJS</h2> 
+       
+...
+
+<h2>5. bypass via JSONP</h2> 
+
+JSONP means json with padding is just a method to retrieve json data from a differnet domain, normally is accomplished by dynamic script tag and
+also is subject to the same origin policy. when you use this method you use a callback function method in the query parameters for the url and the
+callback function will retrieve the data. so using this method you will not be blocked by the csp policy restriction.<br><br>
+
+this is normally achieved when the csp policy is allowing third party urls or domains to get data from. <br><br>
+
+like https://www.google.com or https://www.youtube.com<br><br>
+
+samples:<br><br>
+
+first link will show the raw data in json format, you need to use the callback oembeb feature and you need to select the youtube video you want
+to retrieve, remember that data is not critical, however is a way to trigger other functions like alert() to discover XSS.<br><br>
+  
+https://youtube.com/oembed?url=https://www.youtube.com/watch?v=bQki6llaaTs<br><br>
+
+second link will show you how to use the callback to use functions, <br><br>
+  
+https://youtube.com/oembed?url=https://www.youtube.com/watch?v=bQki6llaaTs&callback=test()<br><br>
+
+third link is actually the suspicious trigger<br><br>
+
+&lt;script/src x=https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=bQki6llaaTs&callback=alert(1)>&lt;/script>   
+
+<h2>6. bypass via fileupload</h2> 
+
+-nahamsec's way-
+
+first thing is that only work if the file upload is allowed on the csp policy.<br><br>
+
+it is needed to recognize the csp policy, if it is script-src 'self' this technique will work.<br><br>
+
+it will be needed to inspect the traffic with dev tools to see if the files are loaded or not. if the csp policy is script-src 'self'
+you can use the same domain on the on the vuln field to trigger the script tag. <br><br>
+
+two good tips are to check on dev tools:<br><br>
+-network tab<br>
+-console tab<br><br>
+
+if you discover that you can upload files, you can intercept the request and chage the extention, the content type or the magic bytes
+in order to test if another file can be uploaded.
+
+
+    </article>
+  </main>
+</body>
+</html>

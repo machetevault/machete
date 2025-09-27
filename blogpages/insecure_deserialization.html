@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mi Blog</title>
+  <link rel="stylesheet" href="file:///Users/b0ydc/Documents/CYBER/SITE/css/styles.css">
+</head>
+<body>
+  <header>
+    <h4 align="right">@b0ydC</h4>
+  </header>
+
+  <main>
+    <article>
+     
+<h2>1. GENERAL INFORMATION</h2>   
+
+<code>
+
+- it is the process of converting complex data structures (objects, fields) into a "flatter" format that can be sent and received 
+as a sequential stream of bytes.<br>
+- most common languages to learn, PHP / Ruby / Java for deserialization<br>
+- used for,<br>
+- write complex data to inter-process memory, a file or a database<br>
+- send complex data, sample, over a network, API call and more.<br>
+- exist native support for serialization depending the language. common is binary format<br>
+- one way to prevent a field to be serialized is to declare it as "transient"<br>
+- serialization on Ruby is called: marshalling / and in python it is called: pickilng<br><br>
+
+<u>so what's INSECURE DESERIALIZATION</u><br><br>
+
+it is when user controlabe data is deserialized by a website. this enables a bad actor to manipulate serialized objects in order 
+to pass harmful data into the app. <br><br>
+
+<u>why this attack is effective ?</u> <br><br>
+- because it can be detected after the object was deserialized which is too late as the data could start/trigger an attack, etc.<br>
+- exist a weird assuptiom that deserialized objects are trustworthy. <br>
+- dependencies, massive pool of classes and methods that is difficult to manage securely.<br><br>
+
+NOTE:<br> <br>
+- If checking the source code you see the following methods, serialize() / unserialize(), check further.
+
+</code>
+
+<h2>2. IDENTIFICATION</h2>  
+
+<code>          
+
+NOTE:<br><br>
+- First thing, check and double check all data being passed into the website to try to find possible serialized data.<br>
+- to know or identify serialized data it is needed to know the format of the language. for example, python serialization, 
+php serialization, etc. <br><br>
+
+PHP<br><br>
+
+Format: O:4:"User":2:{s:4:"name":s:6:"carlos"; s:10:"isLoggedIn":b:1;}<br><br>
+
+Check: https://portswigger.net/web-security/deserialization/exploiting to see how it can be interpreted.  <br><br>
+
+JAVA<br><br>
+
+- it use binary serialization. difficult to read but still identify serialized data.<br><br>
+
+<u>Key points:</u><br><br>
+  - serialized objects always begin with same bytes, ac ed in hexadecimal and rO0 in base64.<br>
+  - any class that implements "java.io.Serializable" is vulnerable. with help of "readObject()" method used to deserialize
+  data from "InputStream".
+
+</code>          
+
+<h2>3. MODIFYING SERIALIZED OBJECTS</h2>  
+
+<code>
+
+- it can be pretty common to find php serialization codes. sometimes they are also encoded in different formats, so manual inspection
+is needed.<br>
+- depending the vulnerability, a quick method to make changes is to change method type. Between, GET/POST.<br>
+- burpsuite inspector is pretty common to help on this cases. <br>
+- it is important to understand what the serialized code is doing and what actions can be accomplish. <br><br>
+
+SAMPLE: O:4:"User":2:{s:4:"name":s:6:"carlos"; s:10:"isLoggedIn":b:1;}<br>
+
+</code>
+
+<h2>4. MODIFYING SERIALIZED DATA TYPES</h2>  
+
+<code>
+
+INFO: PHP-based logic is particularly vulnerable to this kind of manipulation due to the behavior of its loose comparison operator (==) 
+when comparing different data types.<br><br> 
+
+- each time the comparison is between integer > string, the integer will be prevalent. <br><br>
+
+SAMPLE: 3 == "hola" it will be interpreted as 3 == 3 = TRUE<br>
+SAMPLE: 0 == "password" will be TRUE. "zero" is a different case as boolean option.<br><br>
+
+validations against zero can enable different ways of authentication bypass. sample #3<br><br>
+
+this is possible because deserialization preserves the data type. if not it will process different and probably provide a 
+different condition.<br><br>
+
+O:4:"User":2:{s:8:"username";s:13:"administrator";s:12:"access_token";s:32:"iy57t2ho9zv6lae02oypnjrjsgi20ow0";}<br><br>
+
+O:4:"User":2:{s:8:"username";s:13:"administrator";s:12:"access_token";i:0;}
+
+</code>
+
+<h2>5. APPLICATION FUNCTIONALITY</h2> 
+
+<code>  
+
+same steps can be applied, the difference is that the serialized code have or expand more functionalities. <br><br>
+
+<u>for example</u>, is able to read or call file paths.<br><br>
+  
+O:4:"User":3:{s:8:"username";s:5:"b0ydc";s:12:"access_token";s:32:"p283rm0kk5cj7qfuy8n7nz2er9dq9mfx";s:11:
+"avatar_link";s:19:"users/b0ydc/avatar";}
+
+</code>
+
+<h2>6. MAGIC METHODS</h2> 
+
+<code>          
+
+are a special subset of methods that you do not have to explicitly invoke. Instead, they are invoked 
+automatically whenever a particular event or scenario occurs.<br><br>
+
+examples in PHP is __construct(), which is invoked whenever an object of the class is instantiated, 
+similar to Python's __init__ <br><br> 
+
+<u>PHP magic methods</u><br><br>
+
+For example, PHP's unserialize() method looks for and invokes an object's __wakeup() magic method.<br><br>
+
+<u>JAVA magic methods</u><br><br>
+
+ObjectInputStream.readObject() method, which is used to read data from the initial byte stream and essentially 
+acts like a constructor for "re-initializing" a serialized object. However, serializable classes can also declare 
+their own readObject() method
+
+</code> 
+
+<h2>7. ARBITRARY INJECTION</h2>  
+
+<code>           
+
+Each time you find a new webpage that looks like it is not showing data, you can try to inspect the source code.
+it is needed to add the symbol ~ to the end of te file you want to inspect. <br><br>
+
+/otp/Template.php~<br><br>
+
+The main goal is to find a serialized object. inspecting the code and researching the different methods invoked, 
+can help to use it as attack vector. if you find methods that can be invoked, it can be changed. check sample, "template"
+the code found contains the __destruct() magic method. This will invoke the unlink() method on the lock_file_path 
+attribute, which will delete the file on this path.<br><br>
+  
+FROM ><br>O:4:"User":2:{s:8:"username";s:6:"wiener";s:12:"access_token";s:32:"hwfqw6rxogkhnkh1zsl6fuguxlk6um2t";}<br><br>
+
+TO ><br>O:14:"Template":1:{s:14:"lock_file_path";s:23:"/home/carlos/morale.txt";}<br><br>
+
+the important thing is to understand the serialized object and what is possible to do with the code you found.
+
+</code> 
+
+<h2>8. GADGET CHAIN</h2> 
+
+<code>
+
+"is a snippet of code that exists in the application that can help an attacker to achieve a particular goal."<br><br>
+
+- the attacker's goal might simply be to invoke a method that will pass their input into another gadget<br>
+- a gadget chain is not a payload of chained methods constructed by the attacker. All of the code already exists 
+on the website. The only thing the attacker controls is the data that is passed into the gadget chain.  <br>
+- This is typically done using a magic method that is invoked during deserialization, sometimes known as a "kick-off gadget".<br><br>
+
+<u>common tool:</u> ysoserial | https://github.com/frohoff/ysoserial<br><br>
+
+NOTE:<br><br>
+- Java versions 16 and above, you need to set a series of command-line arguments for Java to run ysoserial
+
+</code>
+
+
+    </article>
+
+
+  </main>
+
+</body>
+</html>

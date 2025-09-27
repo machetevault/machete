@@ -1,0 +1,235 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f8f9fa;
+  color: #333;
+}
+
+.navbar {
+  background-color: #212529;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+}
+
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.navbar-logo .logo {
+  height: 30px;
+  width: auto;
+  border-radius: 4px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-link {
+  cursor: pointer;
+  color: #dee2e6;
+  font-weight: 500;
+}
+
+.nav-link:hover {
+  text-decoration: underline;
+}
+
+.container {
+  display: flex;
+  height: calc(100vh - 60px);
+}
+
+.sidebar {
+  width: 300px;
+  background-color: #343a40;
+  color: white;
+  padding: 20px;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+.sidebar input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  border: none;
+}
+
+.search-topic {
+  font-weight: bold;
+  padding: 8px 0;
+  color: white;
+}
+
+mark {
+  background-color: #ffc107;
+  color: black;
+  padding: 0 2px;
+  border-radius: 2px;
+}
+
+#topicList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#topicList li {
+  cursor: pointer;
+  padding: 10px;
+  border-bottom: 1px solid #495057;
+}
+
+.nested-list {
+  list-style: none;
+  padding-left: 15px;
+  margin: 5px 0 15px 0;
+}
+
+.nested-list li {
+  padding: 6px;
+  cursor: pointer;
+  border-bottom: 1px solid #495057;
+}
+
+.nested-list li:hover {
+  background-color: #495057;
+}
+
+.content {
+  flex: 1;
+  padding: 40px;
+  overflow-y: auto;
+}
+
+.wiki-section img.wiki-icon {
+  width: 90px;
+  height: 50px;
+  margin-right: 10px;
+  vertical-align: middle;
+  border-radius: 4px;
+  transition: transform 0.3s ease;
+}
+
+.wiki-section img.wiki-icon:hover {
+  transform: scale(1.1);
+}
+
+:root {
+  --bg: #f8f9fa;
+  --text: #333;
+  --sidebar-bg: #343a40;
+  --sidebar-text: white;
+}
+
+body.dark-mode {
+  --bg: #121212;
+  --text: #e0e0e0;
+  --sidebar-bg: #1e1e1e;
+  --sidebar-text: #ccc;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+}
+
+.sidebar {
+  background-color: var(--sidebar-bg);
+  color: var(--sidebar-text);
+}
+
+.dark-toggle {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: white;
+}
+
+.footer {
+  background-color: #212529;
+  color: #ccc;
+  text-align: center;
+  padding: 20px;
+  font-size: 14px;
+  #position: relative;
+  bottom: 0;
+  width: 98%;
+  border-top: 1px solid #343a40;
+}
+
+.footer a {
+  color: #00bfff;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
+.active-topic {
+  background-color: #bababa;
+}
+
+body.dark-mode .footer {
+  background-color: #111;
+  color: #aaa;
+  border-top: 1px solid #333;
+}
+
+table.centertable {
+    margin-left: auto; 
+    margin-right: auto;
+}
+
+////
+
+.search-wrapper {
+  #position: relative;
+  width: 1%;
+  max-width: 1px; /* o el tamaño que quieras */
+}
+
+#searchInput {
+  width: 100%;
+  padding-right: 5px; /* espacio para la X */
+  #box-sizing: border-box;
+}
+
+.clear-button { 
+  right: 10px;
+  cursor: pointer;
+  font-size: 18px;
+  color: #888;
+  background-color: #BABABA;
+  border-radius: 12px;
+  display: none;
+  user-select: none;
+  transition: 0.3s;
+}
+
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    height: auto;
+  }
+
+  .nav-links {
+    flex-direction: column;
+  }
+}

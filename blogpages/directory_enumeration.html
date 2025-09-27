@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mi Blog</title>
+  <link rel="stylesheet" href="file:///Users/b0ydc/Documents/CYBER/SITE/css/styles.css">
+</head>
+<body>
+  <header>
+    <h4 align="right">@b0ydC</h4>
+  </header>
+
+  <main>
+    <article> 
+<h2>1. FFUF</h2>
+
+<u>DESCRIPTION:</u> Tool used perform directory enumeration on a web application.<br><br>
+
+C1: ffuf -w /path/to/wordlist:FUZZ -u URL/FUZZ<br><br>
+
+SAMPLE: ffuf -w /usr/share/directory-list-2.3-medium.txt:FUZZ -u http://10.10.20.3/FUZZ<br><br>
+
+FUZZ = section to fuzz<br>
+-w = wordlist<br>
+-u = URL<br>
+-fc = filter HTTP status codes<br><br> 
+  
+NOTE:<br><br>
+- The word "FUZZ" is used at the section of the URL you want to fuzz.<br>
+- It is not recursive.
+
+
+<h2>2. DIRB</h2>
+
+<u>DESCRIPTION:</u> Tool used perform directory enumeration on a web application.<br><br>
+
+C1: dirb URL</code><br><br>
+
+SAMPLE: dirb http://10.10.20.3<br>
+SAMPLE: dirb http://10.10.20.3 -X .php<br><br>
+
+-X = test file extention [.asp / .html / .asmx etc.]<br><br>
+
+NOTE:<br><br>
+- It is recursive.
+
+
+    </article>
+  </main>
+</body>
+</html>

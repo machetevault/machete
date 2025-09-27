@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mi Blog</title>
+  <link rel="stylesheet" href="file:///Users/b0ydc/Documents/CYBER/SITE/css/styles.css">
+</head>
+<body>
+  <header>
+    <h4 align="right">@b0ydC</h4>
+  </header>
+
+  <main>
+    <article>
+     
+<h2>1. GENERAL INFORMATION</h2>   
+
+GOAL: Test if the functionality is doing what is supposed to do, it is validating actions ?<br><br>
+  
+NOTES:<br><br>
+- Important to analyze the requests using burpsuite.<br>
+- Check for actions, shopping cart, prices, etc.<br>
+- Check input user validation.<br>
+- You can try with positive/negative values and check if the behavior is changing. <br><br>
+
+SAMPLE: productId=1&redir=PRODUCT&quantity=1&price=3700<br><br>
+  
+- Sometimes the logic is broken and you can affect the behavior or the values.<br><br>
+
+SAMPLE: productId=2&redir=PRODUCT&quantity=-1<br><br>
+
+- Check if exist some coupons or any other functionality on the site, but is correctly validating ?
+
+<h2>2. NO CONTROLS</h2> 
+
+NOTES:<br><br>
+- Requests inspection is needed.<br>
+- Test if you can access functionality that should be available only for administrator or known users.<br>
+- It is important to read if exist any behavior for specific users. <br><br>
+
+SAMPLE:<br><br>
+
+URI_PATH: http://URL/admin       
+
+
+    </article>
+
+
+  </main>
+
+</body>
+</html>

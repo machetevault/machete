@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mi Blog</title>
+  <link rel="stylesheet" href="file:///Users/b0ydc/Documents/CYBER/SITE/css/styles.css">
+</head>
+<body>
+  <header>
+    <h4 align="right">@b0ydC</h4>
+  </header>
+
+  <main>
+    <article>
+     
+<h2>1. GENERAL INFO</h2>
+
+<u>BYPASS HIGH PERMISSIONS FUNCTIONS</u><br><br>
+
+1. Inspect the source code of the application. [manual review] devs normally forget to add access controls.<br>
+2. Perform directory enumeration. Try administrator/admin endpoints.<br> 
+3. Check for robots.txt to check what other options/sites you are allowed to access.<br>
+4. Check if exist posts, messages by users, etc. Those users can be used to enumerate or attempt for different behavior.<br><br>
+
+NOTES:<br><br>
+1. Use dev-tools to modify parameters like cookies, URL's, etc. in order to check results via WEB. Same results as burpsuite, 
+it can change behavior.<br>2. Analyze responses, really important to use the application with and without authentication to log the requests/responses to 
+analyze the data. IMPORTANT!
+
+<h2>2. IDOR | INSECURE DIRECT OBJECT REFERENCES</h2>
+
+INFO: Arises when an application uses user-supplied input to access objects directly. FFUF or Burpsuite can be used. (community edition can be hard)<br><br>
+
+SAMPLE: https://machetevault/machete?_number=1234<br><br>
+  
+NOTES:<br> <br>
+- "1234" can be changed manually and possible it will be different results. SNIPER or CLUSTERBOMB ATTACKS!<br>
+Using FFUF, you just need to change the _number value as the parameter to FUZZ.<br><br>
+
+SAMPLE: https://machetevault/machete?_number=FUZZ
+
+<h2>3. PARAMETERS PROVIDING ACCESS</h2> 
+
+INFO:  Some tokens, parameters could change the behavior of the application regarding what can be accessed. <br><br>
+
+0. Manual inspection is needed. [burpsuite / dev-tools] <br>
+1. Check if exist any cookie, token, etc. that is providing autorization/access ? TRUE / FALSE<br><br>
+
+SAMPLE: Cookie: session=4Jpqa8iPxAB5ckq5lP2A4zP4oswZFuZM ; Admin=True<br><br>
+
+2. Test session tokens, cookies, etc. is the control in place by roles ? Edit manually. [burpsuite / dev-tools] <br>
+3. Change users, numbers, symbols... check if exist some horizontal privilege escalation that can be accomplished. <br>
+4. If comments section available, enumerate users, post a comment and check how it behaves. <br>
+
+SAMPLE: GET /my-account?id=carlos <br><br>
+
+<h2>4. URL-BASED [X-Original-Url] HEADER</h2>
+
+NOTES:<br><br>
+1. Inspect requests using burpsuite.<br>
+2. Check if activity is client or server-side ? [dev-tools browser]<br><br>
+  
+<i>How to test if backend is using the X-Original-URL header as part of the action</i><br><br>
+
+SAMPLE REQUEST:<br><br>
+
+<u>REQUEST</u> <br><br>
+  
+GET /vuln_endpoint HTTP/2<br>
+Host: machetevault.com<br>
+Cookie: session=I9glIXHonYMJpBHmvZFelIaiS<br><br>
+
+<u>RESPONSE</u> <br><br>
+  
+HTTP/2 403 Forbidden<br>
+Content-Type: application/json; charset=utf-8<br>
+X-Frame-Options: SAMEORIGIN<br>
+Content-Length: 15<br><br>
+
+"Access denied"<br><br>
+
+Previous sample can help to understand how to test it, two steps:<br><br>
+
+1. Change request URL to only "/".<br>
+2. C1. Add header X-Original-Url: /null<br>
+3. URL and header can merge data. However, X-Original-Url header does not accept parameters.<br><br>
+
+RESPONSE<br><br>
+  
+HTTP/2 404 Not Found<br>
+Content-Type: application/json; charset=utf-8<br>
+X-Frame-Options: SAMEORIGIN<br>
+Content-Length: 11<br><br>
+
+"Not Found"<br><br>
+
+NOTES:<br><br>
+First response, we got "Access denied" meaning the vuln_endpoint was not allowed. However, after adding the header "X-Original-Url" 
+you can manually set the endpoint/URL to try, it will overwrite the URL to use. <br><br>Second response, we got "Not Found". So, it means 
+that possible the backend is processing the URL using this header as it is changing behavior/response.
+
+Enumerate possible endpoints and try it.
+
+<h2>5. PROTOCOL HTTP BROKEN ACCESS [circumvented]</h2>
+
+It is when the HTTP method can be altered to get expected results as it is the parameter acting for access control, for example, you 
+change the HTTP method from POST to POSTX or GET, etc. <br><br>
+
+NOTE: Important to check,<br><br>
+1. Exist any parameter to test for broken access control ?<br>
+2. Exist some cookies to test ? SESSIONID ?<br>
+3. Exist any authorized function that you can access ?<br>
+4. What is the HTTP method used ? POST/GET/POSTX ?<br><br>
+
+EXPLOITATION STEPS:<br><br>
+
+Most using [burpsuite > repeater]<br><br>
+  
+1. Need to find an authenticated valid function.<br>
+2. Need to test if the parameters are vulnerable.<br>
+3. Need to change the cookie between authenticated and non-authenticated to check differences.<br>
+4. Need to change between HTTP methods. [GET/POST/POSTX/PUT]<br>
+
+<h2>6. MULTI-STEP BROKEN ACCESS</h2>
+
+SAMPLE: action=create&confirmed=true&username=USER<br><br>
+
+Sometimes the authentication forms has some kind of multi-step validation, but, is that doing something ?<br><br>
+
+1. Test if the validation is doing something when changing value, TRUE/FALSE.<br>
+2. Test if the validation is actually validating or if it can by by-passed changing other values.<br><br>
+
+NOTE:<br> <br>
+- Same techniques can be used, the big difference is to test if the validation mechanism present actually works.
+
+<h2>7. REFERER BROKEN ACCESS CONTROL</h2>
+
+All previous techniques can be attempted, it is basically missing the referer header. <br><br>
+
+1. Header can be added.<br>
+2. Change referer parameters options.
+    
+
+
+    </article>
+
+
+  </main>
+
+</body>
+</html>

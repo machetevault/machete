@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mi Blog</title>
+  <link rel="stylesheet" href="file:///Users/b0ydc/Documents/CYBER/SITE/css/styles.css">
+</head>
+<body>
+  <header>
+    <h4 align="right">@b0ydC</h4>
+  </header>
+
+  <main>
+    <article>
+     
+<h2>1. GENERAL INFORMATION</h2> 
+
+<code>
+
+NOTE:<br> <br>
+- it is a bypass that can make calls or redirect to a malicious site depending the validation it is doing.<br><br>
+
+<u>example:</u><br><br>
+
+  https://machetevault.com/login/?nextPage=https://google.com [allowed]<br><br>
+
+  https://machetevault.com/login/?nextPage=https://deadbomb.com [not allowed]<br><br>
+
+  https://machetevault.com/login/?nextPage=https://deadbomb.com/?https://google.com [allowed]<br><br>
+
+It is needed to test as some applications use a whitelist method to filter where it can be redirected or not. maybe the format allowed in the 
+example it is not, however, you can change the order to try it.<br><br>
+
+you can find similar applications with this code,<br><br>
+
+&lt;div class="text-center"><br>
+        Have you seen this new website called &lt;a href="/?redirect=http://www.google.com">Google&lt;/a>?<br>
+&lt;/div><br><br>
+
+which is basically doing the following redirection, https://5tu13b6m.machetevault.com/?redirect=http://www.google.com
+you can test to add something else after the .com to confirm if exist some restrictions.<br><br>
+
+what about if exist a SSO login ? /x// WAY<br><br>
+
+following the flow is a way to understand the filters, maybe the auth url is required at begining, at the end, etc. checking the following 
+example, the SSO use a subdomain used at the begining of the url. "auth", however, the bypass need to be attempted using the redirect 
+parameter.<br><br>
+
+<u>example:</u><br><br>
+
+https://auth.vault.machete.com/auth?client_id=1&redirect_url=https://vault.machete.com/&response_type=token<br><br>
+
+another way is to bypass using the REGEX pattern and not specific using the redirect feature, it is similar to the previous examples, however, 
+it modifies the query to add /x//URL and basically it is forcing the regex to look for // and call what is after that.<br><br>
+
+example: <br><br>
+  
+https://auth.vault.machete.com/auth?client_id=1&redirect_url=https://vault.machete.com/x//evilsite.com/&response_type=token<br><br>
+
+@ WAY<br><br>
+
+sometimes you can use the symbol @ that it is used for usernames to force the application in some way to bypass the filtering.<br><br>
+
+example: <br><br>
+  
+https://auth.vault.machete.com/auth?client_id=1&redirect_url=https://vault.machete.com@evilsite.com/&response_type=token<br><br>
+
+how to pivot from open redirect to XSS ?<br><br>
+
+1. first you need to confirm if the open redirect exist or not, you can see url similar to the previous or it can be a little different to make 
+it harder.<br><br>
+
+example: this url is encoded<br><br>
+
+https://auth.b2.com/move?next=https%3A%2F%2Fsite.ctf%2Foauth%2Flogin%2F%3Fclient_id%3D1%26redirect_url%3Dhttps%3A%2F%2Fauth.b2.com<br><br>
+
+this other part is now decoded,<br><br>
+
+https://auth.b2.com/move?next=https://site.ctf/oauth/login/?client_id=1&redirect_url=https://auth.b2.com<br><br>
+
+** always you can inspect the code to confirm the redirect code<br><br>
+
+simple test of previous url will be something similar to this,<br><br>
+
+https://auth.vault.com/leaving?next=https://evilsite.com<br><br>
+
+after inspecting if you see the evilsite is added, you can add HTML functionality to trigger some kind of XSS<br><br>
+
+example: it can be onclick event, onmouseover event, etc.<br><br>
+
+https://auth.vault.com/leaving?next=https://evilsite.com" onclick="alert('XSS')
+
+</code>          
+
+
+    </article>
+
+
+  </main>
+
+</body>
+</html>

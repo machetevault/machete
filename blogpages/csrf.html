@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mi Blog</title>
+  <link rel="stylesheet" href="file:///Users/b0ydc/Documents/CYBER/SITE/css/styles.css">
+</head>
+<body>
+  <header>
+    <h4 align="right">@b0ydC</h4>
+  </header>
+
+  <main>
+    <article>
+     
+<h2>1. GENERAL INFORMATION</h2> 
+
+<u>3 METHOD QUESTION:</u><br><br>
+
+1. A relevant action?<br>
+2. Cookie based session handling?<br>
+3. No unpredictable request parameters = CSRF Token?<br><br>
+
+*******<br><br>
+  
+1. First thing, activity needs to be from authenticated actions. <br>
+2. Check if the CSRF token is present. [inspect the headers / burpsuite]<br>
+3. If no token is present, a CSRF PoC can be used. [burpsuite PRO / manual way]<br><br>
+  
+Burpsuite: On RAW request > right click > engagement tools > generate CSRF PoC<br><br>
+
+NOTES:<br> <br>
+- user interaction is required at some point.<br>
+- inspect the code is vital, so you can use the form HTML code to prepare your CSRF PoC. with burpsuite PRO
+it will be easy. <br><br>
+
+Diferent payloads can be used. HTML tags<br><br>
+
+&lt;img src="https://vulnerable-website.com/email/change?email=pwned@evil-user.net"><br><br>      
+
+<h2>2. TOKEN TECHNIQUES</h2> 
+
+INFO: Collection of techniques used to test the different tokens we can find, CSRF tokens and more.<br><br>
+
+1. Inspect the source code of the page and look for any kind of token associated to the action.<br>
+For example, maybe a form with a csrf token. <br><br>
+
+SAMPLE:  <br><br> 
+
+&lt;input type="text" name="csrf" id="csrf" value="rt6A7TkfcGHMUc" hidden><br><br>
+
+2. It is important to test if the specific token provided is validated or if it is only validating that the field exists.<br> 
+In other words, is this validating the key value or format? <br>
+3. Are you able to attempt XSS ?<br>          
+
+<h2>3. BYPASS TECHNIQUES</h2> 
+  
+....
+
+<h2>4. PAYLOADS/EXPLOITS</h2> 
+
+https://github.com/machetevault/machete/blob/main/tools/csrf_exploits/CSRF_PoC_POST_sample.html<br><br>
+
+https://github.com/machetevault/machete/blob/main/tools/csrf_exploits/CSRF_PoC_onload_sample.html<br><br>
+
+https://github.com/machetevault/machete/blob/main/tools/csrf_exploits/csrf_python_server.html
+
+<h2>5. TOKEN VALIDATION ON REQUEST METHOD</h2> 
+
+it is when the control applies defenses against certain types of requests. <br><br>
+
+1. important to validate if the CSRF token is been validated or not. rejected or not ?<br>
+2. first test is to change request method and validate if the CSRF token is rejected or not.<br>
+3. burp profesional > right click > engagement tools > generate CSRF PoC<br>
+4. use the following code as sample, check source code to confirm the parameters needed for the action.
+
+<h2>6. TOKEN VALIDATION ON BEING PRESENT</h2>
+
+pretty important to validate,<br><br>
+
+1. without csrf token<br>
+2. changing method<br>
+3. validating GET requests y CSRF tokens<br>
+4. validating if the CSRF toke is being validated
+
+<h2>7. BROKEN REFERER VALIDATION</h2> 
+
+....
+
+<h2>8. NOT TIED TO USER SESSION</h2> 
+
+- several tests<br><br>
+
+  * csrf token is valid ?<br>
+  * csrf token is needed ?<br>
+  * csrf token is tied to session ? can you use one from other user session ?
+
+<h2>9. TOKEN TIED TO NON-SESSION COOKIE</h2> 
+
+<u>important tests</u><br><br>
+
+  - repeat same tests <br>
+  - important, is the csrf valid ?<br>
+  - exist the possibility to add input data to the cookie ?<br>
+  - if csrf cookie results in the CSRF token being rejected. This suggests that the csrfKey cookie may not be strictly 
+  tied to the session.<br>
+  - it is important to get 2 users.<br><br>
+
+NOTE:<br> <br>
+- important to read about possible ways to inject data in cookie headers. <br><br>
+
+SAMPLE: Cookie: csrfToken=Vwd4uGdvuY9niiMD54K6WGaJWuLUCGbu; session=NyeAhFL0RXY89SGOuXMORNgCfuknGOaV; Search=hack<br><br>
+
+NOTE:<br> <br>
+- Exist some different ways that can be used to trigger the alerts or inject payloads. one way is using SCRIPT HTML tag and
+the other can be IMAGES. <br><br>
+
+&lt;img src="https://b0ydc.com/?search=MV%0d%0aSet-Cookie:%20csrfToken=TOKEN%3b%20SameSite=None" onerror="document.forms[0].submit()">
+
+<h2>10. TOKEN DUPLICATED IN COOKIE</h2> 
+
+- same similar tests can be applied.<br>
+- important to check or inspect the traffic using burpsuite or ZAP<br>
+- check if exist CSRF token or not. is only one ? two ?<br>
+- exist the possibility to add input data to the cookie ?          
+
+<h2>11. ESCALATE SELF-XSS WITH CSRF</h2> 
+
+First you need to validate the request type, GET/POST and also if the CSRF protection is in place. If not on place, take note.
+This sample SELF-XSS WITH CSRF can be chained to create more impact, so, once the CSRF vulnerability was tested, you can continue testing the
+dfferent parameters, if some parameter is also vulnerable to XSS, you can create a CSRF PoC to trigger the vuln.
+This can be used when the self-xss is not accepted on bug bounty programs. 
+
+
+    </article>
+  </main>
+</body>
+</html>

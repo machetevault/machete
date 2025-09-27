@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mi Blog</title>
+  <link rel="stylesheet" href="file:///Users/b0ydc/Documents/CYBER/SITE/css/styles.css">
+</head>
+<body>
+  <header>
+    <h4 align="right">@b0ydC</h4>
+  </header>
+
+  <main>
+    <article>
+     
+<h2>1. GENERAL INFORMATION</h2> 
+
+PRE-REQS:
+
+1. Authenticated session [if possible]<br><br>
+  
+NOTE:<br><br>
+- When a request's credentials mode (request.credentials) is include, browsers will only expose the response to the frontend javascript 
+code if the Access-Control-Allow-Credentials header value is TRUE.<br><br>
+
+<u>ARBITRARY ORIGIN REFLECTION</u><br><br>
+
+SAMPLE:<br><br>
+
+&lt;script&gt;<br>
+fetch('/endpoint_to_exploit', {credentials:'include'}<br>
+&lt;&sol;script&gt;<br><br>
+  
+1. Manual inspection is needed to confirm this misconfiguration. [headers, code, etc]<br>
+2. If previous code sample is founded, CORS is possible to attempt.<br>
+3. Attempt to add the ORIGIN header. [burpsuite / repeater]<br>
+4. Check response, if header "Access-Control-Allow-Origin" is added it means CORS is used, attacks can be sucessful.<br><br>
+
+"HTTP/2 200 OK<br>
+Access-Control-Allow-Origin: https://machetevault.malicious.com"  <br><br>
+  
+5. If headers Access-Control-Allow-Credentials & Access-Control-Allow-Origin are present, arbitrary CORS can be accomplished.<br>
+6. User interaction is needed, so any way to send the payload to the user via social engineering is required.<br><br>
+  
+CHECK JS PAYLOAD: | CORSexploit-origin-reflection.js | DOWNLOAD<br><br>        
+
+<u>NULL ORIGIN REFLECTION [trusted]</u><br><br>
+
+NOTES:<br><br>
+1. One way to distinguish between NULL and ARBITRARY CORS is to check if the header "Access-Control-Allow-Origin" is added to the response 
+after adding any domain. SAMPLE: Access-Control-Allow-Origin: https://machete.malicious.com<br>
+2. If no header added, try null. Origin: null [burpsuite]<br>
+3. Access-Control-Allow-Origin: null will be added if successfull. <br>
+4. It is needed to generate a null request, HTML iframe sandbox can be used. <br><br>
+
+CHECK JS PAYLOAD: null origin | CORSexploit_null-origin.js | DOWNLOAD<br><br>
+
+<u>ARBITRARY SUBDOMAIN ORIGIN REFLECTION [insecure-protocols]</u><br><br>
+
+NOTES:<br> <br>
+- Same steps used for "ARBITRARY ORIGIN REFLECTION" can be applied, however, at the moment to test the origin header it is necessary 
+first to try the same origin and after that, try it with the subdomain.<br>
+- It is necessary to inspect the request to see if exist any request to other domain, subdomain, etc. that can be used as part of the 
+attack.<br><br>
+
+NOTE:<br> <br>
+- Sometimes this vulnerability is important when you have some kind of XSS as well that you can use to increase impact.<br><br>
+
+Specific tests fror SUBDOMAIN reflection (besides previous ones)<br><br>
+
+SAMPLE_DOMAIN: http://domain.com<br><br>
+
+1. Change origin header to one that begins with current origin of the site.<br><br>
+
+REFLECTED SAMPLE: http://domain.com.malicious.site  <br><br>
+  
+2. Change origin header to one that ends with current origin of the site.<br><br>
+
+REFLECTED SAMPLE: http://malicious.site.domain.com  <br><br>
+
+CHECK JS PAYLOAD: | CORSexploit_origin-subdomainXSS.js | DOWNLOAD <br><br>
+
+ATTACKER LOCAL SERVER: | pyats.sh<br><br>
+
+    </article>
+  </main>
+</body>
+</html>

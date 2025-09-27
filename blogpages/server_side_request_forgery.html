@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mi Blog</title>
+  <link rel="stylesheet" href="file:///Users/b0ydc/Documents/CYBER/SITE/css/styles.css">
+</head>
+<body>
+  <header>
+    <h4 align="right">@b0ydC</h4>
+  </header>
+
+  <main>
+    <article>
+     
+<h2>1. GENERAL INFORMATION</h2>  
+
+<code>
+
+- The attacker might cause the server to make a connection to internal services within the organization's infrastructure.<br>
+- This can be in the vulnerable application, or on other back-end systems that the application can communicate with.<br><br>
+
+<u>WHY it happens?</u><br><br>
+
+- access control bad configurations allowing to bypass.<br>
+- recovery purposes configuring the admin access as backdoor.<br>
+- connectivity from server and not from external users.<br>
+
+</code>
+
+<h2>2. COMMON ATTEMPTS</h2>  
+
+<code>
+
+INFO: Inspection of the requests are crucial, sometimes the request are sending or using variables to call more URL's. <br>
+It can be IPaddresses, hostnames, etc. So any URL can be called to check results. For example, a delete user URL action was founded 
+checking code, it can be attempted to remove the user. <br><br>
+
+** enumeration is key.<br><br>
+
+SAMPLE:<br><br>
+
+URL = http://localhost/admin/delete?user=machetevault<br>
+URL = http://192.168.80.7/admin/delete?user=machetevault<br>
+
+</code>
+
+<h2>3. CIRCUMVENT SSRF DEFENSES</h2> 
+
+<u>blacklisted input filters</u><br><br>
+
+<code>
+
+some common controls can use list of common words, uri paths and more to block requests. however, exist some ways to by-pass those 
+controls. it is common to see some requests with "blocked" responses, that means some control is preventing the access. </code><br><br>
+
+<u>for example: </u> <br><br>
+
+<code>
+
+1. if is it an IP address, you can attempt to obfuscate the ip address using other encode method. 127.0.0.1 >> obfuscated will be
+2130706433 | 017700000001 | http://127.1/ (decimal / octal)<br>
+2. you can add a new DNS entry to resolve to something else. <br>
+3. obfuscate using URL encoding or other encoding method [burpsuite encoder/decoder] even changing a letter can do a big difference.
+single or double-url-encoding. <br>
+4. change HTTP method [HTTP / HTTPS]<br><br>
+
+</code>
+
+<u>whitelisted input filters</u><br><br>
+
+<code>
+
+NOTE:<br> <br>
+- same techniques can be applied. first attempt is with the localhost/127.0.0.1 values<br><br>
+  
+[goal]: to by-pass this exploiting inconsistencies in URL parsing is key.<br><br>
+
+1. some apps only allow specific strings, values, etc. to match a whitelist.<br>
+2. it normally look to match at the beginning or in within in it.<br>
+3. Important to check for differences in @ / #, also, the goal is to make a internal call, so localhost can be used to trigger it.<br><br>
+
+SAMPLE: URLcall=http://127.0.0.1:80%2523@app.shop.net/admin/delete?username=carly<br><br>
+
+<u>ways to by-pass it:</u><br><br>
+
+ONE: embed credentials in URL before hostname using @ value<br><br>
+SAMPLE:<br><br>
+
+https://known-host:fakepass@badactor-host<br>
+http://username@stock.weliketoshop.net<br><br>
+
+TWO: usage of # to fragment URL's<br>
+SAMPLE: https://badactor-host#wellknown-host<br><br>
+
+THREE: leverage of DNS hierarchy to place required input to something you own<br>
+SAMPLE: https://expected-host.evil-host<br><br>
+
+FOUR: URL encode characters to confuse URL parsing, useful if the code that implements the filter handles URL-encoded<br>
+characters differently than the code that performs the back-end HTTP request.<br><br>
+
+FIVE: Double URL encoding. [use burpsuite decoder tab]<br><br>
+
+NOTES:<br> <br>
+1. combination of techniques can be used!<br>
+2. test each way and compare results, for example between @ and #<br>
+3. use burpsuite decoder but also cyberchef<br><br>
+
+</code>
+
+<u>bypassing filters via open redirection</u> <br><br>
+
+<code>
+
+to acomplish this one it is needed to first find a open redirection vulnerability. it can be something similar to the following
+code,<br><br>
+
+GET /product/nextProduct?currentProductId=7&path=/product?productId=8 <br><br>
+
+the path section is providing or calling another URL, so that can help to test if exist an open redirect vulnerability. simple
+way to test it is to type or call a simple url: <br><br>
+
+GET /product/nextProduct?currentProductId=7&path=https://www.google.com<br><br>
+
+if the site is loaded, it means theres an open redirection vulnerability to exploit. so use the request vulnerable to SSRF and 
+combine both to exploit.<br><br>
+
+- manual inspection of the URL is needed, it wil be each time the app is validating the source but not the entire URL. so, 
+the URL open redirection can be vulnerated. not necessarily you will see the entire URL, it can the URI path.<br><br>
+
+So, one way to test is to check if there are controls in place to prevent changing URL's to call. 
+
+</code>
+
+<h2>4. BLIND SSRF TECHNIQUES</h2>  
+
+<code>
+
+occur if you can cause an application to issue a back-end HTTP request to a supplied URL, but the response from the back-end request is not 
+returned in the application's front-end response. It is needed to use some kind of tool to check for responses.<br><br> 
+
+<u>techniques to use:</u><br><br>
+
+- trigger an HTTP request to an external system that you control (burp collaborator)<br>
+- it can be DNS request as well.<br>
+- if defenses are in place, techniques to obfuscate will be needed.<br>
+
+</code>
+
+
+    </article>
+
+
+  </main>
+
+</body>
+</html>

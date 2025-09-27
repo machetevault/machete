@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mi Blog</title>
+  <link rel="stylesheet" href="file:///Users/b0ydc/Documents/CYBER/SITE/css/styles.css">
+</head>
+<body>
+  <header>
+    <h4 align="right">@b0ydC</h4>
+  </header>
+
+  <main>
+    <article>
+     
+<h2>1. GENERAL INFORMATION</h2> 
+
+<code>
+
+NOTE:<br> <br>
+- Present is most applications due to is present on HTTP itself. It provides a long lived connections with asynchronous communication
+in both directions. bi-directional, full duplex.<br><br>
+
+Websockets will keep the connection open and idle until either the client or server is ready to send a message.<br><br>
+
+Protocol: not encrypted, ws:// | encypted wss://<br><br>
+
+<u>sample on how are instanciated ?</u><br><br>
+
+var ws = new WebSocket("wss://normal-website.com/chat");<br><br>
+
+there's 3 headers that can potentially help to discover it is a websocket connection.<br><br>
+
+<u>request headers>></u><br><br>
+
+Sec-WebSocket-Version: 13<br>
+Sec-WebSocket-Key: wDqumtseNBJdhkihL6PW7w==<br>
+Upgrade: websocket<br><br>
+
+<u>response headers >></u><br><br>
+
+Upgrade: websocket<br>
+Sec-WebSocket-Accept: 0FFP+2nmNIf/h+4BP36k9uzrYGk=<br><br>
+
+<u>sample websocket message:</u> <br><br>
+
+ws.send("Peter Wiener");<br><br>
+
+any data format can be sent using websockets, however, it is pretty common to use JSON format. <br><br>
+
+sometimes it is needed to manipulate the websocket handshake also.
+
+</code>
+
+<h2>2. MANIPULATING WEBSOCKETS</h2> 
+
+<code>
+
+needed to analyze the requests using burpsuite and look for references, common headers can help to identify.
+also, the "Websockets history" tab is tracking all activity when websockets are present.<br><br>
+
+similar tehcniques can be applied. requests can be send to repeater and modifications can be in place. as we known, websockets
+normally use JSON format. it is vulnerable to XSS, XML injection, etc. <br><br>
+
+NOTE:<br> <br>
+- sometimes part of the defense techniques is to convert some parameters to change it so they can lose some functionality.
+for example, maybe the character "<" is converted to HTML, so it will not work. Or viceversa.
+
+</code>        
+
+<h2>3. MANIPULATING WEBSOCKETS TO EXPLOIT VULNS</h2>
+
+<code>          
+
+C1:&lt;img src=1 onerror='alert(1)'><br><br>
+
+- also, sometimes restrictions can be in place, either IP restrictions, or XSS, SQLi, or more filters in place for defense.
+X-forwarded-for header can be used to bypass restrictions.<br><br>
+
+Same XSS techniques can be used to test. important one. encoding and mixing. capital letters, and more.
+
+</code>          
+
+
+    </article>
+
+
+  </main>
+
+</body>
+</html>
