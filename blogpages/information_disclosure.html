@@ -16,26 +16,26 @@
      
 <h2>1. GENERAL INFORMATION</h2>
 
-<code>NOTE:<br><br> 
-- Basically it is something when you find some PCI, PII, PHI, error messages, etc. that does not need to be external exposed.</code><br><br>
+NOTE:<br><br> 
+- Basically it is something when you find some PCI, PII, PHI, error messages, etc. that does not need to be external exposed.<br><br>
 
-<code>1. Inspect the code.<br>
+1. Inspect the code.<br>
 2. Proxy the traffic to check the requests<br>
-3. Enumerate directories, endpoints, etc. [robots.txt]</code>        
+3. Enumerate directories, endpoints, etc. [robots.txt]       
 
 <h2>2. VIA ERROR MESSAGES</h2>
 
-<code>NOTE:<br> <br>
+NOTE:<br> <br>
 - It will be needed to find a way to make the application generate an error. Input, ID validations, comments, etc.<br><br>
 
 SAMPLE: GET /product?productId=1<br><br>
 
 For example, in here you can see the value of productId is looking for number 1. Try to change the value from integer to 
-string and try it, that is one option to proceed.</code> 
+string and try it, that is one option to proceed.
 
 <h2>3. BYPASS TECHNIQUES</h2>
 
-<code>NOTE:<br> <br>
+NOTE:<br> <br>
 - Mostly this is related when exist some kind of HEADER or field that will leak any information that can lead to something
 else. <br><br>
 
@@ -46,13 +46,9 @@ SAMPLE: "Admin interface only available to local users"<br><br>
 
 X-Custom-IP-Authorization | X-Forwarded-For<br><br>
 
-3. X-Custom-IP-Authorization >> can be used to determine whether or not the request came from the localhost IP.</code>
-
+3. X-Custom-IP-Authorization >> can be used to determine whether or not the request came from the localhost IP.
 
     </article>
-
-
   </main>
-
 </body>
 </html>
