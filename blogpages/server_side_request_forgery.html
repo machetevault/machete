@@ -16,8 +16,6 @@
      
 <h2>1. GENERAL INFORMATION</h2>  
 
-<code>
-
 - The attacker might cause the server to make a connection to internal services within the organization's infrastructure.<br>
 - This can be in the vulnerable application, or on other back-end systems that the application can communicate with.<br><br>
 
@@ -27,11 +25,7 @@
 - recovery purposes configuring the admin access as backdoor.<br>
 - connectivity from server and not from external users.<br>
 
-</code>
-
 <h2>2. COMMON ATTEMPTS</h2>  
-
-<code>
 
 INFO: Inspection of the requests are crucial, sometimes the request are sending or using variables to call more URL's. <br>
 It can be IPaddresses, hostnames, etc. So any URL can be called to check results. For example, a delete user URL action was founded 
@@ -44,20 +38,14 @@ SAMPLE:<br><br>
 URL = http://localhost/admin/delete?user=machetevault<br>
 URL = http://192.168.80.7/admin/delete?user=machetevault<br>
 
-</code>
-
 <h2>3. CIRCUMVENT SSRF DEFENSES</h2> 
 
 <u>blacklisted input filters</u><br><br>
 
-<code>
-
 some common controls can use list of common words, uri paths and more to block requests. however, exist some ways to by-pass those 
-controls. it is common to see some requests with "blocked" responses, that means some control is preventing the access. </code><br><br>
+controls. it is common to see some requests with "blocked" responses, that means some control is preventing the access.<br><br>
 
 <u>for example: </u> <br><br>
-
-<code>
 
 1. if is it an IP address, you can attempt to obfuscate the ip address using other encode method. 127.0.0.1 >> obfuscated will be
 2130706433 | 017700000001 | http://127.1/ (decimal / octal)<br>
@@ -66,11 +54,7 @@ controls. it is common to see some requests with "blocked" responses, that means
 single or double-url-encoding. <br>
 4. change HTTP method [HTTP / HTTPS]<br><br>
 
-</code>
-
 <u>whitelisted input filters</u><br><br>
-
-<code>
 
 NOTE:<br> <br>
 - same techniques can be applied. first attempt is with the localhost/127.0.0.1 values<br><br>
@@ -107,11 +91,7 @@ NOTES:<br> <br>
 2. test each way and compare results, for example between @ and #<br>
 3. use burpsuite decoder but also cyberchef<br><br>
 
-</code>
-
 <u>bypassing filters via open redirection</u> <br><br>
-
-<code>
 
 to acomplish this one it is needed to first find a open redirection vulnerability. it can be something similar to the following
 code,<br><br>
@@ -131,11 +111,7 @@ the URL open redirection can be vulnerated. not necessarily you will see the ent
 
 So, one way to test is to check if there are controls in place to prevent changing URL's to call. 
 
-</code>
-
 <h2>4. BLIND SSRF TECHNIQUES</h2>  
-
-<code>
 
 occur if you can cause an application to issue a back-end HTTP request to a supplied URL, but the response from the back-end request is not 
 returned in the application's front-end response. It is needed to use some kind of tool to check for responses.<br><br> 
@@ -146,13 +122,7 @@ returned in the application's front-end response. It is needed to use some kind 
 - it can be DNS request as well.<br>
 - if defenses are in place, techniques to obfuscate will be needed.<br>
 
-</code>
-
-
     </article>
-
-
   </main>
-
 </body>
 </html>
