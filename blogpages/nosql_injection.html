@@ -16,8 +16,6 @@
      
 <h2>1. CONTEXT INFORMATION</h2>  
 
-<code>
-
 NoSQL databases are different than the normal SQL databases. The structure is different so the way to query the DB will differ. 
 The structure of NoSQL DB is [key:pair] structure.<br><br>
 
@@ -32,11 +30,7 @@ SAMPLE: https://machetevault.com/product/lookup?category=FUZZ<br><br>
 1. Syntax Injection: It is when you can break the query.<br>
 2. Operator Injection: It is when you can use operators to manipulate the queries.
 
-</code>
-
 <h2>2. GENERAL INFORMATION</h2>  
-
-<code>
 
 NOTES:<br><br>
 1. Inspection of requests is needed. [burpsuite]<br>
@@ -67,23 +61,17 @@ C2: TRUE ' && 1 && 'x<br><br>
 
 NOTE: this method is always TRUE.<br><br>
   
-C1: '||1||'
-
-</code>          
+C1: '||1||'       
 
 <h2>3. NoSQL OPERATORS</h2>  
 
-<code>
-
 NOTES:<br><br>
 - Requests inspection is needed.<br>
-- It is normally as key:pair values.</code><br><br>
+- It is normally as key:pair values.<br><br>
 
 <u>BYPASS AUTHENTICATION</u><br><br>
 
 <u>MONGO DB</u><br><br>
-
-<code>
 
 There's a technique to use two operators that can help to discover if operators are allowed and also those can lead to authentication 
 bypass.<br><br>
@@ -125,7 +113,6 @@ more than one user has been selected. So apply fourth test.<br><br>
 NOTE:<br> <br>
 - It is trying to bypass the user "admin" with any value as password.
 
-</code>
     </article>
   </main>
 </body>
