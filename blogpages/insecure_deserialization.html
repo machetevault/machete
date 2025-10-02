@@ -10,13 +10,10 @@
   <header>
     <h4 align="right">@b0ydC</h4>
   </header>
-
   <main>
     <article>
      
 <h2>1. GENERAL INFORMATION</h2>   
-
-<code>
 
 - it is the process of converting complex data structures (objects, fields) into a "flatter" format that can be sent and received 
 as a sequential stream of bytes.<br>
@@ -41,11 +38,7 @@ to pass harmful data into the app. <br><br>
 NOTE:<br> <br>
 - If checking the source code you see the following methods, serialize() / unserialize(), check further.
 
-</code>
-
-<h2>2. IDENTIFICATION</h2>  
-
-<code>          
+<h2>2. IDENTIFICATION</h2>         
 
 NOTE:<br><br>
 - First thing, check and double check all data being passed into the website to try to find possible serialized data.<br>
@@ -65,27 +58,19 @@ JAVA<br><br>
 <u>Key points:</u><br><br>
   - serialized objects always begin with same bytes, ac ed in hexadecimal and rO0 in base64.<br>
   - any class that implements "java.io.Serializable" is vulnerable. with help of "readObject()" method used to deserialize
-  data from "InputStream".
-
-</code>          
+  data from "InputStream".         
 
 <h2>3. MODIFYING SERIALIZED OBJECTS</h2>  
-
-<code>
 
 - it can be pretty common to find php serialization codes. sometimes they are also encoded in different formats, so manual inspection
 is needed.<br>
 - depending the vulnerability, a quick method to make changes is to change method type. Between, GET/POST.<br>
 - burpsuite inspector is pretty common to help on this cases. <br>
-- it is important to understand what the serialized code is doing and what actions can be accomplish. <br><br>
+- it is important to understand what the serialized code is doing and what actions can be accomplish.<br><br>
 
 SAMPLE: O:4:"User":2:{s:4:"name":s:6:"carlos"; s:10:"isLoggedIn":b:1;}<br>
 
-</code>
-
 <h2>4. MODIFYING SERIALIZED DATA TYPES</h2>  
-
-<code>
 
 INFO: PHP-based logic is particularly vulnerable to this kind of manipulation due to the behavior of its loose comparison operator (==) 
 when comparing different data types.<br><br> 
@@ -104,11 +89,7 @@ O:4:"User":2:{s:8:"username";s:13:"administrator";s:12:"access_token";s:32:"iy57
 
 O:4:"User":2:{s:8:"username";s:13:"administrator";s:12:"access_token";i:0;}
 
-</code>
-
 <h2>5. APPLICATION FUNCTIONALITY</h2> 
-
-<code>  
 
 same steps can be applied, the difference is that the serialized code have or expand more functionalities. <br><br>
 
@@ -117,11 +98,7 @@ same steps can be applied, the difference is that the serialized code have or ex
 O:4:"User":3:{s:8:"username";s:5:"b0ydc";s:12:"access_token";s:32:"p283rm0kk5cj7qfuy8n7nz2er9dq9mfx";s:11:
 "avatar_link";s:19:"users/b0ydc/avatar";}
 
-</code>
-
-<h2>6. MAGIC METHODS</h2> 
-
-<code>          
+<h2>6. MAGIC METHODS</h2>         
 
 are a special subset of methods that you do not have to explicitly invoke. Instead, they are invoked 
 automatically whenever a particular event or scenario occurs.<br><br>
@@ -137,13 +114,9 @@ For example, PHP's unserialize() method looks for and invokes an object's __wake
 
 ObjectInputStream.readObject() method, which is used to read data from the initial byte stream and essentially 
 acts like a constructor for "re-initializing" a serialized object. However, serializable classes can also declare 
-their own readObject() method
+their own readObject() method 
 
-</code> 
-
-<h2>7. ARBITRARY INJECTION</h2>  
-
-<code>           
+<h2>7. ARBITRARY INJECTION</h2>           
 
 Each time you find a new webpage that looks like it is not showing data, you can try to inspect the source code.
 it is needed to add the symbol ~ to the end of te file you want to inspect. <br><br>
@@ -161,11 +134,7 @@ TO ><br>O:14:"Template":1:{s:14:"lock_file_path";s:23:"/home/carlos/morale.txt";
 
 the important thing is to understand the serialized object and what is possible to do with the code you found.
 
-</code> 
-
 <h2>8. GADGET CHAIN</h2> 
-
-<code>
 
 "is a snippet of code that exists in the application that can help an attacker to achieve a particular goal."<br><br>
 
@@ -179,13 +148,7 @@ on the website. The only thing the attacker controls is the data that is passed 
 NOTE:<br><br>
 - Java versions 16 and above, you need to set a series of command-line arguments for Java to run ysoserial
 
-</code>
-
-
     </article>
-
-
   </main>
-
 </body>
 </html>
