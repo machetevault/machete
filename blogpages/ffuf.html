@@ -10,7 +10,6 @@
   <header>
     <h4 align="right">@b0ydC</h4>
   </header>
-
   <main>
     <article>
      
@@ -20,14 +19,14 @@
 2. Change the parameter to FUZZ in the request file.<br>
 3. Use ffuf.<br><br>
 
-C1: <code>ffuf -request [filename] -request-proto http -w /path/to/wordlist<code><br><br>
+C1: ffuf -request [filename] -request-proto http -w /path/to/wordlist<br><br>
 
 SAMPLE: ffuf -request req.txt -request-proto http -w /usr/share/wordlist/common.txt<br>
 SAMPLE: ffuf -request req.txt -request-proto http -w /usr/share/wordlist/common.txt -fs 2346<br><br>
 
 SAMPLE:<br><br>
 
-<code>ffuf -request req.txt -request-proto http -mode clusterbomb -w /usr/share/list/common.txt:FUZZUSER -w /usr/list/common.txt:FUZZPASS</code><br><br>
+ffuf -request req.txt -request-proto http -mode clusterbomb -w /usr/share/list/common.txt:FUZZUSER -w /usr/list/common.txt:FUZZPASS<br><br>
 
 -request = specify the file<br>
 -request-proto = specify protocol<br>
@@ -39,52 +38,52 @@ SAMPLE:<br><br>
 
 WAF BYPASS<br><br>
 
-<code>$ ffuf -w [WORDLIST] -u [URL] -X GET -H "User-Agent: FUZZ"<br><br>
+$ ffuf -w [WORDLIST] -u [URL] -X GET -H "User-Agent: FUZZ"<br><br>
 
-SAMPLE: ffuf -w /home/payloads_list.txt -u http://machetevault.com/FUZZ -X GET -H "User-Agent: FUZZ"</code><br><br>
+SAMPLE: ffuf -w /home/payloads_list.txt -u http://machetevault.com/FUZZ -X GET -H "User-Agent: FUZZ"<br><br>
 
 CONTENT TYPE<br><br>
 
-<code>$ ffuf -w [WORDLIST] -u [URL] -X POST -H "Content-Type: FUZZ" -d '{"data": "example"}'<br><br>
+$ ffuf -w [WORDLIST] -u [URL] -X POST -H "Content-Type: FUZZ" -d '{"data": "example"}'<br><br>
 
-SAMPLE: ffuf -w /home/common_list.txt -u http://machetevault.com/FUZZ -X POST -H "Content-Type: FUZZ" -d '{"data": "example"}'</code><br><br>
+SAMPLE: ffuf -w /home/common_list.txt -u http://machetevault.com/FUZZ -X POST -H "Content-Type: FUZZ" -d '{"data": "example"}'<br><br>
 
 PARAMETERS DISCOVER<br><br>
 
-<code>$ ffuf -w [WORDLIST] -u [URL] <br><br>
+$ ffuf -w [WORDLIST] -u [URL] <br><br>
 
-SAMPLE: ffuf -w /home/wordlist.txt -u http://machetevault.com?FUZZ=value</code><br><br>
+SAMPLE: ffuf -w /home/wordlist.txt -u http://machetevault.com?FUZZ=value<br><br>
 
 LINK DISCOVERY FOLLOWING LINKS<br><br>
 
-<code>$ ffuf -w [WORDLIST] -u [URL] -recursion -recursion-depth 1<br><br>
+$ ffuf -w [WORDLIST] -u [URL] -recursion -recursion-depth 1<br><br>
 
-SAMPLE: ffuf -w /home/wordlist.txt -u http://machetevault.com/FUZZ -recursion -recursion-depth 1</code><br><br>
+SAMPLE: ffuf -w /home/wordlist.txt -u http://machetevault.com/FUZZ -recursion -recursion-depth 1<br><br>
 
 JWT TOKEN & HEADER BRUTE FORCE <br><br>
 
-<code>$ ffuf -w [WORDLIST] -u [URL] -H "Authorization: Bearer FUZZ"<br><br>
+$ ffuf -w [WORDLIST] -u [URL] -H "Authorization: Bearer FUZZ"<br><br>
 
 SAMPLE: ffuf -w /home/jwt_token_list.txt -u http://machetevault.com -H "Authorization: Bearer FUZZ"<br>
-SAMPLE: ffuf -w /home/common.txt -u http://machetevault.com/FUZZ -H "X-Custom-Header: FUZZ"</code><br><br>
+SAMPLE: ffuf -w /home/common.txt -u http://machetevault.com/FUZZ -H "X-Custom-Header: FUZZ"<br><br>
 
 RATE LIMIT BY-PASS<br><br>
 
-<code>$ ffuf -w [WORDLIST] -u [URL] -p 0.1s<br><br>
+$ ffuf -w [WORDLIST] -u [URL] -p 0.1s<br><br>
 
-SAMPLE: ffuf -w /home/common.txt -u http://machetevault.com/FUZZ -p 0.1s</code><br><br>
+SAMPLE: ffuf -w /home/common.txt -u http://machetevault.com/FUZZ -p 0.1s<br><br>
 
 ENUMERATE FILE EXTENSION<br><br>
 
-<code>$ ffuf -w [WORDLIST] -u [URL] -e .php,.html,.phtml,.css<br><br>
+$ ffuf -w [WORDLIST] -u [URL] -e .php,.html,.phtml,.css<br><br>
 
-SAMPLE: ffuf -w /home/common.txt -u http://machetevault.com/FUZZ -e .php,.html,.phtml,.css</code><br><br>
+SAMPLE: ffuf -w /home/common.txt -u http://machetevault.com/FUZZ -e .php,.html,.phtml,.css<br><br>
 
 HTTP REQUEST SMUGGLING<br><br>
 
-<code>$ ffuf -w [WORDLIST] -u [URL] -X FUZZ<br><br>
+$ ffuf -w [WORDLIST] -u [URL] -X FUZZ<br><br>
 
-SAMPLE: ffuf -w /home/payloads_list.txt -u http://machetevault.com -X FUZZ</code>
+SAMPLE: ffuf -w /home/payloads_list.txt -u http://machetevault.com -X FUZZ
 
     </article>
   </main>
