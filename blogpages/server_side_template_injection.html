@@ -16,8 +16,6 @@
      
 <h2>1. GENERAL INFORMATION</h2> 
 
-<code>
-
 first clue is XSS, normally after finding XSS no deep testing is performed and sometimes missed during black box engagements.
 one good way to differentiate if SSTI is possible is to attempt normal/common operations, like sum, multiplication, etc.<br><br>
 
@@ -27,13 +25,9 @@ typically arises through developers intentionally letting users submit or edit t
 mode for this express purpose.<br><br>
 
 it may occur as a Local File Include (LFI) variant, exploitable through classic LFI techniques such as code embedded in log files, 
-session files, or /proc/self/env
-
-</code>          
+session files, or /proc/self/env      
 
 <h2>2. IDENTIFICATION</h2> 
-
-<code>
 
 high level<br><br>
 
@@ -68,11 +62,7 @@ check this site, https://portswigger.net/web-security/server-side-template-injec
 
 <u>3. read the documentation</u><br><br>
 
-</code>
-
-<h2>3. TEMPLATES ENGINES</h2> 
-
-<code>          
+<h2>3. TEMPLATES ENGINES</h2>          
 
 <u>ERB</u><br><br>
 
@@ -104,13 +94,7 @@ code execution: <br><br>
 #{"freemarker.template.utility.Execute"?new()("id")}<br><br>
 [="freemarker.template.utility.Execute"?new()("id")]
 
-</code>
-
-
     </article>
-
-
   </main>
-
 </body>
 </html>
