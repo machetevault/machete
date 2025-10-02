@@ -23,47 +23,48 @@
 3. Check for robots.txt to check what other options/sites you are allowed to access.<br>
 4. Check if exist posts, messages by users, etc. Those users can be used to enumerate or attempt for different behavior.<br><br>
 
-NOTES:<br><br>
+<b>NOTES:</b><br><br>
 1. Use dev-tools to modify parameters like cookies, URL's, etc. in order to check results via WEB. Same results as burpsuite, 
-it can change behavior.<br>2. Analyze responses, really important to use the application with and without authentication to log the requests/responses to 
+it can change behavior.<br>
+2. Analyze responses, really important to use the application with and without authentication to log the requests/responses to 
 analyze the data. IMPORTANT!
 
 <h2>2. IDOR | INSECURE DIRECT OBJECT REFERENCES</h2>
 
-INFO: Arises when an application uses user-supplied input to access objects directly. FFUF or Burpsuite can be used. (community edition can be hard)<br><br>
+<b>INFO:</b> Arises when an application uses user-supplied input to access objects directly. FFUF or Burpsuite can be used. (community edition can be hard)<br><br>
 
-SAMPLE: https://machetevault/machete?_number=1234<br><br>
+<b>SAMPLE:</b> https://machetevault/machete?_number=1234<br><br>
   
-NOTES:<br> <br>
+<b>NOTES</b>:<br><br>
 - "1234" can be changed manually and possible it will be different results. SNIPER or CLUSTERBOMB ATTACKS!<br>
-Using FFUF, you just need to change the _number value as the parameter to FUZZ.<br><br>
+Using FFUF, you just need to change the <b>_number</b> value as the parameter to FUZZ.<br><br>
 
-SAMPLE: https://machetevault/machete?_number=FUZZ
+<b>SAMPLE:</b> https://machetevault/machete?_number=FUZZ
 
 <h2>3. PARAMETERS PROVIDING ACCESS</h2> 
 
-INFO:  Some tokens, parameters could change the behavior of the application regarding what can be accessed. <br><br>
+<b>INFO:</b>  Some tokens, parameters could change the behavior of the application regarding what can be accessed. <br><br>
 
 0. Manual inspection is needed. [burpsuite / dev-tools] <br>
 1. Check if exist any cookie, token, etc. that is providing autorization/access ? TRUE / FALSE<br><br>
 
-SAMPLE: Cookie: session=4Jpqa8iPxAB5ckq5lP2A4zP4oswZFuZM ; Admin=True<br><br>
+<b>SAMPLE:</b> Cookie: session=4Jpqa8iPxAB5ckq5lP2A4zP4oswZFuZM ; Admin=True<br><br>
 
 2. Test session tokens, cookies, etc. is the control in place by roles ? Edit manually. [burpsuite / dev-tools] <br>
 3. Change users, numbers, symbols... check if exist some horizontal privilege escalation that can be accomplished. <br>
 4. If comments section available, enumerate users, post a comment and check how it behaves. <br>
 
-SAMPLE: GET /my-account?id=carlos <br><br>
+<b>SAMPLE:</b> GET /my-account?id=carlos <br><br>
 
 <h2>4. URL-BASED [X-Original-Url] HEADER</h2>
 
-NOTES:<br><br>
+<b>NOTES</b>:<br><br>
 1. Inspect requests using burpsuite.<br>
 2. Check if activity is client or server-side ? [dev-tools browser]<br><br>
   
 <i>How to test if backend is using the X-Original-URL header as part of the action</i><br><br>
 
-SAMPLE REQUEST:<br><br>
+<b>SAMPLE REQUEST:</b><br><br>
 
 <u>REQUEST</u> <br><br>
   
@@ -71,7 +72,7 @@ GET /vuln_endpoint HTTP/2<br>
 Host: machetevault.com<br>
 Cookie: session=I9glIXHonYMJpBHmvZFelIaiS<br><br>
 
-<u>RESPONSE</u> <br><br>
+<u>RESPONSE</u><br><br>
   
 HTTP/2 403 Forbidden<br>
 Content-Type: application/json; charset=utf-8<br>
@@ -86,7 +87,7 @@ Previous sample can help to understand how to test it, two steps:<br><br>
 2. C1. Add header X-Original-Url: /null<br>
 3. URL and header can merge data. However, X-Original-Url header does not accept parameters.<br><br>
 
-RESPONSE<br><br>
+<b>RESPONSE</b><br><br>
   
 HTTP/2 404 Not Found<br>
 Content-Type: application/json; charset=utf-8<br>
@@ -95,7 +96,7 @@ Content-Length: 11<br><br>
 
 "Not Found"<br><br>
 
-NOTES:<br><br>
+<b>NOTES:</b><br><br>
 First response, we got "Access denied" meaning the vuln_endpoint was not allowed. However, after adding the header "X-Original-Url" 
 you can manually set the endpoint/URL to try, it will overwrite the URL to use. <br><br>Second response, we got "Not Found". So, it means 
 that possible the backend is processing the URL using this header as it is changing behavior/response.
@@ -107,7 +108,7 @@ Enumerate possible endpoints and try it.
 It is when the HTTP method can be altered to get expected results as it is the parameter acting for access control, for example, you 
 change the HTTP method from POST to POSTX or GET, etc. <br><br>
 
-NOTE: Important to check,<br><br>
+<b>NOTE:</b> Important to check,<br><br>
 1. Exist any parameter to test for broken access control ?<br>
 2. Exist some cookies to test ? SESSIONID ?<br>
 3. Exist any authorized function that you can access ?<br>
@@ -141,12 +142,7 @@ All previous techniques can be attempted, it is basically missing the referer he
 1. Header can be added.<br>
 2. Change referer parameters options.
     
-
-
     </article>
-
-
   </main>
-
 </body>
 </html>
