@@ -16,8 +16,6 @@
      
 <h2>1. GENERAL INFORMATION</h2> 
 
-<code>
-
 NOTE:<br> <br>
 - Present is most applications due to is present on HTTP itself. It provides a long lived connections with asynchronous communication
 in both directions. bi-directional, full duplex.<br><br>
@@ -51,11 +49,7 @@ any data format can be sent using websockets, however, it is pretty common to us
 
 sometimes it is needed to manipulate the websocket handshake also.
 
-</code>
-
 <h2>2. MANIPULATING WEBSOCKETS</h2> 
-
-<code>
 
 needed to analyze the requests using burpsuite and look for references, common headers can help to identify.
 also, the "Websockets history" tab is tracking all activity when websockets are present.<br><br>
@@ -65,13 +59,9 @@ normally use JSON format. it is vulnerable to XSS, XML injection, etc. <br><br>
 
 NOTE:<br> <br>
 - sometimes part of the defense techniques is to convert some parameters to change it so they can lose some functionality.
-for example, maybe the character "<" is converted to HTML, so it will not work. Or viceversa.
+for example, maybe the character "<" is converted to HTML, so it will not work. Or viceversa.     
 
-</code>        
-
-<h2>3. MANIPULATING WEBSOCKETS TO EXPLOIT VULNS</h2>
-
-<code>          
+<h2>3. MANIPULATING WEBSOCKETS TO EXPLOIT VULNS</h2>       
 
 C1:&lt;img src=1 onerror='alert(1)'><br><br>
 
@@ -79,14 +69,8 @@ C1:&lt;img src=1 onerror='alert(1)'><br><br>
 X-forwarded-for header can be used to bypass restrictions.<br><br>
 
 Same XSS techniques can be used to test. important one. encoding and mixing. capital letters, and more.
-
-</code>          
-
-
+       
     </article>
-
-
   </main>
-
 </body>
 </html>
