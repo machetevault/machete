@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Formatter</title>
+    <style>
+        body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      line-height: 1.6;
+      padding: 10px;
+    }
+    textarea, pre {
+      width: 100%;
+      margin-bottom: 18px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      padding: 8px;
+    }
+    pre {
+      background-color: #f8f8f8;
+      overflow-x: auto;
+    }
+    button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      padding: 10px 15px;
+      cursor: pointer;
+      margin-right: 10px;
+      margin-bottom: 15px;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    h1, h2, h3 {
+      color: #333;
+      margin-bottom: 10px;
+    }
+    #editor {
+      white-space: pre-wrap;
+      background-color: #eef;
+    }
+    .flex-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    </style>
+</head>
+<body>
+
+    <h1>JavaScript Formatter</h1>
+
+    <h2>Enter JavaScript Code:</h2>
+    <textarea id="inputCode" placeholder="Paste your JavaScript code here..."></textarea>
+    <button onclick="formatJavaScript()">Format JavaScript</button>
+    <button onclick="clearFields()">Clear</button>
+    <button onclick="goBack()">Go Back to MacheteVault</button>
+    
+    <h2>Formatted JavaScript:</h2>
+    <div class="result" id="result"></div>
+
+    <script>
+        function formatJavaScript() {
+            const jsCode = document.getElementById('inputCode').value;
+            try {
+                // This function uses a simple replacement strategy for basic formatting
+                // For a complete format, using a library like prettier would be better
+                const formattedCode = jsCode.split(/\n/).map(line => line.trim()).join('\n');
+                document.getElementById('result').textContent = formattedCode;
+            } catch (e) {
+                document.getElementById('result').textContent = 'Error in formatting JavaScript code.';
+            }
+        }
+
+        function clearFields() {
+            document.getElementById('inputCode').value = '';
+            document.getElementById('result').textContent = '';
+        }
+
+        function goBack() {
+            window.location.href = 'https://machetevault.com';
+        }
+    </script>
+
+</body>
+</html>
