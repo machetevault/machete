@@ -177,17 +177,11 @@ const topics = [
 
 ---
 
-<pre style="text-align:center;">
+<div id="content01">
 
-<a href="" target=""><img src="/img/LOGO01.png" alt="LOGO" width="550" height="500"></a>
+<iframe src="/blogpages/nmap.html" width="100%" height="1000"></iframe>
 
-<h1>CONTENT IN PROGRESS...[FILE NOT FOUND - 404]</h1>
-
-<h3>CLICK THE LOGO TO RETURN TO MAIN PAGE!</h3>
-  
-<p class="titulos">©® - Since 2023</p>
-
-</center>
+</div>
 
   ` },
         { title: "Tmux", 
