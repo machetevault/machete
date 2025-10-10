@@ -14,8 +14,59 @@
   <main>
     <article>
 
-<h3>CHROME</h3>
-     
+<h3>CHROME & FIREFOX</h3>
+
+<b>what is the structure of a web extension ?</b><br><br>
+
+normally web extensions are composed by main files composition,<br><br>
+
+- javascript files<br>
+- HTML files<br>
+- CSS files<br>
+- manifest.json file<br><br>
+
+what is the manifest.json file ?<br><br>
+
+is a required file that lists the identification of the extension, permissions required of the extension, and the accessibility of the extension.
+here we can specify the context that a file will run. the three major contexts are the <i>webpage/content script</i>, <i>the popup</i> and <i>the background.</i> 
+you can let the browser know which context you want the file to run in by specifying it in the manifest.json file, aptly labeled content_scripts, background_script, and browser_action 
+in the manifest version 2 (v2). <br><br>
+
+<b>what is the pattern of a web extension ?</b><br><br>
+
+browser_specific_extension_scheme://extension_id/actual_resource_name<br><br>
+
+<b>what is the background context of a web extension ?</b><br><br>
+
+is the most powerful of the three contexts with the ability to access most of the browser extension APIs and WebExtensions API. those APIs
+give an extension a lot of control of the user’s browsing experience, with the ability to arbitrarily control tabs, read from the websites, 
+or modify and read cookies.
+these abilities are each locked behind permissions, requested in the manifest.json file under the “permissions” key. however exist different permissions
+that can be part of the manifest.json v3 file. 
+
+- permissions
+- optional_permissions
+- host_permissions
+- optional_host_permissions
+
+<a href="https://developer.chrome.com/docs/extensions/reference/permissions-list">chrome for developers: permissions</a>
+      
+permissions sample for analysis<br><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
 <b>how to enable developer mode ?</b><br><br>
 
 1. open browser <br>
@@ -41,6 +92,9 @@ this is a quick simnple method using CLI, we are using the google service to dow
 URL="https://clients2.google.com/service/update2/crx?response=redirect&prodversion=${PRODVER}&x=id%3D${EXT_ID}%26installsource%3Dondemand%26uc"<br><br>
 
 i created a quick script on bash to download the extension you want, you need to type the extension ID and version of chrome to work with.
+
+
+<h3>SAFARI</h3>
 
     </article>
   </main>
