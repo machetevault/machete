@@ -1678,14 +1678,14 @@ function loadPage(page) {
       <img src="https://www.dpo-partage.fr/wp-content/uploads/2023/09/recherches-Google-Dorks.webp" alt="VirusTotal" />
       <h2>First research. Two topics. Four submissions. Two dorks !!</h2>
       <div class="news-meta">Posted on November 7, 2023 by b0ydC</div>
-      <p>VirusTotal now connects to multiple new threat intelligence feeds. Analysts can now pivot faster through new indicators of compromise. The update also enhances API support and visualization capabilities.</p>
+      <p>A topic from my work, 3 days doing research and 2 dorks accepted. It was a really funny experience.</p>
     </div>
 
     <div class="news-article">
       <img src="https://store.eventcapture.com/cdn/shop/files/DC31-biglogo_4da4cbcb-91c4-4044-a22a-40e899555235.jpg?v=1691774600" alt="VirusTotal" />
       <h2>DEFCON 31 - the one and only </h2>
       <div class="news-meta">Posted on September 9, 2023 by b0ydC</div>
-      <p>VirusTotal now connects to multiple new threat intelligence feeds. Analysts can now pivot faster through new indicators of compromise. The update also enhances API support and visualization capabilities.</p>
+      <p>My first DEFCON, amazing experience. </p>
     </div>
 
   </div>
