@@ -101,24 +101,22 @@ this is a quick simnple method using CLI, we are using the google service to dow
 
 URL="https://clients2.google.com/service/update2/crx?response=redirect&prodversion=${PRODVER}&x=id%3D${EXT_ID}%26installsource%3Dondemand%26uc"<br><br>
 
-i created a quick script on bash to download the extension you want, you need to type the extension ID and version of chrome to work with.
-
 <b>how to find the extension code in windows ?</b><br><br>
 
-1. look for the extension ID (enable developer mode)
+1. look for the extension ID (enable developer mode)<br><br>
 
-C:\Users\<USER>\AppData\Local\Google\Chrome\User Data\Default\Extensions\<EXT_ID>\version
+C:\Users\<USER>\AppData\Local\Google\Chrome\User Data\Default\Extensions\<EXT_ID>\version<br><br>
       
 <b>how to test chrome extensions ?</b><br><br>
 
-1. research about the architecture and purpose of the extension.
-2. create a sandbox profile using a VM, new fresh install of the browser (latest version)
-3. extract the crx files and analyze the code (javascript, manifest.json, etc)
-4. inspect the network traffic to find network communcations, identify 3rd party libraries using Dev-Tools
-5. use a proxy to look for vulnerabilities like burp or caido, and reinforce the step 4 using the proxy tool as well
-6. look for injections vulnerabilities, check any input field and the sanitization in place
-7. check and inspect the permissions under manifes.json file
-8. automate the process with tools to fuzz the API calls to confirm if theres any vulnerability present. 
+1. research about the architecture and purpose of the extension.<br>
+2. create a sandbox profile using a VM, new fresh install of the browser (latest version)<br>
+3. extract the crx files and analyze the code (javascript, manifest.json, etc)<br>
+4. inspect the network traffic to find network communcations, identify 3rd party libraries using Dev-Tools<br>
+5. use a proxy to look for vulnerabilities like burp or caido, and reinforce the step 4 using the proxy tool as well<br>
+6. look for injections vulnerabilities, check any input field and the sanitization in place<br>
+7. check and inspect the permissions under manifes.json file<br>
+8. automate the process with tools to fuzz the API calls to confirm if theres any vulnerability present. <br>
 
 <h3>SAFARI</h3>
 
