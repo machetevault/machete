@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="/img/LOGO01.png">
     <title>JavaScript Analyzer</title>
+    <script src="https://cdn.jsdeliver.net/npm/js-beautify@1.14.7/js/lib/beautify.js"></script>
     <style>
         body {
       font-family: Arial, sans-serif;
@@ -66,18 +67,13 @@
     <textarea id="result" rows="3" readonly></textarea>
 
     <script>
-        function formatJavaScript() {
-            const jsCode = document.getElementById('inputCode').value;
-            try {
-                // This function uses a simple replacement strategy for basic formatting
-                // For a complete format, using a library like prettier would be better
-                const formattedCode = jsCode.split(/\n/).map(line => line.trim()).join('\n');
-                document.getElementById('result').textContent = formattedCode;
-            } catch (e) {
-                document.getElementById('result').textContent = 'Error in formatting JavaScript code.';
-            }
-        }
 
+        function formatJavaScript() {
+            const inputCode = document.getElementById('inputCode').value;
+            const js_code = js_beautify(input, {indent_size: 2});
+            document.getElementById('result').value = js_code;
+        }
+        
         function clearFields() {
             document.getElementById('inputCode').value = '';
             document.getElementById('result').textContent = '';
