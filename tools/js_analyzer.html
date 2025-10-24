@@ -1,49 +1,30 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>JavaScript Beautifier</title>
-
     <!-- Include js-beautify from a CDN -->
-
     <script src=https://cdn.jsdelivr.net/npm/js-beautify@1.14.7/js/lib/beautify.js></script>
-
     <style>
 
         body {
-
             font-family: Arial, sans-serif;
-
             margin: 20px;
-
         }
 
         textarea {
-
             width: 100%;
-
             height: 200px;
-
             margin-top: 10px;
-
         }
 
         button {
-
             margin-right: 10px;
-
         }
 
     </style>
-
 </head>
-
 <body>
 
     <h1>JavaScript Beautifier</h1>
@@ -51,47 +32,28 @@
     <textarea id="input" placeholder="Paste your JavaScript code here..."></textarea>
 
     <div>
-
         <button onclick="beautifyCode()">Beautify</button>
-
         <button onclick="clearTextAreas()">Clear</button>
-
         <button onclick="goBack()">Go to Machete Vault</button>
-
     </div>
 
-    <textarea id="output" placeholder="Beautified JavaScript will appear here..." readonly></textarea>
-
-   
+    <textarea id="output" placeholder="Beautified JavaScript will appear here..." readonly></textarea>  
 
     <script>
 
         function beautifyCode() {
-
             const input = document.getElementById('input').value;
-
             const beautifiedCode = js_beautify(input, { indent_size: 2 });
-
             document.getElementById('output').value = beautifiedCode;
-
         }
-
- 
 
         function clearTextAreas() {
-
             document.getElementById('input').value = '';
-
             document.getElementById('output').value = '';
-
         }
 
- 
-
         function goBack() {
-
             window.location.href = 'https://machetevault.com';
-
         }
 
     </script>
