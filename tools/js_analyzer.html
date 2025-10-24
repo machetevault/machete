@@ -1,87 +1,101 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="/img/LOGO01.png">
-    <title>JavaScript Analyzer</title>
-    <script src="https://cdn.jsdelivr.net/npm/js-beautify@1.14.7/js/lib/beautify.js"></script>
+
+    <title>JavaScript Beautifier</title>
+
+    <!-- Include js-beautify from a CDN -->
+
+    <script src=https://cdn.jsdelivr.net/npm/js-beautify@1.14.7/js/lib/beautify.js></script>
+
     <style>
+
         body {
-      font-family: Arial, sans-serif;
-      margin: 20px;
-      line-height: 1.6;
-      padding: 10px;
-    }
-    textarea, pre {
-      width: 100%;
-      margin-bottom: 18px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      padding: 8px;
-    }
-    pre {
-      background-color: #f8f8f8;
-      overflow-x: auto;
-    }
-    button {
-      background-color: #007bff;
-      color: white;
-      border: none;
-      border-radius: 4px;
-      padding: 10px 15px;
-      cursor: pointer;
-      margin-right: 10px;
-      margin-bottom: 15px;
-    }
-    button:hover {
-      background-color: #0056b3;
-    }
-    h1, h2, h3 {
-      color: #333;
-      margin-bottom: 10px;
-    }
-    #editor {
-      white-space: pre-wrap;
-      background-color: #eef;
-    }
-    .flex-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 20px;
-    }
+
+            font-family: Arial, sans-serif;
+
+            margin: 20px;
+
+        }
+
+        textarea {
+
+            width: 100%;
+
+            height: 200px;
+
+            margin-top: 10px;
+
+        }
+
+        button {
+
+            margin-right: 10px;
+
+        }
+
     </style>
+
 </head>
+
 <body>
 
-    <h1>JavaScript Analyzer</h1>
+    <h1>JavaScript Beautifier</h1>
 
-    <h2>Enter JavaScript Code:</h2>
-    <textarea id="inputCode" placeholder="Paste your JavaScript code here..."></textarea>
-    <button onclick="formatJavaScript()">Format JavaScript</button>
-    <button onclick="clearFields()">Clear</button>
-    <button onclick="goBack()">Go Back</button>
-    
-    <h2>Formatted JavaScript:</h2>
-    <textarea id="result" rows="3" readonly></textarea>
+    <textarea id="input" placeholder="Paste your JavaScript code here..."></textarea>
+
+    <div>
+
+        <button onclick="beautifyCode()">Beautify</button>
+
+        <button onclick="clearTextAreas()">Clear</button>
+
+        <button onclick="goBack()">Go to Machete Vault</button>
+
+    </div>
+
+    <textarea id="output" placeholder="Beautified JavaScript will appear here..." readonly></textarea>
+
+   
 
     <script>
-        function formatJavaScript() {
-            const inputCode = document.getElementById('inputCode').value;
-            const js_code = js_beautify(input, {indent_size: 2});
-            document.getElementById('result').value = js_code;
-        }
-        
-        function clearFields() {
-            document.getElementById('inputCode').value = '';
-            document.getElementById('result').textContent = '';
+
+        function beautifyCode() {
+
+            const input = document.getElementById('input').value;
+
+            const beautifiedCode = js_beautify(input, { indent_size: 2 });
+
+            document.getElementById('output').value = beautifiedCode;
+
         }
 
-        function goBack() {
-            window.location.href = 'https://machetevault.com';
+ 
+
+        function clearTextAreas() {
+
+            document.getElementById('input').value = '';
+
+            document.getElementById('output').value = '';
+
         }
+
+ 
+
+        function goBack() {
+
+            window.location.href = 'https://machetevault.com';
+
+        }
+
     </script>
 
 </body>
+
 </html>
