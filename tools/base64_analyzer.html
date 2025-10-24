@@ -36,14 +36,12 @@
     <h2>Decode:</h2>
     <textarea id="inputBase64" placeholder="Enter Base64 to decode..."></textarea>
     <button onclick="decodeBase64()">Decode</button>
-
-    <button onclick="clearFields()">Clear</button>
-
-    <button onclick="goBack()">Go Back</button>
     
     <h2>Result:</h2>
     <textarea id="result" placeholder="result..." rows="3" ></textarea>
 
+    <button onclick="clearFields()">Clear</button>
+    <button onclick="goBack()">Go Back</button>
     <script>
         function encodeBase64() {
             const text = document.getElementById('inputText').value;
